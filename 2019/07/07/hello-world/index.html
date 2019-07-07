@@ -104,28 +104,28 @@
             <li class="">
               <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
-                HOME
+                主页
               </a>
             </li>
         
             <li class="">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                CATEGORIES
+                目录
               </a>
             </li>
         
             <li class="">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                TAGS
+                标签
               </a>
             </li>
         
             <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                ARCHIVES
+                文章
               </a>
             </li>
         
@@ -374,15 +374,11 @@
     <div class="bottom">
         <p>
             <span>
-                youjianing --TJU &copy; 2017 - 2019
+                youjianing --TJU &copy; 2019
             </span>
         		
            	
             
-            
-            <span>
-	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
-            </span>
             
             
             
@@ -507,6 +503,24 @@
 <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '死鬼去哪里了！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '(つェ⊂)咦!又好了!';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
 
 
 
