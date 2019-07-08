@@ -1,15 +1,214 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
     
-    <entry>
-      <title><![CDATA[CTF writeup]]></title>
-      <url>/2019/07/08/CTF-writeup/</url>
-      <content type="html"><![CDATA[<h1 id="CTF-writeup"><a href="#CTF-writeup" class="headerlink" title="CTF writeup"></a>CTF writeup</h1><p>都是菜鸡总结的一些常识, dalao们请绕路(发抖)<br>但是也欢迎大佬们来纠正错误<br>菜鸡不胜感激</p>
+    
+    <title>CTF writeup | 闹钟你别闹 | 为守护一切的美好而战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="CTF WEB">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">天津大学 尤嘉宁</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>CTF writeup</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">CTF writeup</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-08T01:46:59.000Z" itemprop="datePublished" class="page-time">
+  2019-07-08
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-CTF-writeup"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">CTF writeup</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-08 09:46:59" datetime="2019-07-08T01:46:59.000Z"  itemprop="datePublished">2019-07-08</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="CTF-writeup"><a href="#CTF-writeup" class="headerlink" title="CTF writeup"></a>CTF writeup</h1><p>都是菜鸡总结的一些常识, dalao们请绕路(发抖)<br>但是也欢迎大佬们来纠正错误<br>菜鸡不胜感激</p>
 <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><p>###<a href="http://web.jarvisoj.com:32774/" target="_blank" rel="noopener">localhost</a>(resolved)</p>
 <p>题目中只有一行 <strong>localhost access only!!</strong><br><a href="https://link.jianshu.com/?t=http://www.111cn.net/phper/php-cy/59523.htm" target="_blank" rel="noopener">PHP获取用户IP地址</a><br>所以需要伪造自己的IP地址<br>一个比较简单的方法是在HTTP的请求头中添加参数:<code>X-Forwarded-For : 需要伪造的IP</code><br>可以使用burp suite抓包或PostMan来实现</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/X-Forwarded-For.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/X-Forwarded-For.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/X-Forwarded-For.png" alt title class></a>
                 <p></p>
             </figure>
 <p>类似的, 可以伪造<code>Referer</code><br><code>Referer</code>表明了用户是从哪个页面跳转来的.<br>例如<br><code>Referer: https://www.google.com</code></p>
@@ -50,7 +249,7 @@
 <p>并没有什么卵用, 得到的响应和在浏览器上没区别,<br>但是使用服务器, 输入同样的命令可以成功, 暂时存疑<br>反正,<br>flag 拿到了对吧 :(</p>
 <p>###TSCTF(resolved)</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/TSCTF.jpeg" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/TSCTF.jpeg" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/TSCTF.jpeg" alt title class></a>
                 <p></p>
             </figure>
 
@@ -105,7 +304,7 @@
 <p>其实我觉得上来就用菜刀控制一句话木马并不好,<br>因为这个工具把底层的东西都封装好了.<br>我深信, 要想真正理解某样东西, 越接近底层, 越有助于深入.<br>所以要先学会<strong>使用浏览器连接一句话木马</strong></p>
 <p>在比赛的时候, 见到学长在url上设置payload,<br>所以我想设置url的payload连接一句话,<br><code>http://whoisyourdaddy.cf/test.php?cmd=system(&#39;ls&#39;);</code><br>按照我们上面的分析, php代码就会执行<code>system(&#39;ls&#39;);</code>, 回显出目录下的文件.<br>(一定不要忘记后面的 <code>;</code>血的教训😭)<br><font size="5"><strong>然而 :</strong></font></p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/kongkongde.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/kongkongde.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/kongkongde.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -115,7 +314,7 @@
 
 <p>访问一下.</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/ls.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/ls.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/ls.png" alt title class></a>
                 <p></p>
             </figure>
 <p>成功了.</p>
@@ -127,7 +326,7 @@
 </ul>
 <p>我成功的使用Burp 的 change method 功能和 PostMan 实现了.<br>postman的使用有些坑要注意, 如图</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/postman.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/postman.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/postman.png" alt title class></a>
                 <p></p>
             </figure>
 <p>####POST和GET数据包的对比<br>GET:</p>
@@ -140,7 +339,7 @@
 <p>####其他漏洞<br>由于线下赛的服务器在比赛结束后就关闭了, 很多题目也不方便复现.<br>主要说一下思路就好了</p>
 <ul>
 <li>web1<br>前面的一句话木马已经分析过了,<br>其修补漏洞的方法也很简单 : 直接删除木马文件, 一了百了.<br>除了上面的一句话漏洞, 还有针对finecms的任意文件读取漏洞<br>我认为这个漏洞的根源是url过滤不够严格<br>题目一开始的代码只替换<code>../</code>为<code></code>,<br>修补方式是, 循环替换<code>../</code>, 让不法分子无机可乘<figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/welcome.png" alt="web1的logo,真的很皮" title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/welcome.png" title="web1的logo,真的很皮" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/welcome.png" alt="web1的logo,真的很皮" title class></a>
                 <p>web1的logo,真的很皮</p>
             </figure>
 <del>这段代码, 我修的 (叉腰)</del></li>
@@ -197,14 +396,14 @@
 
 <p>最终效果图 :</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/xxe.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/xxe.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/xxe.png" alt title class></a>
                 <p></p>
             </figure>
 <p>ojbk.</p>
 <p>###<a href="https://adworld.xctf.org.cn/task/answer?type=web&number=3&grade=1&id=5002" target="_blank" rel="noopener">mfw</a>(resolved)</p>
 <p>在题目中看到了出题者使用了Git, 可以猜测是Source Leak, 使用GitHack脚本, 能下载部分源代码.</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/GitHack.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/GitHack.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/GitHack.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -230,7 +429,7 @@
 </ul>
 <p>最终</p>
 <figure class="image-box">
-                <img src="http://whoisyourdaddy.cf/picture/mfw.png" alt title class>
+                <a rel=CTF writeup href="http://whoisyourdaddy.cf/picture/mfw.png" title="" data-fancybox="images"><img src="http://whoisyourdaddy.cf/picture/mfw.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -257,17 +456,297 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@youjianing:~# cat /mnt/O7avZhikgKgbF/flag.txt</span><br><span class="line">ZmxhZ3tzYWpiY2lienNrampjbmJoc2J2Y2pianN6Y3N6Ymt6an0=</span><br></pre></td></tr></table></figure>
 
 <p><code>base64</code> decode后就是flag<br>最后可以使用 <code>umount [挂载点]</code>来卸载文件系统.</p>
-]]></content>
-      
+
+        </div>
         
-        <tags>
-            
-            <tag> CTF WEB </tag>
-            
-        </tags>
+<blockquote class="post-copyright">
+    <div class="content">
         
-    </entry>
+<span class="post-time">
+    Last updated: <time datetime="2019-07-08T01:54:17.453Z" itemprop="dateUpdated">2019-07-08 09:54:17</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/07/08/CTF-writeup/" target="_blank" rel="external">https://anti-entropy123.github.io/2019/07/08/CTF-writeup/</a>
+        
+    </div>
+    <footer>
+        <a href="https://anti-entropy123.github.io">
+            <img src="/img/avatar.jpg" alt="天津大学 尤嘉宁">
+            天津大学 尤嘉宁
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF-WEB/">CTF WEB</a></li></ul>
+
+            <div class="page-share-wrap">
     
-  
-  
-</search>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://anti-entropy123.github.io/2019/07/08/CTF-writeup/&title=《CTF writeup》 — 闹钟你别闹&pic=https://anti-entropy123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://anti-entropy123.github.io/2019/07/08/CTF-writeup/&title=《CTF writeup》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CTF-writeup"><span class="post-toc-number">1.</span> <span class="post-toc-text">CTF writeup</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">web</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#api调用-resolved"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">api调用(resolved)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#misc"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">misc</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ext3-solved"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">ext3(solved)</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                天津大学 尤嘉宁 &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://anti-entropy123.github.io/2019/07/08/CTF-writeup/&title=《CTF writeup》 — 闹钟你别闹&pic=https://anti-entropy123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://anti-entropy123.github.io/2019/07/08/CTF-writeup/&title=《CTF writeup》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQY7DMAgF0N7/0p1tpVHSD2RGsv28qtI05WWBwPj1itf7Y91/+/vO+yv3dz68MDAwlmW8b1fvnvvnf17PYVf3YGBgnMO4ymDJPUk6nlO/xIyBgYFxW65VU2pS42FgYGDMGaPkePstBgYGxqSJzYO4LwHzV/YnvTgGBsaCjHzX/f8//8l8AwMDYynGu7iqv61utzWjwsDA2JqRJ7h5oHlzW40HAwNjb0Z+3KHXdiYbc0mj++UKBgbG1ow8pT412kxKwN7LwsDA2JvR+7PqIbD5wKC56YaBgbE4Iw+o+pzJEYpyVBgYGIcxni3Xekm2XIxiYGAcwOglzXlqrqbgSxIGBsaRjMlRiWrQvZHnaISJgYGxFKOaavMtuWor23s1zU4aAwNjKUYebs6ojjmTN104M4KBgbE1o5d2e5t3SSIuYDAwMA5gJO3lJJk+e5gDAwPjTMZk2ysv4JIjFHlqLpSGGBgYizOqW/B5WzvB946dYWBg7M3I28XqSPKphBsNHjAwMI5k5Ftj1fFk72kPTDkwMDAWZ+Q/S4q8fGzwKq7ymREMDIzFGU81qM+GWx5IYGBgbM2YpLn8D6qh9J6MgYGxN6O6sVUddlYHBkmi/1LhYmBgbMqYb4RVqZPSszkjxcDAOIyRhD7BlJthDAwMjMlB0hiZDyQuxwMYGBhbM5ImNj8uliToScLFwMA4jdFrHfOCLwlifnQMAwNjU8YPTn/bGYgFSv0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
