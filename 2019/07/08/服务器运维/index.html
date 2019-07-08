@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>博服务器运维 | 闹钟你别闹 | 为守护一切的美好而战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">天津大学 尤嘉宁</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>博服务器运维</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">博服务器运维</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-08T03:35:12.000Z" itemprop="datePublished" class="page-time">
+  2019-07-08
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-服务器运维"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">博服务器运维</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-08 11:35:12" datetime="2019-07-08T03:35:12.000Z"  itemprop="datePublished">2019-07-08</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="服务器相关笔记"><a href="#服务器相关笔记" class="headerlink" title="服务器相关笔记"></a>服务器相关笔记</h1><h2 id="服务器参数"><a href="#服务器参数" class="headerlink" title="服务器参数:"></a>服务器参数:</h2><ul>
+<li>Ubunt 18.04 Server</li>
+<li>内存 2GB</li>
+</ul>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>新建文件 <code>touch &lt;name&gt;</code><br>删除文件 <code>rm   &lt;name&gt;</code><br>删除目录 <code>rm -r   &lt;name&gt;</code><br>解压缩 <code>unzip  &lt;name&gt;</code><br>文件复制 <code>cp 源文件 目标目录</code><br>文件移动 <code>mv 源文件 目标目录</code></p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>编译C++程序(指定名称和后缀):<br><code>g++   *.cpp   -std=c++11 -o   a.exe</code></p>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p>过滤出文件中包含 <code>key</code>的记录 :<br><code>grep &#39;key&#39; &lt;file&gt;</code><br>递归过滤 :<br><code>grep -r &#39;key&#39; &lt;file&gt;</code></p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>作用 ：将上一个命令的输出作为下一个命令的输入, 操作符是 |</p>
+<ol>
+<li>将 cat 和 grep 组合在一起<br><code>cat &lt;file&gt; | grep &#39;key&#39;</code></li>
+<li>过滤出目录中名字包含<code>key</code>的目录(不包含子目录)<br><code>ls | grep &#39;key&#39;</code></li>
+</ol>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>显示所有进程<br><code>ps -A</code></li>
+<li>杀死某项进程<br><code>sudo kill [进程编号]</code></li>
+</ul>
+<h2 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h2><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>screen -S &lt;name&gt;</code></td>
+<td align="center">创建名为 name 的session</td>
+</tr>
+<tr>
+<td align="center"><code>screen  -ls</code></td>
+<td align="center">显示所有session</td>
+</tr>
+<tr>
+<td align="center"><code>screen  -r  &lt;name&gt;</code></td>
+<td align="center">进入名为 name 的session</td>
+</tr>
+<tr>
+<td align="center"><code>screen   -D  -r  &lt;name&gt;</code></td>
+<td align="center">将名为name的session离线并重新连接</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     c</code></td>
+<td align="center">在当前终端新建session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     w</code></td>
+<td align="center">显示当前终端session列表</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     k</code></td>
+<td align="center">关闭当前session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     0-9</code></td>
+<td align="center">显示0-9session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     space</code></td>
+<td align="center">按照顺序显示下一个session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     A</code></td>
+<td align="center">为当前session命名</td>
+</tr>
+<tr>
+<td align="center">若要关闭某个session，则关闭该session下所有window</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>screen   -D  -r  &lt;name&gt;</code>可解决某些情况下无法重连接终端的问题</li>
+<li>若要关闭某个session，则关闭该session下所有window即可</li>
+</ul>
+<h2 id="使用pscp从本地上传文件"><a href="#使用pscp从本地上传文件" class="headerlink" title="使用pscp从本地上传文件"></a>使用pscp从本地上传文件</h2><blockquote>
+<p>更推荐使用 finalShell 类的工具,非常方便,省去打命令的时间,且更直观</p>
+</blockquote>
+<p>步骤:</p>
+<ol>
+<li>从本地打开<code>CMD</code>到（pscp）putty目录下</li>
+<li>pscp</li>
+<li>基本命令格式：<br><code>pscp   [本地文件路径]   [用户名]@[ServerIP]:[目录]</code><br>或<code>pscp  -r   [本地目录路径]  [用户名]@[ServerIP]：[目录]</code><br>同理，pscp也可以从Linux向Windows复制文件或目录</li>
+</ol>
+<h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="通用方法"><a href="#通用方法" class="headerlink" title="通用方法:"></a>通用方法:</h4><ul>
+<li>启动:<code>/usr/local/apache2/bin/apachectl start apaceh</code></li>
+<li>停止:<code>/usr/local/apache2/bin/apachectl stop</code></li>
+<li>重启:<code>/usr/local/apache2/bin/apachectl restart</code></li>
+<li>重启但不中断当前连接:<code>/usr/local/sbin/apachectl graceful</code><h4 id="作为Linux的服务时"><a href="#作为Linux的服务时" class="headerlink" title="作为Linux的服务时:"></a>作为Linux的服务时:</h4></li>
+<li>启动: <code>service httpd start 启动</code></li>
+<li>重新启动:<code>service httpd restart</code></li>
+<li>停止:<code>service httpd stop</code><h4 id="Ubuntu系统下"><a href="#Ubuntu系统下" class="headerlink" title="Ubuntu系统下:"></a>Ubuntu系统下:</h4></li>
+<li>启动: <code>$ sudo /etc/init.d/apache2 start</code></li>
+<li>重新启动: <code>$ sudo /etc/init.d/apache2 restart</code></li>
+<li>停止: <code>$ sudo /etc/init.d/apache2 stop</code><h4 id="其它"><a href="#其它" class="headerlink" title="其它:"></a>其它:</h4>在配置完成apache2.conf 文件以达到禁止访问目录的目的后, 我重新启动apache2服务, 但是却显示apache2.conf文件语法错误<blockquote>
+<p>Invalid Mutex directory in argument file:${APACHE_LOCK_DIR}</p>
+</blockquote>
+</li>
+</ul>
+<p>然而这里的部分我没有任何改动.<br>使用如下命令可以避免报错, 直接启动<br><code>sudo apachectl restart</code><br>原理至今不明.</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><code>/etc/apache2/apache2.conf</code></p>
+<h2 id="MineCraft相关命令"><a href="#MineCraft相关命令" class="headerlink" title="MineCraft相关命令"></a>MineCraft相关命令</h2><ul>
+<li><p>mine craft启动命令（其他jar类型的程序应该也可以如此启动）<br><code>java -Xms# -Xmx# -jar [path]/minecraft_server.[version].jar nogui</code><br><code>nogui</code>:表示不以图形界面运行,因为我的服务器是server版的,本身就没有图形界面,所以不加也可以<br><code>-Xms</code>:初始启动分配内存<br><code>-Xmx</code>:最大分配内存<br><code>path</code>:jar包所在路径<br><code>version</code>:当前MineCraft_Server版本</p>
+</li>
+<li><p><code>tell &lt;sb&gt; &lt;something&gt;</code>: 给sb 私信 </p>
+</li>
+<li><p><code>gamemode survival &lt;sb&gt;</code>:将 sb 调至 生存模式</p>
+</li>
+<li><p><code>gamemode create &lt;sb&gt;</code>:将sb 调至 创造模式</p>
+</li>
+</ul>
+<h2 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h2><p><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
+<ul>
+<li>显示可用网卡 <code>tshark -D</code></li>
+<li>抓包  使用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 &quot;port 80&quot;</span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 `tcpdump` 的方法</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">+ -s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</span><br><span class="line">+ -w 输入到文件</span><br><span class="line">+ port 监听的端口</span><br><span class="line"></span><br><span class="line">**使用 tcpdump 同样需要sudo**</span><br><span class="line"></span><br><span class="line">## python 脚本</span><br><span class="line"></span><br><span class="line">### TCP客户端</span><br><span class="line">```py</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">target_host = &quot;188.131.227.20&quot;</span><br><span class="line">target_port =  9999   #与服务端保持一致</span><br><span class="line"></span><br><span class="line">#create a object named client</span><br><span class="line">client = socket.socket(socket.AF_INET,  socket.SOCK_STREAM)</span><br><span class="line">#connect server and client</span><br><span class="line">client.connect((target_host,target_port))</span><br><span class="line">#sent data to server</span><br><span class="line">client.send(&quot;hello world&quot;)</span><br><span class="line">#recevice data from server</span><br><span class="line">response = client.recv(4096)</span><br><span class="line"></span><br><span class="line">print response</span><br></pre></td></tr></table></figure>
+
+<h3 id="TCP服务端"><a href="#TCP服务端" class="headerlink" title="TCP服务端"></a>TCP服务端</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">bind_ip = <span class="string">"0.0.0.0"</span></span><br><span class="line">bind_port = <span class="number">9999</span></span><br><span class="line"></span><br><span class="line">server = socket.socket(socket.AF_INET , socket.SOCK_STREAM)</span><br><span class="line">server.bind((bind_ip , bind_port))</span><br><span class="line">server.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"[*] Listening on %s:%d"</span> % (bind_ip , bind_port)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle_client</span><span class="params">( client_socket )</span>:</span></span><br><span class="line">    request = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">print</span> <span class="string">"[*] Received: %s"</span> % request</span><br><span class="line">    </span><br><span class="line">    client_socket.send(<span class="string">"ACK!"</span>)</span><br><span class="line">    </span><br><span class="line">    client_socket.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    client , addr = server.accept()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">print</span> <span class="string">"[*] Accepted connection from: %s:%d"</span> % (addr[<span class="number">0</span>] , addr[<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    client_handler = threading.Thread(target=handle_client , args=(client, ))</span><br><span class="line">    </span><br><span class="line">    client_handler.start()</span><br></pre></td></tr></table></figure>
+
+<h3 id="仿-netcat-的脚本工具-—-BHP-Net-Tool"><a href="#仿-netcat-的脚本工具-—-BHP-Net-Tool" class="headerlink" title="仿 netcat 的脚本工具 — BHP Net Tool"></a>仿 netcat 的脚本工具 — BHP Net Tool</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> getopt</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">listen                 = <span class="literal">False</span></span><br><span class="line">command                = <span class="literal">False</span></span><br><span class="line">upload                 = <span class="literal">False</span></span><br><span class="line">execute                = <span class="string">""</span></span><br><span class="line">target                 = <span class="string">""</span></span><br><span class="line">upload_destination     = <span class="string">""</span></span><br><span class="line">port                   = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">usage</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP Net Tool"</span></span><br><span class="line">    <span class="keyword">print</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Usage: BHP_server.py -t target_host -p port"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-l --listen  - listen on [host]:[port] for incoming connections"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-e --execute=file_to_run - execute the given file upon receiving a connection"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-c --command -initialize a command shell"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-u --upolad=destination  - upon receiving connection ypload a file and write to [destination]"</span></span><br><span class="line">    <span class="keyword">print</span> </span><br><span class="line">    <span class="keyword">print</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Examples:  "</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP_server.py -t 192.168.0.1 -p 5555 -l -c"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP_server.py -t 192.168.0.1 -p 5555 -l -u=c:\\target.exe"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP_server.py -t 192.168.0.1 -p 5555 -l -e=\"cat /etc/passwd\" "</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"echo 'ABCDEFGHI' | ./BHP_server.py -t 192.168.11.12 -p 135"</span></span><br><span class="line">    sys.exit(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">client_sender</span><span class="params">(buffer)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#global target</span></span><br><span class="line">    <span class="comment">#global port      </span></span><br><span class="line">    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        client.connect((target, port))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> len(buffer):</span><br><span class="line">            client.send(buffer)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            </span><br><span class="line">            recv_len = <span class="number">1</span></span><br><span class="line">            response = <span class="string">""</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span> recv_len:</span><br><span class="line">                data = client.recv(<span class="number">4096</span>)</span><br><span class="line">                recv_len = len(data)</span><br><span class="line">                response += data</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> recv_len &lt; <span class="number">4096</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                </span><br><span class="line">            <span class="keyword">print</span> response</span><br><span class="line">            buffer = raw_input(<span class="string">""</span>)</span><br><span class="line">            buffer += <span class="string">"\n"</span></span><br><span class="line">            </span><br><span class="line">            client.send(buffer)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">print</span>   <span class="string">"[*]    Exception! Exiting."</span></span><br><span class="line">        client.close()</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">server_loop</span><span class="params">()</span> :</span></span><br><span class="line">    <span class="keyword">global</span> target </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> len(target) :</span><br><span class="line">        target = <span class="string">"0.0.0.0"</span></span><br><span class="line">    </span><br><span class="line">    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    server.bind((target,port))</span><br><span class="line">    </span><br><span class="line">    server.listen(<span class="number">5</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">        client_socket, add = server.accept()</span><br><span class="line">        </span><br><span class="line">        client_thread = threading.Thread(target=client_handler, args=(client_socket,))</span><br><span class="line">        client_thread.start()</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_command</span><span class="params">(command)</span>:</span></span><br><span class="line">    command = command.rstrip()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        output = subprocess.check_output(command,stderr=subprocess.STDOUT,shell=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        output = <span class="string">"Failed to execute command.\r\n"</span></span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">client_handler</span><span class="params">(client_socket)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> upload</span><br><span class="line">    <span class="keyword">global</span> execute</span><br><span class="line">    <span class="keyword">global</span> command</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> len(upload_destination):</span><br><span class="line">        file_buffer = <span class="string">""</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            data=client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                file_buffer += data</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            file_descriptor = open(upload_destination,<span class="string">"wb"</span>)</span><br><span class="line">            file_descriptor.write(file_buffer)</span><br><span class="line">            file_descriptor.close()</span><br><span class="line">            </span><br><span class="line">            client_socket.send(<span class="string">"Successfully saved file to %s\r\n"</span>%upload_destination)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">except</span>: </span><br><span class="line">            client_socket.send(<span class="string">"Failed to save file to %s\r\n"</span>%upload_destination)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> len(execute):</span><br><span class="line">        output = run_command(execute)</span><br><span class="line">        client_socket.send(output)</span><br><span class="line">    <span class="keyword">if</span> command:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">            client_socket.send(<span class="string">"&lt;BHP:#&gt; "</span>)</span><br><span class="line">            </span><br><span class="line">            cmd_buffer = <span class="string">""</span></span><br><span class="line">            <span class="keyword">while</span> <span class="string">"\n"</span> <span class="keyword">not</span> <span class="keyword">in</span> cmd_buffer:</span><br><span class="line">                cmd_buffer += client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">            response = run_command(cmd_buffer)</span><br><span class="line">            client_socket.send(response)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">global</span> listen</span><br><span class="line">    <span class="keyword">global</span> port</span><br><span class="line">    <span class="keyword">global</span> execute</span><br><span class="line">    <span class="keyword">global</span> command</span><br><span class="line">    <span class="keyword">global</span> upload_destination</span><br><span class="line">    <span class="keyword">global</span> target</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> len(sys.argv[<span class="number">1</span>:]):</span><br><span class="line">        usage()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        opts, args = getopt.getopt(sys.argv[<span class="number">1</span>:], <span class="string">"hle:t:p:cu:"</span>, [<span class="string">"help"</span>, <span class="string">"listen"</span>, <span class="string">"execute"</span>, <span class="string">"target"</span>, <span class="string">"port"</span>, <span class="string">"command"</span>, <span class="string">"upload"</span>])</span><br><span class="line">    <span class="keyword">except</span> getopt.GetoptError <span class="keyword">as</span> err:</span><br><span class="line">        <span class="keyword">print</span> str(err)</span><br><span class="line">        usage()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> o, a <span class="keyword">in</span> opts:</span><br><span class="line">        <span class="keyword">if</span> o <span class="keyword">in</span> (<span class="string">"-h"</span>, <span class="string">"--help"</span>):</span><br><span class="line">            usage()</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span> (<span class="string">"-l"</span>, <span class="string">"--listen"</span>):</span><br><span class="line">            listen = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span> (<span class="string">"-e"</span>, <span class="string">"--execute"</span>):</span><br><span class="line">            execute = a</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-c"</span>, <span class="string">"--command"</span>):</span><br><span class="line">            command = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-u"</span>, <span class="string">"--upload"</span>):</span><br><span class="line">            upload_destination = a</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-t"</span>, <span class="string">"--target"</span>):</span><br><span class="line">            target = a</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-p"</span>, <span class="string">"--port"</span>):</span><br><span class="line">            port = int(a)</span><br><span class="line">        <span class="keyword">else</span>:   </span><br><span class="line">            <span class="keyword">assert</span> <span class="literal">False</span>,<span class="string">"Unhandled Option"</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> listen <span class="keyword">and</span> len(target) <span class="keyword">and</span> port &gt; <span class="number">0</span>:</span><br><span class="line">        buffer = sys.stdin.read()</span><br><span class="line">        client_sender(buffer)</span><br><span class="line">    <span class="keyword">if</span> listen:</span><br><span class="line">        server_loop()</span><br><span class="line">    </span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-08T03:37:45.977Z" itemprop="dateUpdated">2019-07-08 11:37:45</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/07/08/服务器运维/" target="_blank" rel="external">https://anti-entropy123.github.io/2019/07/08/服务器运维/</a>
+        
+    </div>
+    <footer>
+        <a href="https://anti-entropy123.github.io">
+            <img src="/img/avatar.jpg" alt="天津大学 尤嘉宁">
+            天津大学 尤嘉宁
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://anti-entropy123.github.io/2019/07/08/服务器运维/&title=《博服务器运维》 — 闹钟你别闹&pic=https://anti-entropy123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://anti-entropy123.github.io/2019/07/08/服务器运维/&title=《博服务器运维》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/08/上传漏洞/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">上传漏洞</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#服务器相关笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">服务器相关笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器参数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">服务器参数:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本命令"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件操作"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">文件操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过滤"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">过滤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">进程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#screen命令"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">screen命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用pscp从本地上传文件"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">使用pscp从本地上传文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#apache"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">apache</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通用方法"><span class="post-toc-number">1.5.1.1.</span> <span class="post-toc-text">通用方法:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#作为Linux的服务时"><span class="post-toc-number">1.5.1.2.</span> <span class="post-toc-text">作为Linux的服务时:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Ubuntu系统下"><span class="post-toc-number">1.5.1.3.</span> <span class="post-toc-text">Ubuntu系统下:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其它"><span class="post-toc-number">1.5.1.4.</span> <span class="post-toc-text">其它:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置文件"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MineCraft相关命令"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">MineCraft相关命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tshark-使用"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">tshark 使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP服务端"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">TCP服务端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#仿-netcat-的脚本工具-—-BHP-Net-Tool"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">仿 netcat 的脚本工具 — BHP Net Tool</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                天津大学 尤嘉宁 &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://anti-entropy123.github.io/2019/07/08/服务器运维/&title=《博服务器运维》 — 闹钟你别闹&pic=https://anti-entropy123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://anti-entropy123.github.io/2019/07/08/服务器运维/&title=《博服务器运维》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQZLCMAwEwP3/p9kHbBFmZO8Bu3OiKHDUOSiy5J+f+Hr9uZJf/v3+ebVk/aULAwPjaxmvx6tlvFs/+Zzc920MGBgYFzDy2z/foM2HCeM5NgwMDIxnRhtEGyIGBgbGbLm8dEu2qetUDAyMexjJ7dsb59vd2WPCwMC4h7G3Zbb387/MNzAwML6K8SqvpFzbtXEtosLAwDiakSe4JMRkteEGNYkHAwPjUEZ7xKGt02Yb3fobDAyMoxlJcfYc4jMyb9vN8B+mHBgYGMcx/ntIMGv0Lw0AMDAwDmIkB7x2AdqBZQHDwMA4mjFrqCXl4K5kWgw4MTAwDmXkbbV2U7oeXFGYYmBgXMOYNfFnRyWixlneEMTAwLiAMUugCWPXILOebGBgYBzEyBNl3kprE+hsI42BgXEno015K4Xj7KjHhwgxMDCOY2zYOi407PIU/yE2DAyMKxnrTbR2tJCv+aHRhoGBcRxjfaHZ1nc27PzwLwwMjAsYebMsGUbmI4FdjwYDA+MGxuwgRX14azQ0jRpwGBgYFzDaAxbtMYhiDFkOPjEwMM5mrLTpt7X1RyPSt28MDAyM4xhtmsvb+m06nr0AagwGBsbXMurGVhzi7FnmD6UoEDEwMI5gtIlvV1nZvgGivTgGBsb1jFm7vx181lQMDAyMuIzLi8sk9OKXGBgYFzDytNiOLdsBQ36AAwMD4x5Gu3Vsy7u8QFwfFWBgYBzH+AUapWqY2Mw3pwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
