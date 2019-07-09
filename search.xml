@@ -250,6 +250,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@youjianing:~# cat /mnt/O7avZhikgKgbF/flag.txt</span><br><span class="line">ZmxhZ3tzYWpiY2lienNrampjbmJoc2J2Y2pianN6Y3N6Ymt6an0=</span><br></pre></td></tr></table></figure>
 
 <p><code>base64</code> decode后就是flag<br>最后可以使用 <code>umount [挂载点]</code>来卸载文件系统.</p>
+<h3 id="pdf-solved"><a href="#pdf-solved" class="headerlink" title="pdf(solved)"></a><a href="https://adworld.xctf.org.cn/task/answer?type=misc&number=1&grade=0&id=5100" target="_blank" rel="noopener">pdf(solved)</a></h3><p>给了一个pdf文件, 里面只有一个图片, 估计flag就在这个图的下面.<br>扔进linux里, 用命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdftotext pdf.pdf</span><br></pre></td></tr></table></figure>
+
+<p>就会出现<code>pdf.text</code>, 里面有我们要的flag.<br>但是我不太明白为什么用<code>strings pdf.pdf | grep &#39;flag&#39;</code>不能找出flag.<br>姑且推测<code>pdf</code>文件中的文本在二进制格式中不是明文保存的.</p>
+<h3 id="坚持60s-solved"><a href="#坚持60s-solved" class="headerlink" title="坚持60s(solved)"></a><a href="https://adworld.xctf.org.cn/task/answer?type=misc&number=1&grade=0&id=5103" target="_blank" rel="noopener">坚持60s(solved)</a></h3><blockquote>
+<p>题目描述 : 菜狗发现最近菜猫不爱理他，反而迷上了菜鸡.</p>
+</blockquote>
+<p>菜猫为啥不喜欢菜狗呢? 难道是因为菜狗不能坚持60s吗 233</p>
+<p>打开题目的文件, 是个java小游戏.<br>开心的玩耍了几次, 最好记录是31s. 距离60s还有很长的距离.<br>难道这就凉了吗?<br>不, 身为学计算机的, 要运用超能力.<br>使用java反编译工具<code>jd-gui.java</code>, 反编译后出现需要的flag.</p>
+<h3 id="SimpleRAR-struct"><a href="#SimpleRAR-struct" class="headerlink" title="SimpleRAR(struct)"></a><a href="https://adworld.xctf.org.cn/task/answer?type=misc&number=1&grade=0&id=5102" target="_blank" rel="noopener">SimpleRAR(struct)</a></h3><p>别人的wp中说是png的文件头错了,<br>但是我按照他们说的修改了后, 仍然没法复现.<br>暂时存疑</p>
 ]]></content>
       
         
