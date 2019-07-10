@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>Nmap 学习笔记 | 闹钟你别闹 | 为守护一切的美好而战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="主机扫描">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">天津大学 尤嘉宁</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>Nmap 学习笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Nmap 学习笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-10T08:19:49.000Z" itemprop="datePublished" class="page-time">
+  2019-07-10
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Nmap"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">Nmap 学习笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-10 16:19:49" datetime="2019-07-10T08:19:49.000Z"  itemprop="datePublished">2019-07-10</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="Nmap主机扫描学习笔记"><a href="#Nmap主机扫描学习笔记" class="headerlink" title="Nmap主机扫描学习笔记"></a>Nmap主机扫描学习笔记</h1><p>测试环境: linux 3.x<br>Nmap版本: 7.01</p>
+<figure class="image-box">
+                <a rel=Nmap 学习笔记 href="http://pub54dbxm.bkt.clouddn.com/nmap.jpg" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/nmap.jpg" alt title class></a>
+                <p></p>
+            </figure>
+
+<h2 id="扫描单个目标"><a href="#扫描单个目标" class="headerlink" title="扫描单个目标"></a>扫描单个目标</h2><p>扫描单个主机的语法格式为<code>nmap [目标]</code><br>实例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ nmap localhost</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.01 ( https://nmap.org ) at 2019-07-10 16:32 CST</span><br><span class="line">Nmap scan report for localhost (127.0.0.1)</span><br><span class="line">Host is up (0.000093s latency).</span><br><span class="line">rDNS record for 127.0.0.1: localhost.localdomain</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">999/tcp  open  garcon</span><br><span class="line">1022/tcp open  exp2</span><br><span class="line">3306/tcp open  mysql</span><br></pre></td></tr></table></figure>
+
+<h2 id="扫描多个目标"><a href="#扫描多个目标" class="headerlink" title="扫描多个目标"></a>扫描多个目标</h2><h3 id="命令行中分别指定"><a href="#命令行中分别指定" class="headerlink" title="命令行中分别指定"></a>命令行中分别指定</h3><p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~# nmap 192.168.1.1 192.168.1.101 192.168.1.105</span><br><span class="line">Starting Nmap 6.47 ( http://nmap.org ) at 2015-05-05 19:07 CST</span><br><span class="line">Nmap scan report for localhost (192.168.1.1)</span><br><span class="line">Host is up (0.00094s latency).</span><br><span class="line">Not shown: 997 closed ports</span><br><span class="line">PORT       STATE SERVICE</span><br><span class="line">80/tcp             open  http</span><br><span class="line">1900/tcp          open  upnp</span><br><span class="line">49152/tcp         open  unknown</span><br><span class="line">Nmap scan report for localhost (192.168.1.101)</span><br><span class="line">Host is up (0.0060s latency).</span><br><span class="line">All 1000 scanned ports on localhost (192.168.1.101) are closed</span><br><span class="line">Nmap scan report for localhost (192.168.1.105)</span><br><span class="line">Host is up (0.00038s latency).</span><br><span class="line">Not shown: 995 closed ports</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">21/tcp      open  ftp</span><br><span class="line">22/tcp       open  ssh</span><br><span class="line">23/tcp      open  telnet</span><br><span class="line">111/tcp    open  rpcbind</span><br><span class="line">445/tcp    open  microsoft-ds</span><br><span class="line">Nmap done: 3 IP addresses (3 hosts up) scanned in 1.00 seconds</span><br></pre></td></tr></table></figure>
+
+<p>Nmap 就会分别报告扫描的结果.</p>
+<h3 id="逗号分隔"><a href="#逗号分隔" class="headerlink" title="逗号分隔"></a>逗号分隔</h3><p>使用简化符号来减少命令的长度.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1,101,105</span><br></pre></td></tr></table></figure>
+
+<p>这与上一个示例中的命令等效</p>
+<h3 id="目标列表"><a href="#目标列表" class="headerlink" title="目标列表"></a>目标列表</h3><p>当有大量主机需要扫描时, 可以将目标IP地址写入进一个文本文件中.<br>语法 : <code>nmap -iL [文件路径]</code></p>
+<h3 id="范围扫描"><a href="#范围扫描" class="headerlink" title="范围扫描"></a>范围扫描</h3><p>指定扫描范围时, 可以通过IP地址或子网的方式来实现. </p>
+<h4 id="IP地址指定扫描范围"><a href="#IP地址指定扫描范围" class="headerlink" title="IP地址指定扫描范围"></a>IP地址指定扫描范围</h4><p>语法 : <code>nmap [IP地址范围]</code></p>
+<ul>
+<li><p>示例一 : 扫描192.168.1.1-192.168.1.100之间的所有主机 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1-100</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例二 : 扫描C类IP网络192.168.1.*到192.168.100.*之间的所有主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1-100.*</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>星号<code>*</code>是通配符, 表示0-255之间所有有效的主机.</p>
+<h4 id="子网扫描"><a href="#子网扫描" class="headerlink" title="子网扫描"></a>子网扫描</h4><p>Nmap也可以使用CIDR（无类别域间路由，Classless Inter-Domain Routing）格式来扫描整个子网。CIDR将多个IP网络结合在一起，使用一种无类别的域际路由选择算法，可以减少由核心路由器运载的路由选择信息的数量。其中，语法格式如下所示：<br><code>nmap [CIDR格式的网络地址]</code></p>
+<p>示例 : 扫描192.168.1.1/24整个子网中的所有主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="排除扫描目标"><a href="#排除扫描目标" class="headerlink" title="排除扫描目标"></a>排除扫描目标</h2><p>当我们指定范围扫描的时候, 可能会把自己的IP地址包含在内, 如果出于种种原因不想扫描这些目标, 可以将它们排除.<br>语法 : <code>nmap [目标] --exclude [目标]</code></p>
+<h2 id="简单参数"><a href="#简单参数" class="headerlink" title="简单参数"></a>简单参数</h2><ul>
+<li><code>-p[a-b]</code> : 指定扫描端口a至b(a b均小于65535)</li>
+<li><code>-p-</code> : 扫描全部端口.</li>
+<li><code>-sP</code> : Ping扫描。 仅仅 进行ping扫描 (主机发现)，然后打印出对扫描做出响应的那些主机.</li>
+<li><code>-sT</code> : TCP connect()扫描。当Nmap连接，然后不发送数据就关闭连接.</li>
+<li><code>-sV</code> : 探测service版本.</li>
+<li><code>-O -v</code> : 详细的操作系统探测.</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/qq_30247635/article/details/86247744#_14" target="_blank" rel="noopener">nmap简单参数教程</a></li>
+<li><a href="https://blog.csdn.net/daxueba/article/details/46679439" target="_blank" rel="noopener">Nmap扫描教程之基础扫描详解</a></li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-10T09:31:30.001Z" itemprop="dateUpdated">2019-07-10 17:31:30</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/07/10/Nmap/" target="_blank" rel="external">https://tjuyjn.top/2019/07/10/Nmap/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="天津大学 尤嘉宁">
+            天津大学 尤嘉宁
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主机扫描/">主机扫描</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/10/Nmap/&title=《Nmap 学习笔记》 — 闹钟你别闹&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/10/Nmap/&title=《Nmap 学习笔记》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/08/CTF-writeup/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CTF-writeup</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Nmap主机扫描学习笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">Nmap主机扫描学习笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扫描单个目标"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">扫描单个目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扫描多个目标"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">扫描多个目标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令行中分别指定"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">命令行中分别指定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逗号分隔"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">逗号分隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目标列表"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">目标列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范围扫描"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">范围扫描</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IP地址指定扫描范围"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">IP地址指定扫描范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子网扫描"><span class="post-toc-number">1.2.4.2.</span> <span class="post-toc-text">子网扫描</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排除扫描目标"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">排除扫描目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单参数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">简单参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">主题作者</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                天津大学 尤嘉宁 &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/10/Nmap/&title=《Nmap 学习笔记》 — 闹钟你别闹&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/10/Nmap/&title=《Nmap 学习笔记》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3ayw6DMAxEUf7/p+m2EgLu2MSl0s2q6oOcdDFKHG8bHvthfL9//M7ZE8g3Hxhy5cptc/fLcTbB9Tt8efy3cuXKneeS6CHZUqMQg1y5ct/PrcUQCTW5cuX+O5cfeHjwyZUr9z3cdAtCuGSWhWc1uXLlNri8Srnu9ZL6rly5ckvcPRx8ATykgtnlypU7wuWBwq9Srq9R0yCTK1fur7j9C1ceWOnFzM2S5MqVu4xL1pFeo/L4SwsocuXKneSSwmi6ESEbHf53yJUrd4abXoLW0KRpAy1Drly5g1yeeXwBKQsdfuTKlTvIJaFDNii1kmvwK7ly5Y5wSYGDo3m5pLUwuXLljnBJPHFcbUlxUUauXLmD3FqDBY+/9BSDGi/kypW7gMsDi7dcpFenQauHXLlyB7l8mloZ5fo5QSOXXLlyB7md2OIbHV4kDT6WK1fuo9zaxP02i2I5Va5cuSNcPniLBip3PvQEuXLlruPy8CIhxYMvLZHIlSt3nptehda2QbXDz01ZRK5cua/n9ossW7oauXLlvoDbaadIQ+2BIJMrV26Dm7ZH1Eoe/JCD7oTlypW7jBtHSeP6pBaRcuXKHeR+AIYLUsE5yH27AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
