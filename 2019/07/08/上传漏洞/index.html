@@ -245,7 +245,66 @@
 <blockquote>
 <p>MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型;在最早的HTTP协议中,没有附加的数据类型信息.所有传送的数据都被客户程序解释为超文本标记语言HTML 文档，而为了支持多媒体数据类型，HTTP协议中就使用了附加在文档之前的MIME数据类型信息来标识数据类型。每个MIME类型由两部分组成，前面是数据的大类别，例如声音audio、图象image等，后面定义具体的种类。<br>Content-type就是我们经常在 http请求头里 response header看到的那个<br>里面包含的就是MIME信息.<br>作者：<a href="https://www.jianshu.com/p/fb5d8f03c4ed" target="_blank" rel="noopener">王进喜许三多</a></p>
 </blockquote>
-<p>看来MIME就是在<code>HTTP</code>数据包中标明文件类型的一个参数.<br>举几个例子<br>|类型|后缀|content-type|<br>|:—:|:—:|:—:|<br>|超文本标记语言|.html|text/html|<br>|xml文档|.xml|text/xml|<br>|XHTML文档|.xhtml|application/xhtml+xml|<br>|普通文本|.txt|text/plain|<br>|RTF文本|.rtf|application/rtf|<br>|PDF文档|.pdf|application/pdf|<br>|Microsoft Word文件|.word|application/msword|<br>|PNG图像|.png|image/png|<br>|GIF图形|.gif|image/gif|<br>|JPEG图形|.jpeg,.jpg|image/jpeg|</p>
+<p>看来MIME就是在<code>HTTP</code>数据包中标明文件类型的一个参数.<br>举几个例子</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">后缀</th>
+<th align="center">content-type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">超文本标记语言</td>
+<td align="center">.html</td>
+<td align="center">text/html</td>
+</tr>
+<tr>
+<td align="center">xml文档</td>
+<td align="center">.xml</td>
+<td align="center">text/xml</td>
+</tr>
+<tr>
+<td align="center">XHTML文档</td>
+<td align="center">.xhtml</td>
+<td align="center">application/xhtml+xml</td>
+</tr>
+<tr>
+<td align="center">普通文本</td>
+<td align="center">.txt</td>
+<td align="center">text/plain</td>
+</tr>
+<tr>
+<td align="center">RTF文本</td>
+<td align="center">.rtf</td>
+<td align="center">application/rtf</td>
+</tr>
+<tr>
+<td align="center">PDF文档</td>
+<td align="center">.pdf</td>
+<td align="center">application/pdf</td>
+</tr>
+<tr>
+<td align="center">Microsoft Word文件</td>
+<td align="center">.word</td>
+<td align="center">application/msword</td>
+</tr>
+<tr>
+<td align="center">PNG图像</td>
+<td align="center">.png</td>
+<td align="center">image/png</td>
+</tr>
+<tr>
+<td align="center">GIF图形</td>
+<td align="center">.gif</td>
+<td align="center">image/gif</td>
+</tr>
+<tr>
+<td align="center">JPEG图形</td>
+<td align="center">.jpeg,.jpg</td>
+<td align="center">image/jpeg</td>
+</tr>
+</tbody></table>
 <p>看到是在服务器端进行判断就应该知道像上道题目中, 使用浏览器的手段应该是行不通的了, 要想办法骗过服务器. 在这里, 我们使用工具<code>Burp Suite</code>对需要上传的数据包进行修改.<br>具体步骤:<br>因为截图比较麻烦, 我就不放图了, 有需要可以自行百度.</p>
 <ol>
 <li>打开<code>Burp Suite</code>默认代理端口<code>127.0.0.1:8080</code>，<code>intercept</code>标签中开启数据拦截功能 intercept is on。</li>
@@ -351,7 +410,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-08T06:10:17.511Z" itemprop="dateUpdated">2019-07-08 14:10:17</time>
+    Last updated: <time datetime="2019-07-10T10:02:25.033Z" itemprop="dateUpdated">2019-07-10 18:02:25</time>
 </span><br>
 
 
