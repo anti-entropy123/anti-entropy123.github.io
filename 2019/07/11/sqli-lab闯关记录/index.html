@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>sqli-lab闯关记录 | 闹钟你别闹 | 为守护一切的美好而战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="sql注入,mysql基本语法,web">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"“有一说一, come baby”","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">天津大学 尤嘉宁</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>sqli-lab闯关记录</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">sqli-lab闯关记录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-11T09:20:21.000Z" itemprop="datePublished" class="page-time">
+  2019-07-11
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-sqli-lab闯关记录"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">sqli-lab闯关记录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-11 17:20:21" datetime="2019-07-11T09:20:21.000Z"  itemprop="datePublished">2019-07-11</time>
+
+            
+
+
+            
+	<span id="/2019/07/11/sqli-lab闯关记录/" class="leancloud_visitors" data-flag-title="sqli-lab闯关记录" title="sqli-lab闯关记录">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/07/11/sqli-lab闯关记录/#comment">
+            <span class="valine-comment-count" data-xid="/2019/07/11/sqli-lab闯关记录/"></span>
+        </a>
+    </span>
+
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="sqli-lab闯关"><a href="#sqli-lab闯关" class="headerlink" title="sqli-lab闯关"></a>sqli-lab闯关</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>sql注入</code>一直是我想学但是又感到无力的技术, 最主要的原因还是对于数据库的使用还比较陌生, 这两天突然发现有一个sql注入的靶场–<code>sqli-lab</code>, 所以就搭建在了本地玩玩.</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><code>sqli-lab</code>的 GitHub 源代码: <a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a><br>需要的环境 : <code>apache</code>,<code>mysql</code>. 在其它的教程中我还看到需要<code>tomcat</code>,<code>js</code>等, 不过我目前还没用到, 暂时先不考虑.</p>
+<p>下载后放在web目录下, 但是首次通过浏览器访问时可能会链接数据库失败, 需要在<code>/sqli-labs/sql-connections/db-creds.inc</code>文件中设置<code>mysql</code>数据库的密码.<br>如果你是像我一样使用的<code>phpstudy</code>提供的web环境的话, 数据库的初始用户名和密码通常都是<code>root</code>.</p>
+<p>修改后再用浏览器访问第一关, 如果看到下面的内容, 就说明已经搭建好了.</p>
+<figure class="image-box">
+                <a rel=sqli-lab闯关记录 href="http://pub54dbxm.bkt.clouddn.com/sqli.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/sqli.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<h2 id="Mysql常用语法"><a href="#Mysql常用语法" class="headerlink" title="Mysql常用语法"></a>Mysql常用语法</h2><p>说实话, 真心觉得mysql的语法很难记, 不知道是不是因为这个语法本身就很难, 也可能是我平时实在太少能用到数据库了, 所以想在这里记录一些常用的语法.<br>数据库本质上就是一个二维的表格, 所以在阅读相关语法时, 不妨在心里想象着一个表格, 并考虑执行了相关操作后, 这张表格会发生怎样的变化或者告诉你怎样的信息.<br><strong>注意: mysql数据库语句对大小写不敏感.</strong></p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>对于数据库的操作, 最常见的就是<code>增,删,查,改</code>.<br>select就是对应着<code>查询</code>这个操作, 也是在sql注入中最常用的, 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from table_name; # 在table_name表中查询所有记录的所有元素</span><br><span class="line">select number from table_name; # 在table_name表中查询所有记录的name元素</span><br><span class="line">select number from table_name where user=&apos;yjn&apos; and password=&apos;f**k you&apos;; # 在table_name表中查询元素user为&apos;yjn且password为&apos;f**k you&apos;的记录的name元素</span><br></pre></td></tr></table></figure>
+
+<p>其中第三条就是大多数登录界面的基本雏形.<br>但是select的作用并不光是查询可以概括, 因为使用select同样可以返回<code>数据库函数</code>的值, 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database(); # 可以显示当前使用的数据库的名称.</span><br></pre></td></tr></table></figure>
+
+<p>所以select的作用也有些类似编程语言中的<code>return</code><br>除此之外, 还可以使用<code>limit</code>来指定从查询的结果集中返回多少条记录.<br><code>limit a,b</code> 代表从第a条记录开始(a &gt;= 0)返回b条语句.<br>所以select的用法总结起来就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select [数据库函数](字段1,字段2,...) from (table_name) [where 条件(s)];</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name  (field1, field2,...fieldN)  VALUES  (valueA1,valueA2,...valueAN),(valueB1,valueB2,...valueBN),(valueC1,valueC2,...valueCN)......;</span><br></pre></td></tr></table></figure>
+
+<p>这是指定了记录元素的插入多条(或者单条)记录的语法.<br>如果所有的元素都要添加数据的话, 可以省去field的部分, 也就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name VALUES  (valueA1,valueA2,...valueAN),(valueB1,valueB2,...valueBN),(valueC1,valueC2,...valueCN)......;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE from table_name [where Clause];</span><br></pre></td></tr></table></figure>
+
+<p>删除table_name表中符合条件Clause的记录, 如果没有指定where, 那么就会删除该表中的所有记录.</p>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>以下是 UPDATE 命令修改 MySQL 数据表数据的通用 SQL 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name SET field1=new-value1, field2=new-value2</span><br><span class="line">[WHERE Clause]</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库函数"><a href="#数据库函数" class="headerlink" title="数据库函数"></a>数据库函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">database()</td>
+<td align="center">显示当前使用的数据库的名称</td>
+</tr>
+<tr>
+<td align="center">now()</td>
+<td align="center">显示当前时间</td>
+</tr>
+<tr>
+<td align="center">version()</td>
+<td align="center">显示mysql服务版本信息</td>
+</tr>
+<tr>
+<td align="center">concat(str1,str2…)</td>
+<td align="center">将参数中的字符串拼接, 返回str1str2…</td>
+</tr>
+<tr>
+<td align="center">concat_ws(char,str1,str2…)</td>
+<td align="center">基本同上, 返回str1charstr2char…</td>
+</tr>
+<tr>
+<td align="center">length(str)</td>
+<td align="center">返回字符串的长度</td>
+</tr>
+<tr>
+<td align="center">user()</td>
+<td align="center">返回用户名</td>
+</tr>
+<tr>
+<td align="center">char()</td>
+<td align="center">将十进制参数转为对应的ascII码</td>
+</tr>
+<tr>
+<td align="center">未完待续</td>
+<td align="center">随时更新</td>
+</tr>
+</tbody></table>
+<h3 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h3><p>用于连接两个以上的select语句的结果组合到一个结果集合中, 多个select语句会删除重复的数据. 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select country from websites UNION select country from apps;</span><br><span class="line">+---------+</span><br><span class="line">| country |</span><br><span class="line">+---------+</span><br><span class="line">| CN      |</span><br><span class="line">| IND     | </span><br><span class="line">| USA     |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-11T13:12:22.344Z" itemprop="dateUpdated">2019-07-11 21:12:22</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/07/11/sqli-lab闯关记录/" target="_blank" rel="external">https://tjuyjn.top/2019/07/11/sqli-lab闯关记录/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="天津大学 尤嘉宁">
+            天津大学 尤嘉宁
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql基本语法/">mysql基本语法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/11/sqli-lab闯关记录/&title=《sqli-lab闯关记录》 — 闹钟你别闹&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/11/sqli-lab闯关记录/&title=《sqli-lab闯关记录》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/10/Nmap/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Nmap 学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sqli-lab闯关"><span class="post-toc-number">1.</span> <span class="post-toc-text">sqli-lab闯关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mysql常用语法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Mysql常用语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">插入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">删除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库函数"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">数据库函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UNION操作符"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">UNION操作符</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">主题作者</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.tjuscswyz.cn/" target="_blank">p4ssw0rd</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/ever17/" target="_blank">Ever17</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                天津大学 尤嘉宁 &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/11/sqli-lab闯关记录/&title=《sqli-lab闯关记录》 — 闹钟你别闹&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/11/sqli-lab闯关记录/&title=《sqli-lab闯关记录》 — 闹钟你别闹&source=个人博客|计算机" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQW7DMAwEwPz/0+2lhwKt3V0qKRBpfAps2db4wIikHo/4+Lg47q/m43+ef7ziwMDAeFtG++L8ru8jk+fcj79/CwYGxgmMqwh2NSYH5IE4ee/leQwMDIz49yxMY2BgYLyacZ92zpabGBgYGLMk9n5aydTv8SupMgYGxt6MvOr+/79f0t/AwMB4K8ZHebTLvmT5uFKk+7oXAwNja0Ye4JKJJolx+wny+WBgYOzKaLdH5KnsLA1O5vPLGQwMjK0ZbQK5knbm286GYR0DA2NrRhvaZtSclKe+GBgY5zDaTRXr7cx2aVgHWQwMjE0Z6wlqUjjLN0zUSAwMjK0ZK8u1/K5ntROiohsGBsZGjDZlnY2fbdcogi8GBsYBjHr5tbJ0C8D1shIDA2NrxkqQzQtz+RIwP4+BgXEOYxZe80J/+1GGy1AMDIxjGPm08mXifTycvQsDA+NkRrslqw3QLbt4MgYGxtaM2WaL2ZGH4+TqHz1YDAyMTRlJwG1T0LZtMGt/YmBgnMNIhs6KbvkyMS+9RZk0BgbGdow2LCbTXWkD5M0JDAyMvRkrAbTNH/PiWk3FwMDYmtEWy1YenZfwWjAGBsYJjDbIJklvcnVlTP3vgYGBsQXjWYFv1jx4QuDGwMDAiKeeNzJnLc8/MnIMDAyMuCU5e37STrhEYmBgHMCYbZjI70pI7SfAwMA4h9HWsvL2ZFsfawtwGBgYBzA+ASa9YL4CPNNvAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.2"></script>
+    
+    
+
+
+
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script type="text/javascript" src="/js/plugins/leancloud_visitors.js?v=1.4.2"></script>
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>

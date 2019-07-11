@@ -3,6 +3,101 @@
   
     
     <entry>
+      <title><![CDATA[sqli-lab闯关记录]]></title>
+      <url>/2019/07/11/sqli-lab%E9%97%AF%E5%85%B3%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<h1 id="sqli-lab闯关"><a href="#sqli-lab闯关" class="headerlink" title="sqli-lab闯关"></a>sqli-lab闯关</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>sql注入</code>一直是我想学但是又感到无力的技术, 最主要的原因还是对于数据库的使用还比较陌生, 这两天突然发现有一个sql注入的靶场–<code>sqli-lab</code>, 所以就搭建在了本地玩玩.</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><code>sqli-lab</code>的 GitHub 源代码: <a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a><br>需要的环境 : <code>apache</code>,<code>mysql</code>. 在其它的教程中我还看到需要<code>tomcat</code>,<code>js</code>等, 不过我目前还没用到, 暂时先不考虑.</p>
+<p>下载后放在web目录下, 但是首次通过浏览器访问时可能会链接数据库失败, 需要在<code>/sqli-labs/sql-connections/db-creds.inc</code>文件中设置<code>mysql</code>数据库的密码.<br>如果你是像我一样使用的<code>phpstudy</code>提供的web环境的话, 数据库的初始用户名和密码通常都是<code>root</code>.</p>
+<p>修改后再用浏览器访问第一关, 如果看到下面的内容, 就说明已经搭建好了.</p>
+<figure class="image-box">
+                <img src="http://pub54dbxm.bkt.clouddn.com/sqli.png" alt title class>
+                <p></p>
+            </figure>
+
+<h2 id="Mysql常用语法"><a href="#Mysql常用语法" class="headerlink" title="Mysql常用语法"></a>Mysql常用语法</h2><p>说实话, 真心觉得mysql的语法很难记, 不知道是不是因为这个语法本身就很难, 也可能是我平时实在太少能用到数据库了, 所以想在这里记录一些常用的语法.<br>数据库本质上就是一个二维的表格, 所以在阅读相关语法时, 不妨在心里想象着一个表格, 并考虑执行了相关操作后, 这张表格会发生怎样的变化或者告诉你怎样的信息.<br><strong>注意: mysql数据库语句对大小写不敏感.</strong></p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>对于数据库的操作, 最常见的就是<code>增,删,查,改</code>.<br>select就是对应着<code>查询</code>这个操作, 也是在sql注入中最常用的, 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from table_name; # 在table_name表中查询所有记录的所有元素</span><br><span class="line">select number from table_name; # 在table_name表中查询所有记录的name元素</span><br><span class="line">select number from table_name where user=&apos;yjn&apos; and password=&apos;f**k you&apos;; # 在table_name表中查询元素user为&apos;yjn且password为&apos;f**k you&apos;的记录的name元素</span><br></pre></td></tr></table></figure>
+
+<p>其中第三条就是大多数登录界面的基本雏形.<br>但是select的作用并不光是查询可以概括, 因为使用select同样可以返回<code>数据库函数</code>的值, 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database(); # 可以显示当前使用的数据库的名称.</span><br></pre></td></tr></table></figure>
+
+<p>所以select的作用也有些类似编程语言中的<code>return</code><br>除此之外, 还可以使用<code>limit</code>来指定从查询的结果集中返回多少条记录.<br><code>limit a,b</code> 代表从第a条记录开始(a &gt;= 0)返回b条语句.<br>所以select的用法总结起来就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select [数据库函数](字段1,字段2,...) from (table_name) [where 条件(s)];</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name  (field1, field2,...fieldN)  VALUES  (valueA1,valueA2,...valueAN),(valueB1,valueB2,...valueBN),(valueC1,valueC2,...valueCN)......;</span><br></pre></td></tr></table></figure>
+
+<p>这是指定了记录元素的插入多条(或者单条)记录的语法.<br>如果所有的元素都要添加数据的话, 可以省去field的部分, 也就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name VALUES  (valueA1,valueA2,...valueAN),(valueB1,valueB2,...valueBN),(valueC1,valueC2,...valueCN)......;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE from table_name [where Clause];</span><br></pre></td></tr></table></figure>
+
+<p>删除table_name表中符合条件Clause的记录, 如果没有指定where, 那么就会删除该表中的所有记录.</p>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>以下是 UPDATE 命令修改 MySQL 数据表数据的通用 SQL 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name SET field1=new-value1, field2=new-value2</span><br><span class="line">[WHERE Clause]</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库函数"><a href="#数据库函数" class="headerlink" title="数据库函数"></a>数据库函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">database()</td>
+<td align="center">显示当前使用的数据库的名称</td>
+</tr>
+<tr>
+<td align="center">now()</td>
+<td align="center">显示当前时间</td>
+</tr>
+<tr>
+<td align="center">version()</td>
+<td align="center">显示mysql服务版本信息</td>
+</tr>
+<tr>
+<td align="center">concat(str1,str2…)</td>
+<td align="center">将参数中的字符串拼接, 返回str1str2…</td>
+</tr>
+<tr>
+<td align="center">concat_ws(char,str1,str2…)</td>
+<td align="center">基本同上, 返回str1charstr2char…</td>
+</tr>
+<tr>
+<td align="center">length(str)</td>
+<td align="center">返回字符串的长度</td>
+</tr>
+<tr>
+<td align="center">user()</td>
+<td align="center">返回用户名</td>
+</tr>
+<tr>
+<td align="center">char()</td>
+<td align="center">将十进制参数转为对应的ascII码</td>
+</tr>
+<tr>
+<td align="center">未完待续</td>
+<td align="center">随时更新</td>
+</tr>
+</tbody></table>
+<h3 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h3><p>用于连接两个以上的select语句的结果组合到一个结果集合中, 多个select语句会删除重复的数据. 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select country from websites UNION select country from apps;</span><br><span class="line">+---------+</span><br><span class="line">| country |</span><br><span class="line">+---------+</span><br><span class="line">| CN      |</span><br><span class="line">| IND     | </span><br><span class="line">| USA     |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> sql注入 </tag>
+            
+            <tag> mysql基本语法 </tag>
+            
+            <tag> web </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Nmap 学习笔记]]></title>
       <url>/2019/07/10/Nmap/</url>
       <content type="html"><![CDATA[<h1 id="Nmap主机扫描学习笔记"><a href="#Nmap主机扫描学习笔记" class="headerlink" title="Nmap主机扫描学习笔记"></a>Nmap主机扫描学习笔记</h1><p>测试环境: linux 3.x<br>Nmap版本: 7.01</p>
@@ -58,6 +153,8 @@
         <tags>
             
             <tag> 主机扫描 </tag>
+            
+            <tag> web </tag>
             
         </tags>
         
@@ -328,6 +425,8 @@
             
             <tag> CTF </tag>
             
+            <tag> 随笔 </tag>
+            
         </tags>
         
     </entry>
@@ -456,7 +555,11 @@
         
         <tags>
             
-            <tag> 服务器 ubuntu python网络编程 </tag>
+            <tag> 服务器 </tag>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> python网络编程 </tag>
             
         </tags>
         
@@ -683,7 +786,13 @@
         
         <tags>
             
-            <tag> php 文件上传漏洞 一句话木马 图片马 </tag>
+            <tag> php </tag>
+            
+            <tag> 文件上传漏洞 </tag>
+            
+            <tag> 一句话木马 </tag>
+            
+            <tag> 图片马 </tag>
             
         </tags>
         
