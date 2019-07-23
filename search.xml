@@ -172,7 +172,7 @@
 <h3 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h3><p>用于连接两个以上的select语句的结果组合到一个结果集合中, 多个select语句会删除重复的数据. 例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select country from websites UNION select country from apps;</span><br><span class="line">+---------+</span><br><span class="line">| country |</span><br><span class="line">+---------+</span><br><span class="line">| CN      |</span><br><span class="line">| IND     | </span><br><span class="line">| USA     |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
 
-<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>既然要刷题, 就得总结出套路来才有意义. 下面是我总结出的常用流程.</p>
+<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>既然要刷题, 就得总结出套路来才有意义. 下面是我总结出的常用流程. 随时更新.</p>
 <ol>
 <li>判断是否存在注入<br>如果题目中会显示报错信息那么通常可以注入, 例如, 最简单的情况是输入<code>&#39;</code>显示报错信息, 那么这里就可能存在注入.</li>
 <li>判断注入类型</li>
