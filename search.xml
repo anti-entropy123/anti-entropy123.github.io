@@ -43,7 +43,7 @@
     <entry>
       <title><![CDATA[sqli-lab闯关记录]]></title>
       <url>/2019/07/11/sqli-lab%E9%97%AF%E5%85%B3%E8%AE%B0%E5%BD%95/</url>
-      <content type="html"><![CDATA[<h1 id="sqli-lab闯关"><a href="#sqli-lab闯关" class="headerlink" title="sqli-lab闯关"></a>sqli-lab闯关</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>sql注入</code>一直是我想学但是又感到无力的技术, 最主要的原因还是对于数据库的使用还比较陌生, 这两天突然发现有一个sql注入的靶场–<code>sqli-lab</code>, 所以就搭建在了本地玩玩.</p>
+      <content type="html"><![CDATA[<h1 id="sqli-lab闯关"><a href="#sqli-lab闯关" class="headerlink" title="sqli-lab闯关"></a>sqli-lab闯关</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>sql注入</code>一直是我想学但是又感到无力的技术, 最主要的原因还是对于数据库的使用还比较陌生, 这两天突然发现有一个sql注入的靶场–<code>sqli-lab</code>, 所以就搭建在了本地玩玩.<br>哦对了, 推荐下<code>sqlmap</code>, 有的时候还是蛮好用的, 有时间会记录下用法.</p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><code>sqli-lab</code>的 GitHub 源代码: <a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a><br>需要的环境 : <code>apache</code>,<code>mysql</code>. 在其它的教程中我还看到需要<code>tomcat</code>,<code>js</code>等, 不过我目前还没用到, 暂时先不考虑.</p>
 <p>下载后放在web目录下, 但是首次通过浏览器访问时可能会链接数据库失败, 需要在<code>/sqli-labs/sql-connections/db-creds.inc</code>文件中设置<code>mysql</code>数据库的密码.<br>如果你是像我一样使用的<code>phpstudy</code>提供的web环境的话, 数据库的初始用户名和密码通常都是<code>root</code>.</p>
 <p>修改后再用浏览器访问第一关, 如果看到下面的内容, 就说明已经搭建好了.</p>
@@ -172,7 +172,7 @@
 <h3 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h3><p>用于连接两个以上的select语句的结果组合到一个结果集合中, 多个select语句会删除重复的数据. 例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select country from websites UNION select country from apps;</span><br><span class="line">+---------+</span><br><span class="line">| country |</span><br><span class="line">+---------+</span><br><span class="line">| CN      |</span><br><span class="line">| IND     | </span><br><span class="line">| USA     |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
 
-<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>既然要刷题, 就得总结出套路来才有意义. 下面是我总结出的常用流程. 随时更新.</p>
+<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><p>既然要刷题, 就得总结出套路来才有意义. 下面是我总结出的常用流程.<br>因为目前肯定不全, 所以我也会在这里随时随时保持更新.</p>
 <ol>
 <li>判断是否存在注入<br>如果题目中会显示报错信息那么通常可以注入, 例如, 最简单的情况是输入<code>&#39;</code>显示报错信息, 那么这里就可能存在注入.</li>
 <li>判断注入类型</li>
@@ -183,7 +183,15 @@
 <li><p>变量的闭合方式?</p>
 </li>
 </ul>
-<h2 id="sqli-labs-冲冲冲"><a href="#sqli-labs-冲冲冲" class="headerlink" title="sqli-labs 冲冲冲"></a>sqli-labs 冲冲冲</h2><h3 id="Less-1-GET-Error-based-Single-quotes-String"><a href="#Less-1-GET-Error-based-Single-quotes-String" class="headerlink" title="Less-1|GET|Error based|Single quotes|String"></a>Less-1|GET|Error based|Single quotes|String</h3>]]></content>
+<ol start="3">
+<li>判断数据列数<br>查询返回的数据集中, 每条数据和在数据库中的格式是相同的, 自己构造payload时有必要与原来的格式相同(也就是列数, 不然会报错, 无法查询).<br>可以使用<code>order by [数字]</code>来逐个测试, 也可以直接<code>union select 1,2,3...</code>来测试. </li>
+<li>构造payload爆库<br>构造查询语句获取<strong>数据库名, 表名, 列名, 具体数据等</strong><br>这里需要用到<code>information_schema</code>和<code>performance_schema</code>这两个数据库和其它的一些函数.<blockquote>
+<p>information_schema数据库是MySQL自带的，它提供了访问数据库元数据的方式。什么是元数据呢？元数据是关于数据的数据，如数据库名或表名，列的数据类型，或访问权限等。有些时候用于表述该信息的其他术语包括“数据词典”和“系统目录”。<a href="https://blog.csdn.net/demonson/article/details/80388677" target="_blank" rel="noopener">详情</a><br>具体的使用方法见后面的题目.</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="sqli-labs-冲冲冲"><a href="#sqli-labs-冲冲冲" class="headerlink" title="sqli-labs 冲冲冲"></a>sqli-labs 冲冲冲</h2><h3 id="Less-1-GET-Error-based-Single-quotes-String"><a href="#Less-1-GET-Error-based-Single-quotes-String" class="headerlink" title="Less-1|GET|Error based|Single quotes|String"></a>Less-1|GET|Error based|Single quotes|String</h3><p>终于可以开冲了.</p>
+]]></content>
       
         
         <tags>
