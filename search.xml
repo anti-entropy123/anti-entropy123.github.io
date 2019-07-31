@@ -147,6 +147,16 @@
 <li><p>完.<br>头一次截了这么多图, 真鸡儿累.</p>
 </li>
 </ol>
+<h2 id="用QQ获取女神的IP"><a href="#用QQ获取女神的IP" class="headerlink" title="用QQ获取女神的IP"></a>用QQ获取女神的IP</h2><p>某个寂寞的夜晚, 我又想起我的女神.<br>女神啊, 你现在在何方?<br>马上就能知道.<br>.<br>.<br>.<br>这边打开着<code>wireshark</code>, 开始抓包.<br>拿起手机, 打开女神的qq聊天框, 丢过去个qq电话.<br>大概过个几秒(时间把握好, 别让女神接了电话…哈哈哈).<br>回到<code>wireshark</code>这, 停止抓包.</p>
+<p>Ctrl+F, 设置为<strong>字符串</strong>和<strong>分组详情</strong>.<br>然后在框里输入<code>020048</code>, 就能找到女神的IP地址了<br>这串代码应该是QQ电话的请求的二进制码的一部分.</p>
+<p>效果:</p>
+<figure class="image-box">
+                <img src="http://pub54dbxm.bkt.clouddn.com/iPofGirl.png" alt title class>
+                <p></p>
+            </figure>
+<p>于是我拿着女神的IP尝试着定位了一下, 感觉没什么异常, <font color="green">就安心了</font>.</p>
+<p>完.<br>好吧, 这和实战没啥关系, 就是觉得好玩. 而且也很简单.</p>
+<p><a href="https://blog.csdn.net/qq78069460/article/details/79153958" target="_blank" rel="noopener">详细过程</a></p>
 <h2 id="·-发骚-·-感慨"><a href="#·-发骚-·-感慨" class="headerlink" title="· 发骚 · 感慨"></a><del>· 发骚 ·</del> 感慨</h2><p>接触网络安全越久, 发现自己的未知面就越广.<br>觉得自己要学的东西还有太多.<br><strong>不过我不想急于求成, 惟愿每天都有所收获.</strong></p>
 ]]></content>
       
