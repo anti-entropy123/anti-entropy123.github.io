@@ -202,7 +202,7 @@
             <h1 id="CTF-writeup"><a href="#CTF-writeup" class="headerlink" title="CTF writeup"></a>CTF writeup</h1><p>都是菜鸡总结的一些常识, dalao们请绕路(发抖)<br>但是也欢迎大佬们来纠正错误<br>菜鸡不胜感激</p>
 <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="localhost-resolved"><a href="#localhost-resolved" class="headerlink" title="localhost(resolved)"></a><a href="http://web.jarvisoj.com:32774/" target="_blank" rel="noopener">localhost</a>(resolved)</h3><p>题目中只有一行 <strong>localhost access only!!</strong><br><a href="https://link.jianshu.com/?t=http://www.111cn.net/phper/php-cy/59523.htm" target="_blank" rel="noopener">PHP获取用户IP地址</a><br>所以需要伪造自己的IP地址<br>一个比较简单的方法是在HTTP的请求头中添加参数:<code>X-Forwarded-For : 需要伪造的IP</code><br>可以使用burp suite抓包或PostMan来实现</p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/X-Forwarded-For.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/X-Forwarded-For.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/X-Forwarded-For.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/X-Forwarded-For.png" alt title class></a>
                 <p></p>
             </figure>
 <p>类似的, 可以伪造<code>Referer</code><br><code>Referer</code>表明了用户是从哪个页面跳转来的.<br>例如<br><code>Referer: https://www.google.com</code></p>
@@ -240,7 +240,7 @@
 
 <p>并没有什么卵用, 得到的响应和在浏览器上没区别,<br>但是使用服务器, 输入同样的命令可以成功, 暂时存疑<br>反正,<br>flag 拿到了对吧 :(</p>
 <h3 id="TSCTF-resolved"><a href="#TSCTF-resolved" class="headerlink" title="TSCTF(resolved)"></a>TSCTF(resolved)</h3><figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/TSCTF.jpeg" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/TSCTF.jpeg" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/TSCTF.jpeg" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/TSCTF.jpeg" alt title class></a>
                 <p></p>
             </figure>
 
@@ -293,7 +293,7 @@
 <p>其实我觉得上来就用菜刀控制一句话木马并不好,<br>因为这个工具把底层的东西都封装好了.<br>我深信, 要想真正理解某样东西, 越接近底层, 越有助于深入.<br>所以要先学会<strong>使用浏览器连接一句话木马</strong></p>
 <p>在比赛的时候, 见到学长在url上设置payload,<br>所以我想设置url的payload连接一句话,<br><code>http://whoisyourdaddy.cf/test.php?cmd=system(&#39;ls&#39;);</code><br>按照我们上面的分析, php代码就会执行<code>system(&#39;ls&#39;);</code>, 回显出目录下的文件.<br>(一定不要忘记后面的 <code>;</code>血的教训😭)<br><font size="5"><strong>然而 :</strong></font></p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/kongkongde.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/kongkongde.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/kongkongde.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/kongkongde.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -303,7 +303,7 @@
 
 <p>访问一下.</p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/ls.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/ls.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/ls.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/ls.png" alt title class></a>
                 <p></p>
             </figure>
 <p>成功了.</p>
@@ -315,7 +315,7 @@
 </ul>
 <p>我成功的使用Burp 的 change method 功能和 PostMan 实现了.<br>postman的使用有些坑要注意, 如图</p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/postman.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/postman.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/postman.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/postman.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="POST和GET数据包的对比"><a href="#POST和GET数据包的对比" class="headerlink" title="POST和GET数据包的对比"></a>POST和GET数据包的对比</h4><p>GET:</p>
@@ -327,13 +327,17 @@
 <p>一句话木马先分析到这里.</p>
 <h4 id="其他漏洞"><a href="#其他漏洞" class="headerlink" title="其他漏洞"></a>其他漏洞</h4><p>由于线下赛的服务器在比赛结束后就关闭了, 很多题目也不方便复现.<br>主要说一下思路就好了</p>
 <ul>
-<li>web1<br>前面的一句话木马已经分析过了,<br>其修补漏洞的方法也很简单 : 直接删除木马文件, 一了百了.<br>除了上面的一句话漏洞, 还有针对finecms的任意文件读取漏洞<br>我认为这个漏洞的根源是url过滤不够严格<br>题目一开始的代码只替换<code>../</code>为<code></code>,<br>修补方式是, 循环替换<code>../</code>, 让不法分子无机可乘<figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/welcome.png" title="web1的logo,真的很皮" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/welcome.png" alt="web1的logo,真的很皮" title class></a>
-                <p>web1的logo,真的很皮</p>
+<li><p>web1<br>前面的一句话木马已经分析过了,<br>其修补漏洞的方法也很简单 : 直接删除木马文件, 一了百了.<br>除了上面的一句话漏洞, 还有针对finecms的任意文件读取漏洞<br>我认为这个漏洞的根源是url过滤不够严格<br>题目一开始的代码只替换<code>../</code>为<code></code>,<br>修补方式是, 循环替换<code>../</code>, 让不法分子无机可乘</p>
+<figure class="image-box">
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/welcome.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/welcome.png" alt title class></a>
+                <p></p>
             </figure>
-<del>这段代码, 我修的 (叉腰)</del></li>
-<li>web2<br>在题目给的站的某处, 可以上传图片,<br>但是对文件格式的检测却很宽松.<br>保存着上传图片的地方也没有限制访问.<br>直接图片马走起安排.<br>可以参考 <a href="http://pub54dbxm.bkt.clouddn.com/渗透测试&上传漏洞.html" target="_blank" rel="noopener">渗透测试&amp;上传漏洞</a></li>
-<li>至于pwn1和pwn2 , , , 打扰了打扰了</li>
+<p><del>这段代码, 我修的 (叉腰)</del></p>
+</li>
+<li><p>web2<br>在题目给的站的某处, 可以上传图片,<br>但是对文件格式的检测却很宽松.<br>保存着上传图片的地方也没有限制访问.<br>直接图片马走起安排.</p>
+</li>
+<li><p>至于pwn1和pwn2 , , , 打扰了打扰了</p>
+</li>
 </ul>
 <h3 id="api调用-resolved"><a href="#api调用-resolved" class="headerlink" title="api调用(resolved)"></a><a href="http://web.jarvisoj.com:9882/" target="_blank" rel="noopener">api调用</a>(resolved)</h3><p>这道题利用的是xxe漏洞<br>那么<a href="https://www.freebuf.com/articles/web/177979.html" target="_blank" rel="noopener">什么是xxe漏洞呢?</a></p>
 <blockquote>
@@ -385,14 +389,14 @@
 
 <p>最终效果图 :</p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/xxe.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/xxe.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/xxe.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/xxe.png" alt title class></a>
                 <p></p>
             </figure>
 <p>ojbk.</p>
 <p>###<a href="https://adworld.xctf.org.cn/task/answer?type=web&number=3&grade=1&id=5002" target="_blank" rel="noopener">mfw</a>(resolved)</p>
 <p>在题目中看到了出题者使用了Git, 可以猜测是Source Leak, 使用GitHack脚本, 能下载部分源代码.</p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/GitHack.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/GitHack.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/GitHack.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/GitHack.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -418,7 +422,7 @@
 </ul>
 <p>最终</p>
 <figure class="image-box">
-                <a rel=CTF-writeup href="http://pub54dbxm.bkt.clouddn.com/mfw.png" title="" data-fancybox="images"><img src="http://pub54dbxm.bkt.clouddn.com/mfw.png" alt title class></a>
+                <a rel=CTF-writeup href="http://188.131.227.20:999/picture/mfw.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/mfw.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -461,7 +465,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-11T13:11:46.204Z" itemprop="dateUpdated">2019-07-11 21:11:46</time>
+    Last updated: <time datetime="2019-08-14T01:47:20.587Z" itemprop="dateUpdated">2019-08-14 09:47:20</time>
 </span><br>
 
 
