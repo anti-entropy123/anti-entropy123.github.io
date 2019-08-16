@@ -260,7 +260,7 @@
 </li>
 <li><p>首先查看自己的ip和子网ip, 这是所有步骤的开始.</p>
 <figure class="image-box">
-                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/ifconfig.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/ifconfig.png" alt title class></a>
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/ipconfig.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/ipconfig.png" alt title class></a>
                 <p></p>
             </figure></li>
 <li><p>获取了子网的ip地址后, 我们知道靶机就在这个子网中, 所以可以用Nmap扫出靶机的位置.</p>
@@ -338,16 +338,13 @@
 <p>可以看到这里的<code>meterpreter</code>和真正的shell还是有所区别的.<br>值得注意的一点, 可以用下面的命令来使用python调出shell.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c "import pty;pty.spawn('/bin/sh')"</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>完.<br>头一次截了这么多图, 真鸡儿累.<br><del>抱歉, 图被无良七牛云吞了, 有生之年可能会找回来.</del></p>
+<li><p>完.<br><del>头一次截了这么多图, 真鸡儿累.</del><br><del>抱歉, 图被无良七牛云吞了, 有生之年可能会找回来.</del><br><del>还好当时是用QQ截的图, 缓存在QQ里了, 哈哈哈</del></p>
+<h2 id="用QQ获取女神的IP"><a href="#用QQ获取女神的IP" class="headerlink" title="用QQ获取女神的IP"></a>用QQ获取女神的IP</h2><p>某个寂寞的夜晚, 我又想起我的女神.<br>女神啊, 你现在在何方?<br>马上就能知道.<br>.<br>.<br>.<br>这边打开着<code>wireshark</code>, 开始抓包.<br>拿起手机, 打开女神的qq聊天框, 丢过去个qq电话.<br>大概过个几秒(时间把握好, 别让女神接了电话…哈哈哈).<br>回到<code>wireshark</code>这, 停止抓包.</p>
 </li>
 </ol>
-<h2 id="用QQ获取女神的IP"><a href="#用QQ获取女神的IP" class="headerlink" title="用QQ获取女神的IP"></a>用QQ获取女神的IP</h2><p>某个寂寞的夜晚, 我又想起我的女神.<br>女神啊, 你现在在何方?<br>马上就能知道.<br>.<br>.<br>.<br>这边打开着<code>wireshark</code>, 开始抓包.<br>拿起手机, 打开女神的qq聊天框, 丢过去个qq电话.<br>大概过个几秒(时间把握好, 别让女神接了电话…哈哈哈).<br>回到<code>wireshark</code>这, 停止抓包.</p>
 <p>Ctrl+F, 设置为<strong>字符串</strong>和<strong>分组详情</strong>.<br>然后在框里输入<code>020048</code>, 就能找到女神的IP地址了<br>这串代码应该是QQ电话的请求的二进制码的一部分.</p>
 <p>效果:</p>
-<figure class="image-box">
-                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/iPofGirl.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/iPofGirl.png" alt title class></a>
-                <p></p>
-            </figure>
+<p><del>图没了 QAQ</del></p>
 <p>于是我拿着女神的IP尝试着定位了一下, 感觉没什么异常, <font color="green">就安心了</font>.</p>
 <p>完.<br>好吧, 这和实战没啥关系, 就是觉得好玩. 而且也很简单.</p>
 <p><a href="https://blog.csdn.net/qq78069460/article/details/79153958" target="_blank" rel="noopener">详细过程</a></p>
@@ -359,7 +356,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-14T01:49:23.043Z" itemprop="dateUpdated">2019-08-14 09:49:23</time>
+    最後更新時間：<time datetime="2019-08-16T06:14:37.387Z" itemprop="dateUpdated">2019-08-16 14:14:37</time>
 </span><br>
 
 
