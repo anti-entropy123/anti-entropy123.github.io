@@ -3,6 +3,69 @@
   
     
     <entry>
+      <title><![CDATA[一个有意思的小工具——aview]]></title>
+      <url>/2019/08/17/asciiview/</url>
+      <content type="html"><![CDATA[<p>给你康个好van的~</p>
+<a id="more"></a>
+<h1 id="asciiview"><a href="#asciiview" class="headerlink" title="asciiview"></a><code>asciiview</code></h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前一阵子发现了一个linux系统下的很好玩的小工具, 也就是 aview, 它可以把图片转化成字符画的形式, 并且可以对图片的一些属性, 比如亮度, 对比度进行调节和导出成各种文件格式. 效果我自认为供我们自娱自乐还是不错的.</p>
+<figure class="image-box">
+                <img src="http://188.131.227.20:999/picture/效果.jpg" alt title class>
+                <p></p>
+            </figure>
+<p>这个我也没太调好, 实际效果要好一些的.</p>
+<h2 id="安装-aview"><a href="#安装-aview" class="headerlink" title="安装 aview"></a>安装 aview</h2><p>安装 asciiview 本身并不麻烦, 一般来说使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install aview</span><br></pre></td></tr></table></figure>
+
+<p>就可以一键安装了.<br>但如果你安装时显示”无法定位软件包”(或”unable to locate package aview”), 那应该是下载源的问题.<br>解决办法:</p>
+<ol start="0">
+<li><p>备份(选做)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /etc/apt</span><br><span class="line">sudo cp sources.list sources.list.bak</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 source.list<code></code>sudo vi /etc/apt/source.list`<br>然后加上这两行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>保存.</p>
+<ol start="2">
+<li><p>更新 apt-get</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新尝试下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install aview</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>通常这样就可以安装好了.</p>
+<p>但是 aview 有个缺点就是对图片格式支持的比较少, 我们常用的大多数图片是没法被 aview 直接识别的.<br>所以我们还需要另外的一款工具 ImageMagick`.<br>这个工具安装起来有点麻烦, 如果你的 linux 使用了yum, 你可以尝试直接下载安装. 但如果是用 apt-get, 八成是没法直接安装的.<br>我们要先下载它的<a href="http://www.imagemagick.org/download/" target="_blank" rel="noopener">源码</a><br>解压后放在合适的目录下, 然后在解压后的目录下运行configure</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure>
+
+<p>运行结束后会有个检测报告, 如果缺乏依赖的软件或者库会报告给你, 我没有遇到就不赘述了. <del>主要是我也看不懂</del><br>下面需要使用make进行编译安装.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>到这里安装就结束了. 使用命令<code>convert -version</code>查看是否成功.<br>ImageMagick 的使用和复杂, 在这里不介绍了.<br>其实如果没有安装成功也没有关系, 网上也有很多在线图片格式转换的网站, 也很省事.<br><a href="https://convertio.co/zh/pgm-converter/" target="_blank" rel="noopener">在线pgm转换器</a></p>
+<h2 id="使用-aview"><a href="#使用-aview" class="headerlink" title="使用 aview"></a>使用 aview</h2><p>使用方法比较简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aview filename.pgm</span><br></pre></td></tr></table></figure>
+
+<p>可以看到预览界面.<br>除此之外, 还有这些功能:</p>
+<figure class="image-box">
+                <img src="http://188.131.227.20:999/picture/aview.png" alt title class>
+                <p></p>
+            </figure>
+<p>可以用它们来调整图像效果, 或者导出为<code>txt, html</code> 等格式.</p>
+<p>完.<br><del>其实我只是想让你们看下我的新封面而已.</del></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> linux, misc </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Pikachu 漏洞练习平台]]></title>
       <url>/2019/08/14/xss-csrf%E5%AD%A6%E4%B9%A0/</url>
       <content type="html"><![CDATA[<p><a href="https://bbs.pediy.com/thread-246122.htm" target="_blank" rel="noopener">了解一下?</a></p>

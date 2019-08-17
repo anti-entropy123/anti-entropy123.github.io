@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://tjuyjn.top/2019/08/17/asciiview/">
+    
+    
+    <title>一个有意思的小工具——aview | Anti-entropy&#39;s blog | 为守护一切的美好而战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="linux, misc">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":null,"app_id":"falsee1f779yetMaV1lNERajntYJH-gzGzoHsz","app_key":"CGROdujMx4Hw9l84Eysyhp7D","icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":"wqO31JgMHk75BY11F6Xoy3SA-gzGzoHsz","appkey":"LO0gaiY2cdracArf85dbRGzY","notify":true,"verify":true,"placeholder":"来和希儿一起玩吧","avatar":"retro"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Anti-entropy</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>一个有意思的小工具——aview</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">一个有意思的小工具——aview</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-17T12:40:50.000Z" itemprop="datePublished" class="page-time">
+  2019-08-17
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-asciiview"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">一个有意思的小工具——aview</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-17 20:40:50" datetime="2019-08-17T12:40:50.000Z"  itemprop="datePublished">2019-08-17</time>
+
+            
+
+
+            
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/08/17/asciiview/#comment">
+            <span class="valine-comment-count" data-xid="/2019/08/17/asciiview/"></span>
+        </a>
+    </span>
+
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>给你康个好van的~</p>
+<a id="more"></a>
+<h1 id="asciiview"><a href="#asciiview" class="headerlink" title="asciiview"></a><code>asciiview</code></h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前一阵子发现了一个linux系统下的很好玩的小工具, 也就是 aview, 它可以把图片转化成字符画的形式, 并且可以对图片的一些属性, 比如亮度, 对比度进行调节和导出成各种文件格式. 效果我自认为供我们自娱自乐还是不错的.</p>
+<figure class="image-box">
+                <a rel=一个有意思的小工具——aview href="http://188.131.227.20:999/picture/效果.jpg" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/效果.jpg" alt title class></a>
+                <p></p>
+            </figure>
+<p>这个我也没太调好, 实际效果要好一些的.</p>
+<h2 id="安装-aview"><a href="#安装-aview" class="headerlink" title="安装 aview"></a>安装 aview</h2><p>安装 asciiview 本身并不麻烦, 一般来说使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install aview</span><br></pre></td></tr></table></figure>
+
+<p>就可以一键安装了.<br>但如果你安装时显示”无法定位软件包”(或”unable to locate package aview”), 那应该是下载源的问题.<br>解决办法:</p>
+<ol start="0">
+<li><p>备份(选做)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /etc/apt</span><br><span class="line">sudo cp sources.list sources.list.bak</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 source.list<code></code>sudo vi /etc/apt/source.list`<br>然后加上这两行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>保存.</p>
+<ol start="2">
+<li><p>更新 apt-get</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新尝试下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install aview</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>通常这样就可以安装好了.</p>
+<p>但是 aview 有个缺点就是对图片格式支持的比较少, 我们常用的大多数图片是没法被 aview 直接识别的.<br>所以我们还需要另外的一款工具 ImageMagick`.<br>这个工具安装起来有点麻烦, 如果你的 linux 使用了yum, 你可以尝试直接下载安装. 但如果是用 apt-get, 八成是没法直接安装的.<br>我们要先下载它的<a href="http://www.imagemagick.org/download/" target="_blank" rel="noopener">源码</a><br>解压后放在合适的目录下, 然后在解压后的目录下运行configure</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure>
+
+<p>运行结束后会有个检测报告, 如果缺乏依赖的软件或者库会报告给你, 我没有遇到就不赘述了. <del>主要是我也看不懂</del><br>下面需要使用make进行编译安装.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>到这里安装就结束了. 使用命令<code>convert -version</code>查看是否成功.<br>ImageMagick 的使用和复杂, 在这里不介绍了.<br>其实如果没有安装成功也没有关系, 网上也有很多在线图片格式转换的网站, 也很省事.<br><a href="https://convertio.co/zh/pgm-converter/" target="_blank" rel="noopener">在线pgm转换器</a></p>
+<h2 id="使用-aview"><a href="#使用-aview" class="headerlink" title="使用 aview"></a>使用 aview</h2><p>使用方法比较简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aview filename.pgm</span><br></pre></td></tr></table></figure>
+
+<p>可以看到预览界面.<br>除此之外, 还有这些功能:</p>
+<figure class="image-box">
+                <a rel=一个有意思的小工具——aview href="http://188.131.227.20:999/picture/aview.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/aview.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>可以用它们来调整图像效果, 或者导出为<code>txt, html</code> 等格式.</p>
+<p>完.<br><del>其实我只是想让你们看下我的新封面而已.</del></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-08-17T13:51:34.820Z" itemprop="dateUpdated">2019-08-17 21:51:34</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/17/asciiview/" target="_blank" rel="external">https://tjuyjn.top/2019/08/17/asciiview/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="Anti-entropy">
+            Anti-entropy
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux-misc/">linux, misc</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/08/17/asciiview/&title=《一个有意思的小工具——aview》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/08/17/asciiview/&title=《一个有意思的小工具——aview》 — Anti-entropy's blog&source=给你康个好van的~" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/08/17/asciiview/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个有意思的小工具——aview》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/08/17/asciiview/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/08/17/asciiview/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/14/xss-csrf学习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Pikachu 漏洞练习平台</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#asciiview"><span class="post-toc-number">1.</span> <span class="post-toc-text">asciiview</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-aview"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装 aview</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-aview"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">使用 aview</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">主题作者</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.tjuscswyz.cn/" target="_blank">p4ssw0rd</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/ever17/" target="_blank">Ever17</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/tkj521Ya/" target="_blank">Exaggerate~</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/jason1999/" target="_blank">jason1999</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Anti-entropy &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/08/17/asciiview/&title=《一个有意思的小工具——aview》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/08/17/asciiview/&title=《一个有意思的小工具——aview》 — Anti-entropy's blog&source=给你康个好van的~" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/08/17/asciiview/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一个有意思的小工具——aview》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/08/17/asciiview/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/08/17/asciiview/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aQY7CMAwFUO5/6SKNZsEm5TtO0wq9rBAK6SsLy7H9esXr+Fvn33x+f75/tGfZwsXFbXOP0zV62Oi3I1By/vkeXFzc/dzz4FU4Lg5qo7/giw0XF/dh3LWpEi4u7m9wk9W5DuHi4j6NW72czBVHqlcjXFzcu7irUpPO5wvru7i4uEXuUVyd7kYnbfr/FS4u7hZuv4FafaW87To8DRcXdzs3GZKoFlgLlOQvwMXFvZibtD/zBKXTWI0SI1xc3O3cPGzl7ZO5NkwUyHBxcW/iVosahZBUfGIUyHBxcRdx86tIpxHSSZgKx+Hi4i7l9nH5OEWOxsXFfQJ3bvSq32LJXx4XF3cPtxp6qs2S5LTCs3BxcW/i5oNW/WZJOWji4uJu4eaXnORh1dvKZMsWFxf3Ym4SUPK0JimVtq5VuLi4G7md5sdcujNZIsHFxd3InRucmhvIqA54FfIsXFzcRdxqQOkXTfJ0pxUEcXFx29x+KbPadMlbKVE3GBcX9zJuZ8Aiv/AkEfTLHlxc3IdxVzVXOiESFxf3mdxV41Z5uMTFxb2LOzcekQSguTMXlEVwcXEb3H7BtLOz2rDBxcW9mPsGICyVjNrjM8cAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.2"></script>
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
