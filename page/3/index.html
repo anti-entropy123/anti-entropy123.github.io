@@ -28,6 +28,10 @@
         window.lazyScripts=[];
     </script>
     
+    
+    <script>
+        var imageArr=[];
+    </script>
 </head>
 
 
@@ -171,9 +175,9 @@
     <div id="local-search-result"></div>
 </div>
 
-    <div class="container body-wrap">
+        <div class="container body-wrap">
         <ul class="post-list">
-        
+    
             <li class="post-list-item fade">
                 <article id="post-上传漏洞"
   class="article-card article-type-post" itemprop="blogPost">
@@ -184,7 +188,16 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    <!-- <img src="true" alt="图片路径不正确"> -->
+    <script language=javascript>
+    id=Math.round(Math.random()*18)+1;
+    while(imageArr.indexOf(id)>-1){
+        id=Math.round(Math.random()*18)+1;
+    }
+    imageArr.push(id);
+    document.write("<img src=/img/thumb/"+String(id)+".jpg>")
+    </script>
+    
     
 
 
@@ -201,6 +214,10 @@
         
     
     
+    
+
+
+
     
     <div class="post-meta">
         <time class="post-time" title="2019-07-08 11:02:29" datetime="2019-07-08T03:02:29.000Z"  itemprop="datePublished">2019-07-08</time>
@@ -236,6 +253,7 @@
     </div>
 </article>
 
+
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/一句话木马/">一句话木马</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片马/">图片马</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传漏洞/">文件上传漏洞</a></li></ul>
@@ -245,7 +263,7 @@
 
             </li>
         
-        </ul>
+            </ul>
         
 <nav id="page-nav">
     <div class="inner">
@@ -253,8 +271,8 @@
     </div>
 </nav>
 
-    </div>
-
+            </div>
+        
     </main>
     <footer class="footer ">
     
