@@ -223,7 +223,7 @@
 <p>和我之前见到的<code>include &quot;xxx.xxx&quot;</code>不同, 这里需要用到文件<code>.user.ini</code>和<code>auto_prepend_file=filename.xxx</code>.</p>
 <p>在这道题的配置中, 如果web目录下有上述的配置文件, 就可以在运行index.php时先解析<code>filename.xxx</code>文件. 而且可以是任何后缀的文件.</p>
 <p>虽然不能写<code>&lt;?php   php_code     ?&gt;</code>这种形式, 但是可以用<code>&lt;script language=&quot;php&quot;&gt;php_code&lt;/sript&gt;</code>代替.</p>
-<p>对于图片内容的检测, 如果我们以gif文件作为payload, 只需要加上<code>GIF89A</code>即可绕过.</p>
+<p>对于图片内容的检测, 如果我们以gif文件作为payload, 只需要加上<code>GIF89A</code>即可绕过. (仅对于本题中的<code>exif_imagetype()</code>函数及类似的检测方式.)</p>
 <h2 id="总之"><a href="#总之" class="headerlink" title="总之"></a>总之</h2><p>.user.ini</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF</span><br><span class="line">auto_prepend_file=home.gif</span><br></pre></td></tr></table></figure>
 
@@ -240,7 +240,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-19T14:10:38.662Z" itemprop="dateUpdated">2019-08-19 22:10:38</time>
+    Last updated: <time datetime="2019-08-19T14:13:46.611Z" itemprop="dateUpdated">2019-08-19 22:13:46</time>
 </span><br>
 
 
