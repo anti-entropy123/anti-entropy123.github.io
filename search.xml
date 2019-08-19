@@ -40,7 +40,11 @@
         
         <tags>
             
-            <tag> web, 文件上传漏洞 </tag>
+            <tag> web </tag>
+            
+            <tag> 文件上传漏洞 </tag>
+            
+            <tag> 文件包含漏洞 </tag>
             
         </tags>
         
@@ -234,11 +238,11 @@
         
         <tags>
             
-            <tag> sql注入 </tag>
-            
             <tag> xss </tag>
             
             <tag> csrf </tag>
+            
+            <tag> sql注入 </tag>
             
         </tags>
         
