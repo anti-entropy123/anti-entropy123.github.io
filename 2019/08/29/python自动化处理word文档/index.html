@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://tjuyjn.top/2019/08/29/python自动化处理word文档/">
+    
+    
+    <title>python自动化处理word文档 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="python,word">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":null,"app_id":"falsee1f779yetMaV1lNERajntYJH-gzGzoHsz","app_key":"CGROdujMx4Hw9l84Eysyhp7D","icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":"w6aWfPRvBTtEbBcUQVnWa1fl-MdYXbMMI","appkey":"96PaRwN0DWkNUdwQrWx3Ff7g","notify":true,"verify":true,"placeholder":"来和希儿一起玩吧 -- 记得告诉希儿你的昵称和邮箱哟","avatar":"retro"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+    
+    <script>
+        var imageArr=[];
+    </script>
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Anti-entropy</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>python自动化处理word文档</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">python自动化处理word文档</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-29T13:45:43.000Z" itemprop="datePublished" class="page-time">
+  2019-08-29
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-python自动化处理word文档"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">python自动化处理word文档</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-29 21:45:43" datetime="2019-08-29T13:45:43.000Z"  itemprop="datePublished">2019-08-29</time>
+
+            
+
+
+            
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/08/29/python自动化处理word文档/#comment">
+            <span class="valine-comment-count" data-xid="/2019/08/29/python自动化处理word文档/"></span>
+        </a>
+    </span>
+
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>帮室友写了个脚本, 感觉还不错, 分享一波源码.</p>
+<a id="more"></a>
+
+<h1 id="python-docx"><a href="#python-docx" class="headerlink" title="python + docx"></a>python + docx</h1><h2 id="前因"><a href="#前因" class="headerlink" title="前因"></a>前因</h2><p>宿舍马大佬这两天在忙学生综合素质测评的工作. 马大佬给我们发了个word表格让我们填, 然而word表格不像execl, 它很不好计算. 为了减轻马大佬的工作量, 我帮马大佬用python写个程序, 读取二十多个word文件, 并提取其中的数据自动计算并生成目标文件作为结果. 经过投入使用, 最终效果还不错.</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx <span class="keyword">import</span> Document</span><br><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> Inches</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">the_number_of_files = <span class="number">20</span>    <span class="comment"># 文件数</span></span><br><span class="line">the_number_of_student = <span class="number">25</span>  <span class="comment"># 学生数</span></span><br><span class="line">the_number_of_item = <span class="number">5</span>      <span class="comment"># 打分项目数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 两个进度条函数需要的全局变量</span></span><br><span class="line">the_number_of_times = <span class="number">2</span> * the_number_of_files * the_number_of_student * the_number_of_item</span><br><span class="line">times = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进度条函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_progress</span><span class="params">()</span>:</span></span><br><span class="line">    per = round(<span class="number">20</span>*(times / the_number_of_times))</span><br><span class="line">    print(<span class="string">'['</span>+<span class="string">'*'</span>*per+<span class="string">' '</span>*(<span class="number">20</span>-per)+<span class="string">']'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    document_result = Document()</span><br><span class="line"></span><br><span class="line">    document_result.add_heading(<span class="string">'学生互评分数计算结果'</span>)</span><br><span class="line">    table = document_result.add_table(rows=<span class="number">26</span>, cols=<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    table.rows[<span class="number">0</span>].cells[<span class="number">1</span>].text = <span class="string">'政治思想表现'</span></span><br><span class="line">    table.rows[<span class="number">0</span>].cells[<span class="number">2</span>].text = <span class="string">'个人品德修养'</span></span><br><span class="line">    table.rows[<span class="number">0</span>].cells[<span class="number">3</span>].text = <span class="string">'学习态度状况'</span></span><br><span class="line">    table.rows[<span class="number">0</span>].cells[<span class="number">4</span>].text = <span class="string">'组织纪律观念'</span></span><br><span class="line">    table.rows[<span class="number">0</span>].cells[<span class="number">5</span>].text = <span class="string">'文体修养'</span></span><br><span class="line">    <span class="comment"># 同学姓名隐去</span></span><br><span class="line">    table.rows[<span class="number">1</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">2</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">3</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">4</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">5</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">6</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">7</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">8</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">9</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">10</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">11</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">12</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">13</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">14</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">15</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">16</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">17</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">18</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">19</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">20</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">21</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">22</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">23</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">24</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line">    table.rows[<span class="number">25</span>].cells[<span class="number">0</span>].text = <span class="string">'xxx'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读文件, 取数据, 算结果</span></span><br><span class="line">    data = [[[<span class="number">0</span>]*(the_number_of_item+<span class="number">1</span>)]*(the_number_of_student+<span class="number">1</span>)]*(the_number_of_student+<span class="number">1</span>)</span><br><span class="line">    arr = np.array(data)</span><br><span class="line">    <span class="keyword">for</span> index_of_file <span class="keyword">in</span> range(<span class="number">1</span>,the_number_of_files+<span class="number">1</span>):</span><br><span class="line">        document_source = Document(str(index_of_file)+<span class="string">'.docx'</span>) </span><br><span class="line">        source = document_source.tables</span><br><span class="line">        show_progress()</span><br><span class="line">        <span class="keyword">for</span> index_of_rows <span class="keyword">in</span> range(<span class="number">1</span>,the_number_of_student+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> index_of_cells <span class="keyword">in</span> range(<span class="number">1</span>,the_number_of_item+<span class="number">1</span>):</span><br><span class="line">                times += <span class="number">1</span></span><br><span class="line">                <span class="comment"># 有些憨憨把空空着不写, 得判断下</span></span><br><span class="line">                <span class="keyword">if</span> len(source[<span class="number">0</span>].rows[index_of_rows+<span class="number">3</span>].cells[index_of_cells].text) &gt; <span class="number">0</span>: </span><br><span class="line">                    arr[index_of_file][index_of_rows][index_of_cells] = float(source[<span class="number">0</span>].rows[index_of_rows+<span class="number">3</span>].cells[index_of_cells].text)</span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    arr[index_of_file][index_of_rows][index_of_cells] = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> range(<span class="number">1</span>,the_number_of_student+<span class="number">1</span>):</span><br><span class="line">        show_progress()</span><br><span class="line">        <span class="keyword">for</span> b <span class="keyword">in</span> range(<span class="number">1</span>,the_number_of_item+<span class="number">1</span>):</span><br><span class="line">            temp = []</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">1</span>,the_number_of_files+<span class="number">1</span>):</span><br><span class="line">                times += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> arr[c][a][b] &gt; <span class="number">0</span>:</span><br><span class="line">                    temp.append(arr[c][a][b])</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 删除最大值和最小值</span></span><br><span class="line">            <span class="keyword">del</span> temp[temp.index(max(temp))]</span><br><span class="line">            <span class="keyword">del</span> temp[temp.index(min(temp))]</span><br><span class="line">            <span class="comment"># 计算平均数</span></span><br><span class="line">            table.rows[a].cells[b].text = str(round(sum(temp)/len(temp),<span class="number">2</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 保存成目标文件</span></span><br><span class="line">    document_result.save(<span class="string">'result.docx'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="后果"><a href="#后果" class="headerlink" title="后果"></a>后果</h2><p>一时兴起的产物, 虽然代码写得很烂, 但确实帮到了室友, 让我感觉很棒.<br>第一次用python处理word, 感觉很有潜力, 未来可能还会深入的学习使用, 特别的来记录下. </p>
+<p><strong>或者点击下方为我打赏, 鼓励我写出更优质的脚本吧(手动滑稽)</strong></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-08-29T13:59:31.761Z" itemprop="dateUpdated">2019-08-29 21:59:31</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/29/python自动化处理word文档/" target="_blank" rel="external">https://tjuyjn.top/2019/08/29/python自动化处理word文档/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="Anti-entropy">
+            Anti-entropy
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/word/">word</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/&title=《python自动化处理word文档》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/&title=《python自动化处理word文档》 — Anti-entropy's blog&source=帮室友写了个脚本, 感觉还不错, 分享一波源码." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/08/29/python自动化处理word文档/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python自动化处理word文档》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/19/CheckIn/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CheckIn</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#python-docx"><span class="post-toc-number">1.</span> <span class="post-toc-text">python + docx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前因"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前因</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后果"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">后果</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">主题作者</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.tjuscswyz.cn/" target="_blank">p4ssw0rd</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/ever17/" target="_blank">Ever17</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/tkj521Ya/" target="_blank">Exaggerate~</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/jason1999/" target="_blank">jason1999</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://tjublesson.top/" target="_blank">blesson</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Anti-entropy &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/&title=《python自动化处理word文档》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/&title=《python自动化处理word文档》 — Anti-entropy's blog&source=帮室友写了个脚本, 感觉还不错, 分享一波源码." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/08/29/python自动化处理word文档/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python自动化处理word文档》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/08/29/python自动化处理word文档/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQXLcMAwEQP//05uqnHxwuDOENomo5knlorhsHWAC4NdXPF6/x/p5Pf/7+NP89ZwLBgYGxm0Zr+VYbyuhrsHJZ1rvDQMD4zmMfOk1Zh0Jk3fbgI6BgYGxDnxJMG3DNAYGBsY84CYHtfxw2R4xMTAwnsxIQmryw+u/z8EX5OIYGBg3ZFzVGPjE8z/ob2BgYPxnjNd4tCHyEwMDA+NsRlviz4Ny27bM2wl1PQ8DA+PmjLywlaeRebNzPTO/RoaBgXE24xN58F5LsmVshl0MDIwbMpILW21Qnn+4vHnwQy6OgYFxKCMJlJOG4t7HKq53YGBgPICRbLc9Am6Gznjmm/8bGBgYRzPmz0nimlw+K2ZiYGAczUgC6GTTe9sdtT8xMDCOZrQHtb1LFetDZ1Kwi5JnDAyM4xhtmb69VDG5wFHfbsPAwDiakSwxaXm2aXDyyTAwMJ7DaMv9m0tvtSf3DqMYGBhnMyYvJ4e8SfrazsTAwDiJ0f5w26psE+a9piYGBsYTGPOCfpuaXhXKMTAwnsPYK4G1pbdkQ0nbIKoaYmBgHMRoU8d5Wb8Ioxe9hYGBcV/Gqxx5ipsX/ecrY2BgnM2YBNw2XCYhex7cMTAwTmXsJY1tk3LvQkaxDgYGxgMYeYjca0bOM+k372JgYGCUjYF5OM5XxsDAwPg77cnkw705XGJgYDyAkRfxJ+lu3iTAwMDAaMdesX79k22DYa8hgYGBcXPGL4ne2xn5hRQdAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.2"></script>
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
