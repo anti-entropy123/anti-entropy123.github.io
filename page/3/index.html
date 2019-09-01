@@ -13,9 +13,6 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
-
-    
-
     
     <script type="text/javascript">
         // Data Center
@@ -200,9 +197,12 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    id=Math.round(Math.random()*18)+1;
+    
+    theNumberOfImg = 25;
+
+    id=Math.round(Math.random()*(theNumberOfImg-1))+1;
     while(imageArr.indexOf(id)>-1){
-        id=Math.round(Math.random()*18)+1;
+        id=Math.round(Math.random()*(theNumberOfImg-1))+1;
     }
     imageArr.push(id);
     document.write("<img src=/img/thumb/"+String(id)+".jpg>")
@@ -284,9 +284,12 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    id=Math.round(Math.random()*18)+1;
+    
+    theNumberOfImg = 25;
+
+    id=Math.round(Math.random()*(theNumberOfImg-1))+1;
     while(imageArr.indexOf(id)>-1){
-        id=Math.round(Math.random()*18)+1;
+        id=Math.round(Math.random()*(theNumberOfImg-1))+1;
     }
     imageArr.push(id);
     document.write("<img src=/img/thumb/"+String(id)+".jpg>")
@@ -369,9 +372,12 @@ Ubu...
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    id=Math.round(Math.random()*18)+1;
+    
+    theNumberOfImg = 25;
+
+    id=Math.round(Math.random()*(theNumberOfImg-1))+1;
     while(imageArr.indexOf(id)>-1){
-        id=Math.round(Math.random()*18)+1;
+        id=Math.round(Math.random()*(theNumberOfImg-1))+1;
     }
     imageArr.push(id);
     document.write("<img src=/img/thumb/"+String(id)+".jpg>")
