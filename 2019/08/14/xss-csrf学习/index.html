@@ -9,7 +9,7 @@
     <title>Pikachu 漏洞练习平台 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="xss,sql注入">
+    <meta name="keywords" content="sql注入,xss">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -32,6 +32,7 @@
     <script>
         var imageArr=[];
     </script>
+    
 </head>
 
 
@@ -177,13 +178,6 @@
 
 
 <div class="container body-wrap">
-        <script id="c_n_script" src="https://blog-static.cnblogs.com/files/xiaokang01/js.js" color="0,168,255" opacity="1" count="150" zindex="-2">
-            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            
-            } else {
-            
-            }
-            </script>
     <article id="post-xss-csrf学习"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
@@ -349,7 +343,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-01T12:36:37.127Z" itemprop="dateUpdated">2019-09-01 20:36:37</time>
+    最后更新时间：<time datetime="2019-09-01T12:36:37.127Z" itemprop="dateUpdated">2019-09-01 20:36:37</time>
 </span><br>
 
 
@@ -716,5 +710,42 @@
 
 
     
+    <script type="text/javascript">           
+        /* 鼠标特效 */ 
+        var a_idx = 0; 
+        jQuery(document).ready(function($) { 
+            $("body").click(function(e) { 
+                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤"); 
+                var $i = $("<span></span>").text(a[a_idx]); 
+                a_idx = (a_idx + 1) % a.length; 
+                var x = e.pageX, 
+                y = e.pageY; 
+                $i.css({ 
+                    "z-index": 999999999999999999999999999999999999999999999999999999999999999999999, 
+                    "top": y - 20, 
+                    "left": x, 
+                    "position": "absolute", 
+                    "font-weight": "bold", 
+                    "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")" 
+                }); 
+                $("body").append($i); 
+                $i.animate({ 
+                    "top": y - 180, 
+                    "opacity": 0 
+                }, 
+                1500, 
+                function() { 
+                    $i.remove(); 
+                }); 
+            }); 
+        }); 
+    </script>
+    <script id="c_n_script" src="https://blog-static.cnblogs.com/files/xiaokang01/js.js" color="0,168,255" opacity="1" count="150" zindex="-2">
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        
+        } else {
+        
+        }
+    </script>
 </body>
 </html>
