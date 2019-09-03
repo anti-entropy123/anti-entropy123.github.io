@@ -135,7 +135,10 @@
                 c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
               }
               var l = "",
-              o = ["孤独是常态", "寂寞是病态"].map(function (r) {
+              o = ["孤独是常态", "寂寞是病态",
+                   "孤独使我自由","寂寞让我作呕",
+                   "为守护所有美好而战","向一切虚伪的美好宣战",
+                   "don't be sorry","be better"].map(function (r) {
               return r + ""
               }),
               a = 2,
@@ -274,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-08-30T14:34:37.580Z" itemprop="dateUpdated">2019-08-30 22:34:37</time>
+    最后更新时间：<time datetime="2019-08-30T14:34:37.580Z" itemprop="dateUpdated">2019-08-30 22:34:37</time>
 </span><br>
 
 
