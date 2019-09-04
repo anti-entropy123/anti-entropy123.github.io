@@ -9,7 +9,7 @@
     <title>Pikachu 漏洞练习平台 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="xss,sql注入">
+    <meta name="keywords" content="sql注入,xss,PHP反序列化漏洞">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -400,6 +400,59 @@
 
 <p>目前来看, 除了有点慢还是比较不错的, 有机会升级成多线程, 应该还能大幅缩短时间. </p>
 <p>以后再说吧.</p>
+<h2 id="PHP反序列化漏洞"><a href="#PHP反序列化漏洞" class="headerlink" title="PHP反序列化漏洞"></a>PHP反序列化漏洞</h2><h3 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h3><ul>
+<li>序列化 serialize()</li>
+<li>反序列化 unserialize()</li>
+<li>魔术方法: PHP 将所有以 __（两个下划线）开头的类方法保留为魔术方法. 关于魔术方法的定义我没有在网上明确的找到, 但是根据我的查阅, 类似C++中的构造函数, 拷贝赋值函数那样可以在某些特定时间自动执行的函数就是魔术方法.</li>
+<li>常用的几个魔术方法:<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">__construct()</td>
+<td align="left">当一个对象创建时被调用</td>
+</tr>
+<tr>
+<td align="left">__destruct()</td>
+<td align="left">当一个对象销毁时被调用</td>
+</tr>
+<tr>
+<td align="left">__toString()</td>
+<td align="left">当一个对象被当作一个字符串使用</td>
+</tr>
+<tr>
+<td align="left">__sleep()</td>
+<td align="left">在对象在被序列化之前运行</td>
+</tr>
+<tr>
+<td align="left">__wakeup</td>
+<td align="left">将在序列化之后立即被调用</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>当你输入任何非序列化字符串时, 都回返回一句<code>大兄弟,来点劲爆点儿的!</code>.</p>
+<p>一开始有点不明所以, 不过既然是第一次学习, 我们还是先看看题目的源码吧!</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 有改动, 去除无关紧要部分的代码</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">S</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $test = <span class="string">"pikachu"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;test;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//O:1:"S":1:&#123;s:4:"test";s:29:"&lt;script&gt;alert('xss')&lt;/script&gt;";&#125;</span></span><br><span class="line"><span class="comment">// 上面这行是作者留下的, 其实就是题目的payload了</span></span><br><span class="line">$html=<span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'o'</span>]))&#123;</span><br><span class="line">    $s = $_POST[<span class="string">'o'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!@$unser = unserialize($s))&#123;</span><br><span class="line">        $html.=<span class="string">"&lt;p&gt;大兄弟,来点劲爆点儿的!&lt;/p&gt;"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $html.=<span class="string">"&lt;p&gt;&#123;$unser-&gt;test&#125;&lt;/p&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">... <span class="comment">//略去无关代码</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $html;<span class="meta">?&gt;</span></span><br><span class="line">... <span class="comment">//略去无关代码</span></span><br></pre></td></tr></table></figure>
+
+<p>我们来追溯下输入普通字符串时和payload的时候程序内部的状态:</p>
+<ul>
+<li><p>“geidalaodicha”</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$_POST[<span class="string">'o'</span>] = <span class="string">"geidalaodicha"</span></span><br><span class="line">$s = <span class="string">"geidalaodicha"</span></span><br><span class="line">unserialize($s)无法正常执行!</span><br><span class="line">(!@$unser = unserialize($s))为真 </span><br><span class="line">进入第一个分支, $html = <span class="string">"&lt;p&gt;大兄弟,来点劲爆点儿的!&lt;/p&gt;"</span></span><br><span class="line">打印 $html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>“O:1:”S”:1:{s:4:”test”;s:29:”<script>alert('xss')</script>“;}”</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$_POST[<span class="string">'o'</span>] = <span class="string">"O:1:"</span>S<span class="string">":1:&#123;s:4:"</span>test<span class="string">";s:29:"</span>&lt;script&gt;alert(<span class="string">'xss'</span>)&lt;/script&gt;<span class="string">";&#125;"</span></span><br><span class="line">$s = <span class="string">"O:1:"</span>S<span class="string">":1:&#123;s:4:"</span>test<span class="string">";s:29:"</span>&lt;script&gt;alert(<span class="string">'xss'</span>)&lt;/script&gt;<span class="string">";&#125;"</span></span><br><span class="line">unserialize($s)执行并返回$s反序列后的<span class="class"><span class="keyword">class</span> <span class="title">S</span>的实例对象</span></span><br><span class="line">进入第二个分支, $html = "&lt;p&gt;&#123;$unser-&gt;test&#125;&lt;/p&gt;"</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $html;<span class="meta">?&gt;</span>  =&gt;  打印出$unser-&gt;test的值, 也就是`&lt;script ...`</span><br><span class="line">`&lt;script...` 写入html中, 在前端执行.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>获取有人会疑惑(好吧就是我)为啥打印的不是”</p><p>{$unser-&gt;test}</p>“这段文本, 而是test的值.<p></p>
+<p>这是因为</p>
+<blockquote>
+<p>对于可变变量使用大括号，比如：{$val}，这时候大括号就是告诉PHP，括起来的部分要当成变量处理.<br>所以<code>{$unser-&gt;test}</code>直接被当成php语句解析了.</p>
+</blockquote>
 
         </div>
         
@@ -407,7 +460,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2019-09-01T12:36:37.127Z" itemprop="dateUpdated">2019-09-01 20:36:37</time>
+    Last updated: <time datetime="2019-09-04T15:29:12.341Z" itemprop="dateUpdated">2019-09-04 23:29:12</time>
 </span><br>
 
 
@@ -432,7 +485,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/">xss</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP反序列化漏洞/">PHP反序列化漏洞</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/">xss</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -522,7 +575,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Pikachu-漏洞练习平台"><span class="post-toc-number">1.</span> <span class="post-toc-text">Pikachu 漏洞练习平台</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#xss-Cross-Site-Scripting"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">xss(Cross-Site Scripting)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">什么是</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射性xss-GET"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">反射性xss(GET)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射性xss-POST"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">反射性xss(POST)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储型xss"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">存储型xss</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM型xss"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">DOM型xss</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM型xss-x"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">DOM型xss-x</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sqli"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">sqli</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数字型注入"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数字型注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符型注入"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">字符型注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搜索型注入-略"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">搜索型注入(略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx型注入-略"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">xx型注入(略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布尔盲注-略"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">布尔盲注(略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#时间盲注"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">时间盲注</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Pikachu-漏洞练习平台"><span class="post-toc-number">1.</span> <span class="post-toc-text">Pikachu 漏洞练习平台</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#xss-Cross-Site-Scripting"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">xss(Cross-Site Scripting)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">什么是</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射性xss-GET"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">反射性xss(GET)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射性xss-POST"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">反射性xss(POST)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储型xss"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">存储型xss</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM型xss"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">DOM型xss</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM型xss-x"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">DOM型xss-x</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sqli"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">sqli</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数字型注入"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数字型注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符型注入"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">字符型注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搜索型注入-略"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">搜索型注入(略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx型注入-略"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">xx型注入(略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布尔盲注-略"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">布尔盲注(略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#时间盲注"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">时间盲注</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PHP反序列化漏洞"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">PHP反序列化漏洞</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#知识铺垫"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">知识铺垫</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例题"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">例题</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
