@@ -337,8 +337,9 @@
 <p>获取有人会疑惑(好吧就是我)为啥打印的不是”</p><p>{$unser-&gt;test}</p>“这段文本, 而是test的值.<p></p>
 <p>这是因为</p>
 <blockquote>
-<p>对于可变变量使用大括号，比如：{$val}，这时候大括号就是告诉PHP，括起来的部分要当成变量处理.<br>所以<code>{$unser-&gt;test}</code>直接被当成php语句解析了.</p>
+<p>对于可变变量使用大括号，比如：{$val}，这时候大括号就是告诉PHP，括起来的部分要当成变量处理.</p>
 </blockquote>
+<p>所以<code>{$unser-&gt;test}</code>直接被当成php语句解析了.</p>
 ]]></content>
       
         
@@ -909,9 +910,9 @@
         
         <tags>
             
-            <tag> web </tag>
-            
             <tag> 主机扫描 </tag>
+            
+            <tag> web </tag>
             
         </tags>
         
