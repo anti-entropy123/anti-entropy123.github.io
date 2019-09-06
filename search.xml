@@ -389,6 +389,10 @@
             
             <tag> PHP反序列化漏洞 </tag>
             
+            <tag> csrf </tag>
+            
+            <tag> RCE </tag>
+            
         </tags>
         
     </entry>
@@ -948,9 +952,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         
