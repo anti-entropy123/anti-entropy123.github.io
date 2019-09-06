@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
 
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-    
     
     
     <script type="text/javascript">
@@ -47,6 +44,49 @@
         })();
         </script>
         
+
+
+        <!-- live2d css -->
+    <style>
+        .live2d-widget-dialog-container {
+            width: 300px;
+            height: 120px;
+            position: absolute;
+            bottom: 65%;
+            right: 0px;
+            transform-origin: right;
+            padding: 12px;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+        .live2d-widget-dialog {
+            width: 100%;
+            height: 100%;
+            color: #917159;
+            font-size: 16px;
+            padding: 12px;
+            border: 2px solid rgb(236, 203, 180);
+            background: rgb(252, 248, 244);
+            box-sizing: border-box;
+            border-radius: 10px;
+            transform: rotate(-2deg);
+            opacity: 0;
+            transition: 200ms opacity;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+            animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+        }
+        @keyframes live2d-widget-dialog-tingle {
+            0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+            100% { transform: translate(1px, -1.5px) rotate(2deg); }
+        }
+    </style>
+
+     <!--- live2d js -->
+     <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+     <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+     <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+ 
+
 </head>
 
 
@@ -221,18 +261,12 @@
 <div class="tabs-bar container">
     <nav class="tags-list">
         <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">全部</a>
+            ">All</a>
         
-            <a href="/tags/主机扫描/" backup-style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">主机扫描</a>
+            <a href="/tags/主机扫描/" backup-style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">主机扫描</a>
             
         
-            <a href="/tags/web/" backup-style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">web</a>
-            
-        
-            <a href="/tags/文件上传漏洞/" backup-style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">文件上传漏洞</a>
-            
-        
-            <a href="/tags/文件包含漏洞/" backup-style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">文件包含漏洞</a>
+            <a href="/tags/web/" backup-style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">web</a>
             
         
             <a href="/tags/linux/" backup-style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">linux</a>
@@ -247,40 +281,40 @@
             <a href="/tags/word/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">word</a>
             
         
-            <a href="/tags/awd/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">awd</a>
+            <a href="/tags/文件上传漏洞/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">文件上传漏洞</a>
             
         
-            <a href="/tags/不死马/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">不死马</a>
+            <a href="/tags/文件包含漏洞/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">文件包含漏洞</a>
             
         
-            <a href="/tags/反弹shell/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">反弹shell</a>
+            <a href="/tags/sql注入/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
             
         
-            <a href="/tags/metasploit/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">metasploit</a>
+            <a href="/tags/mysql基本语法/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">mysql基本语法</a>
             
         
-            <a href="/tags/linux权限控制/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">linux权限控制</a>
+            <a href="/tags/php/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">php</a>
             
         
-            <a href="/tags/xss/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">xss</a>
+            <a href="/tags/一句话木马/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">一句话木马</a>
             
         
-            <a href="/tags/sql注入/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
+            <a href="/tags/图片马/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">图片马</a>
             
         
-            <a href="/tags/PHP反序列化漏洞/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">PHP反序列化漏洞</a>
+            <a href="/tags/awd/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">awd</a>
             
         
-            <a href="/tags/mysql基本语法/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">mysql基本语法</a>
+            <a href="/tags/不死马/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">不死马</a>
             
         
-            <a href="/tags/php/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">php</a>
+            <a href="/tags/反弹shell/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">反弹shell</a>
             
         
-            <a href="/tags/一句话木马/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">一句话木马</a>
+            <a href="/tags/metasploit/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">metasploit</a>
             
         
-            <a href="/tags/图片马/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">图片马</a>
+            <a href="/tags/linux权限控制/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">linux权限控制</a>
             
         
             <a href="/tags/服务器/" backup-style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">服务器</a>
@@ -293,6 +327,12 @@
             
         
             <a href="/tags/随笔/" backup-style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">随笔</a>
+            
+        
+            <a href="/tags/xss/" backup-style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">xss</a>
+            
+        
+            <a href="/tags/PHP反序列化漏洞/" backup-style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">PHP反序列化漏洞</a>
             
         
     </nav>
@@ -610,6 +650,7 @@
     <!--动态线条背景-->
     <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
+   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":true},"log":false});</script></body>
+</body>
 </html>
