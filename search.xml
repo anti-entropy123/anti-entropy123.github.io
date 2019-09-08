@@ -572,6 +572,65 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Node靶机练习]]></title>
+      <url>/2019/07/26/Node%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/</url>
+      <content type="html"><![CDATA[<p>只是一次练习.</p>
+<a id="more"></a>
+<h1 id="Node-靶机练习"><a href="#Node-靶机练习" class="headerlink" title="Node 靶机练习"></a>Node 靶机练习</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>靶机名: Ubuntu 16.04.3 TLS node tty1</li>
+<li>运行环境: Vmware virtual machine</li>
+</ul>
+<hr>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ul>
+<li>扫描内网<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\MECHREVO&gt;nmap -sP 192.168.126.0/24</span><br><span class="line">Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-26 11:38 ?D1ú±ê×?ê±??</span><br><span class="line">Stats: 0:00:13 elapsed; 0 hosts completed (0 up), 254 undergoing ARP Ping Scan</span><br><span class="line">Parallel DNS resolution of 254 hosts. Timing: About 50.00% done; ETC: 11:38 (0:00:00 remaining)</span><br><span class="line">Stats: 0:00:18 elapsed; 0 hosts completed (0 up), 254 undergoing ARP Ping Scan</span><br><span class="line">Parallel DNS resolution of 254 hosts. Timing: About 50.00% done; ETC: 11:38 (0:00:05 remaining)</span><br><span class="line">Nmap scan report for 192.168.126.134 (192.168.126.134)</span><br><span class="line">Host is up (0.00s latency).</span><br><span class="line">MAC Address: 00:0C:29:F3:9B:1C (VMware)</span><br><span class="line">Nmap scan report for 192.168.126.254 (192.168.126.254)</span><br><span class="line">Host is up (0.00s latency).</span><br><span class="line">MAC Address: 00:50:56:FF:09:F7 (VMware)</span><br><span class="line">Nmap scan report for 192.168.126.1 (192.168.126.1)</span><br><span class="line">Host is up.</span><br><span class="line">Nmap done: 256 IP addresses (3 hosts up) scanned in 24.61 seconds</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>找到靶机ip地址: 192.168.126.134</p>
+<ul>
+<li>扫描端口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\MECHREVO&gt;nmap -A -p- 192.168.126.134</span><br><span class="line">Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-26 11:51 ?D1ú±ê×?ê±??</span><br><span class="line">Stats: 0:01:10 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan</span><br><span class="line">SYN Stealth Scan Timing: About 41.55% done; ETC: 11:54 (0:01:16 remaining)</span><br><span class="line">Nmap scan report for 192.168.126.134 (192.168.126.134)</span><br><span class="line">Host is up (0.00028s latency).</span><br><span class="line">Not shown: 65533 filtered ports</span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line">22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey:</span><br><span class="line">|   2048 dc:5e:34:a6:25:db:43:ec:eb:40:f4:96:7b:8e:d1:da (RSA)</span><br><span class="line">|   256 6c:8e:5e:5f:4f:d5:41:7d:18:95:d1:dc:2e:3f:e5:9c (ECDSA)</span><br><span class="line">|_  256 d8:78:b8:5d:85:ff:ad:7b:e6:e2:b5:da:1e:52:62:36 (ED25519)</span><br><span class="line">3000/tcp open  http    Node.js Express framework</span><br><span class="line">| hadoop-datanode-info:</span><br><span class="line">|_  Logs: /login</span><br><span class="line">| hadoop-tasktracker-info:</span><br><span class="line">|_  Logs: /login</span><br><span class="line">|_http-title: MyPlace</span><br><span class="line">MAC Address: 00:0C:29:F3:9B:1C (VMware)</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device type: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.10 - 4.11, Linux 3.16 - 4.6, Linux 3.2 - 4.9, Linux 4.4</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">TRACEROUTE</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   0.28 ms 192.168.126.134 (192.168.126.134)</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 134.81 seconds</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>开放了两个端口: 22 和 3000, 22端口是ssh端口, 3000端口就是node.js的默认端口.</p>
+<p>用浏览器访问192.168.126.134:3000.<br>抓包看看, 好像没有什么可疑的地方.</p>
+<p>尝试扫描目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">D:\dirsearch&gt;python dirsearch.py -u http://192.168.126.134:3000/ -e *</span><br><span class="line"></span><br><span class="line"> _|. _ _  _  _  _ _|_    v0.3.8</span><br><span class="line">(_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: * | HTTP method: get | Threads: 10 | Wordlist size: 6087</span><br><span class="line"></span><br><span class="line">Error Log: D:\学习资料\Python——为了守护我爱的人，我将运行一个牛逼的脚本\dirsearch\logs\errors-19-07-26_12-04-21.log</span><br><span class="line"></span><br><span class="line">Target: http://192.168.126.134:3000/</span><br><span class="line"></span><br><span class="line">[12:04:21] Starting:</span><br><span class="line">[12:04:38] 301 -  171B  - /assets  -&gt;  /assets/</span><br><span class="line">[12:05:16] 301 -  173B  - /uploads  -&gt;  /uploads/</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>分别看下两个目录, 里面都是些网站上的资源. 没有有价值的东西.</p>
+<ul>
+<li>通过查看<code>/api/users/latest</code>, 找到了三个账号.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&quot;_id&quot;:&quot;59a7368398aa325cc03ee51d&quot;,&quot;username&quot;:&quot;tom&quot;,</span><br><span class="line">&quot;password&quot;:&quot;f0e2e750791171b0391b682ec35835bd6a5c3f7c8d1d0191451ec77b4d75f240&quot;,&quot;is_admin&quot;:false&#125;,</span><br><span class="line">&#123;&quot;_id&quot;:&quot;59a7368e98aa325cc03ee51e&quot;,&quot;username&quot;:&quot;mark&quot;,</span><br><span class="line">&quot;password&quot;:&quot;de5a1adf4fedcce1533915edc60177547f1057b61b7119fd130e1f7428705f73&quot;,&quot;is_admin&quot;:false&#125;,</span><br><span class="line">&#123;&quot;_id&quot;:&quot;59aa9781cced6f1d1490fce9&quot;,&quot;username&quot;:&quot;rastating&quot;,</span><br><span class="line">&quot;password&quot;:&quot;5065db2df0d4ee53562c650c29bacf55b97e231e3fe88570abc9edd8b78ac2f0&quot;,&quot;is_admin&quot;:false&#125;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>其中的密码经md5加密, 且最后一个无法破解.</p>
+<p>但是只要有一个账号就可以了. </p>
+<p><code>md5_decode(&#39;f0e2e750791171b0391b682ec35835bd6a5c3f7c8d1d0191451ec77b4d75f240&#39;) =&gt; spongebob</code><br>登录进tom的账号后. 发现没有管理员权限, 还是啥也干不了…</p>
+<p>网上查了一下攻略, 此处应该访问<code>/api/users/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&quot;_id&quot;:&quot;59a7365b98aa325cc03ee51c&quot;,&quot;username&quot;:&quot;myP14ceAdm1nAcc0uNT&quot;,</span><br><span class="line">&quot;password&quot;:&quot;dffc504aa55359b9265cbebe1e4032fe600b64475ae3fd29c07d23223334d0af&quot;,&quot;is_admin&quot;:true&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>密码md5解密<br><code>md5_decode(&#39;dffc504aa55359b9265cbebe1e4032fe600b64475ae3fd29c07d23223334d0af&#39;) =&gt; &#39;manchester&#39;</code></p>
+<p>这下有了admin账号了.</p>
+<p>登录后可以下载网站源码<code>MyPlace.backup</code>.  </p>
+<p>但是确实base64编码的. 我尝试用网上的在线解码网站, 但是效果不理想.</p>
+<p>其实直接用php就可以很方便的解码并保存在文件中, 如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$file = <span class="string">" /* base64 编码的文件内容 */ "</span>;</span><br><span class="line">$result = base64_decode($file);</span><br><span class="line">file_put_contents(<span class="string">"result.txt"</span>,$result);</span><br></pre></td></tr></table></figure>
+
+<p>解码之后打开一看是乱码, 但是前两个字符是’PK’, 所以应该是个zip压缩文件. 只要把上面的<code>result.txt</code>直接改成<code>result.zip</code>再跑一下就可以.</p>
+<p>压缩包需要密码, 还需要研究下zip的密码破解.</p>
+<p>(未完待续…)</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[用python给女神刷赞会发生什么？]]></title>
       <url>/2019/07/19/%E5%BD%93%E4%BD%A0%E7%94%A8python%E7%BB%99%E5%A5%B3%E7%A5%9E%E5%88%B7%E8%B5%9E%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
       <content type="html"><![CDATA[<h1 id="用python给女神刷赞会发生什么？"><a href="#用python给女神刷赞会发生什么？" class="headerlink" title="用python给女神刷赞会发生什么？"></a>用python给女神刷赞会发生什么？</h1><a id="more"></a>
@@ -954,9 +1013,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         
