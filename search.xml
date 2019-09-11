@@ -3,6 +3,90 @@
   
     
     <entry>
+      <title><![CDATA[DNS劫持 初见]]></title>
+      <url>/2019/09/12/ettercap/</url>
+      <content type="html"><![CDATA[<p>实现了我多年的愿望.</p>
+<a id="more"></a>
+
+<h1 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h1><h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>暑假的时候看见ljy大佬qq空间里发了个黑掉酒店摄像头的说说, </p>
+<p>当时非常震撼, 也特别想学.</p>
+<p>wyz学长告诉我说很可能是通过中间人攻击的手段实现的(现在看来确实很有可能), 推荐我学习下ettercap的使用方法.</p>
+<p>当时为了做到这点, 我用了好几天的时间来尝试, </p>
+<p>从 Kali 到 Windows,<br>从 虚拟机 到 物理机,<br>从 NAT 模式到 桥接模式,<br>从 卸载 到 重新安装,<br>从 搜百度 到 查谷歌,<br>从 虚拟机崩溃 到 我本人崩溃 …</p>
+<p>反正就是好几天没干别的就鼓捣这玩意儿了, </p>
+<p>后来 yw老哥 在社团宣讲的时候演示了相关的技术, 遂找他问了问, 说是有可能是网卡的问题, 咱也不管是不是吧, 反正最后我是信了.</p>
+<p>这不今天的新网卡(某宝二十多买的)到了, 迫不及待的尝试我期待已久的中间人攻击.</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>路由器(以下所有设备均连接至此) : <ul>
+<li>手机热点 :<br>  ip : 192.168.43.1</li>
+</ul>
+</li>
+<li>攻击机 : <ul>
+<li>Vmware 虚拟机 :<br>  操作系统 : Kali<br>  ip : 192.168.43.214</li>
+</ul>
+</li>
+<li>攻击目标 :<ul>
+<li>物理机:(目标A)<br>  操作系统 : Windows<br>  ip : 192.168.43.170</li>
+<li>手机 :(目标B)<br>  操作系统 : Android<br>  ip : 192.168.43.1</li>
+</ul>
+</li>
+</ul>
+<p>测试的目标是通过中间人攻击(arp欺骗)来实现监视 A 所浏览的图片.</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>开启数据包转发</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>这一步非常重要! </p>
+<p>我当初认为数据包的转发是由软件 ettercap 完成的,</p>
+<p>但是在百度上无意间看到是操作系统完成的,.</p>
+<p>如果不开启这个的话, 被攻击的设备将无法连接网络, 没法进一步攻击.</p>
+<p>(当初因为这个浪费不少时间)</p>
+<ol start="2">
+<li><p>启动 ettercap</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ettercap -G</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择 sniff-Unified, 这里选择我们的网卡wlan0,然后点击OK</p>
+</li>
+<li><p>点击Hosts, 首先选择Scan for hosts, 扫描一下局域网里面主机, 然后我们在点击Hosts里面的Hosts list. 正常情况下会出现至少我刚才提到的两个ip地址. (既然这么说就有不正常情况, 有时候会扫不出刚才的ip, 原因不明)</p>
+</li>
+<li><p>A 的地址加入到 target1, B 的地址加入到 target2.</p>
+</li>
+<li><p>选择Mitm-ARP poisoning.</p>
+</li>
+<li><p>选择Sniff remote connections, 最后Start.</p>
+</li>
+<li><p>开启新的shell, 启动 driftnet,</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driftnet -i wlan0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>这时, 当 A 浏览图片时, Kali 上就会出现那些图片.</p>
+<p>爽~~</p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li><p>有时间可以尝试偷偷监听室友们的, 看看能不能做到不被发现的完成目的,<br>想想就刺激.</p>
+</li>
+<li><p>尝试截获其它的数据, 包括但不限于视频流, 各种密码.</p>
+</li>
+<li><p>DNS污染, 将所有的http请求都解析到我的博客网址.</p>
+</li>
+</ul>
+<p>要不是现在已经半夜一点了, 真想现在就试试. </p>
+<p>然而明天又一天课, MD, 睡觉了.</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> 中间人攻击 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Node靶机练习]]></title>
       <url>/2019/09/08/Node%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/</url>
       <content type="html"><![CDATA[<p>只是一次练习.</p>
@@ -74,6 +158,10 @@
 <li>-p : 指定密码, magicaaaa就是前五位确定是magic了, 后面的a在这里是掩码, 表明这4位是字母.</li>
 <li>myplace : 要破解的压缩包的名称.</li>
 </ul>
+<p>上面的是遍历爆破, 效率估计不高, gxy学长告诉了我fcrackzip也支持跑字典, </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt myplace.zip</span><br></pre></td></tr></table></figure>
+
+<p>其中的这个 rockyou.txt 估计以后也能用到.</p>
 <p>最后得到密码 <code>magicword</code></p>
 <p>解压缩后, myplace里是用<code>node.js</code>框架搭建的网站源码(终于知道靶机名字的由来了.)</p>
 <p>然后我对node.js也不是很熟悉, 在百度中了解到, 这个框架的项目入口和程序启动文件是<code>app.js</code>.</p>
@@ -108,9 +196,9 @@
             
             <tag> web </tag>
             
-            <tag> linux提权 </tag>
-            
             <tag> metasploit </tag>
+            
+            <tag> linux提权 </tag>
             
         </tags>
         
@@ -671,13 +759,13 @@
         
         <tags>
             
-            <tag> metasploit </tag>
-            
             <tag> awd </tag>
             
             <tag> 不死马 </tag>
             
             <tag> 反弹shell </tag>
+            
+            <tag> metasploit </tag>
             
             <tag> linux权限控制 </tag>
             
@@ -1068,9 +1156,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         
@@ -1523,22 +1611,22 @@
 </ul>
 <h2 id="二十题题解"><a href="#二十题题解" class="headerlink" title="二十题题解"></a>二十题题解</h2><h3 id="pass1"><a href="#pass1" class="headerlink" title="pass1:"></a>pass1:</h3><p>由提示</p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/pass1tip.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/pass1tip.png" alt title class>
                 <p></p>
             </figure>
 <p>根据上面的介绍, JavaScript只会在浏览器中运行, 所以我们在浏览器中禁用掉JavaScript就行了.<br>以chrome浏览器为例.<br>首先在pass1的页面下,点击<code>F12</code>,调出开发者工具.</p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/开发者工具.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/开发者工具.png" alt title class>
                 <p></p>
             </figure>
 <p>然后点击<code>F1</code>,打开<code>settings</code></p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/setting.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/setting.png" alt title class>
                 <p></p>
             </figure>
 <p>在<code>setting</code>的<code>Preferences</code>的末尾部分,有个<code>Disable JavaScript</code>,顾名思义,找的就是它了. 选中后就可以禁用JavaScript, 成功上传<code>php</code>类型的文件, 审查元素, 发现此处的图片是<code>test.php</code>, 说明成功了.</p>
 <h3 id="pass2"><a href="#pass2" class="headerlink" title="pass2:"></a>pass2:</h3><p>尝试直接提交test.php, 显示文件类型不匹配.<br>查看下提示<figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/pass2tips.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/pass2tips.png" alt title class>
                 <p></p>
             </figure></p>
 <p>好了, 什么是MIME呢?</p>
@@ -1629,18 +1717,18 @@
 <p><code>1.jpg</code> 是原图片文件, <code>2.php</code>是<code>一句话</code>, <code>3.jpg</code>就是两个文件合并后的新文件.<br><code>/b</code>是以二进制形式,适用于图片音频等文件<br><code>/a</code>是ascii形式,适用于<code>txt</code>,<code>php</code>等文本文件<br><font size="2" color="green">小声bb : 然而亲测好像没有什么区别</font></p>
 <p>把合成好的文件放到测试的目录下, 尝试使用菜刀连接. </p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/jpg.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/jpg.png" alt title class>
                 <p></p>
             </figure>
 <p>.<br>.<br>.<br>会发现连接不上 :|</p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/error.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/error.png" alt title class>
                 <p></p>
             </figure>
 <p>这是因为菜刀只能和<code>php</code>,<code>asp</code>,<code>aspx</code>等脚本文件连接. </p>
 <p>如果把后缀改成<code>php</code>,再次连接…</p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/php.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/php.png" alt title class>
                 <p></p>
             </figure>
 
@@ -1650,17 +1738,17 @@
 <p>感觉<code>GET()</code>函数应该是关键点<br>百度了下, <code>GET()</code>函数在这的使用方法是在URL处获取参数.<br>比如, 我在URL<code>http://某路径/include.php</code>后加上<code>?file=test.txt</code>, 也就是<code>http://某路径/include.php?file=test.txt</code>那么当我访问这个URL时, 脚本就会自动找到<code>test.txt</code>并把其内容放到当前<code>include.php</code>中一起执行.<br>这样,我们就可以通过<code>文件包含漏洞</code>, 使服务器在运行<code>include.php</code>时把我们的木马一起运行了.</p>
 <p>在浏览器中测试下,</p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/ceshi.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/ceshi.png" alt title class>
                 <p></p>
             </figure>
 <p>可以发现, <code>图片马</code>的数据已经被访问到了.(但是没有发现<code>php脚本</code>回显, 暂时存疑 :/ )</p>
 <p>在使用菜刀尝试连接</p>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/sucessful.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/sucessful.png" alt title class>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <img src="http://188.131.227.20:999/picture/C.png" alt title class>
+                <img src="http://pub54dbxm.bkt.clouddn.com/C.png" alt title class>
                 <p></p>
             </figure>
 <p>成功拿到了 <code>webshell</code>,这道题到这就算是结束了, 其它的两个图片类型应该也都差不多, 这里不多赘述. :)</p>

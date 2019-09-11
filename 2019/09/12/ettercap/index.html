@@ -3,13 +3,13 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
-    <link rel="canonical" href="https://tjuyjn.top/tags/反弹shell/">
+    <link rel="canonical" href="https://tjuyjn.top/2019/09/12/ettercap/">
     
     
-    <title>Tags: 反弹shell | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <title>DNS劫持 初见 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="computer,technology,blog">
+    <meta name="keywords" content="web,中间人攻击">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -19,7 +19,7 @@
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	false,
+            reward:	true,
             lv: JSON.parse('{"enable":null,"app_id":"falsee1f779yetMaV1lNERajntYJH-gzGzoHsz","app_key":"CGROdujMx4Hw9l84Eysyhp7D","icon":true}'),
             v: JSON.parse('{"enable":true,"appid":"w6aWfPRvBTtEbBcUQVnWa1fl-MdYXbMMI","appkey":"96PaRwN0DWkNUdwQrWx3Ff7g","notify":true,"verify":true,"placeholder":"来和希儿一起玩吧 -- 记得告诉希儿你的昵称和邮箱哟","avatar":"retro"}'),
             g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
@@ -93,7 +93,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="">
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -221,7 +221,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
@@ -247,7 +247,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Tags: 反弹shell</span>
+            <span>DNS劫持 初见</span>
             
         </div>
         
@@ -257,118 +257,22 @@
         
     </div>
 </header>
-<header class="content-header tags-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Tags: 反弹shell</h1>
+        <h1 class="title">DNS劫持 初见</h1>
         <h5 class="subtitle">
+            
+                <time datetime="2019-09-11T16:24:05.000Z" itemprop="datePublished" class="page-time">
+  2019-09-12
+</time>
+
+
             
         </h5>
         
     </div>
     
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">全部</a>
-        
-            <a href="/tags/web/" backup-style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">web</a>
-            
-        
-            <a href="/tags/文件上传漏洞/" backup-style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">文件上传漏洞</a>
-            
-        
-            <a href="/tags/文件包含漏洞/" backup-style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">文件包含漏洞</a>
-            
-        
-            <a href="/tags/中间人攻击/" backup-style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">中间人攻击</a>
-            
-        
-            <a href="/tags/python/" backup-style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">python</a>
-            
-        
-            <a href="/tags/word/" backup-style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">word</a>
-            
-        
-            <a href="/tags/主机扫描/" backup-style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">主机扫描</a>
-            
-        
-            <a href="/tags/linux/" backup-style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">linux</a>
-            
-        
-            <a href="/tags/misc/" backup-style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">misc</a>
-            
-        
-            <a href="/tags/awd/" backup-style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">awd</a>
-            
-        
-            <a href="/tags/不死马/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">不死马</a>
-            
-        
-            <a href="/tags/反弹shell/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">反弹shell</a>
-            
-        
-            <a href="/tags/metasploit/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">metasploit</a>
-            
-        
-            <a href="/tags/linux权限控制/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">linux权限控制</a>
-            
-        
-            <a href="/tags/sql注入/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
-            
-        
-            <a href="/tags/mysql基本语法/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">mysql基本语法</a>
-            
-        
-            <a href="/tags/php/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">php</a>
-            
-        
-            <a href="/tags/一句话木马/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">一句话木马</a>
-            
-        
-            <a href="/tags/图片马/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">图片马</a>
-            
-        
-            <a href="/tags/linux提权/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">linux提权</a>
-            
-        
-            <a href="/tags/CTF/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">CTF</a>
-            
-        
-            <a href="/tags/随笔/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">随笔</a>
-            
-        
-            <a href="/tags/xss/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">xss</a>
-            
-        
-            <a href="/tags/PHP反序列化漏洞/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">PHP反序列化漏洞</a>
-            
-        
-            <a href="/tags/csrf/" backup-style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">csrf</a>
-            
-        
-            <a href="/tags/RCE/" backup-style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">RCE</a>
-            
-        
-            <a href="/tags/越权/" backup-style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">越权</a>
-            
-        
-            <a href="/tags/URL重定向/" backup-style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">URL重定向</a>
-            
-        
-            <a href="/tags/服务器/" backup-style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">服务器</a>
-            
-        
-            <a href="/tags/ubuntu/" backup-style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">ubuntu</a>
-            
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
 
 </header>
 
@@ -385,45 +289,253 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-            <div class="waterfall">
-                
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-07-29 16:39:02" datetime="2019-07-29T08:39:02.000Z"  itemprop="datePublished">2019-07-29</time>
 
+<div class="container body-wrap">
+    <article id="post-ettercap"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">DNS劫持 初见</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-12 00:24:05" datetime="2019-09-11T16:24:05.000Z"  itemprop="datePublished">2019-09-12</time>
+
+            
+
+
+            
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/09/12/ettercap/#comment">
+            <span class="valine-comment-count" data-xid="/2019/09/12/ettercap/"></span>
+        </a>
+    </span>
+
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>实现了我多年的愿望.</p>
+<a id="more"></a>
+
+<h1 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h1><h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>暑假的时候看见ljy大佬qq空间里发了个黑掉酒店摄像头的说说, </p>
+<p>当时非常震撼, 也特别想学.</p>
+<p>wyz学长告诉我说很可能是通过中间人攻击的手段实现的(现在看来确实很有可能), 推荐我学习下ettercap的使用方法.</p>
+<p>当时为了做到这点, 我用了好几天的时间来尝试, </p>
+<p>从 Kali 到 Windows,<br>从 虚拟机 到 物理机,<br>从 NAT 模式到 桥接模式,<br>从 卸载 到 重新安装,<br>从 搜百度 到 查谷歌,<br>从 虚拟机崩溃 到 我本人崩溃 …</p>
+<p>反正就是好几天没干别的就鼓捣这玩意儿了, </p>
+<p>后来 yw老哥 在社团宣讲的时候演示了相关的技术, 遂找他问了问, 说是有可能是网卡的问题, 咱也不管是不是吧, 反正最后我是信了.</p>
+<p>这不今天的新网卡(某宝二十多买的)到了, 迫不及待的尝试我期待已久的中间人攻击.</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>路由器(以下所有设备均连接至此) : <ul>
+<li>手机热点 :<br>  ip : 192.168.43.1</li>
+</ul>
+</li>
+<li>攻击机 : <ul>
+<li>Vmware 虚拟机 :<br>  操作系统 : Kali<br>  ip : 192.168.43.214</li>
+</ul>
+</li>
+<li>攻击目标 :<ul>
+<li>物理机:(目标A)<br>  操作系统 : Windows<br>  ip : 192.168.43.170</li>
+<li>手机 :(目标B)<br>  操作系统 : Android<br>  ip : 192.168.43.1</li>
+</ul>
+</li>
+</ul>
+<p>测试的目标是通过中间人攻击(arp欺骗)来实现监视 A 所浏览的图片.</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>开启数据包转发</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<p>这一步非常重要! </p>
+<p>我当初认为数据包的转发是由软件 ettercap 完成的,</p>
+<p>但是在百度上无意间看到是操作系统完成的,.</p>
+<p>如果不开启这个的话, 被攻击的设备将无法连接网络, 没法进一步攻击.</p>
+<p>(当初因为这个浪费不少时间)</p>
+<ol start="2">
+<li><p>启动 ettercap</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ettercap -G</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择 sniff-Unified, 这里选择我们的网卡wlan0,然后点击OK</p>
+</li>
+<li><p>点击Hosts, 首先选择Scan for hosts, 扫描一下局域网里面主机, 然后我们在点击Hosts里面的Hosts list. 正常情况下会出现至少我刚才提到的两个ip地址. (既然这么说就有不正常情况, 有时候会扫不出刚才的ip, 原因不明)</p>
+</li>
+<li><p>A 的地址加入到 target1, B 的地址加入到 target2.</p>
+</li>
+<li><p>选择Mitm-ARP poisoning.</p>
+</li>
+<li><p>选择Sniff remote connections, 最后Start.</p>
+</li>
+<li><p>开启新的shell, 启动 driftnet,</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driftnet -i wlan0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>这时, 当 A 浏览图片时, Kali 上就会出现那些图片.</p>
+<p>爽~~</p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li><p>有时间可以尝试偷偷监听室友们的, 看看能不能做到不被发现的完成目的,<br>想想就刺激.</p>
+</li>
+<li><p>尝试截获其它的数据, 包括但不限于视频流, 各种密码.</p>
+</li>
+<li><p>DNS污染, 将所有的http请求都解析到我的博客网址.</p>
+</li>
+</ul>
+<p>要不是现在已经半夜一点了, 真想现在就试试. </p>
+<p>然而明天又一天课, MD, 睡觉了.</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2019-09-11T17:08:48.341Z" itemprop="dateUpdated">2019-09-12 01:08:48</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/09/12/ettercap/" target="_blank" rel="external">https://tjuyjn.top/2019/09/12/ettercap/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="Anti-entropy">
+            Anti-entropy
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中间人攻击/">中间人攻击</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《DNS劫持 初见》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《DNS劫持 初见》 — Anti-entropy's blog&source=实现了我多年的愿望." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DNS劫持 初见》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/12/ettercap/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+
+        
     </div>
     
-
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
 
   
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/29/实战中可能会用到的几个技巧/">实战中可能会用到的几个技巧</a>
+    <div class="next">
+      <a href="/2019/09/08/Node靶机练习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Node靶机练习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DNS劫持"><span class="post-toc-number">1.</span> <span class="post-toc-text">DNS劫持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#序"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TODO"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TODO</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
     </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+    <div class="reward-content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/awd/">awd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux权限控制/">linux权限控制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/metasploit/">metasploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不死马/">不死马</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反弹shell/">反弹shell</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
         
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
             </div>
+        </label>
         
-    
+    </div>
 </div>
 
+    
+
+</div>
 
     </main>
     <footer class="footer ">
@@ -505,7 +617,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/tags/反弹shell/&title=Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《DNS劫持 初见》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -517,25 +629,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/tags/反弹shell/&title=Anti-entropy's blog&source=个人博客计算机" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《DNS劫持 初见》 — Anti-entropy's blog&source=实现了我多年的愿望." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/tags/反弹shell/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Anti-entropy's blog&url=https://tjuyjn.top/tags/反弹shell/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DNS劫持 初见》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/12/ettercap/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/tags/反弹shell/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -547,7 +659,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3aSW7DMBAEQP//08o1QCKlmyPRBlI8GbBMlnwYzMLXK17Ht5U/f/bbdrd64eLijrnH5fp5/DUif9WzFzgz4OLi7ufmwWgNmoS2awMuLu4nc/Pf4uLi/gduDmpLKVxc3M/ktqFnrSGytVbDxcUdcNcaoPd+fqS/i4uLu8Q9llY7YsnToz/OxcXF3cJtg8510ZKg8z1Pd8bFxX2Yuxa81tocSSH0R+GEi4v7Vm7btsivYU3GM7i4uHu47VWJtVDVtj+iQQsuLu5bufmYJOG2+9eBDBcXd8xtC5L2Wkb7RxTFDy4u7sPc64PzF5iUQPUNMlxc3Me4bcujHa/meVYxpMHFxd3CnVzMmhzWJk+4uLh7uPn4JB+utE8WzVZcXNwt3MXy46ayJ0mwXjkLFxf3Jm57TBuMJmPXX8IiLi7uFu71F9eb5mnKWhvl9K/BxcV9mHuUK29nTIavoyEKLi7umNs2TJMUZ/J8mwbh4uI+x82D19qFjLyRWhQ/uLi4W7hrg9XnGiKj/i4uLu5G7qQcasukqJOKi4v7Adzk+baxUjdYcXFxN3Lz4icfsUyGsrfVari4uI9NKyZJTJur3NbfxcXFXfn2C3zZBhw6xORTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzElEQVR42u3ay24CMQwFUP7/p6nUVaXhcW0nAVUnK1QymUMXlh+53eJ1/11/P1/Xdf/rndenli1cXNwxNz+6uif5e34+Li7ueW4SvK5HJ98+e0sS1HBxcb+fm4SnZD8uLu5/5eY/IyHi4uJ+J3fSwshLl0lxhYuLe5Lba5iu/by9v4uLi7toKpGsXsHTfBcuLu4RbjLSmDQ9J4lOVKvh4uJu4yagavDKz8zfhYuLe5Kb/I7q9YveyaP+Li4u7iJuEuGSgUrvukaeHj2o1XBxcTdzq+lONXuajGafNkRwcXE3c1cFnXlaU5gG4+LiHuRWr0nlCVBSSr1B4+LiHuFWH147DknOfPM/xsXF3cytziySIFilJ5c8cHFxd3NHqcZgKJKPbNdlRri4uCl3VdtiEvLyAQwuLu4Zbq/syZ/NBzDJWAUXF/cMt1rq5MOSUcqSvBEXF3cb915cvbwpD4VvnsXFxT3CnYSVauKSpD69dgwuLu4Obh688tDTG5+Mury4uLgbuHnwqo5RJ8VPcyaMi4v7UW4SZ3qDlnL/BhcX90PcfH9eJm1McXBxccfc3iWt6nWr6pWOwiUMXFzcpdxVDdNVQfBQfxcXF/cx9wdfJrR78y1qyAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

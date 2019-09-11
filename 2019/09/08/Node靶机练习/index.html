@@ -9,7 +9,7 @@
     <title>Node靶机练习 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="web,linux提权,metasploit">
+    <meta name="keywords" content="web,metasploit,linux提权">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -386,6 +386,10 @@
 <li>-p : 指定密码, magicaaaa就是前五位确定是magic了, 后面的a在这里是掩码, 表明这4位是字母.</li>
 <li>myplace : 要破解的压缩包的名称.</li>
 </ul>
+<p>上面的是遍历爆破, 效率估计不高, gxy学长告诉了我fcrackzip也支持跑字典, </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt myplace.zip</span><br></pre></td></tr></table></figure>
+
+<p>其中的这个 rockyou.txt 估计以后也能用到.</p>
 <p>最后得到密码 <code>magicword</code></p>
 <p>解压缩后, myplace里是用<code>node.js</code>框架搭建的网站源码(终于知道靶机名字的由来了.)</p>
 <p>然后我对node.js也不是很熟悉, 在百度中了解到, 这个框架的项目入口和程序启动文件是<code>app.js</code>.</p>
@@ -420,7 +424,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-08T15:14:22.047Z" itemprop="dateUpdated">2019-09-08 23:14:22</time>
+    最後更新時間：<time datetime="2019-09-09T14:07:51.876Z" itemprop="dateUpdated">2019-09-09 22:07:51</time>
 </span><br>
 
 
@@ -509,7 +513,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/09/12/ettercap/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">DNS劫持 初见</h4>
+      </a>
+    </div>
   
 
   
