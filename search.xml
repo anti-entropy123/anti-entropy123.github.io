@@ -196,9 +196,9 @@
             
             <tag> web </tag>
             
-            <tag> metasploit </tag>
-            
             <tag> linux提权 </tag>
+            
+            <tag> metasploit </tag>
             
         </tags>
         
@@ -759,13 +759,13 @@
         
         <tags>
             
+            <tag> metasploit </tag>
+            
             <tag> awd </tag>
             
             <tag> 不死马 </tag>
             
             <tag> 反弹shell </tag>
-            
-            <tag> metasploit </tag>
             
             <tag> linux权限控制 </tag>
             
@@ -1611,22 +1611,22 @@
 </ul>
 <h2 id="二十题题解"><a href="#二十题题解" class="headerlink" title="二十题题解"></a>二十题题解</h2><h3 id="pass1"><a href="#pass1" class="headerlink" title="pass1:"></a>pass1:</h3><p>由提示</p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/pass1tip.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/pass1tip.png" alt title class>
                 <p></p>
             </figure>
 <p>根据上面的介绍, JavaScript只会在浏览器中运行, 所以我们在浏览器中禁用掉JavaScript就行了.<br>以chrome浏览器为例.<br>首先在pass1的页面下,点击<code>F12</code>,调出开发者工具.</p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/开发者工具.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/开发者工具.png" alt title class>
                 <p></p>
             </figure>
 <p>然后点击<code>F1</code>,打开<code>settings</code></p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/setting.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/setting.png" alt title class>
                 <p></p>
             </figure>
 <p>在<code>setting</code>的<code>Preferences</code>的末尾部分,有个<code>Disable JavaScript</code>,顾名思义,找的就是它了. 选中后就可以禁用JavaScript, 成功上传<code>php</code>类型的文件, 审查元素, 发现此处的图片是<code>test.php</code>, 说明成功了.</p>
 <h3 id="pass2"><a href="#pass2" class="headerlink" title="pass2:"></a>pass2:</h3><p>尝试直接提交test.php, 显示文件类型不匹配.<br>查看下提示<figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/pass2tips.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/pass2tips.png" alt title class>
                 <p></p>
             </figure></p>
 <p>好了, 什么是MIME呢?</p>
@@ -1717,18 +1717,18 @@
 <p><code>1.jpg</code> 是原图片文件, <code>2.php</code>是<code>一句话</code>, <code>3.jpg</code>就是两个文件合并后的新文件.<br><code>/b</code>是以二进制形式,适用于图片音频等文件<br><code>/a</code>是ascii形式,适用于<code>txt</code>,<code>php</code>等文本文件<br><font size="2" color="green">小声bb : 然而亲测好像没有什么区别</font></p>
 <p>把合成好的文件放到测试的目录下, 尝试使用菜刀连接. </p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/jpg.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/jpg.png" alt title class>
                 <p></p>
             </figure>
 <p>.<br>.<br>.<br>会发现连接不上 :|</p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/error.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/error.png" alt title class>
                 <p></p>
             </figure>
 <p>这是因为菜刀只能和<code>php</code>,<code>asp</code>,<code>aspx</code>等脚本文件连接. </p>
 <p>如果把后缀改成<code>php</code>,再次连接…</p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/php.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/php.png" alt title class>
                 <p></p>
             </figure>
 
@@ -1738,17 +1738,17 @@
 <p>感觉<code>GET()</code>函数应该是关键点<br>百度了下, <code>GET()</code>函数在这的使用方法是在URL处获取参数.<br>比如, 我在URL<code>http://某路径/include.php</code>后加上<code>?file=test.txt</code>, 也就是<code>http://某路径/include.php?file=test.txt</code>那么当我访问这个URL时, 脚本就会自动找到<code>test.txt</code>并把其内容放到当前<code>include.php</code>中一起执行.<br>这样,我们就可以通过<code>文件包含漏洞</code>, 使服务器在运行<code>include.php</code>时把我们的木马一起运行了.</p>
 <p>在浏览器中测试下,</p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/ceshi.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/ceshi.png" alt title class>
                 <p></p>
             </figure>
 <p>可以发现, <code>图片马</code>的数据已经被访问到了.(但是没有发现<code>php脚本</code>回显, 暂时存疑 :/ )</p>
 <p>在使用菜刀尝试连接</p>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/sucessful.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/sucessful.png" alt title class>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <img src="http://pub54dbxm.bkt.clouddn.com/C.png" alt title class>
+                <img src="http://188.131.227.20:999/picture/C.png" alt title class>
                 <p></p>
             </figure>
 <p>成功拿到了 <code>webshell</code>,这道题到这就算是结束了, 其它的两个图片类型应该也都差不多, 这里不多赘述. :)</p>
