@@ -3,7 +3,46 @@
   
     
     <entry>
-      <title><![CDATA[DNS劫持 初见]]></title>
+      <title><![CDATA[Java 常用方法总结]]></title>
+      <url>/2019/09/17/Java/</url>
+      <content type="html"><![CDATA[<p>划重点, 考试要考的</p>
+<a id="more"></a>
+
+<h1 id="Java-常用方法总结"><a href="#Java-常用方法总结" class="headerlink" title="Java 常用方法总结"></a>Java 常用方法总结</h1><p>看到java书上有那么多自带的方法, 感觉如果不总结就容易忘掉.</p>
+<p>试试记笔记效果咋样吧.</p>
+<p><del>试试就试试</del></p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><ul>
+<li><p>输入 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line">Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"><span class="comment">// 读入整型</span></span><br><span class="line">input.nextInt();</span><br><span class="line"><span class="comment">// 读入浮点型</span></span><br><span class="line">input.nextFloat();</span><br><span class="line"><span class="comment">// 读入双精度浮点型</span></span><br><span class="line">input.nextDouble();</span><br><span class="line"><span class="comment">// 依此类推, 不再列举</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出后换行</span></span><br><span class="line">System.out.println(<span class="string">"hello world"</span>); </span><br><span class="line"><span class="comment">// 输出后不换行</span></span><br><span class="line">System.out.print(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h3 id="字符-以下省略Character"><a href="#字符-以下省略Character" class="headerlink" title="字符 (以下省略Character.)"></a>字符 (以下省略<code>Character.</code>)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isDigit</span><span class="params">(ch)</span></span>; <span class="comment">//是数字?</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isLetter</span><span class="params">(ch)</span></span>; <span class="comment">//是字母?</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isLetterOrDigit</span><span class="params">(ch)</span></span>; <span class="comment">//是字母或数字?</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isLowerCase</span><span class="params">(ch)</span></span>; <span class="comment">//是小写?</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isUpperCase</span><span class="params">(ch)</span></span>; <span class="comment">//是大写?</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">toLowerCase</span><span class="params">(ch)</span></span>; <span class="comment">//转为小写</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">toUpperCase</span><span class="params">(ch)</span></span>; <span class="comment">//转为大写</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串-以下省略String"><a href="#字符串-以下省略String" class="headerlink" title="字符串(以下省略String.)"></a>字符串(以下省略<code>String.</code>)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">length()</span><br><span class="line">charAt(index) <span class="comment">//返回字符串中第index位的字符, 类似 string[index]</span></span><br><span class="line">toUpperCase()</span><br><span class="line">toLowerCase()</span><br><span class="line">trim() <span class="comment">//去除两端空格</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数学函数-以下省略-Math"><a href="#数学函数-以下省略-Math" class="headerlink" title="数学函数 (以下省略 Math. )"></a>数学函数 (以下省略 <code>Math.</code> )</h2><h3 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sin(<span class="keyword">double</span> a);</span><br><span class="line">cos(<span class="keyword">double</span> a);</span><br><span class="line">tan(<span class="keyword">double</span> a);</span><br><span class="line">acos(<span class="keyword">double</span> a);  <span class="comment">//arccos </span></span><br><span class="line">asin(<span class="keyword">double</span> a);  <span class="comment">//arcsin</span></span><br><span class="line">atan(<span class="keyword">double</span> a);  <span class="comment">//arctan</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="幂运算-对数运算"><a href="#幂运算-对数运算" class="headerlink" title="幂运算, 对数运算"></a>幂运算, 对数运算</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exp(<span class="keyword">double</span> a); <span class="comment">//e 的 a 次方</span></span><br><span class="line">log(<span class="keyword">double</span> a); <span class="comment">//以 2 为底</span></span><br><span class="line">log10(<span class="keyword">double</span> a);</span><br><span class="line">pow(<span class="keyword">double</span> a, <span class="keyword">double</span> b); <span class="comment">// a 的 b 次方</span></span><br><span class="line">sqrt(<span class="keyword">double</span> a);</span><br></pre></td></tr></table></figure>
+
+<h3 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ceil</span><span class="params">(<span class="keyword">double</span> x)</span></span>;  <span class="comment">//向上取整</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">floor</span><span class="params">(<span class="keyword">double</span> x)</span></span>;  <span class="comment">//向下取整</span></span><br><span class="line"><span class="comment">//返回最接近参数的整数值, 若存在两个这样的数, 则返回其中的偶数</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">rint</span><span class="params">(<span class="keyword">double</span> x)</span></span>;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">round</span><span class="params">(<span class="keyword">float</span> x)</span></span>;  <span class="comment">//四舍五入</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random() <span class="comment">// 随机数  0 &lt;= x &lt; 1.0</span></span><br><span class="line">abs(a)  </span><br><span class="line">max(a,b)</span><br><span class="line">min(a,b)</span><br></pre></td></tr></table></figure>]]></content>
+      
+        
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[arp欺骗 初见]]></title>
       <url>/2019/09/12/ettercap/</url>
       <content type="html"><![CDATA[<p>实现了我多年的愿望.</p>
 <a id="more"></a>
@@ -81,6 +120,8 @@
             <tag> web </tag>
             
             <tag> 中间人攻击 </tag>
+            
+            <tag> arp欺骗 </tag>
             
         </tags>
         
