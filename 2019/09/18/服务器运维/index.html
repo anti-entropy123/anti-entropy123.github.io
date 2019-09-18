@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://tjuyjn.top/2019/09/18/服务器运维/">
+    
+    
+    <title>linux 常用命令 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="linux">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+
+    
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":null,"app_id":"falsee1f779yetMaV1lNERajntYJH-gzGzoHsz","app_key":"CGROdujMx4Hw9l84Eysyhp7D","icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":"w6aWfPRvBTtEbBcUQVnWa1fl-MdYXbMMI","appkey":"96PaRwN0DWkNUdwQrWx3Ff7g","notify":true,"verify":true,"placeholder":"来和希儿一起玩吧 -- 记得告诉希儿你的昵称和邮箱哟","avatar":"retro"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+    
+    <script>
+        var imageArr=[];
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?85ac030db207eb5660d0fd7b00b2205d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        
+
+
+        <!-- live2d css -->
+    <style>
+        .live2d-widget-dialog-container {
+            width: 300px;
+            height: 120px;
+            position: absolute;
+            bottom: 65%;
+            right: 0px;
+            transform-origin: right;
+            padding: 12px;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+        .live2d-widget-dialog {
+            width: 100%;
+            height: 100%;
+            color: #917159;
+            font-size: 16px;
+            padding: 12px;
+            border: 2px solid rgb(236, 203, 180);
+            background: rgb(252, 248, 244);
+            box-sizing: border-box;
+            border-radius: 10px;
+            transform: rotate(-2deg);
+            opacity: 0;
+            transition: 200ms opacity;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+            animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+        }
+        @keyframes live2d-widget-dialog-tingle {
+            0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+            100% { transform: translate(1px, -1.5px) rotate(2deg); }
+        }
+    </style>
+
+    <!--- live2d js -->
+    <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+    <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+    <!-- 访客统计 -->
+    <script src="http://188.131.227.20:999/api/ip_locate.php"> </script>
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Anti-entropy</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+          <div id="binft" style=" text-align:center;"></div>
+          <script>
+            var binft = function (r) {
+              function t() {
+                return b[Math.floor(Math.random() * b.length)]
+              }  
+              function e() {
+                return String.fromCharCode(94 * Math.random() + 33)
+              }
+              function n(r) {
+                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                  var l = document.createElement("span");
+                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                }
+                return n
+              }
+              function i() {
+                var t = o[c.skillI];
+                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+              }
+              var l = "",
+              o = ["孤独是常态,", "寂寞是病态",
+                   "孤独使我自由,","寂寞让我作呕",
+                   "为守护所有美好而战,","向一切虚伪的美好宣战",
+                   "don't be sorry,","be better",
+                   "伤痕是我的勋章",
+                   "但置我于低谷者,","必将助我以崛起",
+                   "但置我于死地者,","必将赐我以后生",
+                   "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
+                   "天生我材必有用,","千金散尽还复来"
+                   ].map(function (r) {
+              return r + ""
+              }),
+              a = 2,
+              g = 1,
+              s = 5,
+              d = 75,
+              b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+              c = {
+                text: "",
+                prefixP: -s,
+                skillI: 0,
+                skillP: 0,
+                direction: "forward",
+                delay: a,
+                step: g
+              };
+              i()
+              };
+              binft(document.getElementById('binft'));
+          </script>
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+        </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>linux 常用命令</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">linux 常用命令</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-18T14:14:10.000Z" itemprop="datePublished" class="page-time">
+  2019-09-18
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-服务器运维"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">linux 常用命令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-18 22:14:10" datetime="2019-09-18T14:14:10.000Z"  itemprop="datePublished">2019-09-18</time>
+
+            
+
+
+            
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/09/18/服务器运维/#comment">
+            <span class="valine-comment-count" data-xid="/2019/09/18/服务器运维/"></span>
+        </a>
+    </span>
+
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>原《服务器运维》.</p>
+<a id="more"></a>
+<p>这两天操作系统课正在教怎么用linux命令, 我也顺便把这篇博客重新写写.</p>
+<h1 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ul>
+<li>新建文件 <code>touch &lt;name&gt;</code></li>
+<li>删除文件 <code>rm   &lt;name&gt;</code></li>
+<li>删除目录 <code>rm -r   &lt;name&gt;</code></li>
+<li>解压缩 <code>unzip  &lt;name&gt;</code></li>
+<li>文件复制 <code>cp 源文件 目标目录</code></li>
+<li>文件移动 <code>mv 源文件 目标目录</code></li>
+<li>查找文件 <code>find -name &#39;filename&#39;</code></li>
+<li>读取文件:<ol>
+<li><code>cat filename</code><br>直接把文件内容全部输出</li>
+<li><code>tail -n  10  filename</code><br>可以从文件的末尾向前读取.</li>
+<li><code>less filename</code><br>和 more 这个命令很像, 都是分页读取, 适合那种大文件.<br>但是感觉less更顺手一些<br>空格: 向后翻一页, b: 向前翻一页, q: 退出, /‘txt’: 在文件中查找’txt’ </li>
+<li><code>od filename</code><br>显示二进制数据, 可以加入参数<code>-h</code>以十六进制显示.</li>
+</ol>
+</li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p>过滤出文件中包含 <code>key</code>的记录 :<br><code>grep &#39;key&#39; &lt;file&gt;</code><br>递归过滤 :<br><code>grep -r &#39;key&#39; &lt;file&gt;</code></p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>作用 ：将上一个命令的输出作为下一个命令的输入, 操作符是 |</p>
+<ol>
+<li>将 cat 和 grep 组合在一起<br><code>cat &lt;file&gt; | grep &#39;key&#39;</code></li>
+<li>过滤出目录中名字包含<code>key</code>的目录(不包含子目录)<br><code>ls | grep &#39;key&#39;</code></li>
+</ol>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>显示所有进程<br><code>ps -A</code></li>
+<li>杀死某项进程<br><code>sudo kill [进程编号]</code></li>
+<li>杀死某个用户的所有进程<br><code>sudo killall -u user</code></li>
+</ul>
+<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><h4 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h4><p>通过 <code>ls -al</code> 可以查看当前目录下的文件的权限.<br><code>drwxrw-rwx</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">d</th>
+<th align="center">rwx</th>
+<th align="center">rw-</th>
+<th align="center">rwx</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">是目录</td>
+<td align="center">owner</td>
+<td align="center">group</td>
+<td align="center">other</td>
+</tr>
+</tbody></table>
+<p>后面的r表示可读, w表示可写, x表示可执行.</p>
+<h4 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h4><p><code>chmod 700 filename</code></p>
+<p>其中 700 是二进制表示 <code>111 000 000</code></p>
+<p>和上面的文件权限逐位对应.</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ul>
+<li>硬链接<br><code>ln targetFile linkedFile</code></li>
+<li>符号链接<br><code>ln -s targetFile symLinkFile</code></li>
+</ul>
+<h2 id="编译-or-运行代码"><a href="#编译-or-运行代码" class="headerlink" title="编译 or 运行代码"></a>编译 or 运行代码</h2><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><p>编译C++程序(指定名称和后缀):</p>
+<p><code>g++   *.cpp   -std=c++11 -o  a.exe</code></p>
+<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><p>可以使用 <code>php filename.php</code> 直接运行.</p>
+<p>也可以放进web目录下, 通过浏览器访问启动, </p>
+<p>各有利弊吧</p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><strong>需要注意下python版本, 通常python指3.x 而 python2指2.x</strong></p>
+<ol>
+<li><code>python filename.py</code></li>
+<li><code>python -c &quot;your code&quot;</code></li>
+</ol>
+<h2 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h2><h3 id="pscp"><a href="#pscp" class="headerlink" title="pscp"></a>pscp</h3><p>当使用ssh远程登录云主机后, 虽然我们有了可以输入命令的bash, 但是如果要上传文件需要使用工具pscp.</p>
+<p>步骤:</p>
+<ol>
+<li>从本地打开<code>CMD</code>到(pscp)putty目录下</li>
+<li>pscp</li>
+<li>基本命令格式：<br><code>pscp   [本地文件路径]   [用户名]@[ServerIP]:[目录]</code><br>或<code>pscp  -r   [本地目录路径]  [用户名]@[ServerIP]：[目录]</code><br>同理，pscp也可以从Linux向Windows复制文件或目录</li>
+</ol>
+<p><strong>更推荐使用 finalShell 类的工具,非常方便,省去打命令的时间,且更直观</strong></p>
+<h3 id="apache服务"><a href="#apache服务" class="headerlink" title="apache服务"></a>apache服务</h3><h4 id="启动-停止-重启"><a href="#启动-停止-重启" class="headerlink" title="启动|停止|重启:"></a>启动|停止|重启:</h4><p><code>service apache2 start|stop|restart</code></p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p><code>/etc/apache2/apache2.conf</code></p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h4 id="启动-停止-重启-1"><a href="#启动-停止-重启-1" class="headerlink" title="启动|停止|重启"></a>启动|停止|重启</h4><p><code>servive mysql start|stop|restart</code></p>
+<h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>screen -S &lt;name&gt;</code></td>
+<td align="center">创建名为 name 的session</td>
+</tr>
+<tr>
+<td align="center"><code>screen  -ls</code></td>
+<td align="center">显示所有session</td>
+</tr>
+<tr>
+<td align="center"><code>screen  -r  &lt;name&gt;</code></td>
+<td align="center">进入名为 name 的session</td>
+</tr>
+<tr>
+<td align="center"><code>screen   -D  -r  &lt;name&gt;</code></td>
+<td align="center">将名为name的session离线并重新连接</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     c</code></td>
+<td align="center">在当前终端新建session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     w</code></td>
+<td align="center">显示当前终端session列表</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     k</code></td>
+<td align="center">关闭当前session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     0-9</code></td>
+<td align="center">显示0-9session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     space</code></td>
+<td align="center">按照顺序显示下一个session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     A</code></td>
+<td align="center">为当前session命名</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>screen   -D  -r  &lt;name&gt;</code>可解决某些情况下无法重连接终端的问题</li>
+<li>若要关闭某个session，则关闭该session下所有window即可</li>
+</ul>
+<h2 id="一些命令行工具的使用"><a href="#一些命令行工具的使用" class="headerlink" title="一些命令行工具的使用"></a>一些命令行工具的使用</h2><h3 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h3><p>抓包的工具.<br><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
+<ul>
+<li><p>显示可用网卡 <code>tshark -D</code></p>
+</li>
+<li><p>抓包  使用命令 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 <span class="string">"port 80"</span></span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 `tcpdump` 的方法.</span><br><span class="line">```bash</span><br><span class="line">tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</p>
+</li>
+<li><p>-w 输入到文件</p>
+</li>
+<li><p>port 监听的端口</p>
+</li>
+</ul>
+<p><strong>使用 tcpdump 同样需要sudo</strong></p>
+<h3 id="fcrackzip"><a href="#fcrackzip" class="headerlink" title="fcrackzip"></a>fcrackzip</h3><p>一款kali下预装的好用的zip密码破解工具, 支持遍历爆破密码或者跑字典.</p>
+<ul>
+<li><p>遍历:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    fcrackzip -v -b -u -c a -p magicaaaa filename.zip</span><br><span class="line">    ```   </span><br><span class="line">    + -v : 详细信息</span><br><span class="line">    + -b : 爆破</span><br><span class="line">    + -u : 指定zip压缩格式(大概)</span><br><span class="line">    + -c : 指定密码类型, 选项值 a 就是纯字符串, 1 就是纯数字, a1 就是数字和字符串混杂.</span><br><span class="line">    + -p : 指定密码, magicaaaa就是前五位确定是magic了, 后面的a在这里是掩码, 表明这4位是字母.</span><br><span class="line">    + filename : 要破解的压缩包的名称.</span><br><span class="line">+ 跑字典:</span><br><span class="line">    ```bash</span><br><span class="line">    fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt myplace.zip</span><br></pre></td></tr></table></figure>
+
+<p>  其中的rockyou.txt是个不错的密码字典, 可惜就是只符合外国人的密码习惯, 终于国内的比赛环境或是实战意义不大.</p>
+</li>
+</ul>
+<p>###</p>
+<h2 id="MineCraft相关命令"><a href="#MineCraft相关命令" class="headerlink" title="MineCraft相关命令"></a>MineCraft相关命令</h2><p>说出来你可能不信, 当初我学习使用ubuntu云服务器是为了玩MineCraft哒~</p>
+<ul>
+<li><p>mine craft启动命令（其他jar类型的程序应该也可以如此启动）<br><code>java -Xms# -Xmx# -jar [path]/minecraft_server.[version].jar nogui</code><br><code>nogui</code>:表示不以图形界面运行,因为我的服务器是server版的,本身就没有图形界面,所以不加也可以<br><code>-Xms</code>:初始启动分配内存<br><code>-Xmx</code>:最大分配内存<br><code>path</code>:jar包所在路径<br><code>version</code>:当前MineCraft_Server版本</p>
+</li>
+<li><p><code>tell &lt;sb&gt; &lt;something&gt;</code>: 给sb 私信 </p>
+</li>
+<li><p><code>gamemode survival &lt;sb&gt;</code>:将 sb 调至 生存模式</p>
+</li>
+<li><p><code>gamemode create &lt;sb&gt;</code>:将sb 调至 创造模式</p>
+</li>
+</ul>
+<p><del>更多的命令去百度上自己搜吧亲, 我现在不玩MC了</del></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-09-18T15:02:51.691Z" itemprop="dateUpdated">2019-09-18 23:02:51</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/09/18/服务器运维/" target="_blank" rel="external">https://tjuyjn.top/2019/09/18/服务器运维/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="Anti-entropy">
+            Anti-entropy
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/18/服务器运维/&title=《linux 常用命令》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/18/服务器运维/&title=《linux 常用命令》 — Anti-entropy's blog&source=原《服务器运维》." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/18/服务器运维/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linux 常用命令》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/18/服务器运维/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/18/服务器运维/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/09/17/Java/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java 常用方法总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#linux-常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">linux 常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件操作"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">文件操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过滤"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">过滤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#权限"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看文件权限"><span class="post-toc-number">1.1.5.1.</span> <span class="post-toc-text">查看文件权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置权限"><span class="post-toc-number">1.1.5.2.</span> <span class="post-toc-text">设置权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">链接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译-or-运行代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">编译 or 运行代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">C++</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PHP"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">PHP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Python"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">Python</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器相关"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">服务器相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pscp"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">pscp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#apache服务"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">apache服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-停止-重启"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">启动|停止|重启:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件"><span class="post-toc-number">1.3.2.2.</span> <span class="post-toc-text">配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mysql"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">mysql</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-停止-重启-1"><span class="post-toc-number">1.3.3.1.</span> <span class="post-toc-text">启动|停止|重启</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#screen命令"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">screen命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一些命令行工具的使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">一些命令行工具的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tshark-使用"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">tshark 使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fcrackzip"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">fcrackzip</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MineCraft相关命令"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">MineCraft相关命令</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">主题作者</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.tjuscswyz.cn/" target="_blank">p4ssw0rd</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/ever17/" target="_blank">Ever17</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/tkj521Ya/" target="_blank">Exaggerate~</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/jason1999/" target="_blank">jason1999</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://tjublesson.top/" target="_blank">blesson</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://glimmerzcy.github.io" target="_blank">ZCY</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://blog.csdn.net/Harry____" target="_blank">Harry____</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Anti-entropy &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/18/服务器运维/&title=《linux 常用命令》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/18/服务器运维/&title=《linux 常用命令》 — Anti-entropy's blog&source=原《服务器运维》." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/18/服务器运维/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linux 常用命令》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/18/服务器运维/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/18/服务器运维/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3azU7rQAwGUN7/pYvECiTSfLZzr4hzZhVVNMyZhTv++fiI1+trfX9+/0nvW0fvuWxhYGDclvF6u3obPXrD++/m7/yFioGB8QBGNcgmoTnhHf1NvjcMDAyM3ubyAJ0/Y2BgYEwYyZWuGqAxMDAweklsNeFMNpoczcW5OAYGxg0ZvcbA/3n+5/0NDAyMP894FVcSIvP/ONnJj/dgYGCsZvSK8nkBrhq+JweBgYGxlZGnrPlQRa952SvYHf5uYGBgPIwxaQP0CmfJITZ/MTAwMG7IyENqkrJWU9kq9YSEgYGxlJEXy3Jq9WJXvXSeVA0xMDDWMfIwWr3YVZPVassBAwPjOYzJ5qrXx0nB7iShxcDAWM3IS2l5UjoZwhi9HwMDYymjF0arCW1vLCw5UAwMjKcxrlpJoEyQ+dFgYGDsZkzGvPKAmDQsc/zhDjEwMJYyRjMacVk/3261tVm+GmJgYNyW0Sux9YYqegd0kjBjYGCsZlw7TlptDEyKeoctTAwMjHWM/OqWl/LzJLY3tBE1BjAwMJYyJgW1SZCdFP6iyI2BgXFzRh5eJ8ntfCysgMTAwFjH6A1SXNUeeH8lLYR+DAyM1Yx8VYtihYJ+8K1JKMfAwNjByIPsKL0sps355xgYGM9h5JWraosxvziO0mMMDAyMOOEsz3oUG6InXQ4MDAyMoNCWp6n5O6PrKQYGxgMYkyQ2vzhWL4iFpgIGBsZqxrXDEL0U9NVao/4GBgbGPRif3rjhZ/+05C8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.2"></script>
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+    <script type="text/javascript">           
+        /* 鼠标特效 */ 
+        var a_idx = 0; 
+        jQuery(document).ready(function($) { 
+            $("body").click(function(e) { 
+                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤"); 
+                var $i = $("<span></span>").text(a[a_idx]); 
+                a_idx = (a_idx + 1) % a.length; 
+                var x = e.pageX, 
+                y = e.pageY; 
+                $i.css({ 
+                    "z-index": 999999999999999999999999999999999999999999999999999999999999999999999, 
+                    "top": y - 20, 
+                    "left": x, 
+                    "position": "absolute", 
+                    "font-weight": "bold", 
+                    "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")" 
+                }); 
+                $("body").append($i); 
+                $i.animate({ 
+                    "top": y - 180, 
+                    "opacity": 0 
+                }, 
+                1500, 
+                function() { 
+                    $i.remove(); 
+                }); 
+            }); 
+        }); 
+    </script>
+    <!--动态线条背景-->
+    <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+   
+
+</body>
+</html>

