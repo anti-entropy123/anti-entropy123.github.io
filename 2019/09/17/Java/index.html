@@ -342,14 +342,75 @@
 
 <h3 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ceil</span><span class="params">(<span class="keyword">double</span> x)</span></span>;  <span class="comment">//向上取整</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">floor</span><span class="params">(<span class="keyword">double</span> x)</span></span>;  <span class="comment">//向下取整</span></span><br><span class="line"><span class="comment">//返回最接近参数的整数值, 若存在两个这样的数, 则返回其中的偶数</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">rint</span><span class="params">(<span class="keyword">double</span> x)</span></span>;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">round</span><span class="params">(<span class="keyword">float</span> x)</span></span>;  <span class="comment">//四舍五入</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br></pre></td></tr></table></figure>
 
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random() <span class="comment">// 随机数  0 &lt;= x &lt; 1.0</span></span><br><span class="line">abs(a)  </span><br><span class="line">max(a,b)</span><br><span class="line">min(a,b)</span><br></pre></td></tr></table></figure>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><h3 id="对象默认父类-–-Object"><a href="#对象默认父类-–-Object" class="headerlink" title="对象默认父类 – Object"></a>对象默认父类 – Object</h3><ul>
+<li>clone() 拷贝</li>
+<li>equals(Object obj) 判断对象是否相等</li>
+<li>finalize() 相当于析构函数</li>
+<li>getClass() 获取类的相关信息</li>
+<li>hashCode() 获取对象的哈希值</li>
+<li>toString() 类转为字符串</li>
+</ul>
+<h3 id="override"><a href="#override" class="headerlink" title="@override"></a>@override</h3><p>在子类的函数名前使用<code>@override</code>, 编译器会自动检查父类中有没有同名的方法供子类override. 若没有, 则直接报错.</p>
+<blockquote>
+<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。即外壳不变，核心重写!</p>
+</blockquote>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ol>
+<li>类似C++的构造函数(不再赘述)</li>
+<li><code>this()</code>构造函数, 只能在构造函数中调用其它构造函数时使用.(且必须写在第一行)<br> 与通常的构造函数不同, this()不会产生新的对象, 而是对自身属性进行修改.</li>
+<li><code>super()</code>: 与<code>this()</code>类似, 显式调用父类的构造函数.<br> 不然会默认调用父类的无参构造函数.</li>
+<li>只要类中显示定义了一个构造函数, 则不会产生默认无参构造函数.</li>
+</ol>
+<h3 id="成员变量或成员方法的访问控制"><a href="#成员变量或成员方法的访问控制" class="headerlink" title="成员变量或成员方法的访问控制"></a>成员变量或成员方法的访问控制</h3><table>
+<thead>
+<tr>
+<th align="left">修饰符</th>
+<th align="left">同类</th>
+<th align="left">同包</th>
+<th align="left">子类</th>
+<th align="left">不同包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">public</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">protected</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">默认</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">private</td>
+<td align="left">是</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="静态"><a href="#静态" class="headerlink" title="静态"></a>静态</h3><ul>
+<li><code>static{}</code> 代码块仅在类被加载时执行一次</li>
+<li>static 静态方法会失去多态特性.</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random() <span class="comment">// 随机数  0 &lt;= x &lt; 1.0</span></span><br><span class="line">abs(a)  </span><br><span class="line">max(a,b)</span><br><span class="line">min(a,b)</span><br></pre></td></tr></table></figure>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-17T14:15:34.830Z" itemprop="dateUpdated">2019-09-17 22:15:34</time>
+    Last updated: <time datetime="2019-09-24T02:16:39.474Z" itemprop="dateUpdated">2019-09-24 10:16:39</time>
 </span><br>
 
 
@@ -464,7 +525,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Java-常用方法总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Java 常用方法总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入输出"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">输入输出</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本数据类型"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符-以下省略Character"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">字符 (以下省略Character.)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串-以下省略String"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">字符串(以下省略String.)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数学函数-以下省略-Math"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数学函数 (以下省略 Math. )</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三角函数"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">三角函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#幂运算-对数运算"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">幂运算, 对数运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#取整"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">取整</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其它"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">其它</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Java-常用方法总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Java 常用方法总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入输出"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">输入输出</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本数据类型"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符-以下省略Character"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">字符 (以下省略Character.)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串-以下省略String"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">字符串(以下省略String.)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数学函数-以下省略-Math"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数学函数 (以下省略 Math. )</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三角函数"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">三角函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#幂运算-对数运算"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">幂运算, 对数运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#取整"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">取整</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类和对象"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">类和对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对象默认父类-–-Object"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">对象默认父类 – Object</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#override"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">@override</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构造函数"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">构造函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#成员变量或成员方法的访问控制"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">成员变量或成员方法的访问控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">静态</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其它"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">其它</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
