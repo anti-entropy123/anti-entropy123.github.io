@@ -9,7 +9,7 @@
     <title>杂篇 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="python,misc,smtp">
+    <meta name="keywords" content="misc,python,smtp">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -320,7 +320,7 @@
             <p>We will we will rock you!</p>
 <a id="more"></a>
 <h1 id="杂篇"><a href="#杂篇" class="headerlink" title="杂篇"></a>杂篇</h1><h2 id="smtp-发送伪造邮件"><a href="#smtp-发送伪造邮件" class="headerlink" title="smtp 发送伪造邮件"></a>smtp 发送伪造邮件</h2><p>计网老师布置的一个小任务 : 伪装<code>ligang</code>老师给他发个邮件. </p>
-<p>通过telnet与smtp服务器进行命令行交互, 手工编写邮件内容, 就可以设置的发件人.</p>
+<p>通过telnet与smtp服务器进行命令行交互, 手工编写邮件内容, 就可以设置虚假的发件人信息.</p>
 <p>以下演示在<code>Windows10 cmd</code>中.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt; telnet</span><br><span class="line">&gt; o smtp.qq.com 587</span><br><span class="line">220 smtp.qq.com Esmtp QQ Mail Server </span><br><span class="line">&gt; helo smtp</span><br><span class="line">250 smtp.qq.com                    </span><br><span class="line">&gt; starttls  </span><br><span class="line">220 Ready to start TLS             </span><br><span class="line">&gt; auth login                       </span><br><span class="line">334 VXNlcm5hbWU6   </span><br><span class="line">&gt; MTM0ODY1MTU4MEBxcS5jb20=  <span class="comment"># qq邮箱的base64编码</span></span><br><span class="line">334 UGFzc3dvcmQ6                  </span><br><span class="line">&gt; ***************   <span class="comment"># qq邮箱授权码的base64编码              </span></span><br><span class="line">235 Authentication successful     </span><br><span class="line">&gt; mail from:&lt;1348651580@qq.com&gt;            </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; rcpt to:&lt;3018******@tju.edu.cn&gt;          </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; data </span><br><span class="line">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;      </span><br><span class="line">&gt; from:ligang@tju.edu.cn            </span><br><span class="line">&gt; to:&lt;3018******@tju.edu.cn&gt;</span><br><span class="line">&gt; subject:i want to play a game    </span><br><span class="line">&gt; </span><br><span class="line">&gt; we will we will rockyou.</span><br><span class="line">&gt; .</span><br><span class="line">250 Ok: queued as</span><br></pre></td></tr></table></figure>
 
@@ -360,7 +360,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-25T16:22:04.553Z" itemprop="dateUpdated">2019-09-26 00:22:04</time>
+    最后更新时间：<time datetime="2019-09-25T16:28:43.477Z" itemprop="dateUpdated">2019-09-26 00:28:43</time>
 </span><br>
 
 
