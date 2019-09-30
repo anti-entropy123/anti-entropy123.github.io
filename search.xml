@@ -27,6 +27,7 @@
 <p>理论上, 只要我使用<code>smtp.tju.edu.cn</code>发送, 就可以避免.</p>
 <p>友情提示, 这种欺骗手段只要查看了邮件头就没有任何效果了, 只能拿去吓唬吓唬其它专业的同学们, 哈哈哈.</p>
 <h2 id="phpstudy-后门复现"><a href="#phpstudy-后门复现" class="headerlink" title="phpstudy 后门复现"></a>phpstudy 后门复现</h2><p>// TODO</p>
+<p>// sorry, 我看了一下, 手边没找到有后门的phpstudy, 暂时没法分析复现<br>// 一时半会搞不了了, 惨惨</p>
 <h2 id="python-拼接图像"><a href="#python-拼接图像" class="headerlink" title="python 拼接图像"></a>python 拼接图像</h2><p>在我们协会的平台上看的一道题.</p>
 <p><a href="http://ctf.teamdie.club/files/45c9b42681825f26b823e44736e16a5a/d9710b4ddcbf457cb716ee5423c7f32e.zip" target="_blank" rel="noopener">附件链接</a></p>
 <p>题目描述:</p>
@@ -169,52 +170,53 @@
 <h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><table>
 <thead>
 <tr>
-<th align="center">命令</th>
-<th align="center">功能</th>
+<th align="left">命令</th>
+<th align="left">功能</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><code>screen -S &lt;name&gt;</code></td>
-<td align="center">创建名为 name 的session</td>
+<td align="left"><code>screen -S &lt;name&gt;</code></td>
+<td align="left">创建名为 name 的session</td>
 </tr>
 <tr>
-<td align="center"><code>screen  -ls</code></td>
-<td align="center">显示所有session</td>
+<td align="left"><code>screen  -ls</code></td>
+<td align="left">显示所有session</td>
 </tr>
 <tr>
-<td align="center"><code>screen  -r  &lt;name&gt;</code></td>
-<td align="center">进入名为 name 的session</td>
+<td align="left"><code>screen  -r  &lt;name&gt;</code></td>
+<td align="left">进入名为 name 的session</td>
 </tr>
 <tr>
-<td align="center"><code>screen   -D  -r  &lt;name&gt;</code></td>
-<td align="center">将名为name的session离线并重新连接</td>
+<td align="left"><code>screen   -D  -r  &lt;name&gt;</code></td>
+<td align="left">将名为name的session离线并重新连接</td>
 </tr>
 <tr>
-<td align="center"><code>ctrl+a     c</code></td>
-<td align="center">在当前终端新建session</td>
+<td align="left"><code>ctrl+a     c</code></td>
+<td align="left">在当前终端新建window</td>
 </tr>
 <tr>
-<td align="center"><code>ctrl+a     w</code></td>
-<td align="center">显示当前终端session列表</td>
+<td align="left"><code>ctrl+a     w</code></td>
+<td align="left">显示当前终端window列表</td>
 </tr>
 <tr>
-<td align="center"><code>ctrl+a     k</code></td>
-<td align="center">关闭当前session</td>
+<td align="left"><code>ctrl+a     k</code></td>
+<td align="left">关闭当前window</td>
 </tr>
 <tr>
-<td align="center"><code>ctrl+a     0-9</code></td>
-<td align="center">显示0-9session</td>
+<td align="left"><code>ctrl+a     0-9</code></td>
+<td align="left">显示0-9 window</td>
 </tr>
 <tr>
-<td align="center"><code>ctrl+a     space</code></td>
-<td align="center">按照顺序显示下一个session</td>
+<td align="left"><code>ctrl+a     space</code></td>
+<td align="left">按照顺序显示下一个window</td>
 </tr>
 <tr>
-<td align="center"><code>ctrl+a     A</code></td>
-<td align="center">为当前session命名</td>
+<td align="left"><code>ctrl+a     A</code></td>
+<td align="left">为当前window命名</td>
 </tr>
 </tbody></table>
 <ul>
+<li>注意<code>session</code>和<code>window</code>的区别, 一个<code>session</code>可以有多个<code>window</code></li>
 <li><code>screen   -D  -r  &lt;name&gt;</code>可解决某些情况下无法重连接终端的问题</li>
 <li>若要关闭某个session，则关闭该session下所有window即可</li>
 </ul>
@@ -259,28 +261,13 @@
 </tbody></table>
 <h3 id="tshark-使用"><a href="#tshark-使用" class="headerlink" title="tshark 使用"></a>tshark 使用</h3><p>抓包的工具.<br><strong>基本每个命令都需要root权限<code>sudo</code></strong></p>
 <ul>
-<li><p>显示可用网卡 <code>tshark -D</code></p>
-</li>
-<li><p>抓包  使用命令 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 <span class="string">"port 80"</span></span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 `tcpdump` 的方法.</span><br><span class="line">```bash</span><br><span class="line">tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>-s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</p>
-</li>
-<li><p>-w 输入到文件</p>
-</li>
-<li><p>port 监听的端口</p>
-</li>
-</ul>
-<p><strong>使用 tcpdump 同样需要sudo</strong></p>
-<h3 id="fcrackzip"><a href="#fcrackzip" class="headerlink" title="fcrackzip"></a>fcrackzip</h3><p>一款kali下预装的好用的zip密码破解工具, 支持遍历爆破密码或者跑字典.</p>
-<ul>
-<li><p>遍历:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    fcrackzip -v -b -u -c a -p magicaaaa filename.zip</span><br><span class="line">    ```   </span><br><span class="line">    + -v : 详细信息</span><br><span class="line">    + -b : 爆破</span><br><span class="line">    + -u : 指定zip压缩格式(大概)</span><br><span class="line">    + -c : 指定密码类型, 选项值 a 就是纯字符串, 1 就是纯数字, a1 就是数字和字符串混杂.</span><br><span class="line">    + -p : 指定密码, magicaaaa就是前五位确定是magic了, 后面的a在这里是掩码, 表明这4位是字母.</span><br><span class="line">    + filename : 要破解的压缩包的名称.</span><br><span class="line">+ 跑字典:</span><br><span class="line">    ```bash</span><br><span class="line">    fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt myplace.zip</span><br></pre></td></tr></table></figure>
+<li>显示可用网卡 <code>tshark -D</code></li>
+<li>抓包  使用命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">tshark  -c [数字]  -w [文件名.pcap] -f [捕获过滤器]</span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line">     </span><br><span class="line">    </span><br><span class="line">+ -c 表示抓多少包后停止</span><br><span class="line">+ -w 把抓包结果输入到文件中, 无需提前创建, 若目录下没有, 自动创建</span><br><span class="line">+ -f 设置捕获过滤器, 我们此处主要针对http的数据包, 所以参数设定为 <span class="string">"port 80"</span></span><br><span class="line"></span><br><span class="line">但是根据我的试验, 凡是使用tshark后产生的文件权限都十分敏感, 没法用finalshell 直接下载, 为了方便起见, 再补充使用 `tcpdump` 的方法.</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">tcpdump -s  [数字]  -w [文件.pcap] port [端口数]</span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">+ -s 表示一个包截断的长度, 0表示不截断, 完整的保存下来</span><br><span class="line">+ -w 输入到文件</span><br><span class="line">+ port 监听的端口</span><br><span class="line"></span><br><span class="line">**使用 tcpdump 同样需要sudo**</span><br><span class="line">  </span><br><span class="line"><span class="comment">### fcrackzip</span></span><br><span class="line">一款kali下预装的好用的zip密码破解工具, 支持遍历爆破密码或者跑字典.</span><br><span class="line">+ 遍历:</span><br><span class="line">    ```bash</span><br><span class="line">    fcrackzip -v -b -u -c a -p magicaaaa filename.zip</span><br><span class="line">    ```   </span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">    + -v : 详细信息</span><br><span class="line">    + -b : 爆破</span><br><span class="line">    + -u : 指定zip压缩格式(大概)</span><br><span class="line">    + -c : 指定密码类型, 选项值 a 就是纯字符串, 1 就是纯数字, a1 就是数字和字符串混杂.</span><br><span class="line">    + -p : 指定密码, magicaaaa就是前五位确定是magic了, 后面的a在这里是掩码, 表明这4位是字母.</span><br><span class="line">    + filename : 要破解的压缩包的名称.  </span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">+ 跑字典:</span><br><span class="line">    ```bash</span><br><span class="line">    fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt myplace.zip</span><br></pre></td></tr></table></figure>
 
-<p>  其中的rockyou.txt是个不错的密码字典, 可惜就是只符合外国人的密码习惯, 终于国内的比赛环境或是实战意义不大.</p>
+
 </li>
 </ul>
-<p>###</p>
+<pre><code>其中的rockyou.txt是个不错的密码字典, 可惜就是只符合外国人的密码习惯, 终于国内的比赛环境或是实战意义不大.</code></pre><p>###</p>
 <h2 id="MineCraft相关命令"><a href="#MineCraft相关命令" class="headerlink" title="MineCraft相关命令"></a>MineCraft相关命令</h2><p>说出来你可能不信, 当初我学习使用ubuntu云服务器是为了玩MineCraft哒~</p>
 <ul>
 <li><p>mine craft启动命令（其他jar类型的程序应该也可以如此启动）<br><code>java -Xms# -Xmx# -jar [path]/minecraft_server.[version].jar nogui</code><br><code>nogui</code>:表示不以图形界面运行,因为我的服务器是server版的,本身就没有图形界面,所以不加也可以<br><code>-Xms</code>:初始启动分配内存<br><code>-Xmx</code>:最大分配内存<br><code>path</code>:jar包所在路径<br><code>version</code>:当前MineCraft_Server版本</p>
@@ -1576,7 +1563,9 @@
     <entry>
       <title><![CDATA[CTF-writeup]]></title>
       <url>/2019/07/08/CTF-writeup/</url>
-      <content type="html"><![CDATA[<h1 id="CTF-writeup"><a href="#CTF-writeup" class="headerlink" title="CTF writeup"></a>CTF writeup</h1><p>都是菜鸡总结的一些常识, dalao们请绕路(发抖)<br>但是也欢迎大佬们来纠正错误<br>菜鸡不胜感激</p>
+      <content type="html"><![CDATA[<p>早期作品~~</p>
+<a id="more"></a>
+<h1 id="CTF-writeup"><a href="#CTF-writeup" class="headerlink" title="CTF writeup"></a>CTF writeup</h1><p>都是菜鸡总结的一些常识, dalao们请绕路(发抖)<br>但是也欢迎大佬们来纠正错误<br>菜鸡不胜感激</p>
 <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="localhost-resolved"><a href="#localhost-resolved" class="headerlink" title="localhost(resolved)"></a><a href="http://web.jarvisoj.com:32774/" target="_blank" rel="noopener">localhost</a>(resolved)</h3><p>题目中只有一行 <strong>localhost access only!!</strong><br><a href="https://link.jianshu.com/?t=http://www.111cn.net/phper/php-cy/59523.htm" target="_blank" rel="noopener">PHP获取用户IP地址</a><br>所以需要伪造自己的IP地址<br>一个比较简单的方法是在HTTP的请求头中添加参数:<code>X-Forwarded-For : 需要伪造的IP</code><br>可以使用burp suite抓包或PostMan来实现</p>
 <figure class="image-box">
                 <img src="http://188.131.227.20:999/picture/X-Forwarded-For.png" alt title class>
