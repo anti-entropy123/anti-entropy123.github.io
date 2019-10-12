@@ -169,8 +169,6 @@
             
             <tag> linux </tag>
             
-            <tag> smtp </tag>
-            
             <tag> 文件系统 </tag>
             
             <tag> OS </tag>
@@ -178,6 +176,8 @@
             <tag> c语言 </tag>
             
             <tag> 网络 </tag>
+            
+            <tag> smtp </tag>
             
         </tags>
         
@@ -779,9 +779,9 @@
             
             <tag> web </tag>
             
-            <tag> metasploit </tag>
-            
             <tag> linux提权 </tag>
+            
+            <tag> metasploit </tag>
             
         </tags>
         
@@ -1347,13 +1347,13 @@
         
         <tags>
             
+            <tag> metasploit </tag>
+            
             <tag> awd </tag>
             
             <tag> 不死马 </tag>
             
             <tag> 反弹shell </tag>
-            
-            <tag> metasploit </tag>
             
             <tag> linux权限控制 </tag>
             
