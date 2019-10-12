@@ -6,15 +6,13 @@
     <link rel="canonical" href="https://tjuyjn.top/2019/10/03/linux文件管理实验/">
     
     
-    <title>操作系统的两次实验 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <title>一些有趣的实验 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="linux,文件系统,OS,c语言">
+    <meta name="keywords" content="linux,smtp,文件系统,OS,c语言,网络">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
-
-    
     
     <script type="text/javascript">
         // Data Center
@@ -30,10 +28,7 @@
         window.lazyScripts=[];
     </script>
     
-    
-    <script>
-        var imageArr=[];
-    </script>
+
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -42,52 +37,53 @@
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
+    </script>
+    
+        <!-- live2d css -->
+        <style>
+            .live2d-widget-dialog-container {
+                width: 300px;
+                height: 120px;
+                position: absolute;
+                bottom: 65%;
+                right: 0px;
+                transform-origin: right;
+                padding: 12px;
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+            }
+            .live2d-widget-dialog {
+                width: 100%;
+                height: 100%;
+                color: #917159;
+                font-size: 16px;
+                padding: 12px;
+                border: 2px solid rgb(236, 203, 180);
+                background: rgb(252, 248, 244);
+                box-sizing: border-box;
+                border-radius: 10px;
+                transform: rotate(-2deg);
+                opacity: 0;
+                transition: 200ms opacity;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+                animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+            }
+            @keyframes live2d-widget-dialog-tingle {
+                0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+                100% { transform: translate(1px, -1.5px) rotate(2deg); }
+            }
+        </style>
+    
+        <!--- live2d js -->
+        <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+        <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+        <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+        <script>
+            var imageArr=[];
         </script>
         
-
-
-        <!-- live2d css -->
-    <style>
-        .live2d-widget-dialog-container {
-            width: 300px;
-            height: 120px;
-            position: absolute;
-            bottom: 65%;
-            right: 0px;
-            transform-origin: right;
-            padding: 12px;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-        .live2d-widget-dialog {
-            width: 100%;
-            height: 100%;
-            color: #917159;
-            font-size: 16px;
-            padding: 12px;
-            border: 2px solid rgb(236, 203, 180);
-            background: rgb(252, 248, 244);
-            box-sizing: border-box;
-            border-radius: 10px;
-            transform: rotate(-2deg);
-            opacity: 0;
-            transition: 200ms opacity;
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-            animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
-        }
-        @keyframes live2d-widget-dialog-tingle {
-            0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
-            100% { transform: translate(1px, -1.5px) rotate(2deg); }
-        }
-    </style>
-
-    <!--- live2d js -->
-    <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
-    <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
-    <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
-    <!-- 访客统计 -->
-    <script src="http://188.131.227.20:999/api/ip_locate.php"> </script>
 </head>
+
 
 
 <body>
@@ -149,7 +145,6 @@
         
         <ul class="menu-link">
           
-          
               <li>
                 <a href="https://github.com/anti-entropy123/" target="_blank">
                   <i class="icon icon-lg icon-github"></i>
@@ -162,57 +157,6 @@
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-          <div id="binft" style=" text-align:center;"></div>
-          <script>
-            var binft = function (r) {
-              function t() {
-                return b[Math.floor(Math.random() * b.length)]
-              }  
-              function e() {
-                return String.fromCharCode(94 * Math.random() + 33)
-              }
-              function n(r) {
-                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                  var l = document.createElement("span");
-                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                }
-                return n
-              }
-              function i() {
-                var t = o[c.skillI];
-                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-              }
-              var l = "",
-              o = ["孤独是常态,", "寂寞是病态",
-                   "孤独使我自由,","寂寞让我作呕",
-                   "为守护所有美好而战,","向一切虚伪的美好宣战",
-                   "don't be sorry,","be better",
-                   "伤痕是我的勋章",
-                   "但置我于低谷者,","必将助我以崛起",
-                   "但置我于死地者,","必将赐我以后生",
-                   "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
-                   "天生我材必有用,","千金散尽还复来"
-                   ].map(function (r) {
-              return r + ""
-              }),
-              a = 2,
-              g = 1,
-              s = 5,
-              d = 75,
-              b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
-              c = {
-                text: "",
-                prefixP: -s,
-                skillI: 0,
-                skillP: 0,
-                direction: "forward",
-                delay: a,
-                step: g
-              };
-              i()
-              };
-              binft(document.getElementById('binft'));
-          </script>
         
             <li class="">
               <a href="/"  >
@@ -235,7 +179,7 @@
               </a>
             </li>
         
-        </ul>
+      </ul>
     </div>
   </div>
 </aside>
@@ -247,7 +191,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>操作系统的两次实验</span>
+            <span>一些有趣的实验</span>
             
         </div>
         
@@ -260,7 +204,7 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">操作系统的两次实验</h1>
+        <h1 class="title">一些有趣的实验</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-10-03T09:25:32.000Z" itemprop="datePublished" class="page-time">
@@ -294,7 +238,7 @@
     <article id="post-linux文件管理实验"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">操作系统的两次实验</h1>
+        <h1 class="post-card-title">一些有趣的实验</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-10-03 17:25:32" datetime="2019-10-03T09:25:32.000Z"  itemprop="datePublished">2019-10-03</time>
 
@@ -317,17 +261,49 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p><code>linux文件管理系统实验</code> 和 <code>xv6 big file实验</code> 记录.</p>
+            <p>课上老师布置的一些实验的记录.</p>
 <a id="more"></a>
-<h1 id="操作系统两次实验"><a href="#操作系统两次实验" class="headerlink" title="操作系统两次实验"></a>操作系统两次实验</h1><h2 id="linux-文件管理系统实验记录"><a href="#linux-文件管理系统实验记录" class="headerlink" title="linux 文件管理系统实验记录"></a>linux 文件管理系统实验记录</h2><ul>
+<h1 id="实验合集"><a href="#实验合集" class="headerlink" title="实验合集"></a>实验合集</h1><h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="smtp-发送伪造邮件"><a href="#smtp-发送伪造邮件" class="headerlink" title="smtp 发送伪造邮件"></a>smtp 发送伪造邮件</h3><p>计网老师布置的一个小任务 : 伪装<code>ligang</code>老师给他发个邮件. </p>
+<p>通过telnet与smtp服务器进行命令行交互, 手工编写邮件内容, 就可以设置虚假的发件人信息.</p>
+<p>以下演示在<code>Windows10 cmd</code>中.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt; telnet</span><br><span class="line">&gt; o smtp.qq.com 587</span><br><span class="line">220 smtp.qq.com Esmtp QQ Mail Server </span><br><span class="line">&gt; helo smtp</span><br><span class="line">250 smtp.qq.com                    </span><br><span class="line">&gt; starttls  </span><br><span class="line">220 Ready to start TLS             </span><br><span class="line">&gt; auth login                       </span><br><span class="line">334 VXNlcm5hbWU6   </span><br><span class="line">&gt; MTM0ODY1MTU4MEBxcS5jb20=  <span class="comment"># qq邮箱的base64编码</span></span><br><span class="line">334 UGFzc3dvcmQ6                  </span><br><span class="line">&gt; ***************   <span class="comment"># qq邮箱授权码的base64编码              </span></span><br><span class="line">235 Authentication successful     </span><br><span class="line">&gt; mail from:&lt;1348651580@qq.com&gt;            </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; rcpt to:&lt;3018******@tju.edu.cn&gt;          </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; data </span><br><span class="line">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;      </span><br><span class="line">&gt; from:ligang@tju.edu.cn            </span><br><span class="line">&gt; to:&lt;3018******@tju.edu.cn&gt;</span><br><span class="line">&gt; subject:i want to play a game    </span><br><span class="line">&gt; </span><br><span class="line">&gt; we will we will rockyou.</span><br><span class="line">&gt; .</span><br><span class="line">250 Ok: queued as</span><br></pre></td></tr></table></figure>
+
+<p>按照上面的输入成功后, 会有如下的效果.</p>
+<figure class="image-box">
+                <a rel=一些有趣的实验 href="http://188.131.227.20:999/picture/smtp.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/smtp.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<p>可以发现, 发件人成功的显示成了<code>ligang</code>.</p>
+<p>不过细心的你(口区)应该已经发现了, 最后竟然显示了我真实的邮箱 ! ! !</p>
+<p>要想去掉这个代发的字段也有办法, 那就是需要搭建自己的smtp服务器.( 正在尝试中 … )</p>
+<p>不过这种欺骗手段似乎只要查看了邮件头就没有任何效果了, 只能拿去吓唬吓唬其它专业的同学们, 哈哈哈.</p>
+<h3 id="http-下的文件下载分析"><a href="#http-下的文件下载分析" class="headerlink" title="http 下的文件下载分析"></a>http 下的文件下载分析</h3><ul>
+<li>实验目的 : <ul>
+<li>抓包分析 http 下载文件的细节</li>
+<li>思考迅雷下载实现加速, 断点续传等功能的原理</li>
+</ul>
+</li>
+</ul>
+<h4 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h4><p>为了便于控制和能省流量, 我用 Apache 在本地(Windows)启动一个web服务器, 并将一个约 74MB 的文件放置于网站根目录下供我模拟下载.</p>
+<p>然后使用<code>wireshark</code>捕获<code>Npcap Loopback Adapter</code>的数据包. 很快我就找到了下载文件的<code>http.GET请求包</code></p>
+<p>但是当我追踪这个http流的时候, 发现竟然只有一个http数据包. </p>
+<p><a rel=一些有趣的实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/stream2.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/stream2.png" alt></a></p>
+<p>于是我尝试追踪了下其他的tcp数据包, 根据数据包的目的端口号(可以根据刚才的Get请求得到)和数据包的大小(下载文件的响应包应该会较大). 最终追踪到了正确的tcp流. </p>
+<p><a rel=一些有趣的实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/stream3.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/stream3.png" alt></a></p>
+<p>第一行的状态行<code>HTTP/1.1 200 OK</code>, 可以判断出数据应该也是使用http协议传输到客户端, 但是<code>wireshark</code>为啥不能追踪 http流 还不是很清楚.</p>
+<p>从 <code>RESPONSE</code> 包的 <code>HEAD</code> 中, 有 <code>Content-Length: 76559956</code> 这么一项. 因为 76559956 / (1000 * 1000) = 76.5, 而我下载的文件大小是 74MB , 也就是这个参数的单位是 byte.</p>
+<p>然而在</p>
+<p>(未完待续)</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="linux-文件管理系统实验记录"><a href="#linux-文件管理系统实验记录" class="headerlink" title="linux 文件管理系统实验记录"></a>linux 文件管理系统实验记录</h3><ul>
 <li>环境 : Ubuntu 16.04 (VMware Workstation 15 pro)</li>
 <li>实验目标 : 使用命令行管理文件系统</li>
 </ul>
-<h3 id="分配虚拟硬盘"><a href="#分配虚拟硬盘" class="headerlink" title="分配虚拟硬盘"></a>分配虚拟硬盘</h3><p>虚拟机关闭时, 在VMware的<code>编辑虚拟机设置</code>里添加两个新的硬盘, 各10G.</p>
+<h4 id="分配虚拟硬盘"><a href="#分配虚拟硬盘" class="headerlink" title="分配虚拟硬盘"></a>分配虚拟硬盘</h4><p>虚拟机关闭时, 在VMware的<code>编辑虚拟机设置</code>里添加两个新的硬盘, 各10G.</p>
 <p>完成后可以打开虚拟机确认:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~$ sudo fdisk -l</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sdb: 10 GiB, 10737418240 bytes, 20971520 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sdc: 10 GiB, 10737418240 bytes, 20971520 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br></pre></td></tr></table></figure>
 
-<h3 id="创建和扩大文件系统和相关逻辑卷管理"><a href="#创建和扩大文件系统和相关逻辑卷管理" class="headerlink" title="创建和扩大文件系统和相关逻辑卷管理"></a>创建和扩大文件系统和相关逻辑卷管理</h3><h4 id="使用fdisk将sdb分出分区"><a href="#使用fdisk将sdb分出分区" class="headerlink" title="使用fdisk将sdb分出分区"></a>使用fdisk将sdb分出分区</h4><ul>
+<h4 id="创建和扩大文件系统和相关逻辑卷管理"><a href="#创建和扩大文件系统和相关逻辑卷管理" class="headerlink" title="创建和扩大文件系统和相关逻辑卷管理"></a>创建和扩大文件系统和相关逻辑卷管理</h4><h5 id="使用fdisk将sdb分出分区"><a href="#使用fdisk将sdb分出分区" class="headerlink" title="使用fdisk将sdb分出分区"></a>使用fdisk将sdb分出分区</h5><ul>
 <li>sdb1:主分区, 4G  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.27.1).</span><br><span class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write <span class="built_in">command</span>.</span><br><span class="line"></span><br><span class="line">Device does not contain a recognized partition table.</span><br><span class="line">Created a new DOS disklabel with disk identifier 0x7ae8300a.</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)： n</span><br><span class="line">Partition <span class="built_in">type</span></span><br><span class="line">p   primary (0 primary, 0 extended, 4 free)</span><br><span class="line">e   extended (container <span class="keyword">for</span> logical partitions)</span><br><span class="line">Select (default p): p</span><br><span class="line">分区号 (1-4, default 1): </span><br><span class="line">First sector (2048-20971519, default 2048): </span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G,T,P&#125; (2048-20971519, default 20971519): +4G</span><br><span class="line"></span><br><span class="line">Created a new partition 1 of <span class="built_in">type</span> <span class="string">'Linux'</span> and of size 4 GiB.</span><br></pre></td></tr></table></figure>
 
 
@@ -344,31 +320,31 @@
 
 </li>
 </ul>
-<h4 id="将sdb6-和-sdc-初始化为物理卷-PV"><a href="#将sdb6-和-sdc-初始化为物理卷-PV" class="headerlink" title="将sdb6 和 sdc 初始化为物理卷(PV)"></a>将sdb6 和 sdc 初始化为物理卷(PV)</h4><p>这里有个小插曲, 我的机器中 pvcreate 工具没有安装.</p>
+<h5 id="将sdb6-和-sdc-初始化为物理卷-PV"><a href="#将sdb6-和-sdc-初始化为物理卷-PV" class="headerlink" title="将sdb6 和 sdc 初始化为物理卷(PV)"></a>将sdb6 和 sdc 初始化为物理卷(PV)</h5><p>这里有个小插曲, 我的机器中 pvcreate 工具没有安装.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo pvcreate /dev/sdb6</span><br><span class="line">sudo: pvcreate：找不到命令</span><br><span class="line"><span class="comment"># 安装 lvm2 即可</span></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo apt-get install lvm2</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo pvcreate /dev/sdb6</span><br><span class="line">  Physical volume <span class="string">"/dev/sdb6"</span> successfully created.</span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo pvcreate /dev/sdc</span><br><span class="line">  Physical volume <span class="string">"/dev/sdc"</span> successfully createdyjn</span><br><span class="line">  </span><br><span class="line">@yjn-virtual-machine:/dev$ sudo pvs</span><br><span class="line">PV         VG Fmt  Attr PSize  PFree </span><br><span class="line">/dev/sdb6     lvm2 ---  &lt;3.00g &lt;3.00g</span><br><span class="line">/dev/sdc      lvm2 ---  10.00g 10.00g</span><br></pre></td></tr></table></figure>
 
-<h4 id="将-sdb6-和-sdc-加入卷组-VG-vg00-中"><a href="#将-sdb6-和-sdc-加入卷组-VG-vg00-中" class="headerlink" title="将 sdb6 和 sdc 加入卷组(VG) vg00 中"></a>将 sdb6 和 sdc 加入卷组(VG) vg00 中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgcreate vg00 /dev/sdb6</span><br><span class="line">  Volume group <span class="string">"vg00"</span> successfully created</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgex vg00 </span><br><span class="line">vgexport  vgextend  </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgextend vg00 /dev/sdc </span><br><span class="line">  Volume group <span class="string">"vg00"</span> successfully extended</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgs</span><br><span class="line">  VG   <span class="comment">#PV #LV #SN Attr   VSize  VFree </span></span><br><span class="line">  vg00   2   0   0 wz--n- 12.99g 12.99g</span><br></pre></td></tr></table></figure>
+<h5 id="将-sdb6-和-sdc-加入卷组-VG-vg00-中"><a href="#将-sdb6-和-sdc-加入卷组-VG-vg00-中" class="headerlink" title="将 sdb6 和 sdc 加入卷组(VG) vg00 中"></a>将 sdb6 和 sdc 加入卷组(VG) vg00 中</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgcreate vg00 /dev/sdb6</span><br><span class="line">  Volume group <span class="string">"vg00"</span> successfully created</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgex vg00 </span><br><span class="line">vgexport  vgextend  </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgextend vg00 /dev/sdc </span><br><span class="line">  Volume group <span class="string">"vg00"</span> successfully extended</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgs</span><br><span class="line">  VG   <span class="comment">#PV #LV #SN Attr   VSize  VFree </span></span><br><span class="line">  vg00   2   0   0 wz--n- 12.99g 12.99g</span><br></pre></td></tr></table></figure>
 
-<h4 id="在vg00-中创建逻辑卷-LV-lv00-初始大小为-10G"><a href="#在vg00-中创建逻辑卷-LV-lv00-初始大小为-10G" class="headerlink" title="在vg00 中创建逻辑卷(LV)lv00, 初始大小为 10G"></a>在vg00 中创建逻辑卷(LV)lv00, 初始大小为 10G</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgs</span><br><span class="line">  VG   <span class="comment">#PV #LV #SN Attr   VSize  VFree </span></span><br><span class="line">  vg00   2   0   0 wz--n- 12.99g 12.99g</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo lvcreate -L 10G -n lv00 /dev/vg00</span><br><span class="line">  Logical volume <span class="string">"lv00"</span> created.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo lvs</span><br><span class="line">  LV   VG   Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert</span><br><span class="line">  lv00 vg00 -wi<span class="_">-a</span>----- 10.00g</span><br></pre></td></tr></table></figure>
+<h5 id="在vg00-中创建逻辑卷-LV-lv00-初始大小为-10G"><a href="#在vg00-中创建逻辑卷-LV-lv00-初始大小为-10G" class="headerlink" title="在vg00 中创建逻辑卷(LV)lv00, 初始大小为 10G"></a>在vg00 中创建逻辑卷(LV)lv00, 初始大小为 10G</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo vgs</span><br><span class="line">  VG   <span class="comment">#PV #LV #SN Attr   VSize  VFree </span></span><br><span class="line">  vg00   2   0   0 wz--n- 12.99g 12.99g</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo lvcreate -L 10G -n lv00 /dev/vg00</span><br><span class="line">  Logical volume <span class="string">"lv00"</span> created.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:/dev$ sudo lvs</span><br><span class="line">  LV   VG   Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert</span><br><span class="line">  lv00 vg00 -wi<span class="_">-a</span>----- 10.00g</span><br></pre></td></tr></table></figure>
 
-<h4 id="在lv00-中创建文件系统并装载"><a href="#在lv00-中创建文件系统并装载" class="headerlink" title="在lv00 中创建文件系统并装载"></a>在lv00 中创建文件系统并装载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo mkfs.ext4 /dev/vg00/lv00</span><br><span class="line">mke2fs 1.42.13 (17-May-2015)</span><br><span class="line">Creating filesystem with 2621440 4k blocks and 655360 inodes</span><br><span class="line">Filesystem UUID: 0cb50d90-490e-4413-b702-1187b48d10fc</span><br><span class="line">Superblock backups stored on blocks: </span><br><span class="line">	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</span><br><span class="line"></span><br><span class="line">Allocating group tables: 完成                            </span><br><span class="line">正在写入inode表: 完成                            </span><br><span class="line">Creating journal (32768 blocks): 完成</span><br><span class="line">Writing superblocks and filesystem accounting information: 完成 </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS$ sudo mkdir data</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS$ sudo mount /dev/vg00/lv00 data</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls</span><br><span class="line">lost+found</span><br></pre></td></tr></table></figure>
+<h5 id="在lv00-中创建文件系统并装载"><a href="#在lv00-中创建文件系统并装载" class="headerlink" title="在lv00 中创建文件系统并装载"></a>在lv00 中创建文件系统并装载</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:/dev$ sudo mkfs.ext4 /dev/vg00/lv00</span><br><span class="line">mke2fs 1.42.13 (17-May-2015)</span><br><span class="line">Creating filesystem with 2621440 4k blocks and 655360 inodes</span><br><span class="line">Filesystem UUID: 0cb50d90-490e-4413-b702-1187b48d10fc</span><br><span class="line">Superblock backups stored on blocks: </span><br><span class="line">	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</span><br><span class="line"></span><br><span class="line">Allocating group tables: 完成                            </span><br><span class="line">正在写入inode表: 完成                            </span><br><span class="line">Creating journal (32768 blocks): 完成</span><br><span class="line">Writing superblocks and filesystem accounting information: 完成 </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS$ sudo mkdir data</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS$ sudo mount /dev/vg00/lv00 data</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls</span><br><span class="line">lost+found</span><br></pre></td></tr></table></figure>
 
 <p>我将文件系统挂在了 <code>OS/data/</code> 这个文件夹中.</p>
-<h4 id="在文件系统中创建一个-8G-的大文件"><a href="#在文件系统中创建一个-8G-的大文件" class="headerlink" title="在文件系统中创建一个 8G 的大文件"></a>在文件系统中创建一个 8G 的大文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo dd <span class="keyword">if</span>=/dev/zero of=/home/yjn/OS/data/bigfile1 bs=1M count=8192</span><br><span class="line">记录了8192+0 的读入</span><br><span class="line">记录了8192+0 的写出</span><br><span class="line">8589934592 bytes (8.6 GB, 8.0 GiB) copied, 12.1378 s, 708 MB/s</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls -lh</span><br><span class="line">总用量 8.1G</span><br><span class="line">-rw-r--r-- 1 root root 8.0G 10月  3 18:29 bigfile1</span><br><span class="line">drwx------ 2 root root  16K 10月  3 18:24 lost+found</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ df -h</span><br><span class="line">文件系统               容量  已用  可用 已用% 挂载点</span><br><span class="line">udev                   1.5G     0  1.5G    0% /dev</span><br><span class="line">tmpfs                  300M  8.9M  291M    3% /run</span><br><span class="line">/dev/sda1               17G  4.6G   12G   30% /</span><br><span class="line">tmpfs                  1.5G  132K  1.5G    1% /dev/shm</span><br><span class="line">tmpfs                  5.0M  4.0K  5.0M    1% /run/lock</span><br><span class="line">tmpfs                  1.5G     0  1.5G    0% /sys/fs/cgroup</span><br><span class="line">tmpfs                  300M   40K  300M    1% /run/user/1000</span><br><span class="line">/dev/mapper/vg00-lv00  9.8G  8.1G  1.2G   88% /home/yjn/OS/data</span><br></pre></td></tr></table></figure>
+<h5 id="在文件系统中创建一个-8G-的大文件"><a href="#在文件系统中创建一个-8G-的大文件" class="headerlink" title="在文件系统中创建一个 8G 的大文件"></a>在文件系统中创建一个 8G 的大文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo dd <span class="keyword">if</span>=/dev/zero of=/home/yjn/OS/data/bigfile1 bs=1M count=8192</span><br><span class="line">记录了8192+0 的读入</span><br><span class="line">记录了8192+0 的写出</span><br><span class="line">8589934592 bytes (8.6 GB, 8.0 GiB) copied, 12.1378 s, 708 MB/s</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls -lh</span><br><span class="line">总用量 8.1G</span><br><span class="line">-rw-r--r-- 1 root root 8.0G 10月  3 18:29 bigfile1</span><br><span class="line">drwx------ 2 root root  16K 10月  3 18:24 lost+found</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ df -h</span><br><span class="line">文件系统               容量  已用  可用 已用% 挂载点</span><br><span class="line">udev                   1.5G     0  1.5G    0% /dev</span><br><span class="line">tmpfs                  300M  8.9M  291M    3% /run</span><br><span class="line">/dev/sda1               17G  4.6G   12G   30% /</span><br><span class="line">tmpfs                  1.5G  132K  1.5G    1% /dev/shm</span><br><span class="line">tmpfs                  5.0M  4.0K  5.0M    1% /run/lock</span><br><span class="line">tmpfs                  1.5G     0  1.5G    0% /sys/fs/cgroup</span><br><span class="line">tmpfs                  300M   40K  300M    1% /run/user/1000</span><br><span class="line">/dev/mapper/vg00-lv00  9.8G  8.1G  1.2G   88% /home/yjn/OS/data</span><br></pre></td></tr></table></figure>
 
-<h4 id="扩大lv-逻辑卷-和fs-文件系统"><a href="#扩大lv-逻辑卷-和fs-文件系统" class="headerlink" title="扩大lv(逻辑卷)和fs(文件系统)"></a>扩大lv(逻辑卷)和fs(文件系统)</h4><p>假如现在又要一个大文件bigfile2, 大小为3G, 文件系统不够大了, 需要扩大lv 和 fs.</p>
+<h5 id="扩大lv-逻辑卷-和fs-文件系统"><a href="#扩大lv-逻辑卷-和fs-文件系统" class="headerlink" title="扩大lv(逻辑卷)和fs(文件系统)"></a>扩大lv(逻辑卷)和fs(文件系统)</h5><p>假如现在又要一个大文件bigfile2, 大小为3G, 文件系统不够大了, 需要扩大lv 和 fs.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo lvextend -L 12G /dev/vg00/lv00</span><br><span class="line">  Size of logical volume vg00/lv00 changed from 10.00 GiB (2560 extents) to 12.00 GiB (3072 extents).</span><br><span class="line">  Logical volume vg00/lv00 successfully resized.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo resize2fs /dev/vg00/lv00</span><br><span class="line">resize2fs 1.42.13 (17-May-2015)</span><br><span class="line">Filesystem at /dev/vg00/lv00 is mounted on /home/yjn/OS/data; on-line resizing required</span><br><span class="line">old_desc_blocks = 1, new_desc_blocks = 1</span><br><span class="line">The filesystem on /dev/vg00/lv00 is now 3145728 (4k) blocks long.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ df -h</span><br><span class="line">文件系统               容量  已用  可用 已用% 挂载点</span><br><span class="line">udev                   1.5G     0  1.5G    0% /dev</span><br><span class="line">tmpfs                  300M  8.9M  291M    3% /run</span><br><span class="line">/dev/sda1               17G  4.6G   12G   30% /</span><br><span class="line">tmpfs                  1.5G  132K  1.5G    1% /dev/shm</span><br><span class="line">tmpfs                  5.0M  4.0K  5.0M    1% /run/lock</span><br><span class="line">tmpfs                  1.5G     0  1.5G    0% /sys/fs/cgroup</span><br><span class="line">tmpfs                  300M   40K  300M    1% /run/user/1000</span><br><span class="line">/dev/mapper/vg00-lv00   12G  8.1G  3.1G   73% /home/yjn/OS/data</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo dd <span class="keyword">if</span>=/dev/zero of=bigfile2 bs=1M count=3096</span><br><span class="line">记录了3096+0 的读入</span><br><span class="line">记录了3096+0 的写出</span><br><span class="line">3246391296 bytes (3.2 GB, 3.0 GiB) copied, 1.92041 s, 1.7 GB/s</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls -lh</span><br><span class="line">总用量 12G</span><br><span class="line">-rw-r--r-- 1 root root 8.0G 10月  3 18:29 bigfile1</span><br><span class="line">-rw-r--r-- 1 root root 3.1G 10月  3 18:34 bigfile2</span><br><span class="line">drwx------ 2 root root  16K 10月  3 18:24 lost+found</span><br></pre></td></tr></table></figure>
 
-<h4 id="扩大pv-物理卷"><a href="#扩大pv-物理卷" class="headerlink" title="扩大pv(物理卷)"></a>扩大pv(物理卷)</h4><p>假如又要在放一个文件bigfile3, 大小为3G, 那么, pv中的剩余空间也不够了. 需要先扩pv, 再扩lv 和 fs.</p>
+<h5 id="扩大pv-物理卷"><a href="#扩大pv-物理卷" class="headerlink" title="扩大pv(物理卷)"></a>扩大pv(物理卷)</h5><p>假如又要在放一个文件bigfile3, 大小为3G, 那么, pv中的剩余空间也不够了. 需要先扩pv, 再扩lv 和 fs.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo pvcreate /dev/sdb5</span><br><span class="line">  Physical volume <span class="string">"/dev/sdb5"</span> successfully created.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo vgextend vg00 /dev/sdb5</span><br><span class="line">  Volume group <span class="string">"vg00"</span> successfully extended</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo vgs</span><br><span class="line">  VG   <span class="comment">#PV #LV #SN Attr   VSize   VFree </span></span><br><span class="line">  vg00   3   1   0 wz--n- &lt;15.99g &lt;3.99g</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo lvextend -L 15.5G /dev/vg00/lv00</span><br><span class="line">  Size of logical volume vg00/lv00 changed from 12.00 GiB (3072 extents) to 15.50 GiB (3968 extents).</span><br><span class="line">  Logical volume vg00/lv00 successfully resized.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo resize2fs /dev/vg00/lv00</span><br><span class="line">resize2fs 1.42.13 (17-May-2015)</span><br><span class="line">Filesystem at /dev/vg00/lv00 is mounted on /home/yjn/OS/data; on-line resizing required</span><br><span class="line">old_desc_blocks = 1, new_desc_blocks = 1</span><br><span class="line">The filesystem on /dev/vg00/lv00 is now 4063232 (4k) blocks long.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ df -h</span><br><span class="line">文件系统               容量  已用  可用 已用% 挂载点</span><br><span class="line">udev                   1.5G     0  1.5G    0% /dev</span><br><span class="line">tmpfs                  300M  8.9M  291M    3% /run</span><br><span class="line">/dev/sda1               17G  4.6G   12G   30% /</span><br><span class="line">tmpfs                  1.5G  132K  1.5G    1% /dev/shm</span><br><span class="line">tmpfs                  5.0M  4.0K  5.0M    1% /run/lock</span><br><span class="line">tmpfs                  1.5G     0  1.5G    0% /sys/fs/cgroup</span><br><span class="line">tmpfs                  300M   40K  300M    1% /run/user/1000</span><br><span class="line">/dev/mapper/vg00-lv00   16G   12G  3.4G   77% /home/yjn/OS/data</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo dd <span class="keyword">if</span>=/dev/zero of=/home/yjn/OS/data/bigfile3 bs=1M count=3096</span><br><span class="line">记录了3096+0 的读入</span><br><span class="line">记录了3096+0 的写出</span><br><span class="line">3246391296 bytes (3.2 GB, 3.0 GiB) copied, 2.03317 s, 1.6 GB/s</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls -lh</span><br><span class="line">总用量 15G</span><br><span class="line">-rw-r--r-- 1 root root 8.0G 10月  3 18:29 bigfile1</span><br><span class="line">-rw-r--r-- 1 root root 3.1G 10月  3 18:34 bigfile2</span><br><span class="line">-rw-r--r-- 1 root root 3.1G 10月  3 18:42 bigfile3</span><br><span class="line">drwx------ 2 root root  16K 10月  3 18:24 lost+found</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ df -h ../data/</span><br><span class="line">文件系统               容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/vg00-lv00   16G   15G  313M   98% /home/yjn/OS/data</span><br></pre></td></tr></table></figure>
 
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>我们使用了由 sdb5(3GB), sdb6(&lt;3GB), sdc(10GB) 组成的卷组 vg00, 大小为 &lt;16GB.</p>
+<h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><p>我们使用了由 sdb5(3GB), sdb6(&lt;3GB), sdc(10GB) 组成的卷组 vg00, 大小为 &lt;16GB.</p>
 <p>在其中创建了一个大小为15.5GB的逻辑卷lv00, 此逻辑卷中创建了大小为15.5GB大小的文件系统, 并存放了 bigfile1(8G), bigfile2(3G), bigfile3(3G) 共14G的数据的三个大文件. </p>
 <p>经测试, 文件系统随时可以扩大.</p>
-<h3 id="缩小文件系统和相关的逻辑卷管理"><a href="#缩小文件系统和相关的逻辑卷管理" class="headerlink" title="缩小文件系统和相关的逻辑卷管理"></a>缩小文件系统和相关的逻辑卷管理</h3><h4 id="删除文件-卸载文件系统"><a href="#删除文件-卸载文件系统" class="headerlink" title="删除文件, 卸载文件系统"></a>删除文件, 卸载文件系统</h4><p>删除bigfile2, bigfile3, unmount文件系统, 为缩小文件系统做准备.</p>
+<h4 id="缩小文件系统和相关的逻辑卷管理"><a href="#缩小文件系统和相关的逻辑卷管理" class="headerlink" title="缩小文件系统和相关的逻辑卷管理"></a>缩小文件系统和相关的逻辑卷管理</h4><h5 id="删除文件-卸载文件系统"><a href="#删除文件-卸载文件系统" class="headerlink" title="删除文件, 卸载文件系统"></a>删除文件, 卸载文件系统</h5><p>删除bigfile2, bigfile3, unmount文件系统, 为缩小文件系统做准备.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~/OS/data$ sudo rm bigfile2 bigfile3</span><br><span class="line">[sudo] yjn 的密码： </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ ls</span><br><span class="line">bigfile1  lost+found</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~/OS/data$ <span class="built_in">cd</span> </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~$ sudo umount /home/yjn/OS/data </span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~$ sudo e2fsck -f /dev/vg00/lv00 </span><br><span class="line">e2fsck 1.42.13 (17-May-2015)</span><br><span class="line">第一步: 检查inode,块,和大小</span><br><span class="line">第二步: 检查目录结构</span><br><span class="line">第3步: 检查目录连接性</span><br><span class="line">Pass 4: Checking reference counts</span><br><span class="line">第5步: 检查簇概要信息</span><br><span class="line">/dev/vg00/lv00: 12/1015808 files (0.0% non-contiguous), 2200073/4063232 blocks</span><br></pre></td></tr></table></figure>
 
-<h4 id="缩小文件系统以及逻辑卷"><a href="#缩小文件系统以及逻辑卷" class="headerlink" title="缩小文件系统以及逻辑卷"></a>缩小文件系统以及逻辑卷</h4><p>缩小文件系统时, 我再次遇到了问题 :</p>
+<h5 id="缩小文件系统以及逻辑卷"><a href="#缩小文件系统以及逻辑卷" class="headerlink" title="缩小文件系统以及逻辑卷"></a>缩小文件系统以及逻辑卷</h5><p>缩小文件系统时, 我再次遇到了问题 :</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~$ sudo resize2fs /dev/vg00/lv00 10G</span><br><span class="line">resize2fs 1.42.13 (17-May-2015)</span><br><span class="line">resize2fs: New size smaller than minimum (2660232)</span><br></pre></td></tr></table></figure>
 
 
@@ -377,15 +353,15 @@
 <p>在使用 resize2fs 工具时可以加上选项 -M, 就会将文件系统直接缩小到最小值.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~$ sudo resize2fs -M /dev/vg00/lv00</span><br><span class="line">resize2fs 1.42.13 (17-May-2015)</span><br><span class="line">Resizing the filesystem on /dev/vg00/lv00 to 2660232 (4k) blocks.</span><br><span class="line">The filesystem on /dev/vg00/lv00 is now 2660232 (4k) blocks long.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~$ sudo lvreduce -L 11G /dev/vg00/lv00</span><br><span class="line">  WARNING: Reducing active logical volume to 11.00 GiB.</span><br><span class="line">  THIS MAY DESTROY YOUR DATA (filesystem etc.)</span><br><span class="line">Do you really want to reduce vg00/lv00? [y/n]: y</span><br><span class="line">  Size of logical volume vg00/lv00 changed from 15.50 GiB (3968 extents) to 11.00 GiB (2816 extents).</span><br><span class="line">  Logical volume vg00/lv00 successfully resized.</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~$ sudo mount /dev/vg00/lv00 /home/yjn/OS/data/</span><br><span class="line"></span><br><span class="line">yjn@yjn-virtual-machine:~$ df -h /home/yjn/OS/data/</span><br><span class="line">文件系统               容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/vg00-lv00  9.9G  8.1G  1.4G   86% /home/yjn/OS/data</span><br><span class="line">yjn@yjn-virtual-machine:~$</span><br></pre></td></tr></table></figure>
 
-<h2 id="bigger-files-for-xv6"><a href="#bigger-files-for-xv6" class="headerlink" title="bigger files for xv6"></a>bigger files for xv6</h2><p><a href="https://pdos.csail.mit.edu/6.828/2018/homework/xv6-big-files.html" target="_blank" rel="noopener">MIT 作业要求</a></p>
-<h3 id="关于实验的一些概括性描述"><a href="#关于实验的一些概括性描述" class="headerlink" title="关于实验的一些概括性描述"></a>关于实验的一些概括性描述</h3><ul>
+<h3 id="bigger-files-for-xv6"><a href="#bigger-files-for-xv6" class="headerlink" title="bigger files for xv6"></a>bigger files for xv6</h3><p><a href="https://pdos.csail.mit.edu/6.828/2018/homework/xv6-big-files.html" target="_blank" rel="noopener">MIT 作业要求</a></p>
+<h4 id="关于实验的一些概括性描述"><a href="#关于实验的一些概括性描述" class="headerlink" title="关于实验的一些概括性描述"></a>关于实验的一些概括性描述</h4><ul>
 <li>实验目标 : 增加 xv6 文件的最大大小由约 70kB 到约 8.5MB.</li>
 <li>实验环境 : Ubuntu 16.04 TLS</li>
 <li>大体思路 :<br>xv6文件最大大小为 70KB 的原因是其 inode 包含12个 “直接” 指针和一个 “单一间接” 指针.<br>而xv6的每个数据块为 512B, 所以间接指针指向了共 512/4 = 128 个二级指针. 这样就总共有 128 + 12 = 140 个指针.<br>又因为每个指针都指向了一个512B大小的数据块. 所以就有 140 * 512 = 71680 B = 70KB 大小的文件.<br>那么要怎么实现增大最大大小呢?<br>只需要修改 <code>fs.c</code> 这个文件中的<code>bmap()</code>, 来实现原来的第十二个指针由直接指针改成一级间接指针, 原来的第十三个指针由一级间接指针改成二级间接指针.<br>这样, 指针的总数就是 11 + 128 + 128*128 = 16523 个, 它们指向的数据块的总大小就是 16523 * 512 = 8459776 B = 8.4 MB</li>
 </ul>
-<h3 id="安装-“big-工具”"><a href="#安装-“big-工具”" class="headerlink" title="安装 “big 工具”"></a>安装 “big 工具”</h3><p>在这次实验中, 需要一个能验证文件大小的方法. 所以这里需要做一些前期工作.</p>
+<h4 id="安装-“big-工具”"><a href="#安装-“big-工具”" class="headerlink" title="安装 “big 工具”"></a>安装 “big 工具”</h4><p>在这次实验中, 需要一个能验证文件大小的方法. 所以这里需要做一些前期工作.</p>
 <figure class="image-box">
-                <a rel=操作系统的两次实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/preliminaries.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/preliminaries.png" alt title class></a>
+                <a rel=一些有趣的实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/preliminaries.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/preliminaries.png" alt title class></a>
                 <p></p>
             </figure>
 
@@ -399,7 +375,7 @@
 <li><p>在 xv6 目录输入 <code>make qemu</code> 编译并运行 xv6. 输入 big ,若显示140个blocks则表明成功.</p>
 </li>
 </ol>
-<h3 id="分析原fs-c文件中的代码"><a href="#分析原fs-c文件中的代码" class="headerlink" title="分析原fs.c文件中的代码"></a>分析原<code>fs.c文件</code>中的代码</h3><p>要想在原xv6的基础修改并实现我们的功能, 必须要先读懂原来的代码.</p>
+<h4 id="分析原fs-c文件中的代码"><a href="#分析原fs-c文件中的代码" class="headerlink" title="分析原fs.c文件中的代码"></a>分析原<code>fs.c文件</code>中的代码</h4><p>要想在原xv6的基础修改并实现我们的功能, 必须要先读懂原来的代码.</p>
 <p>头一次发现 C语言 的代码是如此晦涩难懂.</p>
 <p>这里先附上<code>fs.c</code>中的<code>bmap()</code>的代码以及我的注释.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bmap() 返回 第 bn 个数据块的位置</span></span><br><span class="line"><span class="keyword">static</span> uint </span><br><span class="line">bmap(struct inode *ip, uint bn)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ip 是inode * 实例, 也就是我们将要读取的文件的inode指针</span></span><br><span class="line">  </span><br><span class="line">  uint addr, *a;  </span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">buf</span> *<span class="title">bp</span>;</span></span><br><span class="line">  <span class="comment">// 这里的 NDIRECT = 12, 也就是直接指针的个数.</span></span><br><span class="line">  <span class="keyword">if</span>(bn &lt; NDIRECT)&#123;</span><br><span class="line">    <span class="comment">// 如果 bn &lt; NDIRECT, 说明查询直接指针所指向的数据块.</span></span><br><span class="line">    <span class="comment">// 因为 是直接指针, 所以指针是被保存在inode中的, 所以可以通过inode *ip直接访问.</span></span><br><span class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[bn]) == <span class="number">0</span>)</span><br><span class="line">      <span class="comment">// dev 是 inode 中保存的设备的号码, 我估计应该是磁盘(储存设备)的设备代码)</span></span><br><span class="line">      ip-&gt;addrs[bn] = addr = balloc(ip-&gt;dev);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  bn -= NDIRECT;</span><br><span class="line">  <span class="comment">// NINDIRECT = BSIZE / sizeof(uint);</span></span><br><span class="line">  <span class="comment">// BSIZE = 512;</span></span><br><span class="line">  <span class="comment">// 所以 NINDIRECT = 512 / 4 = 128</span></span><br><span class="line">  <span class="comment">// 在结合之前的 bn -= NDIRECT, 此时的bn 含义成了一级间接指针的个数</span></span><br><span class="line">  <span class="comment">// 只要 bn &lt; NINDIRECT , 即可读取.</span></span><br><span class="line">  <span class="keyword">if</span>(bn &lt; NINDIRECT)&#123;</span><br><span class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT]) == <span class="number">0</span>) </span><br><span class="line">      <span class="comment">// 如果 间接指针是空的, 我们就给它分配一个.</span></span><br><span class="line">      ip-&gt;addrs[NDIRECT] = addr = balloc(ip-&gt;dev);</span><br><span class="line">    <span class="comment">// bp 是缓冲变量, 相当于第13个指针的内容.</span></span><br><span class="line">    bp = bread(ip-&gt;dev, addr);</span><br><span class="line">    <span class="comment">// a 是 间接指针所指向的地址的数组.</span></span><br><span class="line">    a = (uint*)bp-&gt;data;</span><br><span class="line">    <span class="keyword">if</span>((addr = a[bn]) == <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="comment">// 根据bmap()函数的意义, 我们只读取a[bn]即可.</span></span><br><span class="line">      a[bn] = addr = balloc(ip-&gt;dev);</span><br><span class="line">      log_write(bp);</span><br><span class="line">    &#125;</span><br><span class="line">    brelse(bp);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// bn &gt;= NINDIRECT, 已经超过最大文件大小了.</span></span><br><span class="line">  </span><br><span class="line">  panic(<span class="string">"bmap: out of range"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -407,7 +383,7 @@
 <p>经过漫长的阅读, 基本确定了这个函数的作用是返回第 bn 个数据块的地址. </p>
 <p>其中的两个if分别代表读取直接指针指向的数据块和间接指针指向数据块的地址的两种情况.</p>
 <p>如果这两种情况都不满足, 就说明文件过大而执行最后的报错语句.</p>
-<h3 id="重写-bmap-函数"><a href="#重写-bmap-函数" class="headerlink" title="重写 bmap()函数"></a>重写 <code>bmap()</code>函数</h3><p>其实如果刚才的代码看懂了的话, 下面的工作就是照葫芦画瓢, 很简单.</p>
+<h4 id="重写-bmap-函数"><a href="#重写-bmap-函数" class="headerlink" title="重写 bmap()函数"></a>重写 <code>bmap()</code>函数</h4><p>其实如果刚才的代码看懂了的话, 下面的工作就是照葫芦画瓢, 很简单.</p>
 <p>我也分情况分别贴出代码.</p>
 <ul>
 <li>访问直接指针的数据块时.<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(bn &lt; NDIRECT)&#123;  <span class="comment">// 在fs.h中将这里修改为 11</span></span><br><span class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[bn]) == <span class="number">0</span>)</span><br><span class="line">      ip-&gt;addrs[bn] = addr = balloc(ip-&gt;dev);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -440,7 +416,7 @@
 <p>修改好这两个文件后, 重新编译<code>make qemu</code>.</p>
 <p>输入big命令, 得到如下结果即为成功.</p>
 <figure class="image-box">
-                <a rel=操作系统的两次实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/xv6.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/xv6.png" alt title class></a>
+                <a rel=一些有趣的实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/xv6.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/xv6.png" alt title class></a>
                 <p></p>
             </figure>
         </div>
@@ -449,7 +425,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-04T10:00:50.333Z" itemprop="dateUpdated">2019-10-04 18:00:50</time>
+    Last updated: <time datetime="2019-10-12T15:32:50.441Z" itemprop="dateUpdated">2019-10-12 23:32:50</time>
 </span><br>
 
 
@@ -474,7 +450,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c语言/">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件系统/">文件系统</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c语言/">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/smtp/">smtp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件系统/">文件系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -483,7 +459,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《操作系统的两次实验》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《一些有趣的实验》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -495,7 +471,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《操作系统的两次实验》 — Anti-entropy's blog&source=linux文件管理系统实验 和 xv6 big file实验 记录." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《一些有趣的实验》 — Anti-entropy's blog&source=课上老师布置的一些实验的记录." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -507,7 +483,7 @@
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《操作系统的两次实验》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一些有趣的实验》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -545,7 +521,7 @@
     <div class="next">
       <a href="/2019/09/25/杂篇/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">杂篇</h4>
+        <h4 class="title">拼接图像</h4>
       </a>
     </div>
   
@@ -557,7 +533,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#操作系统两次实验"><span class="post-toc-number">1.</span> <span class="post-toc-text">操作系统两次实验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#linux-文件管理系统实验记录"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">linux 文件管理系统实验记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分配虚拟硬盘"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">分配虚拟硬盘</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建和扩大文件系统和相关逻辑卷管理"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">创建和扩大文件系统和相关逻辑卷管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用fdisk将sdb分出分区"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">使用fdisk将sdb分出分区</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将sdb6-和-sdc-初始化为物理卷-PV"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">将sdb6 和 sdc 初始化为物理卷(PV)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将-sdb6-和-sdc-加入卷组-VG-vg00-中"><span class="post-toc-number">1.1.2.3.</span> <span class="post-toc-text">将 sdb6 和 sdc 加入卷组(VG) vg00 中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在vg00-中创建逻辑卷-LV-lv00-初始大小为-10G"><span class="post-toc-number">1.1.2.4.</span> <span class="post-toc-text">在vg00 中创建逻辑卷(LV)lv00, 初始大小为 10G</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在lv00-中创建文件系统并装载"><span class="post-toc-number">1.1.2.5.</span> <span class="post-toc-text">在lv00 中创建文件系统并装载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在文件系统中创建一个-8G-的大文件"><span class="post-toc-number">1.1.2.6.</span> <span class="post-toc-text">在文件系统中创建一个 8G 的大文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#扩大lv-逻辑卷-和fs-文件系统"><span class="post-toc-number">1.1.2.7.</span> <span class="post-toc-text">扩大lv(逻辑卷)和fs(文件系统)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#扩大pv-物理卷"><span class="post-toc-number">1.1.2.8.</span> <span class="post-toc-text">扩大pv(物理卷)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.1.2.9.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缩小文件系统和相关的逻辑卷管理"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">缩小文件系统和相关的逻辑卷管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除文件-卸载文件系统"><span class="post-toc-number">1.1.3.1.</span> <span class="post-toc-text">删除文件, 卸载文件系统</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缩小文件系统以及逻辑卷"><span class="post-toc-number">1.1.3.2.</span> <span class="post-toc-text">缩小文件系统以及逻辑卷</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bigger-files-for-xv6"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">bigger files for xv6</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于实验的一些概括性描述"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">关于实验的一些概括性描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-“big-工具”"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">安装 “big 工具”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析原fs-c文件中的代码"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">分析原fs.c文件中的代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重写-bmap-函数"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">重写 bmap()函数</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实验合集"><span class="post-toc-number">1.</span> <span class="post-toc-text">实验合集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算机网络"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">计算机网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#smtp-发送伪造邮件"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">smtp 发送伪造邮件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#http-下的文件下载分析"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">http 下的文件下载分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#抓包分析"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">抓包分析</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作系统"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">操作系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#linux-文件管理系统实验记录"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">linux 文件管理系统实验记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分配虚拟硬盘"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">分配虚拟硬盘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建和扩大文件系统和相关逻辑卷管理"><span class="post-toc-number">1.2.1.2.</span> <span class="post-toc-text">创建和扩大文件系统和相关逻辑卷管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缩小文件系统和相关的逻辑卷管理"><span class="post-toc-number">1.2.1.3.</span> <span class="post-toc-text">缩小文件系统和相关的逻辑卷管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bigger-files-for-xv6"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">bigger files for xv6</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于实验的一些概括性描述"><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text">关于实验的一些概括性描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装-“big-工具”"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text">安装 “big 工具”</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分析原fs-c文件中的代码"><span class="post-toc-number">1.2.2.3.</span> <span class="post-toc-text">分析原fs.c文件中的代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重写-bmap-函数"><span class="post-toc-number">1.2.2.4.</span> <span class="post-toc-text">重写 bmap()函数</span></a></li></ol></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -682,7 +658,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《操作系统的两次实验》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《一些有趣的实验》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -694,7 +670,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《操作系统的两次实验》 — Anti-entropy's blog&source=linux文件管理系统实验 和 xv6 big file实验 记录." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&title=《一些有趣的实验》 — Anti-entropy's blog&source=课上老师布置的一些实验的记录." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -706,7 +682,7 @@
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《操作系统的两次实验》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一些有趣的实验》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/10/03/linux文件管理实验/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -826,7 +802,7 @@
         var a_idx = 0; 
         jQuery(document).ready(function($) { 
             $("body").click(function(e) { 
-                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤"); 
+                var a = new Array("❤好❤","❤看❤","❤就❤","❤留❤","❤个❤","❤言❤","❤吧❤"); 
                 var $i = $("<span></span>").text(a[a_idx]); 
                 a_idx = (a_idx + 1) % a.length; 
                 var x = e.pageX, 
@@ -854,7 +830,6 @@
     <!--动态线条背景-->
     <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   
 
 </body>
 </html>

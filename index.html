@@ -13,8 +13,6 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
-
-    
     
     <script type="text/javascript">
         // Data Center
@@ -30,10 +28,7 @@
         window.lazyScripts=[];
     </script>
     
-    
-    <script>
-        var imageArr=[];
-    </script>
+
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -42,52 +37,53 @@
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
+    </script>
+    
+        <!-- live2d css -->
+        <style>
+            .live2d-widget-dialog-container {
+                width: 300px;
+                height: 120px;
+                position: absolute;
+                bottom: 65%;
+                right: 0px;
+                transform-origin: right;
+                padding: 12px;
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+            }
+            .live2d-widget-dialog {
+                width: 100%;
+                height: 100%;
+                color: #917159;
+                font-size: 16px;
+                padding: 12px;
+                border: 2px solid rgb(236, 203, 180);
+                background: rgb(252, 248, 244);
+                box-sizing: border-box;
+                border-radius: 10px;
+                transform: rotate(-2deg);
+                opacity: 0;
+                transition: 200ms opacity;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+                animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+            }
+            @keyframes live2d-widget-dialog-tingle {
+                0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+                100% { transform: translate(1px, -1.5px) rotate(2deg); }
+            }
+        </style>
+    
+        <!--- live2d js -->
+        <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+        <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+        <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+        <script>
+            var imageArr=[];
         </script>
         
-
-
-        <!-- live2d css -->
-    <style>
-        .live2d-widget-dialog-container {
-            width: 300px;
-            height: 120px;
-            position: absolute;
-            bottom: 65%;
-            right: 0px;
-            transform-origin: right;
-            padding: 12px;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-        .live2d-widget-dialog {
-            width: 100%;
-            height: 100%;
-            color: #917159;
-            font-size: 16px;
-            padding: 12px;
-            border: 2px solid rgb(236, 203, 180);
-            background: rgb(252, 248, 244);
-            box-sizing: border-box;
-            border-radius: 10px;
-            transform: rotate(-2deg);
-            opacity: 0;
-            transition: 200ms opacity;
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-            animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
-        }
-        @keyframes live2d-widget-dialog-tingle {
-            0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
-            100% { transform: translate(1px, -1.5px) rotate(2deg); }
-        }
-    </style>
-
-    <!--- live2d js -->
-    <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
-    <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
-    <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
-    <!-- 访客统计 -->
-    <script src="http://188.131.227.20:999/api/ip_locate.php"> </script>
 </head>
+
 
 
 <body>
@@ -149,7 +145,6 @@
         
         <ul class="menu-link">
           
-          
               <li>
                 <a href="https://github.com/anti-entropy123/" target="_blank">
                   <i class="icon icon-lg icon-github"></i>
@@ -162,57 +157,6 @@
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-          <div id="binft" style=" text-align:center;"></div>
-          <script>
-            var binft = function (r) {
-              function t() {
-                return b[Math.floor(Math.random() * b.length)]
-              }  
-              function e() {
-                return String.fromCharCode(94 * Math.random() + 33)
-              }
-              function n(r) {
-                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                  var l = document.createElement("span");
-                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                }
-                return n
-              }
-              function i() {
-                var t = o[c.skillI];
-                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-              }
-              var l = "",
-              o = ["孤独是常态,", "寂寞是病态",
-                   "孤独使我自由,","寂寞让我作呕",
-                   "为守护所有美好而战,","向一切虚伪的美好宣战",
-                   "don't be sorry,","be better",
-                   "伤痕是我的勋章",
-                   "但置我于低谷者,","必将助我以崛起",
-                   "但置我于死地者,","必将赐我以后生",
-                   "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
-                   "天生我材必有用,","千金散尽还复来"
-                   ].map(function (r) {
-              return r + ""
-              }),
-              a = 2,
-              g = 1,
-              s = 5,
-              d = 75,
-              b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
-              c = {
-                text: "",
-                prefixP: -s,
-                skillI: 0,
-                skillP: 0,
-                direction: "forward",
-                delay: a,
-                step: g
-              };
-              i()
-              };
-              binft(document.getElementById('binft'));
-          </script>
         
             <li class=" active">
               <a href="/"  >
@@ -235,7 +179,7 @@
               </a>
             </li>
         
-        </ul>
+      </ul>
     </div>
   </div>
 </aside>
@@ -289,9 +233,9 @@
     <div id="local-search-result"></div>
 </div>
 
-        <div class="container body-wrap">
-            <ul class="post-list">
-    
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
             <li class="post-list-item fade">
                 <article id="post-linux文件管理实验"
   class="article-card article-type-post" itemprop="blogPost">
@@ -304,7 +248,9 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    
+
+    console.log("hello");
+
     theNumberOfImg = 38;
 
     id=Math.round(Math.random()*(theNumberOfImg-1))+1;
@@ -320,7 +266,7 @@
 
   
     <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2019/10/03/linux文件管理实验/">操作系统的两次实验</a>
+      <a class="post-title-link" href="/2019/10/03/linux文件管理实验/">一些有趣的实验</a>
     </h3>
   
 
@@ -331,10 +277,6 @@
         
     
     
-    
-
-
-
     
     <div class="post-meta">
         <time class="post-time" title="2019-10-03 17:25:32" datetime="2019-10-03T09:25:32.000Z"  itemprop="datePublished">2019-10-03</time>
@@ -361,7 +303,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        <p><code>linux文件管理系统实验</code> 和 <code>xv6 big file实验</code> 记录.</p>
+        <p>课上老师布置的一些实验的记录.</p>
     
     <a href="/2019/10/03/linux文件管理实验/" class="post-more waves-effect waves-button">
         全文
@@ -369,10 +311,9 @@
     </div>
 </article>
 
-
 <div class="post-footer">
     
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c语言/">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件系统/">文件系统</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c语言/">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/smtp/">smtp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件系统/">文件系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
 
 </div>
 
@@ -391,7 +332,9 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    
+
+    console.log("hello");
+
     theNumberOfImg = 38;
 
     id=Math.round(Math.random()*(theNumberOfImg-1))+1;
@@ -407,7 +350,7 @@
 
   
     <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2019/09/25/杂篇/">杂篇</a>
+      <a class="post-title-link" href="/2019/09/25/杂篇/">拼接图像</a>
     </h3>
   
 
@@ -418,10 +361,6 @@
         
     
     
-    
-
-
-
     
     <div class="post-meta">
         <time class="post-time" title="2019-09-25 20:04:00" datetime="2019-09-25T12:04:00.000Z"  itemprop="datePublished">2019-09-25</time>
@@ -448,7 +387,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        <p>We will we will rock you!</p>
+        <p>null.</p>
     
     <a href="/2019/09/25/杂篇/" class="post-more waves-effect waves-button">
         全文
@@ -456,10 +395,9 @@
     </div>
 </article>
 
-
 <div class="post-footer">
     
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/">misc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/smtp/">smtp</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/">misc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
 </div>
 
@@ -478,7 +416,9 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    
+
+    console.log("hello");
+
     theNumberOfImg = 38;
 
     id=Math.round(Math.random()*(theNumberOfImg-1))+1;
@@ -505,10 +445,6 @@
         
     
     
-    
-
-
-
     
     <div class="post-meta">
         <time class="post-time" title="2019-09-18 22:14:10" datetime="2019-09-18T14:14:10.000Z"  itemprop="datePublished">2019-09-18</time>
@@ -543,7 +479,6 @@
     </div>
 </article>
 
-
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -565,7 +500,9 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    
+
+    console.log("hello");
+
     theNumberOfImg = 38;
 
     id=Math.round(Math.random()*(theNumberOfImg-1))+1;
@@ -592,10 +529,6 @@
         
     
     
-    
-
-
-
     
     <div class="post-meta">
         <time class="post-time" title="2019-09-17 20:45:16" datetime="2019-09-17T12:45:16.000Z"  itemprop="datePublished">2019-09-17</time>
@@ -630,7 +563,6 @@
     </div>
 </article>
 
-
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -652,7 +584,9 @@
     </div>
     <!-- <img src="true" alt="图片路径不正确"> -->
     <script language=javascript>
-    
+
+    console.log("hello");
+
     theNumberOfImg = 38;
 
     id=Math.round(Math.random()*(theNumberOfImg-1))+1;
@@ -679,10 +613,6 @@
         
     
     
-    
-
-
-
     
     <div class="post-meta">
         <time class="post-time" title="2019-09-12 00:24:05" datetime="2019-09-11T16:24:05.000Z"  itemprop="datePublished">2019-09-12</time>
@@ -717,7 +647,6 @@
     </div>
 </article>
 
-
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arp欺骗/">arp欺骗</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中间人攻击/">中间人攻击</a></li></ul>
@@ -727,16 +656,16 @@
 
             </li>
         
-            </ul>
+        </ul>
         
 <nav id="page-nav">
     <div class="inner">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </div>
 </nav>
 
-            </div>
-        
+    </div>
+
     </main>
     <footer class="footer ">
     
@@ -969,7 +898,7 @@
         var a_idx = 0; 
         jQuery(document).ready(function($) { 
             $("body").click(function(e) { 
-                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤"); 
+                var a = new Array("❤好❤","❤看❤","❤就❤","❤留❤","❤个❤","❤言❤","❤吧❤"); 
                 var $i = $("<span></span>").text(a[a_idx]); 
                 a_idx = (a_idx + 1) % a.length; 
                 var x = e.pageX, 
@@ -997,7 +926,6 @@
     <!--动态线条背景-->
     <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   
 
 </body>
 </html>

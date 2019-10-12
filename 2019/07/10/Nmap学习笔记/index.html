@@ -3,13 +3,13 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
-    <link rel="canonical" href="https://tjuyjn.top/2019/09/12/ettercap/">
+    <link rel="canonical" href="https://tjuyjn.top/2019/07/10/Nmap学习笔记/">
     
     
-    <title>arp欺骗 初见 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <title>Nmap 学习笔记 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="web,中间人攻击,arp欺骗">
+    <meta name="keywords" content="web,主机扫描">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -191,7 +191,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>arp欺骗 初见</span>
+            <span>Nmap 学习笔记</span>
             
         </div>
         
@@ -204,11 +204,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">arp欺骗 初见</h1>
+        <h1 class="title">Nmap 学习笔记</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-09-11T16:24:05.000Z" itemprop="datePublished" class="page-time">
-  2019-09-12
+                <time datetime="2019-07-10T08:19:49.000Z" itemprop="datePublished" class="page-time">
+  2019-07-10
 </time>
 
 
@@ -235,12 +235,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-ettercap"
+    <article id="post-Nmap学习笔记"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">arp欺骗 初见</h1>
+        <h1 class="post-card-title">Nmap 学习笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-09-12 00:24:05" datetime="2019-09-11T16:24:05.000Z"  itemprop="datePublished">2019-09-12</time>
+            <time class="post-time" title="2019-07-10 16:19:49" datetime="2019-07-10T08:19:49.000Z"  itemprop="datePublished">2019-07-10</time>
 
             
 
@@ -250,8 +250,8 @@
             
     <span class="leancloud-comment">
         <i class="icon icon-comment-o"></i>
-        <a href="/2019/09/12/ettercap/#comment">
-            <span class="valine-comment-count" data-xid="/2019/09/12/ettercap/"></span>
+        <a href="/2019/07/10/Nmap学习笔记/#comment">
+            <span class="valine-comment-count" data-xid="/2019/07/10/Nmap学习笔记/"></span>
         </a>
     </span>
 
@@ -261,74 +261,53 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>实现了我多年的愿望.</p>
-<a id="more"></a>
+            <h1 id="Nmap主机扫描学习笔记"><a href="#Nmap主机扫描学习笔记" class="headerlink" title="Nmap主机扫描学习笔记"></a>Nmap主机扫描学习笔记</h1><p>测试环境: linux 3.x<br>Nmap版本: 7.01</p>
+<figure class="image-box">
+                <a rel=Nmap 学习笔记 href="http://188.131.227.20:999/picture/nmap.jpg" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/nmap.jpg" alt title class></a>
+                <p></p>
+            </figure>
 
-<h1 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h1><h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>暑假的时候看见ljy大佬qq空间里发了个黑掉酒店摄像头的说说, </p>
-<p>当时非常震撼, 也特别想学.</p>
-<p>wyz学长告诉我说很可能是通过中间人攻击的手段实现的(现在看来确实很有可能), 推荐我学习下ettercap的使用方法.</p>
-<p>当时为了做到这点, 我用了好几天的时间来尝试, </p>
-<p>从 Kali 到 Windows,<br>从 虚拟机 到 物理机,<br>从 NAT 模式到 桥接模式,<br>从 卸载 到 重新安装,<br>从 搜百度 到 查谷歌,<br>从 虚拟机崩溃 到 我本人崩溃 …</p>
-<p>反正就是好几天没干别的就鼓捣这玩意儿了, </p>
-<p>后来 yw老哥 在社团宣讲的时候演示了相关的技术, 遂找他问了问, 说是有可能是网卡的问题, 咱也不管是不是吧, 反正最后我是信了.</p>
-<p>这不今天的新网卡(某宝二十多买的)到了, 迫不及待的尝试我期待已久的中间人攻击.</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
-<li>路由器(以下所有设备均连接至此) : <ul>
-<li>手机热点 :<br>  ip : 192.168.43.1</li>
-</ul>
-</li>
-<li>攻击机 : <ul>
-<li>Vmware 虚拟机 :<br>  操作系统 : Kali<br>  ip : 192.168.43.214</li>
-</ul>
-</li>
-<li>攻击目标 :<ul>
-<li>物理机:(目标A)<br>  操作系统 : Windows<br>  ip : 192.168.43.170</li>
-<li>手机 :(目标B)<br>  操作系统 : Android<br>  ip : 192.168.43.1</li>
-</ul>
-</li>
-</ul>
-<p>测试的目标是通过中间人攻击(arp欺骗)来实现监视 A 所浏览的图片.</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>开启数据包转发</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+<h2 id="扫描单个目标"><a href="#扫描单个目标" class="headerlink" title="扫描单个目标"></a>扫描单个目标</h2><p>扫描单个主机的语法格式为<code>nmap [目标]</code><br>实例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ nmap localhost</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.01 ( https://nmap.org ) at 2019-07-10 16:32 CST</span><br><span class="line">Nmap scan report for localhost (127.0.0.1)</span><br><span class="line">Host is up (0.000093s latency).</span><br><span class="line">rDNS record for 127.0.0.1: localhost.localdomain</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">999/tcp  open  garcon</span><br><span class="line">1022/tcp open  exp2</span><br><span class="line">3306/tcp open  mysql</span><br></pre></td></tr></table></figure>
 
-<p>这一步非常重要! </p>
-<p>我当初认为数据包的转发是由软件 ettercap 完成的,</p>
-<p>但是在百度上无意间看到是操作系统完成的,.</p>
-<p>如果不开启这个的话, 被攻击的设备将无法连接网络, 没法进一步攻击.</p>
-<p>(当初因为这个浪费不少时间)</p>
-<ol start="2">
-<li><p>启动 ettercap</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ettercap -G</span><br></pre></td></tr></table></figure>
+<h2 id="扫描多个目标"><a href="#扫描多个目标" class="headerlink" title="扫描多个目标"></a>扫描多个目标</h2><h3 id="命令行中分别指定"><a href="#命令行中分别指定" class="headerlink" title="命令行中分别指定"></a>命令行中分别指定</h3><p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~# nmap 192.168.1.1 192.168.1.101 192.168.1.105</span><br><span class="line">Starting Nmap 6.47 ( http://nmap.org ) at 2015-05-05 19:07 CST</span><br><span class="line">Nmap scan report for localhost (192.168.1.1)</span><br><span class="line">Host is up (0.00094s latency).</span><br><span class="line">Not shown: 997 closed ports</span><br><span class="line">PORT       STATE SERVICE</span><br><span class="line">80/tcp             open  http</span><br><span class="line">1900/tcp          open  upnp</span><br><span class="line">49152/tcp         open  unknown</span><br><span class="line">Nmap scan report for localhost (192.168.1.101)</span><br><span class="line">Host is up (0.0060s latency).</span><br><span class="line">All 1000 scanned ports on localhost (192.168.1.101) are closed</span><br><span class="line">Nmap scan report for localhost (192.168.1.105)</span><br><span class="line">Host is up (0.00038s latency).</span><br><span class="line">Not shown: 995 closed ports</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">21/tcp      open  ftp</span><br><span class="line">22/tcp       open  ssh</span><br><span class="line">23/tcp      open  telnet</span><br><span class="line">111/tcp    open  rpcbind</span><br><span class="line">445/tcp    open  microsoft-ds</span><br><span class="line">Nmap done: 3 IP addresses (3 hosts up) scanned in 1.00 seconds</span><br></pre></td></tr></table></figure>
+
+<p>Nmap 就会分别报告扫描的结果.</p>
+<h3 id="逗号分隔"><a href="#逗号分隔" class="headerlink" title="逗号分隔"></a>逗号分隔</h3><p>使用简化符号来减少命令的长度.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1,101,105</span><br></pre></td></tr></table></figure>
+
+<p>这与上一个示例中的命令等效</p>
+<h3 id="目标列表"><a href="#目标列表" class="headerlink" title="目标列表"></a>目标列表</h3><p>当有大量主机需要扫描时, 可以将目标IP地址写入进一个文本文件中.<br>语法 : <code>nmap -iL [文件路径]</code></p>
+<h3 id="范围扫描"><a href="#范围扫描" class="headerlink" title="范围扫描"></a>范围扫描</h3><p>指定扫描范围时, 可以通过IP地址或子网的方式来实现. </p>
+<h4 id="IP地址指定扫描范围"><a href="#IP地址指定扫描范围" class="headerlink" title="IP地址指定扫描范围"></a>IP地址指定扫描范围</h4><p>语法 : <code>nmap [IP地址范围]</code></p>
+<ul>
+<li><p>示例一 : 扫描192.168.1.1-192.168.1.100之间的所有主机 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1-100</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>选择 sniff-Unified, 这里选择我们的网卡wlan0,然后点击OK</p>
-</li>
-<li><p>点击Hosts, 首先选择Scan for hosts, 扫描一下局域网里面主机, 然后我们在点击Hosts里面的Hosts list. 正常情况下会出现至少我刚才提到的两个ip地址. (既然这么说就有不正常情况, 有时候会扫不出刚才的ip, 原因不明)</p>
-</li>
-<li><p>A 的地址加入到 target1, B 的地址加入到 target2.</p>
-</li>
-<li><p>选择Mitm-ARP poisoning.</p>
-</li>
-<li><p>选择Sniff remote connections, 最后Start.</p>
-</li>
-<li><p>开启新的shell, 启动 driftnet,</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driftnet -i wlan0</span><br></pre></td></tr></table></figure>
+<li><p>示例二 : 扫描C类IP网络192.168.1.*到192.168.100.*之间的所有主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1-100.*</span><br></pre></td></tr></table></figure>
 
 </li>
-</ol>
-<p>这时, 当 A 浏览图片时, Kali 上就会出现那些图片.</p>
-<p>爽~~</p>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
-<li><p>有时间可以尝试偷偷监听室友们的, 看看能不能做到不被发现的完成目的,<br>想想就刺激.</p>
-</li>
-<li><p>尝试截获其它的数据, 包括但不限于视频流, 各种密码.</p>
-</li>
-<li><p>DNS污染, 将所有的http请求都解析到我的博客网址.</p>
-</li>
 </ul>
-<p>要不是现在已经半夜一点了, 真想现在就试试. </p>
-<p>然而明天又一天课, MD, 睡觉了.</p>
+<p>星号<code>*</code>是通配符, 表示0-255之间所有有效的主机.</p>
+<h4 id="子网扫描"><a href="#子网扫描" class="headerlink" title="子网扫描"></a>子网扫描</h4><p>Nmap也可以使用CIDR（无类别域间路由，Classless Inter-Domain Routing）格式来扫描整个子网。CIDR将多个IP网络结合在一起，使用一种无类别的域际路由选择算法，可以减少由核心路由器运载的路由选择信息的数量。其中，语法格式如下所示：<br><code>nmap [CIDR格式的网络地址]</code></p>
+<p>示例 : 扫描192.168.1.1/24整个子网中的所有主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="排除扫描目标"><a href="#排除扫描目标" class="headerlink" title="排除扫描目标"></a>排除扫描目标</h2><p>当我们指定范围扫描的时候, 可能会把自己的IP地址包含在内, 如果出于种种原因不想扫描这些目标, 可以将它们排除.<br>语法 : <code>nmap [目标] --exclude [目标]</code></p>
+<h2 id="简单参数"><a href="#简单参数" class="headerlink" title="简单参数"></a>简单参数</h2><ul>
+<li><code>-p[a-b]</code> : 指定扫描端口a至b(a b均小于65535)</li>
+<li><code>-p-</code> : 扫描全部端口.</li>
+<li><code>-sP</code> : Ping扫描。 仅仅 进行ping扫描 (主机发现)，然后打印出对扫描做出响应的那些主机.</li>
+<li><code>-sT</code> : TCP connect()扫描。当Nmap连接，然后不发送数据就关闭连接.</li>
+<li><code>-sV</code> : 探测service版本.</li>
+<li><code>-O -v</code> : 详细的操作系统探测.</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/qq_30247635/article/details/86247744#_14" target="_blank" rel="noopener">nmap简单参数教程</a></li>
+<li><a href="https://blog.csdn.net/daxueba/article/details/46679439" target="_blank" rel="noopener">Nmap扫描教程之基础扫描详解</a></li>
+</ul>
 
         </div>
         
@@ -336,12 +315,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-17T14:15:46.447Z" itemprop="dateUpdated">2019-09-17 22:15:46</time>
+    Last updated: <time datetime="2019-09-08T15:07:48.513Z" itemprop="dateUpdated">2019-09-08 23:07:48</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/09/12/ettercap/" target="_blank" rel="external">https://tjuyjn.top/2019/09/12/ettercap/</a>
+        转载注明出处，原文地址：<a href="/2019/07/10/Nmap学习笔记/" target="_blank" rel="external">https://tjuyjn.top/2019/07/10/Nmap学习笔记/</a>
         
     </div>
     <footer>
@@ -361,7 +340,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arp欺骗/">arp欺骗</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中间人攻击/">中间人攻击</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主机扫描/">主机扫描</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -370,7 +349,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《arp欺骗 初见》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -382,25 +361,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《arp欺骗 初见》 — Anti-entropy's blog&source=实现了我多年的愿望." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&source=个人博客计算机" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《arp欺骗 初见》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/12/ettercap/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nmap 学习笔记》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -428,18 +407,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2019/09/17/Java/" id="post-prev" class="post-nav-link">
+      <a href="/2019/07/11/sqli-lab闯关/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java 常用方法总结</h4>
+        <h4 class="title">sqli-lab闯关记录</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2019/09/08/Node靶机练习/" id="post-next" class="post-nav-link">
+      <a href="/2019/07/08/CTF-Writeup/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Node靶机练习</h4>
+        <h4 class="title">CTF-writeup</h4>
       </a>
     </div>
   
@@ -451,7 +430,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DNS劫持"><span class="post-toc-number">1.</span> <span class="post-toc-text">DNS劫持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#序"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TODO"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TODO</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Nmap主机扫描学习笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">Nmap主机扫描学习笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扫描单个目标"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">扫描单个目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扫描多个目标"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">扫描多个目标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令行中分别指定"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">命令行中分别指定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逗号分隔"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">逗号分隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目标列表"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">目标列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范围扫描"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">范围扫描</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IP地址指定扫描范围"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">IP地址指定扫描范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子网扫描"><span class="post-toc-number">1.2.4.2.</span> <span class="post-toc-text">子网扫描</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排除扫描目标"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">排除扫描目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单参数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">简单参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -576,7 +555,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《arp欺骗 初见》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -588,25 +567,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/12/ettercap/&title=《arp欺骗 初见》 — Anti-entropy's blog&source=实现了我多年的愿望." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&source=个人博客计算机" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《arp欺骗 初见》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/12/ettercap/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nmap 学习笔记》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/09/12/ettercap/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -618,7 +597,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzElEQVR42u3ay24CMQwFUP7/p6nUVaXhcW0nAVUnK1QymUMXlh+53eJ1/11/P1/Xdf/rndenli1cXNwxNz+6uif5e34+Li7ueW4SvK5HJ98+e0sS1HBxcb+fm4SnZD8uLu5/5eY/IyHi4uJ+J3fSwshLl0lxhYuLe5Lba5iu/by9v4uLi7toKpGsXsHTfBcuLu4RbjLSmDQ9J4lOVKvh4uJu4yagavDKz8zfhYuLe5Kb/I7q9YveyaP+Li4u7iJuEuGSgUrvukaeHj2o1XBxcTdzq+lONXuajGafNkRwcXE3c1cFnXlaU5gG4+LiHuRWr0nlCVBSSr1B4+LiHuFWH147DknOfPM/xsXF3cytziySIFilJ5c8cHFxd3NHqcZgKJKPbNdlRri4uCl3VdtiEvLyAQwuLu4Zbq/syZ/NBzDJWAUXF/cMt1rq5MOSUcqSvBEXF3cb915cvbwpD4VvnsXFxT3CnYSVauKSpD69dgwuLu4Obh688tDTG5+Mury4uLgbuHnwqo5RJ8VPcyaMi4v7UW4SZ3qDlnL/BhcX90PcfH9eJm1McXBxccfc3iWt6nWr6pWOwiUMXFzcpdxVDdNVQfBQfxcXF/cx9wdfJrR78y1qyAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3awYrDMAxF0fz/T2dgVoVOmvskTyHy9aqkTeLjgrAlHQce5+94v/J6/QTj6pdXz1w8ZMiQ8VgGfzG5lyDJTPjcZMiQsQ/jc5BNp/V5Ccii8LnJkCFDBp9KGnavFkKGDBky+gGX8HhITZ8vQ4aMnRk8QcZTciTI1gK0DBkydmOkhYFvfv7H+oYMGTIewjjDQV5PJsFLm2hWMmTIGM3oJO7JRm1tCfMmHMuQIWMDRtpOQdJttU0hX1YZMmTswOg/jhcy07cUKxsyZMgYyqgdYnmo5eWBtHiw4CwuQ4aMhzDS42v/6MvDOlosGTJkjGZ8pzmMB+L02CxDhow9GWnCq7YR5MUDvn2UIUPGVAa/rdNAlh5f43AsQ4aMzRhpeTItAKRLgwK9DBkyRjM6abV0KukBOE3qyZAhYzZjVVKMH1NrQfnmigwZMoYy+i0RR2l02KimIUOGjEGMtEhZS8bxpBuf+s1/IkOGjHEMXlBMWy7SYidqp5AhQ8ZmjPQRaQjutFnEO1wZMmSMZqxNkKVtXrwAcPl7GTJkjGZ0kmidlFyn4SwoYcqQIWME4wwHT8/x6aYL8ce3MmTIGM1Igx0/mtaKlP2GDBkyZExlrAqyPKHfD6nxBlGGDBkjGLU+KxKgV23sblJyMmTIkAHCIm/tqhVHj87KyZAhYzNGp4Wrk7a7SeTJkCFjAwZvm6i9phhGeXSVIUPGaEbnNg5On8ADtAwZMkYzfgClb2C+9ewzsgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

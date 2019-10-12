@@ -6,15 +6,13 @@
     <link rel="canonical" href="https://tjuyjn.top/2019/09/25/杂篇/">
     
     
-    <title>杂篇 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <title>拼接图像 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="python,misc,smtp">
+    <meta name="keywords" content="misc,python">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
-
-    
     
     <script type="text/javascript">
         // Data Center
@@ -30,10 +28,7 @@
         window.lazyScripts=[];
     </script>
     
-    
-    <script>
-        var imageArr=[];
-    </script>
+
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -42,52 +37,53 @@
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
+    </script>
+    
+        <!-- live2d css -->
+        <style>
+            .live2d-widget-dialog-container {
+                width: 300px;
+                height: 120px;
+                position: absolute;
+                bottom: 65%;
+                right: 0px;
+                transform-origin: right;
+                padding: 12px;
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+            }
+            .live2d-widget-dialog {
+                width: 100%;
+                height: 100%;
+                color: #917159;
+                font-size: 16px;
+                padding: 12px;
+                border: 2px solid rgb(236, 203, 180);
+                background: rgb(252, 248, 244);
+                box-sizing: border-box;
+                border-radius: 10px;
+                transform: rotate(-2deg);
+                opacity: 0;
+                transition: 200ms opacity;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+                animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+            }
+            @keyframes live2d-widget-dialog-tingle {
+                0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+                100% { transform: translate(1px, -1.5px) rotate(2deg); }
+            }
+        </style>
+    
+        <!--- live2d js -->
+        <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+        <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+        <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+        <script>
+            var imageArr=[];
         </script>
         
-
-
-        <!-- live2d css -->
-    <style>
-        .live2d-widget-dialog-container {
-            width: 300px;
-            height: 120px;
-            position: absolute;
-            bottom: 65%;
-            right: 0px;
-            transform-origin: right;
-            padding: 12px;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-        .live2d-widget-dialog {
-            width: 100%;
-            height: 100%;
-            color: #917159;
-            font-size: 16px;
-            padding: 12px;
-            border: 2px solid rgb(236, 203, 180);
-            background: rgb(252, 248, 244);
-            box-sizing: border-box;
-            border-radius: 10px;
-            transform: rotate(-2deg);
-            opacity: 0;
-            transition: 200ms opacity;
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-            animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
-        }
-        @keyframes live2d-widget-dialog-tingle {
-            0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
-            100% { transform: translate(1px, -1.5px) rotate(2deg); }
-        }
-    </style>
-
-    <!--- live2d js -->
-    <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
-    <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
-    <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
-    <!-- 访客统计 -->
-    <script src="http://188.131.227.20:999/api/ip_locate.php"> </script>
 </head>
+
 
 
 <body>
@@ -149,7 +145,6 @@
         
         <ul class="menu-link">
           
-          
               <li>
                 <a href="https://github.com/anti-entropy123/" target="_blank">
                   <i class="icon icon-lg icon-github"></i>
@@ -162,57 +157,6 @@
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-          <div id="binft" style=" text-align:center;"></div>
-          <script>
-            var binft = function (r) {
-              function t() {
-                return b[Math.floor(Math.random() * b.length)]
-              }  
-              function e() {
-                return String.fromCharCode(94 * Math.random() + 33)
-              }
-              function n(r) {
-                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                  var l = document.createElement("span");
-                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                }
-                return n
-              }
-              function i() {
-                var t = o[c.skillI];
-                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-              }
-              var l = "",
-              o = ["孤独是常态,", "寂寞是病态",
-                   "孤独使我自由,","寂寞让我作呕",
-                   "为守护所有美好而战,","向一切虚伪的美好宣战",
-                   "don't be sorry,","be better",
-                   "伤痕是我的勋章",
-                   "但置我于低谷者,","必将助我以崛起",
-                   "但置我于死地者,","必将赐我以后生",
-                   "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
-                   "天生我材必有用,","千金散尽还复来"
-                   ].map(function (r) {
-              return r + ""
-              }),
-              a = 2,
-              g = 1,
-              s = 5,
-              d = 75,
-              b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
-              c = {
-                text: "",
-                prefixP: -s,
-                skillI: 0,
-                skillP: 0,
-                direction: "forward",
-                delay: a,
-                step: g
-              };
-              i()
-              };
-              binft(document.getElementById('binft'));
-          </script>
         
             <li class="">
               <a href="/"  >
@@ -235,7 +179,7 @@
               </a>
             </li>
         
-        </ul>
+      </ul>
     </div>
   </div>
 </aside>
@@ -247,7 +191,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>杂篇</span>
+            <span>拼接图像</span>
             
         </div>
         
@@ -260,7 +204,7 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">杂篇</h1>
+        <h1 class="title">拼接图像</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-09-25T12:04:00.000Z" itemprop="datePublished" class="page-time">
@@ -294,7 +238,7 @@
     <article id="post-杂篇"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">杂篇</h1>
+        <h1 class="post-card-title">拼接图像</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-09-25 20:04:00" datetime="2019-09-25T12:04:00.000Z"  itemprop="datePublished">2019-09-25</time>
 
@@ -317,30 +261,9 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>We will we will rock you!</p>
+            <p>null.</p>
 <a id="more"></a>
-<h1 id="杂篇"><a href="#杂篇" class="headerlink" title="杂篇"></a>杂篇</h1><h2 id="smtp-发送伪造邮件"><a href="#smtp-发送伪造邮件" class="headerlink" title="smtp 发送伪造邮件"></a>smtp 发送伪造邮件</h2><p>计网老师布置的一个小任务 : 伪装<code>ligang</code>老师给他发个邮件. </p>
-<p>通过telnet与smtp服务器进行命令行交互, 手工编写邮件内容, 就可以设置虚假的发件人信息.</p>
-<p>以下演示在<code>Windows10 cmd</code>中.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt; telnet</span><br><span class="line">&gt; o smtp.qq.com 587</span><br><span class="line">220 smtp.qq.com Esmtp QQ Mail Server </span><br><span class="line">&gt; helo smtp</span><br><span class="line">250 smtp.qq.com                    </span><br><span class="line">&gt; starttls  </span><br><span class="line">220 Ready to start TLS             </span><br><span class="line">&gt; auth login                       </span><br><span class="line">334 VXNlcm5hbWU6   </span><br><span class="line">&gt; MTM0ODY1MTU4MEBxcS5jb20=  <span class="comment"># qq邮箱的base64编码</span></span><br><span class="line">334 UGFzc3dvcmQ6                  </span><br><span class="line">&gt; ***************   <span class="comment"># qq邮箱授权码的base64编码              </span></span><br><span class="line">235 Authentication successful     </span><br><span class="line">&gt; mail from:&lt;1348651580@qq.com&gt;            </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; rcpt to:&lt;3018******@tju.edu.cn&gt;          </span><br><span class="line">250 Ok       </span><br><span class="line">&gt; data </span><br><span class="line">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;      </span><br><span class="line">&gt; from:ligang@tju.edu.cn            </span><br><span class="line">&gt; to:&lt;3018******@tju.edu.cn&gt;</span><br><span class="line">&gt; subject:i want to play a game    </span><br><span class="line">&gt; </span><br><span class="line">&gt; we will we will rockyou.</span><br><span class="line">&gt; .</span><br><span class="line">250 Ok: queued as</span><br></pre></td></tr></table></figure>
-
-<p>按照上面的输入成功后, 会有如下的效果.</p>
-<figure class="image-box">
-                <a rel=杂篇 href="http://188.131.227.20:999/picture/smtp.png" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/smtp.png" alt title class></a>
-                <p></p>
-            </figure>
-
-<p>可以发现, 发件人成功的显示成了<code>ligang</code>.</p>
-<p>不过细心的你(口区)应该已经发现了, 最后竟然显示了我真实的邮箱 ! ! !</p>
-<p>那么, 这是否代表我的操作失败了呢?</p>
-<p>其实不然, 之所以会出现这个由 * * * * 代发, 并不意味着我这骗子的身份被揭穿.</p>
-<p>事实上, 很多国外的大型网站在发送邮件时都会显示代发字样, 如 groupon, twiter, pinterest等.</p>
-<p>而我这里出现了代发的原因是, 我”假冒”的发件人邮箱地址为<code>tju.edu.cn</code>, 而我自己使用的为qq邮箱, 域名为<code>qq.com</code>.</p>
-<p>理论上, 只要我使用<code>smtp.tju.edu.cn</code>发送, 就可以避免.</p>
-<p>友情提示, 这种欺骗手段只要查看了邮件头就没有任何效果了, 只能拿去吓唬吓唬其它专业的同学们, 哈哈哈.</p>
-<h2 id="phpstudy-后门复现"><a href="#phpstudy-后门复现" class="headerlink" title="phpstudy 后门复现"></a>phpstudy 后门复现</h2><p>// TODO</p>
-<p>// sorry, 我看了一下, 手边没找到有后门的phpstudy, 暂时没法分析复现<br>// 一时半会搞不了了, 惨惨</p>
-<h2 id="python-拼接图像"><a href="#python-拼接图像" class="headerlink" title="python 拼接图像"></a>python 拼接图像</h2><p>在我们协会的平台上看的一道题.</p>
+<h1 id="python-拼接图像"><a href="#python-拼接图像" class="headerlink" title="python 拼接图像"></a>python 拼接图像</h1><p>在我们协会的平台上看的一道题.</p>
 <p><a href="http://ctf.teamdie.club/files/45c9b42681825f26b823e44736e16a5a/d9710b4ddcbf457cb716ee5423c7f32e.zip" target="_blank" rel="noopener">附件链接</a></p>
 <p>题目描述:</p>
 <blockquote>
@@ -361,7 +284,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-30T14:50:07.131Z" itemprop="dateUpdated">2019-09-30 22:50:07</time>
+    Last updated: <time datetime="2019-10-12T15:19:34.895Z" itemprop="dateUpdated">2019-10-12 23:19:34</time>
 </span><br>
 
 
@@ -386,7 +309,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/">misc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/smtp/">smtp</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/">misc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -395,7 +318,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《拼接图像》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -407,7 +330,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&source=We will we will rock you!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《拼接图像》 — Anti-entropy's blog&source=null." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -419,7 +342,7 @@
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《杂篇》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/25/杂篇/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《拼接图像》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/25/杂篇/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -455,7 +378,7 @@
     <div class="prev">
       <a href="/2019/10/03/linux文件管理实验/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">操作系统的两次实验</h4>
+        <h4 class="title">一些有趣的实验</h4>
       </a>
     </div>
   
@@ -476,7 +399,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#杂篇"><span class="post-toc-number">1.</span> <span class="post-toc-text">杂篇</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#smtp-发送伪造邮件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">smtp 发送伪造邮件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#phpstudy-后门复现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">phpstudy 后门复现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python-拼接图像"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">python 拼接图像</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#python-拼接图像"><span class="post-toc-number">1.</span> <span class="post-toc-text">python 拼接图像</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -601,7 +524,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《拼接图像》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -613,7 +536,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《杂篇》 — Anti-entropy's blog&source=We will we will rock you!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/09/25/杂篇/&title=《拼接图像》 — Anti-entropy's blog&source=null." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -625,7 +548,7 @@
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《杂篇》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/25/杂篇/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《拼接图像》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/09/25/杂篇/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -745,7 +668,7 @@
         var a_idx = 0; 
         jQuery(document).ready(function($) { 
             $("body").click(function(e) { 
-                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤"); 
+                var a = new Array("❤好❤","❤看❤","❤就❤","❤留❤","❤个❤","❤言❤","❤吧❤"); 
                 var $i = $("<span></span>").text(a[a_idx]); 
                 a_idx = (a_idx + 1) % a.length; 
                 var x = e.pageX, 
@@ -773,7 +696,6 @@
     <!--动态线条背景-->
     <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   
 
 </body>
 </html>

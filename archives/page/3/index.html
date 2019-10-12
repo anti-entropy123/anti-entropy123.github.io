@@ -13,8 +13,6 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
-
-    
     
     <script type="text/javascript">
         // Data Center
@@ -30,10 +28,7 @@
         window.lazyScripts=[];
     </script>
     
-    
-    <script>
-        var imageArr=[];
-    </script>
+
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -42,52 +37,53 @@
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
+    </script>
+    
+        <!-- live2d css -->
+        <style>
+            .live2d-widget-dialog-container {
+                width: 300px;
+                height: 120px;
+                position: absolute;
+                bottom: 65%;
+                right: 0px;
+                transform-origin: right;
+                padding: 12px;
+                box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+            }
+            .live2d-widget-dialog {
+                width: 100%;
+                height: 100%;
+                color: #917159;
+                font-size: 16px;
+                padding: 12px;
+                border: 2px solid rgb(236, 203, 180);
+                background: rgb(252, 248, 244);
+                box-sizing: border-box;
+                border-radius: 10px;
+                transform: rotate(-2deg);
+                opacity: 0;
+                transition: 200ms opacity;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+                animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+            }
+            @keyframes live2d-widget-dialog-tingle {
+                0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
+                100% { transform: translate(1px, -1.5px) rotate(2deg); }
+            }
+        </style>
+    
+        <!--- live2d js -->
+        <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+        <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
+        <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
+        <script>
+            var imageArr=[];
         </script>
         
-
-
-        <!-- live2d css -->
-    <style>
-        .live2d-widget-dialog-container {
-            width: 300px;
-            height: 120px;
-            position: absolute;
-            bottom: 65%;
-            right: 0px;
-            transform-origin: right;
-            padding: 12px;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-        .live2d-widget-dialog {
-            width: 100%;
-            height: 100%;
-            color: #917159;
-            font-size: 16px;
-            padding: 12px;
-            border: 2px solid rgb(236, 203, 180);
-            background: rgb(252, 248, 244);
-            box-sizing: border-box;
-            border-radius: 10px;
-            transform: rotate(-2deg);
-            opacity: 0;
-            transition: 200ms opacity;
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-            animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
-        }
-        @keyframes live2d-widget-dialog-tingle {
-            0% { transform: translate(-1px, 1.5px) rotate(-2deg); }
-            100% { transform: translate(1px, -1.5px) rotate(2deg); }
-        }
-    </style>
-
-    <!--- live2d js -->
-    <script src="http://188.131.227.20:999/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
-    <script>L2Dwidget.init({"pluginRootPath":"http://188.131.227.20:999/live2dw/","pluginJsPath":"http://188.131.227.20:999/lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":300,"height":400},"mobile":{"show":false},"log":false});</script>
-    <div id="live2d-widget" class="live2d-widget-container" style="position: fixed; right: 0px; bottom: -20px; width: 300px; height: 400px; z-index: 99999; opacity: 1; pointer-events: none;"><canvas id="live2dcanvas" width="600" height="800" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 400px;"></canvas></div>
-    <!-- 访客统计 -->
-    <script src="http://188.131.227.20:999/api/ip_locate.php"> </script>
 </head>
+
 
 
 <body>
@@ -149,7 +145,6 @@
         
         <ul class="menu-link">
           
-          
               <li>
                 <a href="https://github.com/anti-entropy123/" target="_blank">
                   <i class="icon icon-lg icon-github"></i>
@@ -162,57 +157,6 @@
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
-          <div id="binft" style=" text-align:center;"></div>
-          <script>
-            var binft = function (r) {
-              function t() {
-                return b[Math.floor(Math.random() * b.length)]
-              }  
-              function e() {
-                return String.fromCharCode(94 * Math.random() + 33)
-              }
-              function n(r) {
-                for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                  var l = document.createElement("span");
-                  l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                }
-                return n
-              }
-              function i() {
-                var t = o[c.skillI];
-                c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-              }
-              var l = "",
-              o = ["孤独是常态,", "寂寞是病态",
-                   "孤独使我自由,","寂寞让我作呕",
-                   "为守护所有美好而战,","向一切虚伪的美好宣战",
-                   "don't be sorry,","be better",
-                   "伤痕是我的勋章",
-                   "但置我于低谷者,","必将助我以崛起",
-                   "但置我于死地者,","必将赐我以后生",
-                   "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
-                   "天生我材必有用,","千金散尽还复来"
-                   ].map(function (r) {
-              return r + ""
-              }),
-              a = 2,
-              g = 1,
-              s = 5,
-              d = 75,
-              b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
-              c = {
-                text: "",
-                prefixP: -s,
-                skillI: 0,
-                skillP: 0,
-                direction: "forward",
-                delay: a,
-                step: g
-              };
-              i()
-              };
-              binft(document.getElementById('binft'));
-          </script>
         
             <li class="">
               <a href="/"  >
@@ -235,7 +179,7 @@
               </a>
             </li>
         
-        </ul>
+      </ul>
     </div>
   </div>
 </aside>
@@ -266,7 +210,7 @@
         </h5>
         
         <div class="remind">
-            <p>总计文章( <span>16</span> )篇，约( <span>104.4K</span> )字</p>
+            <p>总计文章( <span>16</span> )篇，约( <span>104.7K</span> )字</p>
             <p>Keep moving😎!!!</p>
         </div>
         
@@ -307,7 +251,7 @@
 
   
     <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/29/实战中可能会用到的几个技巧/">实战中可能会用到的几个技巧</a>
+      <a class="post-title-link" href="/2019/07/29/实战中可能会用到的技巧/">实战中可能会用到的几个技巧</a>
     </h3>
   
 
@@ -337,7 +281,7 @@
 
   
     <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/19/当你用python给女神刷赞会发生什么？/">用python给女神刷赞会发生什么？</a>
+      <a class="post-title-link" href="/2019/07/19/当你用python给女神刷赞会发生什么/">用python给女神刷赞会发生什么？</a>
     </h3>
   
 
@@ -367,7 +311,7 @@
 
   
     <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/11/sqli-lab闯关记录/">sqli-lab闯关记录</a>
+      <a class="post-title-link" href="/2019/07/11/sqli-lab闯关/">sqli-lab闯关记录</a>
     </h3>
   
 
@@ -397,7 +341,7 @@
 
   
     <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/10/Nmap/">Nmap 学习笔记</a>
+      <a class="post-title-link" href="/2019/07/10/Nmap学习笔记/">Nmap 学习笔记</a>
     </h3>
   
 
@@ -427,7 +371,7 @@
 
   
     <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/07/08/CTF-writeup/">CTF-writeup</a>
+      <a class="post-title-link" href="/2019/07/08/CTF-Writeup/">CTF-writeup</a>
     </h3>
   
 
@@ -685,7 +629,7 @@
         var a_idx = 0; 
         jQuery(document).ready(function($) { 
             $("body").click(function(e) { 
-                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤"); 
+                var a = new Array("❤好❤","❤看❤","❤就❤","❤留❤","❤个❤","❤言❤","❤吧❤"); 
                 var $i = $("<span></span>").text(a[a_idx]); 
                 a_idx = (a_idx + 1) % a.length; 
                 var x = e.pageX, 
@@ -713,7 +657,6 @@
     <!--动态线条背景-->
     <script type="text/javascript" color="30,144,255" opacity='0.7' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   
 
 </body>
 </html>
