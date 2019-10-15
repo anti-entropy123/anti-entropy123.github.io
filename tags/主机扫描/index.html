@@ -157,6 +157,58 @@
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+          <div id="binft" style=" text-align:center;">
+              <script>
+                var binft = function (r) {
+                  function t() {
+                    return b[Math.floor(Math.random() * b.length)]
+                  }  
+                  function e() {
+                    return String.fromCharCode(94 * Math.random() + 33)
+                  }
+                  function n(r) {
+                    for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                      var l = document.createElement("span");
+                      l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                    }
+                    return n
+                  }
+                  function i() {
+                    var t = o[c.skillI];
+                    c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+                  }
+                  var l = "",
+                  o = ["孤独是常态,", "寂寞是病态",
+                      "孤独使我自由,","寂寞让我作呕",
+                      "为守护所有美好而战,","向一切虚伪的美好宣战",
+                      "don't be sorry,","be better",
+                      "伤痕是我的勋章",
+                      "但置我于低谷者,","必将助我以崛起",
+                      "但置我于死地者,","必将赐我以后生",
+                      "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
+                      "天生我材必有用,","千金散尽还复来"
+                      ].map(function (r) {
+                  return r + ""
+                  }),
+                  a = 2,
+                  g = 1,
+                  s = 5,
+                  d = 75,
+                  b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                  c = {
+                    text: "",
+                    prefixP: -s,
+                    skillI: 0,
+                    skillP: 0,
+                    direction: "forward",
+                    delay: a,
+                    step: g
+                  };
+                  i()
+                  };
+                  binft(document.getElementById('binft'));
+              </script>
+            </div>
         
             <li class="">
               <a href="/"  >
@@ -214,111 +266,117 @@
 <div class="tabs-bar container">
     <nav class="tags-list">
         <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">All</a>
+            ">全部</a>
         
-            <a href="/tags/web/" backup-style="-webkit-order:32;order:32" class="tags-list-item waves-effect waves-button waves-light">web</a>
+            <a href="/tags/web/" backup-style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">web</a>
             
         
-            <a href="/tags/文件上传漏洞/" backup-style="-webkit-order:33;order:33" class="tags-list-item waves-effect waves-button waves-light">文件上传漏洞</a>
+            <a href="/tags/文件上传漏洞/" backup-style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">文件上传漏洞</a>
             
         
-            <a href="/tags/文件包含漏洞/" backup-style="-webkit-order:34;order:34" class="tags-list-item waves-effect waves-button waves-light">文件包含漏洞</a>
-            
-        
-            <a href="/tags/java/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">java</a>
+            <a href="/tags/文件包含漏洞/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">文件包含漏洞</a>
             
         
             <a href="/tags/主机扫描/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">主机扫描</a>
             
         
-            <a href="/tags/linux/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">linux</a>
+            <a href="/tags/java/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">java</a>
             
         
-            <a href="/tags/misc/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">misc</a>
+            <a href="/tags/linux/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">linux</a>
             
         
-            <a href="/tags/中间人攻击/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">中间人攻击</a>
+            <a href="/tags/misc/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">misc</a>
             
         
-            <a href="/tags/arp欺骗/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">arp欺骗</a>
+            <a href="/tags/中间人攻击/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">中间人攻击</a>
             
         
-            <a href="/tags/python/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">python</a>
+            <a href="/tags/arp欺骗/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">arp欺骗</a>
             
         
-            <a href="/tags/word/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">word</a>
+            <a href="/tags/python/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">python</a>
             
         
-            <a href="/tags/linux提权/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">linux提权</a>
+            <a href="/tags/word/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">word</a>
             
         
-            <a href="/tags/metasploit/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">metasploit</a>
+            <a href="/tags/linux提权/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">linux提权</a>
             
         
-            <a href="/tags/php/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">php</a>
+            <a href="/tags/metasploit/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">metasploit</a>
             
         
-            <a href="/tags/一句话木马/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">一句话木马</a>
+            <a href="/tags/sql注入/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
             
         
-            <a href="/tags/图片马/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">图片马</a>
+            <a href="/tags/mysql基本语法/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">mysql基本语法</a>
             
         
-            <a href="/tags/awd/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">awd</a>
+            <a href="/tags/php/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">php</a>
             
         
-            <a href="/tags/不死马/" backup-style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">不死马</a>
+            <a href="/tags/一句话木马/" backup-style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">一句话木马</a>
             
         
-            <a href="/tags/反弹shell/" backup-style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">反弹shell</a>
+            <a href="/tags/图片马/" backup-style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">图片马</a>
             
         
-            <a href="/tags/linux权限控制/" backup-style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">linux权限控制</a>
+            <a href="/tags/awd/" backup-style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">awd</a>
             
         
-            <a href="/tags/sql注入/" backup-style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
+            <a href="/tags/不死马/" backup-style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">不死马</a>
             
         
-            <a href="/tags/mysql基本语法/" backup-style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">mysql基本语法</a>
+            <a href="/tags/反弹shell/" backup-style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">反弹shell</a>
             
         
-            <a href="/tags/CTF/" backup-style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">CTF</a>
+            <a href="/tags/linux权限控制/" backup-style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">linux权限控制</a>
             
         
-            <a href="/tags/随笔/" backup-style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">随笔</a>
+            <a href="/tags/CTF/" backup-style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">CTF</a>
             
         
-            <a href="/tags/xss/" backup-style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">xss</a>
+            <a href="/tags/随笔/" backup-style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">随笔</a>
             
         
-            <a href="/tags/PHP反序列化漏洞/" backup-style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">PHP反序列化漏洞</a>
+            <a href="/tags/xss/" backup-style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">xss</a>
             
         
-            <a href="/tags/csrf/" backup-style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">csrf</a>
+            <a href="/tags/PHP反序列化漏洞/" backup-style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">PHP反序列化漏洞</a>
             
         
-            <a href="/tags/RCE/" backup-style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">RCE</a>
+            <a href="/tags/csrf/" backup-style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">csrf</a>
             
         
-            <a href="/tags/越权/" backup-style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">越权</a>
+            <a href="/tags/RCE/" backup-style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">RCE</a>
             
         
-            <a href="/tags/URL重定向/" backup-style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">URL重定向</a>
+            <a href="/tags/越权/" backup-style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">越权</a>
             
         
-            <a href="/tags/文件系统/" backup-style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">文件系统</a>
+            <a href="/tags/URL重定向/" backup-style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">URL重定向</a>
             
         
-            <a href="/tags/OS/" backup-style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">OS</a>
+            <a href="/tags/文件系统/" backup-style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">文件系统</a>
             
         
-            <a href="/tags/c语言/" backup-style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">c语言</a>
+            <a href="/tags/OS/" backup-style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">OS</a>
             
         
-            <a href="/tags/网络/" backup-style="-webkit-order:30;order:30" class="tags-list-item waves-effect waves-button waves-light">网络</a>
+            <a href="/tags/c语言/" backup-style="-webkit-order:30;order:30" class="tags-list-item waves-effect waves-button waves-light">c语言</a>
             
         
-            <a href="/tags/smtp/" backup-style="-webkit-order:31;order:31" class="tags-list-item waves-effect waves-button waves-light">smtp</a>
+            <a href="/tags/网络/" backup-style="-webkit-order:31;order:31" class="tags-list-item waves-effect waves-button waves-light">网络</a>
+            
+        
+            <a href="/tags/smtp/" backup-style="-webkit-order:32;order:32" class="tags-list-item waves-effect waves-button waves-light">smtp</a>
+            
+        
+            <a href="/tags/Reverse/" backup-style="-webkit-order:33;order:33" class="tags-list-item waves-effect waves-button waves-light">Reverse</a>
+            
+        
+            <a href="/tags/汇编/" backup-style="-webkit-order:34;order:34" class="tags-list-item waves-effect waves-button waves-light">汇编</a>
             
         
     </nav>
