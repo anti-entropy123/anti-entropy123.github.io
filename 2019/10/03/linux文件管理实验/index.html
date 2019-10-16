@@ -491,7 +491,32 @@
 
 <p>如图应该是成功了, 但我不知道为啥和MIT里的编号不同. </p>
 <h4 id="Date-system-call"><a href="#Date-system-call" class="headerlink" title="Date system call"></a>Date system call</h4><p>下一步就该建立我们的<code>date()</code>函数了.</p>
-<p>(未完待续…)</p>
+<p>使用命令找出需要修改的几个地方:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yjn@yjn-virtual-machine:~/yjn/xv6-public$ grep -n uptime *.[chS]</span><br><span class="line">syscall.c:106:extern int sys_uptime(void);</span><br><span class="line">syscall.c:125:  <span class="string">"uptime"</span>,</span><br><span class="line">syscall.c:150:[SYS_uptime]  sys_uptime,</span><br><span class="line">syscall.h:15:<span class="comment">#define SYS_uptime 14</span></span><br><span class="line">sysproc.c:83:sys_uptime(void)</span><br><span class="line">user.h:25:int uptime(void);</span><br><span class="line">usys.S:31:SYSCALL(uptime)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>syscall.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">sys_date</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面是简略写法:</span></span><br><span class="line"><span class="keyword">char</span>* syscallName[] :</span><br><span class="line">  <span class="string">"date"</span></span><br><span class="line"><span class="comment">// 下面是简略写法:</span></span><br><span class="line">static int (*syscalls[])(void) :</span><br><span class="line">  [SYS_date]    sys_date</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>syscall.h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SYS_date   22</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sysproc.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> </span><br><span class="line">sys_date(<span class="keyword">void</span>)&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtcdate</span> *<span class="title">r</span>;</span></span><br><span class="line">  <span class="keyword">if</span>(argptr(<span class="number">0</span>, (<span class="keyword">void</span>*)&amp;r, <span class="keyword">sizeof</span>(*r) &lt; <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">  cmostime(r);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>user.h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">date</span><span class="params">(struct rtcdate*)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>usys.S</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SYSCALL(date)</span><br><span class="line">``` </span><br><span class="line">还有需要一个程序来调用`date()`以验证效果.</span><br><span class="line">+ date.c</span><br><span class="line">```c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"types.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"user.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"date.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">main(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span><br><span class="line">&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">rtcdate</span> <span class="title">r</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (date(&amp;r)) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="number">2</span>, <span class="string">"date failed\n"</span>);</span><br><span class="line">    <span class="built_in">exit</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// your code to print the time in any format you like...</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="number">1</span>, <span class="string">"%d/%d/%d-%d:%d:%d"</span>,r.year, r.month, r.day, r.hour, r.minute, r.second);</span><br><span class="line">  <span class="built_in">exit</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>最后不要忘了在<code>Makefile</code>里加上 date 这个程序.</p>
+<p>效果: <figure class="image-box">
+                <a rel=一些有趣的实验 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/date.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/date.png" alt title class></a>
+                <p></p>
+            </figure></p>
 <h2 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h2><h3 id="bomb-从零开始的汇编世界之旅"><a href="#bomb-从零开始的汇编世界之旅" class="headerlink" title="bomb(从零开始的汇编世界之旅)"></a>bomb(从零开始的汇编世界之旅)</h3><p>这个实验我 tm 吹爆. </p>
 <p>我有预感, 这会是我迈入 <code>reverse</code> 和 <code>pwn</code> 的第一个阶梯.</p>
 <ul>
@@ -597,7 +622,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2019-10-15T14:37:39.842Z" itemprop="dateUpdated">2019-10-15 22:37:39</time>
+    最后更新时间：<time datetime="2019-10-16T03:39:19.946Z" itemprop="dateUpdated">2019-10-16 11:39:19</time>
 </span><br>
 
 
