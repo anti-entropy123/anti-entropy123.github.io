@@ -3,13 +3,13 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
-    <link rel="canonical" href="https://tjuyjn.top/2019/07/10/Nmap学习笔记/">
+    <link rel="canonical" href="https://tjuyjn.top/2019/10/30/MNIST/">
     
     
-    <title>Nmap 学习笔记 | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
+    <title>MNIST | Anti-entropy&#39;s blog | 向一切虚伪的美好宣战</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="web,主机扫描">
+    <meta name="keywords" content="tensorflow,深度学习">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.2">
@@ -243,7 +243,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Nmap 学习笔记</span>
+            <span>MNIST</span>
             
         </div>
         
@@ -256,11 +256,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Nmap 学习笔记</h1>
+        <h1 class="title">MNIST</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-07-10T08:19:49.000Z" itemprop="datePublished" class="page-time">
-  2019-07-10
+                <time datetime="2019-10-30T10:57:26.000Z" itemprop="datePublished" class="page-time">
+  2019-10-30
 </time>
 
 
@@ -287,12 +287,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-Nmap学习笔记"
+    <article id="post-MNIST"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">Nmap 学习笔记</h1>
+        <h1 class="post-card-title">MNIST</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-07-10 16:19:49" datetime="2019-07-10T08:19:49.000Z"  itemprop="datePublished">2019-07-10</time>
+            <time class="post-time" title="2019-10-30 18:57:26" datetime="2019-10-30T10:57:26.000Z"  itemprop="datePublished">2019-10-30</time>
 
             
 
@@ -302,8 +302,8 @@
             
     <span class="leancloud-comment">
         <i class="icon icon-comment-o"></i>
-        <a href="/2019/07/10/Nmap学习笔记/#comment">
-            <span class="valine-comment-count" data-xid="/2019/07/10/Nmap学习笔记/"></span>
+        <a href="/2019/10/30/MNIST/#comment">
+            <span class="valine-comment-count" data-xid="/2019/10/30/MNIST/"></span>
         </a>
     </span>
 
@@ -313,53 +313,61 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="Nmap主机扫描学习笔记"><a href="#Nmap主机扫描学习笔记" class="headerlink" title="Nmap主机扫描学习笔记"></a>Nmap主机扫描学习笔记</h1><p>测试环境: linux 3.x<br>Nmap版本: 7.01</p>
+            <h1 id="MNIST-机器学习入门"><a href="#MNIST-机器学习入门" class="headerlink" title="MNIST 机器学习入门"></a>MNIST 机器学习入门</h1><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片:</p>
 <figure class="image-box">
-                <a rel=Nmap 学习笔记 href="http://188.131.227.20:999/picture/nmap.jpg" title="" data-fancybox="images"><img src="http://188.131.227.20:999/picture/nmap.jpg" alt title class></a>
+                <a rel=MNIST href="http://www.tensorfly.cn/tfdoc/images/MNIST.png" title="" data-fancybox="images"><img src="http://www.tensorfly.cn/tfdoc/images/MNIST.png" alt title class></a>
                 <p></p>
             </figure>
 
-<h2 id="扫描单个目标"><a href="#扫描单个目标" class="headerlink" title="扫描单个目标"></a>扫描单个目标</h2><p>扫描单个主机的语法格式为<code>nmap [目标]</code><br>实例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ nmap localhost</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.01 ( https://nmap.org ) at 2019-07-10 16:32 CST</span><br><span class="line">Nmap scan report for localhost (127.0.0.1)</span><br><span class="line">Host is up (0.000093s latency).</span><br><span class="line">rDNS record for 127.0.0.1: localhost.localdomain</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">999/tcp  open  garcon</span><br><span class="line">1022/tcp open  exp2</span><br><span class="line">3306/tcp open  mysql</span><br></pre></td></tr></table></figure>
+<p>在此教程中，我们将训练一个机器学习模型用于预测图片里面的数字.</p>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>数据集的下载和安装本来可以用 tensorflow 社区提供的一份python代码来完成. 可惜链接是指向google 的网盘的, 我手上暂时也没可用的梯子, 只好百度了一份 <code>input_data.py</code>, 然而这份代码年代已经十分久远, 已经不适合现在版本的numpy了, 所以我又只能下载安装一份旧的numpy <code>pip install numpy==1.16.0</code>. But 又因为在国内连接<code>pypi</code>也十分的慢, socket会报 <code>time out</code> 错误, 我又只能换了下<code>douban</code>的镜像<code>pip install redis -i https://pypi.douban.com/simple</code>. 这下才算解决了数据集的问题(苦笑).</p>
+<p>在使用中, 需要把<code>input_data.py</code>先<code>import</code>进 python 的主程序中, 如果数据集没有被提前下载, 那么在运行时会调用<code>input_data</code>中的函数下载数据集. 建议先提前下载好数据集放置在固定的目录下, 可以避免运行时下载速度太慢的问题.</p>
+<p>实际使用中的数据集会被分为两部分, 60000行的训练数据集(mnist.train)和10000行的测试数据集(mnist.test). 有了这个单独用来测试而不会用于训练的数据集会使模型更容易推广到其他数据集上(泛化).</p>
+<p>而每一组数据单元包含一个手写图片和一个对应的标签的数据. 所有图片的数据可以由一个形状为<code>[60000, 784]</code>的张量来表示, 第一个维度当做图片的索引. 所有标签的数据用张量<code>[60000,10]</code>来表示. 且此处的10维向量是独热的, 代表 0 - 9 十种可能.</p>
+<h2 id="softmax回归"><a href="#softmax回归" class="headerlink" title="softmax回归"></a>softmax回归</h2><p>目标: 求得每个像素对于特定数字类的权值, 即得到一张给定图片属于某个特定数字类的证据(evidence), 证据值越大, 证明越有可能是这个数字类. </p>
+<p>对于给定的输入图片 x 它代表的是数字 i 的证据可以表示为:<br>$$<br>evidence_i = \sum_j W_{i,j} + b_i<br>$$<br>其中$W_i$ 代表权重, $b_i$代表数字 i 类的偏置量, j 代表给定图片 x 的像素索引用于像素求和. 然后用softmax函数可以把这些证据转换成概率 y:<br>$$y = softmax(evidence)$$</p>
+<p>可以看成是一个激励(activation)函数, 把我们定义的线性函数的输出转换成我们想要的格式, 也就是关于10个数字类的概率分布.</p>
+<p>$$<br>\begin{aligned}<br>softmax(x) &amp;= normalize(exp(x)) \<br>softmax(x)_i &amp;= \cfrac{exp(x_i)}{\Sigma_jexp(x_j)}<br>\end{aligned}<br>$$</p>
+<p>此处的<code>normalize()</code>为归一化, 归一化就是要把需要处理的数据经过处理后(通过某种算法)限制在你需要的一定范围内, 可以方便后面数据处理的方便, 其次是保证程序运行时的概率分布.</p>
+<p>回归模型可以用下面的图解释:</p>
+<figure class="image-box">
+                <a rel=MNIST href="http://www.tensorfly.cn/tfdoc/images/softmax-regression-scalargraph.png" title="" data-fancybox="images"><img src="http://www.tensorfly.cn/tfdoc/images/softmax-regression-scalargraph.png" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel=MNIST href="http://www.tensorfly.cn/tfdoc/images/softmax-regression-scalarequation.png" title="" data-fancybox="images"><img src="http://www.tensorfly.cn/tfdoc/images/softmax-regression-scalarequation.png" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel=MNIST href="http://www.tensorfly.cn/tfdoc/images/softmax-regression-vectorequation.png" title="" data-fancybox="images"><img src="http://www.tensorfly.cn/tfdoc/images/softmax-regression-vectorequation.png" alt title class></a>
+                <p></p>
+            </figure>
 
-<h2 id="扫描多个目标"><a href="#扫描多个目标" class="headerlink" title="扫描多个目标"></a>扫描多个目标</h2><h3 id="命令行中分别指定"><a href="#命令行中分别指定" class="headerlink" title="命令行中分别指定"></a>命令行中分别指定</h3><p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~# nmap 192.168.1.1 192.168.1.101 192.168.1.105</span><br><span class="line">Starting Nmap 6.47 ( http://nmap.org ) at 2015-05-05 19:07 CST</span><br><span class="line">Nmap scan report for localhost (192.168.1.1)</span><br><span class="line">Host is up (0.00094s latency).</span><br><span class="line">Not shown: 997 closed ports</span><br><span class="line">PORT       STATE SERVICE</span><br><span class="line">80/tcp             open  http</span><br><span class="line">1900/tcp          open  upnp</span><br><span class="line">49152/tcp         open  unknown</span><br><span class="line">Nmap scan report for localhost (192.168.1.101)</span><br><span class="line">Host is up (0.0060s latency).</span><br><span class="line">All 1000 scanned ports on localhost (192.168.1.101) are closed</span><br><span class="line">Nmap scan report for localhost (192.168.1.105)</span><br><span class="line">Host is up (0.00038s latency).</span><br><span class="line">Not shown: 995 closed ports</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">21/tcp      open  ftp</span><br><span class="line">22/tcp       open  ssh</span><br><span class="line">23/tcp      open  telnet</span><br><span class="line">111/tcp    open  rpcbind</span><br><span class="line">445/tcp    open  microsoft-ds</span><br><span class="line">Nmap done: 3 IP addresses (3 hosts up) scanned in 1.00 seconds</span><br></pre></td></tr></table></figure>
+<p>第三张图的 W 矩阵即为权重值矩阵. 此处矩阵相乘的形式与下面 tf 的代码十分相似.</p>
+<figure class="image-box">
+                <a rel=MNIST href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/matrix1.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/matrix1.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>这里公式其实是单就一张图片而言. x1,x2,x3代表了 x 的第 1,2,3 个像素. 将矩阵乘法展开后就成了加权求和的形式. 不过在实际中, 图片是有 784 个像素的, 输出的向量元素个数也应该为10, 所以严格来说公式应该是这个样子.</p>
+<figure class="image-box">
+                <a rel=MNIST href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/matrix2.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/matrix2.png" alt title class></a>
+                <p></p>
+            </figure>
+<p>目前为止这个模型的思想似乎很清晰了, 但是 <code>softmax 回归</code> 在这里究竟是什么作用还是有些不明朗, 不过我大致猜测其实 softmax 与模型参数 W 和 b 的确定并没有太大的关系, 它在这里主要的作用是将计算结果映射到 [0,1] 的区间上, 使结果作为概率值是有意义的. 在神经网络上, softmax 也是作用在最后一层. 综上, softmax 的作用是对模型输出的一层 “约束”.</p>
+<h2 id="模型设定"><a href="#模型设定" class="headerlink" title="模型设定"></a>模型设定</h2><p>我所理解的模型设定这部分就是使用 tensorflow 的语言描述出数学模型的公式的过程. 这里所需要描述的公式如上图所示.</p>
+<p>根据公式, 我们在代码中需要实现的有 tensorflow变量 x 和 y分别用来存储输入的数据和模型输出的数据, 并且还有 权重矩阵W 和 偏置量b.<br>还需要在程序中设定好使用的模型为 <code>softmax 回归</code>.</p>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><p>交叉熵(cross-entropy)成本函数.<br>$$<br>H_{y’}(y) = -\sum_i y^{‘}_ilog(y_i)<br>$$<br>其中 y 是预测的概率分布, y’ 是实际的分布(输入的 one-hot vector, 这里输入为独热的向量也是为了和模型的输出的形式相同.).</p>
+<p>交叉熵代表了模型计算结果中的损失(loss), 也就是说交叉熵越大, 那么计算结果的误差也就越大.</p>
+<p>代码中要求TensorFlow用梯度下降算法以 0.01 的学习速率最小化交叉熵. 使用随机梯度的下降训练的意义在于, 在每一步训练时不使用所有的数据, 而是选取其中的子集来节省计算的开销. 在每一步的计算中, tensorflow 会自动使用反向传播算法(backpropagation algorithm)来不断降低 loss 的值. 我在网上找到了反向传播算法的介绍, 其原理大致为 : 当输入的数据集相同时, 损失函数的值 C 可以看做是关于 权重矩阵W 和 偏置量b 的二元函数. 也就是 $C = f(W,b)$, 当 C 的值最小时, 周围的函数是平滑的(也有不是的情况), 也就相当于偏导数为 0.<br>$$<br>\begin{aligned}<br>&amp;\cfrac{\partial C}{\partial W} = 0 \<br>&amp;\cfrac{\partial C}{\partial b} = 0<br>\end{aligned}<br>$$<br>经过多轮迭代使参数 W 和 b 达到接近这样的状态时, 梯度下降的一步就完成了. 但是具体每步的步长是多少要根据学习速率和步长来计算.</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>模型评估的方法比较简单, 就是用 minst.test 中的数据, 将图片的数据输入到训练好的模型中, 然后调用 tf 中的函数与标签中的结果进行比对算出正确率. 这里的 test 数据应该与 train 中的数据不能有重合.</p>
+<h2 id="完整代码和我的注释"><a href="#完整代码和我的注释" class="headerlink" title="完整代码和我的注释"></a>完整代码和我的注释</h2><p>input_data.py 可以在百度上搜到, 就不贴在这里了.</p>
+<p>MNIST.py</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 input_data.py 中的代码导入需要的数据集</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">###  模型构建  ####</span></span><br><span class="line">x = tf.placeholder(<span class="string">"float"</span>, [<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>])) <span class="comment"># W 权重矩阵</span></span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))     <span class="comment"># b 偏置量</span></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W)+b) <span class="comment"># y 输出值, 同时指出了模型为 softmax</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 训练模型以及评估 ####</span></span><br><span class="line">y_ = tf.placeholder(<span class="string">"float"</span>,[<span class="literal">None</span>,<span class="number">10</span>])         <span class="comment"># y_</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_*tf.log(y))   <span class="comment"># 交叉熵, 符合上面的交叉熵公式 </span></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cross_entropy) <span class="comment"># 使用随机梯度下降算法最小化交叉熵</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess = tf.Session()  <span class="comment"># sess 为 session, tf 中一切 Variable 的操作都需要用session 来控制</span></span><br><span class="line">sess.run(init)       <span class="comment"># 初始化后所有的 Variable 才能使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">  <span class="comment"># 随机抓取 100 组数据作为一次训练的数据集. 再迭代训练 1000 次, 这样会利用上100_000组数据</span></span><br><span class="line">  batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>) </span><br><span class="line">  sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line"></span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>)) <span class="comment"># 返回一组boolean值代表正确的预测</span></span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">"float"</span>)) <span class="comment"># 将boolean值转为百分率</span></span><br><span class="line">print(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;)) <span class="comment"># 输出正确率</span></span><br></pre></td></tr></table></figure>
 
-<p>Nmap 就会分别报告扫描的结果.</p>
-<h3 id="逗号分隔"><a href="#逗号分隔" class="headerlink" title="逗号分隔"></a>逗号分隔</h3><p>使用简化符号来减少命令的长度.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1,101,105</span><br></pre></td></tr></table></figure>
-
-<p>这与上一个示例中的命令等效</p>
-<h3 id="目标列表"><a href="#目标列表" class="headerlink" title="目标列表"></a>目标列表</h3><p>当有大量主机需要扫描时, 可以将目标IP地址写入进一个文本文件中.<br>语法 : <code>nmap -iL [文件路径]</code></p>
-<h3 id="范围扫描"><a href="#范围扫描" class="headerlink" title="范围扫描"></a>范围扫描</h3><p>指定扫描范围时, 可以通过IP地址或子网的方式来实现. </p>
-<h4 id="IP地址指定扫描范围"><a href="#IP地址指定扫描范围" class="headerlink" title="IP地址指定扫描范围"></a>IP地址指定扫描范围</h4><p>语法 : <code>nmap [IP地址范围]</code></p>
-<ul>
-<li><p>示例一 : 扫描192.168.1.1-192.168.1.100之间的所有主机 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1-100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>示例二 : 扫描C类IP网络192.168.1.*到192.168.100.*之间的所有主机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1-100.*</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>星号<code>*</code>是通配符, 表示0-255之间所有有效的主机.</p>
-<h4 id="子网扫描"><a href="#子网扫描" class="headerlink" title="子网扫描"></a>子网扫描</h4><p>Nmap也可以使用CIDR（无类别域间路由，Classless Inter-Domain Routing）格式来扫描整个子网。CIDR将多个IP网络结合在一起，使用一种无类别的域际路由选择算法，可以减少由核心路由器运载的路由选择信息的数量。其中，语法格式如下所示：<br><code>nmap [CIDR格式的网络地址]</code></p>
-<p>示例 : 扫描192.168.1.1/24整个子网中的所有主机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1/24</span><br></pre></td></tr></table></figure>
-
-<h2 id="排除扫描目标"><a href="#排除扫描目标" class="headerlink" title="排除扫描目标"></a>排除扫描目标</h2><p>当我们指定范围扫描的时候, 可能会把自己的IP地址包含在内, 如果出于种种原因不想扫描这些目标, 可以将它们排除.<br>语法 : <code>nmap [目标] --exclude [目标]</code></p>
-<h2 id="简单参数"><a href="#简单参数" class="headerlink" title="简单参数"></a>简单参数</h2><ul>
-<li><code>-p[a-b]</code> : 指定扫描端口a至b(a b均小于65535)</li>
-<li><code>-p-</code> : 扫描全部端口.</li>
-<li><code>-sP</code> : Ping扫描。 仅仅 进行ping扫描 (主机发现)，然后打印出对扫描做出响应的那些主机.</li>
-<li><code>-sT</code> : TCP connect()扫描。当Nmap连接，然后不发送数据就关闭连接.</li>
-<li><code>-sV</code> : 探测service版本.</li>
-<li><code>-O -v</code> : 详细的操作系统探测.</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/qq_30247635/article/details/86247744#_14" target="_blank" rel="noopener">nmap简单参数教程</a></li>
-<li><a href="https://blog.csdn.net/daxueba/article/details/46679439" target="_blank" rel="noopener">Nmap扫描教程之基础扫描详解</a></li>
-</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个 MNIST 的项目是 tensorflow中文社区 介绍的深度学习领域中的 “Hellowrold”, 用来练手应该是非常合适的, 这也是我第一次使用tensorflow. 被它的强大所震撼.(上面的代码样例实际运行时间不会超过 3 秒钟). 而且这个项目代表了机器学习中一个十分经典的问题 – 多分类问题. </p>
+<p>当读懂了教程后, 会发现整个项目的构建思路其实是无比清晰的, 从问题的数据集的数学表示, 到设计数学模型描述实际问题中数据的关系, 再到将数学模型用代码实现已经选择训练模型的策略和评估方法, 在思路上十分顺畅. 这种设计思路我觉得对将来我自己的项目十分有借鉴意义. 只可惜我的数学底子在浩瀚的数学公式面前显得实在是微不足道, 无法深入的探究数学公式的原理. 在这里立个flag, 寒假在学习深度学习和tensorflow时也要尽最大努力补充数学和概率论的知识, 只有这样才能从更底层的角度深入的理解深度学习.</p>
 
         </div>
         
@@ -367,12 +375,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-08T15:07:48.513Z" itemprop="dateUpdated">2019-09-08 23:07:48</time>
+    Last updated: <time datetime="2019-10-31T13:34:17.076Z" itemprop="dateUpdated">2019-10-31 21:34:17</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/07/10/Nmap学习笔记/" target="_blank" rel="external">https://tjuyjn.top/2019/07/10/Nmap学习笔记/</a>
+        转载注明出处，原文地址：<a href="/2019/10/30/MNIST/" target="_blank" rel="external">https://tjuyjn.top/2019/10/30/MNIST/</a>
         
     </div>
     <footer>
@@ -392,7 +400,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主机扫描/">主机扫描</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -401,7 +409,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/10/30/MNIST/&title=《MNIST》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -413,25 +421,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&source=个人博客计算机" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/10/30/MNIST/&title=《MNIST》 — Anti-entropy's blog&source=MNIST 机器学习入门主要参考 : tensorflow 中文社区" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/10/30/MNIST/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nmap 学习笔记》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MNIST》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/10/30/MNIST/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/10/30/MNIST/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -456,21 +464,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/07/11/sqli-lab闯关/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">sqli-lab闯关记录</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/07/08/CTF-Writeup/" id="post-next" class="post-nav-link">
+      <a href="/2019/10/03/linux文件管理实验/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">CTF-writeup</h4>
+        <h4 class="title">一些有趣的实验</h4>
       </a>
     </div>
   
@@ -482,7 +483,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Nmap主机扫描学习笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">Nmap主机扫描学习笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扫描单个目标"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">扫描单个目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扫描多个目标"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">扫描多个目标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令行中分别指定"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">命令行中分别指定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逗号分隔"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">逗号分隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目标列表"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">目标列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范围扫描"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">范围扫描</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IP地址指定扫描范围"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">IP地址指定扫描范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子网扫描"><span class="post-toc-number">1.2.4.2.</span> <span class="post-toc-text">子网扫描</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排除扫描目标"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">排除扫描目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单参数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">简单参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MNIST-机器学习入门"><span class="post-toc-number">1.</span> <span class="post-toc-text">MNIST 机器学习入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据集"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数据集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#softmax回归"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">softmax回归</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模型设定"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">模型设定</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#训练模型"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">训练模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模型评估"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">模型评估</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完整代码和我的注释"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">完整代码和我的注释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -607,7 +608,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tjuyjn.top/2019/10/30/MNIST/&title=《MNIST》 — Anti-entropy's blog&pic=https://tjuyjn.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -619,25 +620,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&title=《Nmap 学习笔记》 — Anti-entropy's blog&source=个人博客计算机" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tjuyjn.top/2019/10/30/MNIST/&title=《MNIST》 — Anti-entropy's blog&source=MNIST 机器学习入门主要参考 : tensorflow 中文社区" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tjuyjn.top/2019/10/30/MNIST/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nmap 学习笔记》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/&via=https://tjuyjn.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MNIST》 — Anti-entropy's blog&url=https://tjuyjn.top/2019/10/30/MNIST/&via=https://tjuyjn.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/07/10/Nmap学习笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tjuyjn.top/2019/10/30/MNIST/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -649,7 +650,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3awYrDMAxF0fz/T2dgVoVOmvskTyHy9aqkTeLjgrAlHQce5+94v/J6/QTj6pdXz1w8ZMiQ8VgGfzG5lyDJTPjcZMiQsQ/jc5BNp/V5Ccii8LnJkCFDBp9KGnavFkKGDBky+gGX8HhITZ8vQ4aMnRk8QcZTciTI1gK0DBkydmOkhYFvfv7H+oYMGTIewjjDQV5PJsFLm2hWMmTIGM3oJO7JRm1tCfMmHMuQIWMDRtpOQdJttU0hX1YZMmTswOg/jhcy07cUKxsyZMgYyqgdYnmo5eWBtHiw4CwuQ4aMhzDS42v/6MvDOlosGTJkjGZ8pzmMB+L02CxDhow9GWnCq7YR5MUDvn2UIUPGVAa/rdNAlh5f43AsQ4aMzRhpeTItAKRLgwK9DBkyRjM6abV0KukBOE3qyZAhYzZjVVKMH1NrQfnmigwZMoYy+i0RR2l02KimIUOGjEGMtEhZS8bxpBuf+s1/IkOGjHEMXlBMWy7SYidqp5AhQ8ZmjPQRaQjutFnEO1wZMmSMZqxNkKVtXrwAcPl7GTJkjGZ0kmidlFyn4SwoYcqQIWME4wwHT8/x6aYL8ce3MmTIGM1Igx0/mtaKlP2GDBkyZExlrAqyPKHfD6nxBlGGDBkjGLU+KxKgV23sblJyMmTIkAHCIm/tqhVHj87KyZAhYzNGp4Wrk7a7SeTJkCFjAwZvm6i9phhGeXSVIUPGaEbnNg5On8ADtAwZMkYzfgClb2C+9ewzsgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3aQY7DIAwF0Nz/0h1pVjOqSr4xoFR6rKokDY8sLGxzXfF4/Y7333+vvD+TXLl2DFxc3Db3NRzjZ/K7+fI+vQcXF/c8Nwle4wnG15N/jQ24uLjP5CbBaLzU5HlcXNxv5N5sQYZvxsXF/S5unsDk0yShcGOuhouL2+B2Cqarfh+q7+Li4ra7EtWtzDhUzc347824uLhHuHNFzGrgq94dfwJcXNzd3Oqxibnm6LLPgYuLe4SbgMoFzbjwkW96cHFxT3LnChnVK9X2bdTzwcXF3caNcqNiobPDLWyGcHFxt3ETYrVd2vpmk4UdXFzcXXWG6gKqC6sWXAr7Mlxc3A3c6iGJfokkb7u2zoPg4uJOcfOjmZ1EKA+a5eQHFxd3A3dVIMujZmepuLi4Z7ido5b9OkYy+83BLFxc3M3c6qhuU5L85aY0g4uLe4RbDUBzRdJrapTRuLi4i7hzwauaj+SHNW9CIS4u7hHuqv1DZ7vTac/g4uLu43aSnLxxkrRXo70YLi7uQW61uVJtnCwLnbi4uA/j9gNTfvemyouLi/swbr6Mask1Cny4uLgHudVwU22EVNOnZbkaLi7uFLeaiuQLyFss1SMauLi427g/b8jDQjwhLHsAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
