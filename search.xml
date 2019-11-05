@@ -3,6 +3,85 @@
   
     
     <entry>
+      <title><![CDATA[计网 summary]]></title>
+      <url>/2019/11/05/Computer-network-summary/</url>
+      <content type="html"><![CDATA[<p>每天一遍, 预防失眠.</p>
+<a id="more"></a>
+<h1 id="计算机网络名词索引表"><a href="#计算机网络名词索引表" class="headerlink" title="计算机网络名词索引表"></a>计算机网络名词索引表</h1><h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><ul>
+<li>HTTP<br>HyperText Transfer Protocol 超文本传输协议</li>
+<li>SSL<br>Secure Sockets Layer 安全套接层</li>
+<li>RTT<br>Round-Trip Time 往返时延</li>
+<li>SMTP<br>The Simple Mail Transfer Protocol 简单邮件传输协议</li>
+<li>POP<br>Post Office Protocol 邮局协议</li>
+<li>IMAP<br>Internet Mail Access Protocol 交互邮件访问协议</li>
+<li>DNS<br>domain name system 域名系统</li>
+<li>TLD<br>top-level domain 顶级域名服务器</li>
+<li>ISP<br>internet Service Provider 互联网服务提供商</li>
+<li>P2P<br>peer to peer 对等网络</li>
+<li>CBR<br>constant bit rate 静态码率</li>
+<li>VBR<br>variable bit rate 动态码率</li>
+<li>DASH<br>Dynamic Adaptive Streaming over HTTP 基于HTTP的自适应传输流技术</li>
+<li>CDN<br>Content Distribution Networks 内容分发网络</li>
+<li>DHCP<br>Dynamic host configuration protocol 动态主机配置协议</li>
+</ul>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><ul>
+<li>TCP<br>Transmission Control Protocol 传输控制协议</li>
+<li>UDP<br>User Datagram Protocol 用户数据报协议</li>
+<li>rdt<br>reliable data transfer Protocol 可靠数据传输协议</li>
+<li>FSM<br>finite state machines 有限状态机</li>
+<li>ACKs<br>acknowledgements 承认</li>
+<li>NAKs<br>negative acknowledgements 不承认</li>
+<li>GBN<br>Go-Back-N 回退N步</li>
+<li>URG<br>urgent data 紧急数据</li>
+<li>PSH<br>push data now 立即推送数据</li>
+<li>SYN<br>Synchronize Sequence Numbers 同步序列编号</li>
+</ul>
+<h2 id="网络层-The-Data-Plane"><a href="#网络层-The-Data-Plane" class="headerlink" title="网络层 The Data Plane"></a>网络层 The Data Plane</h2><ul>
+<li>IP<br>Internet Protocol</li>
+<li>ARP<br>Address Resolution Protocol 地址解析协议</li>
+<li>ICMP<br>Internet Control Message Protocol 网际控制报文协议</li>
+<li>IGMP<br>Internet Group Management Protocol 国际组管理协议</li>
+<li>ICANN<br>Internet Corporation for Assigned Names and Numbers 互联网名字和数字分配机构</li>
+<li>VLSM<br>Variable Length Subnet Mask 变长子网掩码</li>
+<li>CIDR<br>Classless Inter-Domain Routing 无分类域间路由选择</li>
+<li>PING<br>Packet InterNet Groper 分组网间探测</li>
+<li>AS<br>autonomous system 自治系统</li>
+<li>IGP<br>Interior Gateway Protocol 内部网关协议</li>
+<li>RIP<br>Routing Information Protocol 路由信息协议</li>
+<li>DV<br>distance-vector 距离向量</li>
+<li>OSPF<br>Open Shortest Path First 开放最短路径优先</li>
+<li>LS<br>link state 链路状态</li>
+<li>EGP<br>External Gateway Protocol 外部网关协议</li>
+<li>BGP<br>Border gateway Protocol 边界网关协议</li>
+<li>SDN<br>Software Defined Network 软件定义网络</li>
+</ul>
+<h2 id="网络层-The-Control-Plane"><a href="#网络层-The-Control-Plane" class="headerlink" title="网络层 The Control Plane"></a>网络层 The Control Plane</h2><p>// TODO</p>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><ul>
+<li>CRC<br>Cyclic redundancy check 循环冗余校验</li>
+<li>ppp<br>point-to-point 点对点协议</li>
+<li>MAC<br>Media Access Control 媒体介入控制</li>
+<li>TDMA<br>time division multiple access 时分多路访问</li>
+<li>FDMA<br>frequency division multiple access 频分多路访问</li>
+<li>CSMA<br>carrier sense multiple access 载波侦听多路访问</li>
+<li>CSMA/CD<br>carrier sense multiple access/collision detection 载波侦听多路访问／碰撞检测</li>
+<li>CSMA/CA<br>Carrier Sense Multiple Access with Collision Avoid 载波侦听多路访问／碰撞避免</li>
+</ul>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h2 id="Other-Name"><a href="#Other-Name" class="headerlink" title="Other Name"></a>Other Name</h2><ul>
+<li>NAT<br>Network address Translation 网络地址转换</li>
+<li>VLAN<br>Virtual Local Area Network 虚拟局域网</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MNIST]]></title>
       <url>/2019/10/30/MNIST/</url>
       <content type="html"><![CDATA[<h1 id="MNIST-机器学习入门"><a href="#MNIST-机器学习入门" class="headerlink" title="MNIST 机器学习入门"></a>MNIST 机器学习入门</h1><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
