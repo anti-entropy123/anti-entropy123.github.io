@@ -228,12 +228,12 @@
 </li>
 </ul>
 <h4 id="掌握计算机网络主要性能评价参数的物理含义及计算方法"><a href="#掌握计算机网络主要性能评价参数的物理含义及计算方法" class="headerlink" title="掌握计算机网络主要性能评价参数的物理含义及计算方法"></a>掌握计算机网络主要性能评价参数的物理含义及计算方法</h4><ul>
-<li>吞吐率（throughput）</li>
-</ul>
-<p><strong>瞬时吞吐量</strong>: 主机接收到文件的速率(以bps计)<br><strong>平均吞吐量</strong>: 假设文件由<strong>F比特</strong>组成, 主机接受整个文件用去<strong>T秒</strong>, 平均吞吐量是<strong>F/S bps</strong><br>如果一个文件</p>
-<ul>
-<li>延迟(delay)<br>$$\begin{aligned}<br>总时延 = &amp;传输时延(transmission) + 传播时延(propagation) + \ <pre><code>&amp;排队时延(queuing) + 处理时延(processing)</code></pre>\end{aligned}<br>$$ </li>
-<li>丢包率(loss rate)<br>$$\cfrac{输入报文-输出报文}{输入报文}*100%$$</li>
+<li><p>吞吐率（throughput）<br>  <strong>瞬时吞吐量</strong>: 主机接收到文件的速率(以bps计)<br>  <strong>平均吞吐量</strong>: 假设文件由<strong>F比特</strong>组成, 主机接受整个文件用去<strong>T秒</strong>, 平均吞吐量是<strong>F/S bps</strong></p>
+</li>
+<li><p>延迟(delay)<br>$$总时延 = 传输时延(transmission) + 传播时延(propagation)+ 排队时延(queuing) + 处理时延(processing)$$ </p>
+</li>
+<li><p>丢包率(loss rate)<br>$$\cfrac{输入报文-输出报文}{输入报文}*100%$$</p>
+</li>
 </ul>
 <h4 id="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）"><a href="#能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）" class="headerlink" title="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）"></a>能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）</h4>]]></content>
       
@@ -2585,9 +2585,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         
