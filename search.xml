@@ -71,7 +71,56 @@
 <li>NAT<br>Network address Translation 网络地址转换</li>
 <li>VLAN<br>Virtual Local Area Network 虚拟局域网</li>
 </ul>
-<h2 id="考纲"><a href="#考纲" class="headerlink" title="考纲"></a>考纲</h2><h3 id="第一章-计算机网络和Internet"><a href="#第一章-计算机网络和Internet" class="headerlink" title="第一章 计算机网络和Internet"></a>第一章 计算机网络和Internet</h3><h4 id="理解-Internet-层次型网络架构。-（1-1）"><a href="#理解-Internet-层次型网络架构。-（1-1）" class="headerlink" title="理解 Internet 层次型网络架构。 （1.1）"></a>理解 Internet 层次型网络架构。 （1.1）</h4><ol>
+<h2 id="考纲"><a href="#考纲" class="headerlink" title="考纲"></a>考纲</h2><h3 id="第一章-计算机网络和Internet"><a href="#第一章-计算机网络和Internet" class="headerlink" title="第一章 计算机网络和Internet"></a>第一章 计算机网络和Internet</h3><h4 id="理解-Internet-层次型网络架构。-（1-1）"><a href="#理解-Internet-层次型网络架构。-（1-1）" class="headerlink" title="理解 Internet 层次型网络架构。 （1.1）"></a>理解 Internet 层次型网络架构。 （1.1）</h4><p>// TODO</p>
+<h4 id="深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）"><a href="#深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）" class="headerlink" title="深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）"></a>深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）</h4><ul>
+<li>分组交换<ul>
+<li>基本原理:<br>分组交换是以分组为单位进行传输和交换的，它是一种<strong>存储转发</strong>交换方式，即将到达交换机的分组先送到存储器暂时存储和处理，等到相应的输出电路有空闲时再送出</li>
+<li>优点:<ul>
+<li>分组交换不需要为通信双反预先建立一条专用的通信线路，不存在连接建立时延，用户可随时发送分组。</li>
+<li>由于采用存储转发方式，加之交换节点具有路径选择，当某条传输线路故障时可选择其他传输线路，提高了传输的可靠性。</li>
+<li>通信双反不是固定的占有一条通信线路，而是在不同的时间一段一段地部分占有这条物理通路，因而大大提高了通信线路的利用率。</li>
+<li>加速了数据在网络中的传输。因而分组是逐个传输，可以使后一个分组的存储操作与前一个分组的转发操作并行，这种流水线式传输方式减少了传输时间。</li>
+<li>分组长度固定，相应的缓冲区的大小也固定，所以简化了交换节点中存储器的管理。</li>
+<li>分组较短，出错几率减少，每次重发的数据量也减少，不仅提高了可靠性，也减少了时延。</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>由于数据进入交换节点后要经历存储转发这一过程，从而引起的转发时延（包括接受分组、检验正确性、排队、发送时间等），而且网络的通信量越大，造成的时延就越大，实时性较差。</li>
+<li>分组交换只适用于数字信号。</li>
+<li>分组交换可能出现失序，丢失或重复分组，分组到达目的节点时，对分组按编号进行排序等工作，增加了麻烦。</li>
+<li>分组都要加上源、目的地址和分组编号等信息，使传送的信息量大约增大5%～10%，一定程度上降低了通信效率，增加了处理的时间，使控制复杂，时延增加。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>电路交换<ul>
+<li>基本原理<br>  电路交换是以电路连接为目的的交换方式，通信之前要在通信双方之间建立一条被<strong>双方独占的物理通道</strong>。</li>
+<li>优点: <ul>
+<li>由于通信线路为通信双方用户专用，数据直达，所以传输数据的时延非常小。</li>
+<li>通信双方之间的屋里通路一旦建立，双方可以随时通信，实时性强。</li>
+<li>双方通信时按发送顺序传送数据，不存在失序问题。</li>
+<li>电路交换既适用于传输模拟信号，也适用于传输数字信号。</li>
+<li>电路交换的交换设备及控制均比较简单。</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>电路交换平均连接建立时间对计算机通信来说较长。</li>
+<li>电路交换家里连接后，物理通路被通信双方独占，即使通信线路空闲，也不能供其他用户使用，因而信道利用率低。</li>
+<li>电路交换时，数据直达，不同类型，不同规格，不同速率的终端很难相互进行通信，也难以在通信过程中进行差错控制。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="掌握计算机网络主要性能评价参数的物理含义及计算方法"><a href="#掌握计算机网络主要性能评价参数的物理含义及计算方法" class="headerlink" title="掌握计算机网络主要性能评价参数的物理含义及计算方法"></a>掌握计算机网络主要性能评价参数的物理含义及计算方法</h4><ul>
+<li><p>吞吐率（throughput）<br>  <strong>瞬时吞吐量</strong>: 主机接收到文件的速率(以bps计)<br>  <strong>平均吞吐量</strong>: 假设文件由<strong>F比特</strong>组成, 主机接受整个文件用去<strong>T秒</strong>, 平均吞吐量是<strong>F/S bps</strong></p>
+</li>
+<li><p>延迟(delay)<br>$$总时延 = 传输时延(transmission) + 传播时延(propagation)+ 排队时延(queuing) + 处理时延(processing)$$ </p>
+</li>
+<li><p>丢包率(loss rate)<br>$$\cfrac{输入报文-输出报文}{输入报文}*100%$$</p>
+</li>
+</ul>
+<h4 id="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）"><a href="#能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）" class="headerlink" title="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）"></a>能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）</h4><ol>
 <li>OSI七层架构</li>
 </ol>
 <table>
@@ -187,55 +236,172 @@
 <td align="left">将帧中的一个个比特从一个节点移动到下一个节点</td>
 </tr>
 </tbody></table>
-<h4 id="深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）"><a href="#深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）" class="headerlink" title="深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）"></a>深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）</h4><ul>
-<li>分组交换<ul>
-<li>基本原理:<br>分组交换是以分组为单位进行传输和交换的，它是一种<strong>存储转发</strong>交换方式，即将到达交换机的分组先送到存储器暂时存储和处理，等到相应的输出电路有空闲时再送出</li>
-<li>优点:<ul>
-<li>分组交换不需要为通信双反预先建立一条专用的通信线路，不存在连接建立时延，用户可随时发送分组。</li>
-<li>由于采用存储转发方式，加之交换节点具有路径选择，当某条传输线路故障时可选择其他传输线路，提高了传输的可靠性。</li>
-<li>通信双反不是固定的占有一条通信线路，而是在不同的时间一段一段地部分占有这条物理通路，因而大大提高了通信线路的利用率。</li>
-<li>加速了数据在网络中的传输。因而分组是逐个传输，可以使后一个分组的存储操作与前一个分组的转发操作并行，这种流水线式传输方式减少了传输时间。</li>
-<li>分组长度固定，相应的缓冲区的大小也固定，所以简化了交换节点中存储器的管理。</li>
-<li>分组较短，出错几率减少，每次重发的数据量也减少，不仅提高了可靠性，也减少了时延。</li>
+<h3 id="第二章-应用层"><a href="#第二章-应用层" class="headerlink" title="第二章 应用层"></a>第二章 应用层</h3><h4 id="掌握应用层在网络协议栈中的位置及主要功能"><a href="#掌握应用层在网络协议栈中的位置及主要功能" class="headerlink" title="掌握应用层在网络协议栈中的位置及主要功能"></a>掌握应用层在网络协议栈中的位置及主要功能</h4><p>略</p>
+<h4 id="理解应用层协议的两种架构"><a href="#理解应用层协议的两种架构" class="headerlink" title="理解应用层协议的两种架构"></a>理解应用层协议的两种架构</h4><ul>
+<li>C/S架构<br>  在客户-服务器体系结构中, 有一个总是打开的主机称为服务器, 它服务于来自许多其他称为客户的主机的请求.</li>
+<li>P2P<br>  在一个P2P体系结构中, 对位于数据中心的专用服务器有最小(或者没有)依赖, 相反, 应用程序在间断连接的主机对之间使用直接通信, 这些主机对被称为对等方. 因为这种对等方通信不必通过专门的服务器, 该体系结构被称为对等方到对等方的.</li>
+</ul>
+<h4 id="熟练掌握-HTTP-协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析"><a href="#熟练掌握-HTTP-协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析" class="headerlink" title="熟练掌握 HTTP 协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析"></a>熟练掌握 HTTP 协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析</h4><ul>
+<li>非持续连接的缺点:<ul>
+<li>必须为每一个请求的对象建立和维护一个全新的连接, 给Web服务器带来了严重的负担</li>
+<li>每一个对象经受两倍的RTT的交付时延, 一个用于创建TCP, 另一个用于请求和接收一个对象<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4></li>
 </ul>
 </li>
-<li>缺点:<ul>
-<li>由于数据进入交换节点后要经历存储转发这一过程，从而引起的转发时延（包括接受分组、检验正确性、排队、发送时间等），而且网络的通信量越大，造成的时延就越大，实时性较差。</li>
-<li>分组交换只适用于数字信号。</li>
-<li>分组交换可能出现失序，丢失或重复分组，分组到达目的节点时，对分组按编号进行排序等工作，增加了麻烦。</li>
-<li>分组都要加上源、目的地址和分组编号等信息，使传送的信息量大约增大5%～10%，一定程度上降低了通信效率，增加了处理的时间，使控制复杂，时延增加。</li>
+<li>为何采用分布式数据库<br>  集中式设计的问题包括:<ul>
+<li>单点故障: 如果该DNS服务器崩溃, 整个因特网随之瘫痪</li>
+<li>通信容量: 单个DNS服务器将处理所有的DNS查询</li>
+<li>远距离的集中式数据库: 距离较远的主机查询会导致严重的时延</li>
+<li>维护: 此中央数据库庞大, 且需要频繁更新</li>
+</ul>
+</li>
+<li>递归查询和迭代查询<br>  通常从主机到本地DNS服务器的查询是递归的, 其余的查询是迭代的.</li>
+</ul>
+<h3 id="第三章-传输层"><a href="#第三章-传输层" class="headerlink" title="第三章 传输层"></a>第三章 传输层</h3><h4 id="理解传输层在网络协议栈中的位置及主要功能"><a href="#理解传输层在网络协议栈中的位置及主要功能" class="headerlink" title="理解传输层在网络协议栈中的位置及主要功能"></a>理解传输层在网络协议栈中的位置及主要功能</h4><p>略</p>
+<h4 id="熟练掌握经典的可靠数据传输协议的工作原理"><a href="#熟练掌握经典的可靠数据传输协议的工作原理" class="headerlink" title="熟练掌握经典的可靠数据传输协议的工作原理"></a>熟练掌握经典的可靠数据传输协议的工作原理</h4><ul>
+<li>停等ARQ(stop and wait)<br>  每发送完一个分组就停止发送 ，等待对方的确认，在收到确认后再发送下一个分组。出现差错时需进行超时重传，这时就要附加一个超时计时器，超出一定时间判定数据丢失进行重传；出现确认丢失时，重传数据，B收到数据后丢弃并重传确认信号；出现确认迟到时，重传数据，A收到第二个确认信号时将其丢弃。<br>  <strong>缺点</strong>是较长的等待时间导致低的数据传输速度。在低速传输时，对连接频道的利用率比较好，但是在高速传输时，频道的利用率会显著下降。</li>
+<li>连续ARQ(Automatic Repeat-reQuest)<ul>
+<li>回退N步(Go Back N, GBN)<br>  也常被称为<strong>滑动窗口协议</strong>接收点丢弃从第一个没有收到的数据包开始的所有数据包, 发送点收到NACK后，从NACK中指明的数据包开始重新发送。<br>  注: Nack中的N应该是指exceptedseqnum</li>
+<li>选择重传(Selective Repeat, SR)<br>  发送点连续发送数据包但对每个数据包都设有个一个计时器。当在一定时间内没有收到某个数据包的ACK时，发送点只重新发送那个没有ACK的数据包。<h4 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h4></li>
+</ul>
+</li>
+<li>RTT估计方法:<br>  $$EstimatedRTT = (1-\alpha)\cdot EstimatedRTT + \alpha \cdot SampleRTT$$<br>  其中$\alpha$的推荐值是$\alpha = \frac{1}{8}$</li>
+<li>超时时长设置<br>  首先定义RTT的变化:<br>  $$DevRTT = (1-\beta)\cdot DevRTT+\beta \cdot |SampleRTT - EstimatedRTT| $$<br>  其中$\beta$的推荐值是$\beta = \frac{1}{4}$<br>  其次是确定重传超时间隔:<br>  $$TimeoutInterval = EstimatedRTT + 4\cdot DevRTT$$<br>  <strong>当出现超时后, TimeoutInterval的值将加倍</strong><h4 id="熟练掌握-TCP-RENO-拥塞控制的过程能够判断在不同事件（超时、收到三次重复-ACK-包）发生时-TCP-如何做拥塞窗口调整"><a href="#熟练掌握-TCP-RENO-拥塞控制的过程能够判断在不同事件（超时、收到三次重复-ACK-包）发生时-TCP-如何做拥塞窗口调整" class="headerlink" title="熟练掌握 TCP RENO 拥塞控制的过程能够判断在不同事件（超时、收到三次重复 ACK 包）发生时 TCP 如何做拥塞窗口调整"></a>熟练掌握 TCP RENO 拥塞控制的过程能够判断在不同事件（超时、收到三次重复 ACK 包）发生时 TCP 如何做拥塞窗口调整</h4></li>
+</ul>
+<figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/reno_tahoe.jpg" alt title class>
+                <p></p>
+            </figure>
+<p>[1, 4] : 慢启动<br>[4, 8] : 拥塞避免<br>在 t=9 时刻, 发生了乱序(产生了三个重复的ACK包), 因为Reno在t=9时刻, ssthresh = ssthresh/2 + 3<br>**如果发生超时丢包, 即使是Reno算法, 拥塞窗口被置为1, ssthresh=ssthresh/2</p>
+<h4 id="能够理解-TCP-连接建立和拆除的工作流程及原因"><a href="#能够理解-TCP-连接建立和拆除的工作流程及原因" class="headerlink" title="能够理解 TCP 连接建立和拆除的工作流程及原因"></a>能够理解 TCP 连接建立和拆除的工作流程及原因</h4><figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/connect.png" alt title class>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/close.png" alt title class>
+                <p></p>
+            </figure>
+
+<h3 id="第四章-网络层-数据平面"><a href="#第四章-网络层-数据平面" class="headerlink" title="第四章 网络层-数据平面"></a>第四章 网络层-数据平面</h3><h4 id="掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4-1）"><a href="#掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4-1）" class="headerlink" title="掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4.1）"></a>掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4.1）</h4><p>略</p>
+<h4 id="理解-IPv4-地址-CIDR-表示方式、子网、子网掩码概念。"><a href="#理解-IPv4-地址-CIDR-表示方式、子网、子网掩码概念。" class="headerlink" title="理解 IPv4 地址 CIDR 表示方式、子网、子网掩码概念。"></a>理解 IPv4 地址 CIDR 表示方式、子网、子网掩码概念。</h4><p>子网: 互联若干个主机接口与1个路由器接口的网络形成一个子网(子网也称为IP网络或直接称为网络)<br>子网掩码: 假如IP编址为这个子网分配一个地址223.1.1.0/24, 其中的/24记法, 有时被称为子网掩码, 指示32比特中最左侧24比特定义了子网地址.</p>
+<h4 id="能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块"><a href="#能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块" class="headerlink" title="能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块"></a>能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块</h4><p>略</p>
+<h4 id="理解网络地址转换-NAT-的动机和工作机制"><a href="#理解网络地址转换-NAT-的动机和工作机制" class="headerlink" title="理解网络地址转换 NAT 的动机和工作机制"></a>理解网络地址转换 NAT 的动机和工作机制</h4><ul>
+<li>动机<ul>
+<li>只能从ISP申请一个IP地址</li>
+<li>IPv4地址耗尽</li>
+<li>本地网络设备IP地址的变更，无需通告外界网络</li>
+<li>变更ISP时，无需修改内部网络设备IP地址</li>
+<li>内部网络设备对外界网络不可见，即不可直接寻址(安全)</li>
+</ul>
+</li>
+<li>工作机制<br>  NAT实现通过利用端口号对内部地址和端口号进行转换，并维护一个转换表。<ul>
+<li>替换<br>  利用(NAT IP地址,新端口号)替换每个外出IP数据报的(源IP地址,源端口号)</li>
+<li>记录<br>  将每对(NAT IP地址, 新端口号) 与(源IP地址, 源端口号)的替换信息存储到NAT转换表中</li>
+<li>替换<br>  根据NAT转换表，利用(源IP地址, 源端口号)替换每个进入内网IP数据报的(目的IP地址,目的端口号)，即(NAT IP地址, 新端口号)</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>电路交换<ul>
-<li>基本原理<br>  电路交换是以电路连接为目的的交换方式，通信之前要在通信双方之间建立一条被<strong>双方独占的物理通道</strong>。</li>
-<li>优点: <ul>
-<li>由于通信线路为通信双方用户专用，数据直达，所以传输数据的时延非常小。</li>
-<li>通信双方之间的屋里通路一旦建立，双方可以随时通信，实时性强。</li>
-<li>双方通信时按发送顺序传送数据，不存在失序问题。</li>
-<li>电路交换既适用于传输模拟信号，也适用于传输数字信号。</li>
-<li>电路交换的交换设备及控制均比较简单。</li>
+<h3 id="第五章-网络层-控制平面"><a href="#第五章-网络层-控制平面" class="headerlink" title="第五章 网络层-控制平面"></a>第五章 网络层-控制平面</h3><h4 id="路由算法和路由表"><a href="#路由算法和路由表" class="headerlink" title="路由算法和路由表"></a>路由算法和路由表</h4><p>OSPF -&gt; Link State -&gt; Dijkstra<br>RIP -&gt; Distance vector -&gt; Bellman-Ford</p>
+<h3 id="第六章-数据链路层"><a href="#第六章-数据链路层" class="headerlink" title="第六章 数据链路层"></a>第六章 数据链路层</h3><h4 id="理解链路层的功能"><a href="#理解链路层的功能" class="headerlink" title="理解链路层的功能"></a>理解链路层的功能</h4><p>链路层负责物理相邻节点之间的数据传输</p>
+<h4 id="理解多址接入协议（MAC）的功能"><a href="#理解多址接入协议（MAC）的功能" class="headerlink" title="理解多址接入协议（MAC）的功能"></a>理解多址接入协议（MAC）的功能</h4><p>针对共享传输介质来协调节点对信道的使用</p>
+<h4 id="了解MAC协议按工作方式进行分类"><a href="#了解MAC协议按工作方式进行分类" class="headerlink" title="了解MAC协议按工作方式进行分类"></a>了解MAC协议按工作方式进行分类</h4><ul>
+<li><p>信道划分（channel partitioning）协议<br>  在所有共享信道节点之间划分广播信道带宽的技术.</p>
+<ul>
+<li>时分多路复用(TDM)<br>  TDM将时间划分为时间帧(time frame), 并进一步划分每个时间帧为N个时隙(slot), 然后把每个时隙分配给N个节点中的一隔. 无论何时某个及节点在有分组要发送的时候, 它在循环的TDM帧中指派给它的时隙内传送分组比特.</li>
+<li>频分多路复用(FDM)<br>  FDM将R bps信道划分为不同的频段(每个频段具有R/N带宽), 并把每个频率分配给N个节点中的一个. 因此FDM在单个较大的R bps信道中创建了N个较小的R/N bps信道.</li>
+<li>码分多址(CDMA)<br>  CDMA对每个节点分配一种不同的编码, 然后每个节点用它唯一的编码来对它发送的数据进行编码.</li>
 </ul>
 </li>
-<li>缺点:<ul>
-<li>电路交换平均连接建立时间对计算机通信来说较长。</li>
-<li>电路交换家里连接后，物理通路被通信双方独占，即使通信线路空闲，也不能供其他用户使用，因而信道利用率低。</li>
-<li>电路交换时，数据直达，不同类型，不同规格，不同速率的终端很难相互进行通信，也难以在通信过程中进行差错控制。</li>
+<li><p>随机接入（random access）<br>  在随机介入协议中, 一个传输节点总是以信道的全部速率(即R bps)进行发送, 当有碰撞时, 涉及碰撞的每个节点反复重发它的帧, 到该帧无碰撞地通过为止, 但是当一个节点经历一次碰撞时, 它在重发该帧之前等待一个随机时延.</p>
+<ul>
+<li>ALOHA<br>  当一帧首次到达, 节点立刻将该帧完整的传输进广播信道, 如果一个传输的帧与一个或多个传输经历了碰撞, 这个节点将立刻以概率p重传该帧, 否则, 该节点等待一个帧传输时间, 在此等待之后, 它则以概率p传输该帧, 或者以概率1-p在另一个帧时间等待.</li>
+<li>时隙 ALOHA<ol>
+<li>当节点有一个新帧要发送时, 它等到下一个时隙开始并在该时隙传输整个帧.</li>
+<li>如果没有碰撞, 该节点成功的传输它的帧, 从而不需要考虑重传该帧.</li>
+<li>如果有碰撞, 该节点在时隙结束之前检测到这次碰撞, 该节点以概率p在后续的每个时隙中重传它的帧, 知道该帧被无碰撞地传输出去.</li>
+</ol>
+</li>
+<li>CSMA/CD(Carrier Sense Multiple Access with collision detection)<ol>
+<li>准备好链路层帧后, 将其放入发送缓存中.</li>
+<li>如果侦听到信道空闲, 开始传播帧, 如果侦听到信道正在忙, 就等待到信道空闲时才开始传播帧.</li>
+<li>在传播过程中, 保持检测是否存在来自其他设备的使用该广播信道的信号.</li>
+<li>如果未检测到其他设备的信号, 那么传输完成; 如果在传播时检测到了其他设备的信号就中止传输.</li>
+<li>中止传播后, 等待一个随机时间量, 然后返回步骤2. 假设随机时间量为 t, 如果采用二进制指数后退算法, 那么从区间 $ [0, 1, … , 2^n - 1] $中选择一个 K 值, n 为该帧经历的碰撞次数, $t = K\times t_0, \ \ t_0$是发送512比特进入以太网所需要的时间.</li>
+</ol>
+  <strong>载波侦听后要冲突探测的原因</strong>: 在多路访问协议中加入碰撞检测, 通过不传输一个无用的损坏的帧, 将有助于改善协议的性能.</li>
+</ul>
+</li>
+<li><p>轮流协议（taking turns）</p>
+<ul>
+<li>轮询协议<br>  轮询协议要求多路访问的节点之一要被指定为主节点, 主节点以循环的方式轮询每个节点</li>
+<li>令牌传递协议<br>  在这种协议中没有主节点, 一个称为令牌的小的特殊帧在节点之间以某种固定的次序进行交换. </li>
 </ul>
 </li>
 </ul>
+<h4 id="掌握-ARP-的工作机制，理解教材图-6-19-Two-subnets-interconnected-by-a-router-的例子，要能独自分析数据包的传输过程。"><a href="#掌握-ARP-的工作机制，理解教材图-6-19-Two-subnets-interconnected-by-a-router-的例子，要能独自分析数据包的传输过程。" class="headerlink" title="掌握 ARP 的工作机制，理解教材图 6.19 Two subnets interconnected by a router 的例子，要能独自分析数据包的传输过程。"></a>掌握 ARP 的工作机制，理解教材图 6.19 Two subnets interconnected by a router 的例子，要能独自分析数据包的传输过程。</h4><p>略</p>
+<h4 id="交换机自学习"><a href="#交换机自学习" class="headerlink" title="交换机自学习"></a>交换机自学习</h4><ul>
+<li>交换机表初始为空</li>
+<li>对于在每个接口接收到的每个入帧, 交换机在表中存储: <ol>
+<li>在该帧<strong>源地址</strong>字段中的<strong>MAC地址</strong></li>
+<li>该帧到达的接口</li>
+<li>当前时间</li>
+</ol>
+</li>
+<li>如果在一段时间(老化期 aging time)后, 交换机没有接收到以该地址作为源地址的帧, 就在表中删除这个地址.</li>
+</ul>
+<h4 id="深刻理解教材-6-7-节"><a href="#深刻理解教材-6-7-节" class="headerlink" title="深刻理解教材 6.7 节"></a>深刻理解教材 6.7 节</h4><p>Web 页面请求的历程(简略过程总结): (以<a href="http://www.google.com为例" target="_blank" rel="noopener">www.google.com为例</a>)</p>
+<ul>
+<li>准备: DHCP, UDP, IP和以太网</li>
+</ul>
+<ol>
+<li>主机准备使用DHCP协议获取IP地址和其它相关信息. 依次封装DHCP报文, UDP报文段和IP数据报中.</li>
+<li>将IP数据报放置于以太网帧中并广播给所有与交换机相连的设备中.</li>
+<li>以太网帧到达交换机, (假设此帧是交换机接收到的第一个以太网帧)交换机在所有的出端口广播该入帧.</li>
+<li>路由器(运行着DHCP服务器)接收到了该以太网帧, 分解帧递交至DHCP服务器.</li>
+<li>DHCP服务器做出响应, 将DHCP ACK报文依次封装到UDP报文, IP数据报, 以太网帧中并发送</li>
+<li>帧到达交换机并被转发</li>
+<li>主机接收到帧, 更新自身IP地址, 子网掩码, DNS服务器IP和默认网关地址. </li>
+</ol>
+<ul>
+<li>仍在准备: DNS和ARP</li>
+</ul>
+<ol>
+<li>(由于还不知道google的ip地址) 主机的操作系统生成一个DNS查询报文并被封装到UDP报文段中, <strong>目的端口为 53</strong>. </li>
+<li>(由于还不知道默认网关的MAC地址) 主机将使用ARP协议.</li>
+<li>将ARP查询报文封装到以太网帧中, 发送给所有与交换机相连的设备中.</li>
+<li>默认网关路由器接收到该帧, 准备好<strong>ARP回答</strong>并置于以太网帧(目的地址设置为主机的MAC地址而不是广播)中, 经过交换机的转发递交给主机 </li>
+<li>主机从ARP回答中抽取网关的MAC地址</li>
+<li>主机的含有DNS查询报文的以太网帧能够寻址到网关路由器</li>
+</ol>
+<ul>
+<li>仍在准备: 域内路由选择到DNS服务器</li>
+</ul>
+<ol>
+<li>路由器根据OSPF, rip, BGP等协议生成转发表, 通过转发表确定路由将DNS查询报文发送到DNS服务器.</li>
+<li>DNS服务器在DNS数据库中找到<a href="http://www.google.com的DNS源记录(来源于权威DNS服务器)" target="_blank" rel="noopener">www.google.com的DNS源记录(来源于权威DNS服务器)</a>, DNS服务器生成对应的DNS回答报文并封装到UDP报文段中, 最后数据报被发送到主机中.</li>
+<li>主机获取<a href="http://www.google.com的IP地址" target="_blank" rel="noopener">www.google.com的IP地址</a>.</li>
+</ol>
+<ul>
+<li>Web 客户-服务器交互: TCP 和 HTTP</li>
+</ul>
+<ol>
+<li>主机建立TCP套接字, 尝试和服务器进行连接, 所以首先进行三次握手(过程略, 见上面图)</li>
+<li>完成三次握手后, 借助套接字发送GET请求报文, 依次封装HTTP报文, TCP报文段, IP数据报. 发送至google服务器.</li>
+<li>google服务器收到GET请求报文, 生成含有Web页面内容的响应报文, 发送至主机</li>
+<li>主机收到响应报文, 从中抽取Web网页的html, 浏览器显示了Web页面.</li>
+</ol>
+<h3 id="第七章-无线和移动网络"><a href="#第七章-无线和移动网络" class="headerlink" title="第七章 无线和移动网络"></a>第七章 无线和移动网络</h3><h4 id="能够掌握-CSMA-CA-协议的基本工作原理。（7-3-1，7-3-2）"><a href="#能够掌握-CSMA-CA-协议的基本工作原理。（7-3-1，7-3-2）" class="headerlink" title="能够掌握 CSMA/CA 协议的基本工作原理。（7.3.1，7.3.2）"></a>能够掌握 CSMA/CA 协议的基本工作原理。（7.3.1，7.3.2）</h4><p>CSMA/CA, CSMA with collision avoidance, 带碰撞<strong>避免</strong>的CSMA.</p>
+<ul>
+<li>链路层确认:<br>  目的站点收到一个通过CRC校验的帧后, 它等待一个短帧间间隔的一小段时间, 然后发挥一个确认帧. 如果发送站点在给定的时间内未收到确认帧, 它假定出现了错误并重传该帧, 使用CSMA/CA协议访问该信道. 如果在若干固定次重传后仍未收到确认, 发送站点将放弃发送并丢弃该帧.</li>
+<li>CSMA/CA:<br>  假设一个站点有一个帧要发送.<ol>
+<li>如果监听到信道空闲, 它将在一个分布式帧间间隔的短时间段后发送该帧.</li>
+<li>否则, 选取一个随机回退值, 并且在侦听信道空闲时递减该值. 当侦听到信道忙时, 计数值保持不变.</li>
+<li>当计数值减为 0 时, 该站点发送整个数据帧并等待确认.</li>
+<li>如果收到确认(说明帧被正确接收了). 如果还要发送另一帧, 将从第二步开始CSMA/CA, 如果未收到确认, 就重新进入第二步中的回退阶段, 并从一个更大的范围内选取随机值.</li>
+</ol>
 </li>
 </ul>
-<h4 id="掌握计算机网络主要性能评价参数的物理含义及计算方法"><a href="#掌握计算机网络主要性能评价参数的物理含义及计算方法" class="headerlink" title="掌握计算机网络主要性能评价参数的物理含义及计算方法"></a>掌握计算机网络主要性能评价参数的物理含义及计算方法</h4><ul>
-<li><p>吞吐率（throughput）<br>  <strong>瞬时吞吐量</strong>: 主机接收到文件的速率(以bps计)<br>  <strong>平均吞吐量</strong>: 假设文件由<strong>F比特</strong>组成, 主机接受整个文件用去<strong>T秒</strong>, 平均吞吐量是<strong>F/S bps</strong></p>
-</li>
-<li><p>延迟(delay)<br>$$总时延 = 传输时延(transmission) + 传播时延(propagation)+ 排队时延(queuing) + 处理时延(processing)$$ </p>
-</li>
-<li><p>丢包率(loss rate)<br>$$\cfrac{输入报文-输出报文}{输入报文}*100%$$</p>
-</li>
-</ul>
-<h4 id="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）"><a href="#能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）" class="headerlink" title="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）"></a>能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）</h4>]]></content>
+<h4 id="能够深入理解隐藏终端（hidden-terminal）问题和其解决方法。（7-3-2）"><a href="#能够深入理解隐藏终端（hidden-terminal）问题和其解决方法。（7-3-2）" class="headerlink" title="能够深入理解隐藏终端（hidden terminal）问题和其解决方法。（7.3.2）"></a>能够深入理解隐藏终端（hidden terminal）问题和其解决方法。（7.3.2）</h4><p>解决方法: RTS(Request to Send, RTS)和CTS(Clear to Send, CTS)<br>当发送方要发送一个DATA时, 首先向AP(access point)发送一个RTS帧, 指示传输DATA帧和确认(ACK)帧需要的总时间. 当AP收到RTS帧后, 它广播一个CTS帧作为响应. 该CTS帧有两个目的: 给发送方明确的发送许可, 也指示其他站点在预约期内不要发送.</p>
+]]></content>
       
         
         <tags>
