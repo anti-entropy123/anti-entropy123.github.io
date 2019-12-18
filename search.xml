@@ -3,6 +3,110 @@
   
     
     <entry>
+      <title><![CDATA[python拯救计划]]></title>
+      <url>/2019/12/18/python-saving/</url>
+      <content type="html"><![CDATA[<p>我决心要提高python编程能力. 在此积累一些牛逼的python使用方法.</p>
+<a id="more"></a>
+
+
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><h2 id="func-args-kw"><a href="#func-args-kw" class="headerlink" title="func(*args, **kw):"></a><code>func(*args, **kw)</code>:</h2><p>可以接收任何数量的或者有关键字的参数的函数的一般形式.<br>这个可能不算是”高阶函数”, 但是我先把它放在这里吧</p>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h2><p>filter这个单词的意思是过滤器, 顾名思义, filter()可以起到过滤器的作用.</p>
+<blockquote>
+<p>filter(function, sequence)<br>Parameters:<br>function: function that tests if each element of a<br>sequence true or not.<br>sequence: sequence which needs to be filtered, it can<br>be sets, lists, tuples, or containers of any iterators.<br>Returns:<br>returns an iterator that is already filtered.</p>
+</blockquote>
+<p>实例1:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># function that filters vowels </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(variable)</span>:</span> </span><br><span class="line">    letters = [<span class="string">'a'</span>, <span class="string">'e'</span>, <span class="string">'i'</span>, <span class="string">'o'</span>, <span class="string">'u'</span>] </span><br><span class="line">    <span class="keyword">if</span> (variable <span class="keyword">in</span> letters): </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># sequence </span></span><br><span class="line">sequence = [<span class="string">'g'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="string">'j'</span>, <span class="string">'k'</span>, <span class="string">'s'</span>, <span class="string">'p'</span>, <span class="string">'r'</span>] </span><br><span class="line">  </span><br><span class="line"><span class="comment"># using filter function </span></span><br><span class="line">filtered = filter(fun, sequence) </span><br><span class="line">  </span><br><span class="line">print(<span class="string">'The filtered letters are:'</span>) </span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> filtered: </span><br><span class="line">    print(s)</span><br></pre></td></tr></table></figure>
+
+<p>output:</p>
+<blockquote>
+<p>The filtered letters are:<br>e<br>e</p>
+</blockquote>
+<p>实例2: </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a list contains both even and odd numbers.  </span></span><br><span class="line">seq = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">13</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># result contains odd numbers of the list </span></span><br><span class="line">result = filter(<span class="keyword">lambda</span> x: x % <span class="number">2</span>, seq) </span><br><span class="line">print(list(result)) </span><br><span class="line">  </span><br><span class="line"><span class="comment"># result contains even numbers of the list </span></span><br><span class="line">result = filter(<span class="keyword">lambda</span> x: x % <span class="number">2</span> == <span class="number">0</span>, seq) </span><br><span class="line">print(list(result))</span><br></pre></td></tr></table></figure>
+
+<p>output: </p>
+<blockquote>
+<p>[1, 3, 5, 13]<br>[0, 2, 8]</p>
+</blockquote>
+<p>filter的第一个参数为一个 <strong>lambda表达式</strong>. </p>
+<h2 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h2><p>个人理解: 通过某种函数规则, 利用传入的(一个或多个)序列生成输出的序列.</p>
+<blockquote>
+<p>map(fun, iter)<br>Parameters :<br>fun : It is a function to which map passes each element of given iterable.<br>iter : It is a iterable which is to be mapped.<br>NOTE : You can pass one or more iterable to the map() function.<br>Returns :<br>Returns a list of the results after applying the given function<br>to each item of a given iterable (list, tuple etc.)</p>
+</blockquote>
+<p>实例1: </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addition</span><span class="params">(n)</span>:</span> </span><br><span class="line">    <span class="keyword">return</span> n + n </span><br><span class="line">  </span><br><span class="line"><span class="comment"># We double all numbers using map() </span></span><br><span class="line">numbers = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) </span><br><span class="line">result = map(addition, numbers) </span><br><span class="line">print(list(result))</span><br></pre></td></tr></table></figure>
+
+<p>output:</p>
+<blockquote>
+<p>{2, 4, 6, 8}</p>
+</blockquote>
+<p>实例2:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">numbers1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] </span><br><span class="line">numbers2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>] </span><br><span class="line">  </span><br><span class="line">result = map(<span class="keyword">lambda</span> x, y: x + y, numbers1, numbers2) </span><br><span class="line">print(list(result))</span><br></pre></td></tr></table></figure>
+
+<p>output :</p>
+<blockquote>
+<p>[5, 7, 9]</p>
+</blockquote>
+<h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><p>个人理解: lambda表达式 是一种匿名的函数.</p>
+<p>Syntax:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> arguments : expression</span><br></pre></td></tr></table></figure>
+
+<p>lambda表达式等效于函数, 例如下面的代码:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="keyword">lambda</span> a : a + <span class="number">10</span></span><br><span class="line"><span class="comment"># 等效于</span></span><br><span class="line"><span class="comment"># def x(a):</span></span><br><span class="line"><span class="comment">#     return a+10</span></span><br><span class="line">print(x(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<p>output</p>
+<blockquote>
+<p>15</p>
+</blockquote>
+<p>定义有多个参数的lambda表达式:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="keyword">lambda</span> a, b, c : a + b + c</span><br><span class="line">print(x(<span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>output:</p>
+<blockquote>
+<p>13</p>
+</blockquote>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>个人理解: 如果事前已经定义好一个函数f(), 随后想扩展它的功能而又不想修改 f() 的代码, 就可以使用装饰器.</p>
+<p>例如, 已经有定义好的函数:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单装饰器"><a href="#简单装饰器" class="headerlink" title="简单装饰器"></a>简单装饰器</h2><p>现在, 想扩展f()的功能, 使其在输出<code>&quot;hello world&quot;</code>前先打印<code>&quot;start&quot;</code>. </p>
+<p>为了不修改原来的代码, 可定义装饰器函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">        print(<span class="string">'start'</span>)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
+
+<p>再在f()的定义前使用 @ 语法指定这个装饰器</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@before</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此时调用f(), 输出为:</p>
+<blockquote>
+<p>start<br>hello world</p>
+</blockquote>
+<p>实际上, 装饰器是一个返回函数的高阶函数.<br>当调用 f() 时, 因为存在装饰器, 所以并不会直接运行 f() 函数体内的代码, 而是会调用函数 before(f).<br>所以调用 f() 等效于:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = before(f)</span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
+
+<p>而 before 中其实只有一行代码 <code>return wrapper</code>.<br>所以 f 指向了新的函数 <code>wrapper</code>.<br>所以 <code>f()</code> 等效于 <code>wrapper()</code>.</p>
+<h2 id="在-f-运行后再打印-quot-finish-quot"><a href="#在-f-运行后再打印-quot-finish-quot" class="headerlink" title="在 f() 运行后再打印&quot;finish&quot;"></a>在 f() 运行后再打印<code>&quot;finish&quot;</code></h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">        print(<span class="string">'start'</span>)</span><br><span class="line">        result = func(*args, **kw)</span><br><span class="line">        print(<span class="string">'finish)</span></span><br><span class="line"><span class="string">        return result</span></span><br><span class="line"><span class="string">    return wrapper</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@before</span></span><br><span class="line"><span class="string">def f(*args, **kw):</span></span><br><span class="line"><span class="string">    print('</span>hello world<span class="string">')</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">f()</span></span><br></pre></td></tr></table></figure>
+
+<p>在 wrapper 中用变量 result 保存了 func 的返回值, 并在适当时刻返回到函数外.</p>
+<h2 id="使用多个装饰器实现上一个功能"><a href="#使用多个装饰器实现上一个功能" class="headerlink" title="使用多个装饰器实现上一个功能"></a>使用多个装饰器实现上一个功能</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">        print(<span class="string">'start'</span>)</span><br><span class="line">        <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">after</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">        result = func()()</span><br><span class="line">        print(<span class="string">'finish'</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@after</span></span><br><span class="line"><span class="meta">@before</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'hello world'</span>)</span><br><span class="line"></span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
+
+<p>多个装饰器的执行顺序为由内到外.<br>等效于:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = after(before(f))</span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用带有参数的装饰器-打印-quot-start-quot-参数"><a href="#使用带有参数的装饰器-打印-quot-start-quot-参数" class="headerlink" title="使用带有参数的装饰器, 打印&quot;start&quot; + 参数"></a>使用带有参数的装饰器, 打印<code>&quot;start&quot; + 参数</code></h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_parm</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">before</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">            print(<span class="string">'start'</span>, name)</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> before</span><br><span class="line"></span><br><span class="line"><span class="meta">@with_parm('yjn')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">    print(<span class="string">'hello world'</span>)</span><br><span class="line"></span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
+
+<p>这里带有参数的装饰器, 本质上是对原有的装饰器的封装.<br><code>with_parm(&#39;yjn&#39;)</code> 返回的便是普通的装饰器(before).<br>只不过在 with_parm 内通过传入的参数对 before 进行修改.</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[计网 summary]]></title>
       <url>/2019/11/05/Computer-network-summary/</url>
       <content type="html"><![CDATA[<p>每天一遍, 预防失眠.</p>
@@ -263,7 +367,8 @@
 <li>停等ARQ(stop and wait)<br>  每发送完一个分组就停止发送 ，等待对方的确认，在收到确认后再发送下一个分组。出现差错时需进行超时重传，这时就要附加一个超时计时器，超出一定时间判定数据丢失进行重传；出现确认丢失时，重传数据，B收到数据后丢弃并重传确认信号；出现确认迟到时，重传数据，A收到第二个确认信号时将其丢弃。<br>  <strong>缺点</strong>是较长的等待时间导致低的数据传输速度。在低速传输时，对连接频道的利用率比较好，但是在高速传输时，频道的利用率会显著下降。</li>
 <li>连续ARQ(Automatic Repeat-reQuest)<ul>
 <li>回退N步(Go Back N, GBN)<br>  也常被称为<strong>滑动窗口协议</strong>接收点丢弃从第一个没有收到的数据包开始的所有数据包, 发送点收到NACK后，从NACK中指明的数据包开始重新发送。<br>  注: Nack中的N应该是指exceptedseqnum</li>
-<li>选择重传(Selective Repeat, SR)<br>  发送点连续发送数据包但对每个数据包都设有个一个计时器。当在一定时间内没有收到某个数据包的ACK时，发送点只重新发送那个没有ACK的数据包。<h4 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h4></li>
+<li>选择重传(Selective Repeat, SR)<br>  发送点连续发送数据包但对每个数据包都设有个一个计时器。当在一定时间内没有收到某个数据包的ACK时，发送点只重新发送那个没有ACK的数据包。</li>
+<li><h4 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h4></li>
 </ul>
 </li>
 <li>RTT估计方法:<br>  $$EstimatedRTT = (1-\alpha)\cdot EstimatedRTT + \alpha \cdot SampleRTT$$<br>  其中$\alpha$的推荐值是$\alpha = \frac{1}{8}$</li>
@@ -1056,9 +1161,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> misc </tag>
+            
+            <tag> python </tag>
             
         </tags>
         

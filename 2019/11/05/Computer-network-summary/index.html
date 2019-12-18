@@ -571,7 +571,8 @@
 <li>停等ARQ(stop and wait)<br>  每发送完一个分组就停止发送 ，等待对方的确认，在收到确认后再发送下一个分组。出现差错时需进行超时重传，这时就要附加一个超时计时器，超出一定时间判定数据丢失进行重传；出现确认丢失时，重传数据，B收到数据后丢弃并重传确认信号；出现确认迟到时，重传数据，A收到第二个确认信号时将其丢弃。<br>  <strong>缺点</strong>是较长的等待时间导致低的数据传输速度。在低速传输时，对连接频道的利用率比较好，但是在高速传输时，频道的利用率会显著下降。</li>
 <li>连续ARQ(Automatic Repeat-reQuest)<ul>
 <li>回退N步(Go Back N, GBN)<br>  也常被称为<strong>滑动窗口协议</strong>接收点丢弃从第一个没有收到的数据包开始的所有数据包, 发送点收到NACK后，从NACK中指明的数据包开始重新发送。<br>  注: Nack中的N应该是指exceptedseqnum</li>
-<li>选择重传(Selective Repeat, SR)<br>  发送点连续发送数据包但对每个数据包都设有个一个计时器。当在一定时间内没有收到某个数据包的ACK时，发送点只重新发送那个没有ACK的数据包。<h4 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h4></li>
+<li>选择重传(Selective Repeat, SR)<br>  发送点连续发送数据包但对每个数据包都设有个一个计时器。当在一定时间内没有收到某个数据包的ACK时，发送点只重新发送那个没有ACK的数据包。</li>
+<li><h4 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h4></li>
 </ul>
 </li>
 <li>RTT估计方法:<br>  $$EstimatedRTT = (1-\alpha)\cdot EstimatedRTT + \alpha \cdot SampleRTT$$<br>  其中$\alpha$的推荐值是$\alpha = \frac{1}{8}$</li>
@@ -777,7 +778,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-12-18T04:39:21.586Z" itemprop="dateUpdated">2019-12-18 12:39:21</time>
+    Last updated: <time datetime="2019-12-18T11:00:21.224Z" itemprop="dateUpdated">2019-12-18 19:00:21</time>
 </span><br>
 
 
@@ -866,7 +867,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/12/18/python-saving/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">python拯救计划</h4>
+      </a>
+    </div>
   
 
   
