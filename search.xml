@@ -399,7 +399,8 @@
       <url>/2019/11/05/Computer-network-summary/</url>
       <content type="html"><![CDATA[<p>每天一遍, 预防失眠.</p>
 <a id="more"></a>
-<h1 id="计算机网络复习"><a href="#计算机网络复习" class="headerlink" title="计算机网络复习"></a>计算机网络复习</h1><h2 id="名词索引表"><a href="#名词索引表" class="headerlink" title="名词索引表"></a>名词索引表</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><ul>
+
+<h1 id="名词索引表"><a href="#名词索引表" class="headerlink" title="名词索引表"></a>名词索引表</h1><h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><ul>
 <li>HTTP<br>HyperText Transfer Protocol 超文本传输协议</li>
 <li>SSL<br>Secure Sockets Layer 安全套接层</li>
 <li>RTT<br>Round-Trip Time 往返时延</li>
@@ -416,7 +417,7 @@
 <li>CDN<br>Content Distribution Networks 内容分发网络</li>
 <li>DHCP<br>Dynamic host configuration protocol 动态主机配置协议</li>
 </ul>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><ul>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><ul>
 <li>TCP<br>Transmission Control Protocol 传输控制协议</li>
 <li>UDP<br>User Datagram Protocol 用户数据报协议</li>
 <li>rdt<br>reliable data transfer Protocol 可靠数据传输协议</li>
@@ -429,7 +430,7 @@
 <li>SYN<br>Synchronize Sequence Numbers 同步序列编号</li>
 <li>ssthresh<br>slow start threshold 慢启动阈值</li>
 </ul>
-<h3 id="网络层-The-Data-Plane"><a href="#网络层-The-Data-Plane" class="headerlink" title="网络层 The Data Plane"></a>网络层 The Data Plane</h3><ul>
+<h2 id="网络层-The-Data-Plane"><a href="#网络层-The-Data-Plane" class="headerlink" title="网络层 The Data Plane"></a>网络层 The Data Plane</h2><ul>
 <li>IP<br>Internet Protocol</li>
 <li>ARP<br>Address Resolution Protocol 地址解析协议</li>
 <li>ICMP<br>Internet Control Message Protocol 网际控制报文协议</li>
@@ -448,8 +449,8 @@
 <li>BGP<br>Border gateway Protocol 边界网关协议</li>
 <li>SDN<br>Software Defined Network 软件定义网络</li>
 </ul>
-<h3 id="网络层-The-Control-Plane"><a href="#网络层-The-Control-Plane" class="headerlink" title="网络层 The Control Plane"></a>网络层 The Control Plane</h3><p>// TODO</p>
-<h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><ul>
+<h2 id="网络层-The-Control-Plane"><a href="#网络层-The-Control-Plane" class="headerlink" title="网络层 The Control Plane"></a>网络层 The Control Plane</h2><p>// TODO</p>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><ul>
 <li>CRC<br>Cyclic redundancy check 循环冗余校验</li>
 <li>ppp<br>point-to-point 点对点协议</li>
 <li>MAC<br>Media Access Control 媒体介入控制</li>
@@ -457,14 +458,14 @@
 <li>FDMA<br>frequency division multiple access 频分多路访问</li>
 <li>CSMA<br>carrier sense multiple access 载波侦听多路访问</li>
 <li>CSMA/CD<br>carrier sense multiple access/collision detection 载波侦听多路访问／碰撞检测</li>
-<li>CSMA/CA<br>Carrier Sense Multiple Access with Collision Avoid 载波侦听多路访问／碰撞避免<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3></li>
+<li>CSMA/CA<br>Carrier Sense Multiple Access with Collision Avoid 载波侦听多路访问／碰撞避免<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2></li>
 </ul>
-<h3 id="Other-Name"><a href="#Other-Name" class="headerlink" title="Other Name"></a>Other Name</h3><ul>
+<h2 id="Other-Name"><a href="#Other-Name" class="headerlink" title="Other Name"></a>Other Name</h2><ul>
 <li>NAT<br>Network address Translation 网络地址转换</li>
 <li>VLAN<br>Virtual Local Area Network 虚拟局域网</li>
 </ul>
-<h2 id="考纲"><a href="#考纲" class="headerlink" title="考纲"></a>考纲</h2><h3 id="第一章-计算机网络和Internet"><a href="#第一章-计算机网络和Internet" class="headerlink" title="第一章 计算机网络和Internet"></a>第一章 计算机网络和Internet</h3><h4 id="理解-Internet-层次型网络架构。-（1-1）"><a href="#理解-Internet-层次型网络架构。-（1-1）" class="headerlink" title="理解 Internet 层次型网络架构。 （1.1）"></a>理解 Internet 层次型网络架构。 （1.1）</h4><p>// TODO</p>
-<h4 id="深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）"><a href="#深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）" class="headerlink" title="深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）"></a>深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）</h4><ul>
+<h1 id="考纲"><a href="#考纲" class="headerlink" title="考纲"></a>考纲</h1><h2 id="第一章-计算机网络和Internet"><a href="#第一章-计算机网络和Internet" class="headerlink" title="第一章 计算机网络和Internet"></a>第一章 计算机网络和Internet</h2><h3 id="理解-Internet-层次型网络架构。-（1-1）"><a href="#理解-Internet-层次型网络架构。-（1-1）" class="headerlink" title="理解 Internet 层次型网络架构。 （1.1）"></a>理解 Internet 层次型网络架构。 （1.1）</h3><p>// TODO</p>
+<h3 id="深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）"><a href="#深入理解数据交换技术：分组交换（packet-switching）和电路交换-circuit-switching-，基本原理和优缺点。（1-3）" class="headerlink" title="深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）"></a>深入理解数据交换技术：分组交换（packet switching）和电路交换(circuit switching)，基本原理和优缺点。（1.3）</h3><ul>
 <li>分组交换<ul>
 <li>基本原理:<br>分组交换是以分组为单位进行传输和交换的，它是一种<strong>存储转发</strong>交换方式，即将到达交换机的分组先送到存储器暂时存储和处理，等到相应的输出电路有空闲时再送出</li>
 <li>优点:<ul>
@@ -504,7 +505,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="掌握计算机网络主要性能评价参数的物理含义及计算方法"><a href="#掌握计算机网络主要性能评价参数的物理含义及计算方法" class="headerlink" title="掌握计算机网络主要性能评价参数的物理含义及计算方法"></a>掌握计算机网络主要性能评价参数的物理含义及计算方法</h4><ul>
+<h3 id="掌握计算机网络主要性能评价参数的物理含义及计算方法"><a href="#掌握计算机网络主要性能评价参数的物理含义及计算方法" class="headerlink" title="掌握计算机网络主要性能评价参数的物理含义及计算方法"></a>掌握计算机网络主要性能评价参数的物理含义及计算方法</h3><ul>
 <li><p>吞吐率（throughput）<br>  <strong>瞬时吞吐量</strong>: 主机接收到文件的速率(以bps计)<br>  <strong>平均吞吐量</strong>: 假设文件由<strong>F比特</strong>组成, 主机接受整个文件用去<strong>T秒</strong>, 平均吞吐量是<strong>F/S bps</strong></p>
 </li>
 <li><p>延迟(delay)<br>$$总时延 = 传输时延(transmission) + 传播时延(propagation)+ 排队时延(queuing) + 处理时延(processing)$$ </p>
@@ -512,7 +513,7 @@
 <li><p>丢包率(loss rate)<br>$$\cfrac{输入报文-输出报文}{输入报文}*100%$$ </p>
 </li>
 </ul>
-<h4 id="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）"><a href="#能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）" class="headerlink" title="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）"></a>能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）</h4><ol>
+<h3 id="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）"><a href="#能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet-对应层的主要协议。（1-5）" class="headerlink" title="能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）"></a>能够理解计算机网络协议栈分层设计的方法，每层的名称、主要功能、Internet 对应层的主要协议。（1.5）</h3><ol>
 <li>OSI七层架构</li>
 </ol>
 <table>
@@ -628,19 +629,19 @@
 <td align="left">将帧中的一个个比特从一个节点移动到下一个节点</td>
 </tr>
 </tbody></table>
-<h3 id="第二章-应用层"><a href="#第二章-应用层" class="headerlink" title="第二章 应用层"></a>第二章 应用层</h3><h4 id="掌握应用层在网络协议栈中的位置及主要功能"><a href="#掌握应用层在网络协议栈中的位置及主要功能" class="headerlink" title="掌握应用层在网络协议栈中的位置及主要功能"></a>掌握应用层在网络协议栈中的位置及主要功能</h4><p>略</p>
-<h4 id="理解应用层协议的两种架构"><a href="#理解应用层协议的两种架构" class="headerlink" title="理解应用层协议的两种架构"></a>理解应用层协议的两种架构</h4><ul>
+<h2 id="第二章-应用层"><a href="#第二章-应用层" class="headerlink" title="第二章 应用层"></a>第二章 应用层</h2><h3 id="掌握应用层在网络协议栈中的位置及主要功能"><a href="#掌握应用层在网络协议栈中的位置及主要功能" class="headerlink" title="掌握应用层在网络协议栈中的位置及主要功能"></a>掌握应用层在网络协议栈中的位置及主要功能</h3><p>略</p>
+<h3 id="理解应用层协议的两种架构"><a href="#理解应用层协议的两种架构" class="headerlink" title="理解应用层协议的两种架构"></a>理解应用层协议的两种架构</h3><ul>
 <li>C/S架构<br>  在客户-服务器体系结构中, 有一个总是打开的主机称为服务器, 它服务于来自许多其他称为客户的主机的请求.</li>
 <li>P2P<br>  在一个P2P体系结构中, 对位于数据中心的专用服务器有最小(或者没有)依赖, 相反, 应用程序在间断连接的主机对之间使用直接通信, 这些主机对被称为对等方. 因为这种对等方通信不必通过专门的服务器, 该体系结构被称为对等方到对等方的.</li>
 </ul>
-<h4 id="熟练掌握-HTTP-协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析"><a href="#熟练掌握-HTTP-协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析" class="headerlink" title="熟练掌握 HTTP 协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析"></a>熟练掌握 HTTP 协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析</h4><ul>
+<h3 id="熟练掌握-HTTP-协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析"><a href="#熟练掌握-HTTP-协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析" class="headerlink" title="熟练掌握 HTTP 协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析"></a>熟练掌握 HTTP 协议设计基本原理，两种工作机制：持续性（persistent）和非持续性（non-persistent）的传输延迟的性能分析</h3><ul>
 <li>非持续连接的缺点:<ul>
 <li>必须为每一个请求的对象建立和维护一个全新的连接, 给Web服务器带来了严重的负担</li>
 <li>每一个对象经受两倍的RTT的交付时延, 一个用于创建TCP, 另一个用于请求和接收一个对象</li>
 </ul>
 </li>
 </ul>
-<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><ul>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><ul>
 <li>为何采用分布式数据库<br>  集中式设计的问题包括:<ul>
 <li>单点故障: 如果该DNS服务器崩溃, 整个因特网随之瘫痪</li>
 <li>通信容量: 单个DNS服务器将处理所有的DNS查询</li>
@@ -650,24 +651,24 @@
 </li>
 <li>递归查询和迭代查询<br>  通常从主机到本地DNS服务器的查询是递归的, 其余的查询是迭代的.</li>
 </ul>
-<h3 id="第三章-传输层"><a href="#第三章-传输层" class="headerlink" title="第三章 传输层"></a>第三章 传输层</h3><h4 id="理解传输层在网络协议栈中的位置及主要功能"><a href="#理解传输层在网络协议栈中的位置及主要功能" class="headerlink" title="理解传输层在网络协议栈中的位置及主要功能"></a>理解传输层在网络协议栈中的位置及主要功能</h4><p>略</p>
-<h4 id="熟练掌握经典的可靠数据传输协议的工作原理"><a href="#熟练掌握经典的可靠数据传输协议的工作原理" class="headerlink" title="熟练掌握经典的可靠数据传输协议的工作原理"></a>熟练掌握经典的可靠数据传输协议的工作原理</h4><ul>
+<h2 id="第三章-传输层"><a href="#第三章-传输层" class="headerlink" title="第三章 传输层"></a>第三章 传输层</h2><h3 id="理解传输层在网络协议栈中的位置及主要功能"><a href="#理解传输层在网络协议栈中的位置及主要功能" class="headerlink" title="理解传输层在网络协议栈中的位置及主要功能"></a>理解传输层在网络协议栈中的位置及主要功能</h3><p>略</p>
+<h3 id="熟练掌握经典的可靠数据传输协议的工作原理"><a href="#熟练掌握经典的可靠数据传输协议的工作原理" class="headerlink" title="熟练掌握经典的可靠数据传输协议的工作原理"></a>熟练掌握经典的可靠数据传输协议的工作原理</h3><ul>
 <li>停等ARQ(stop and wait)<br>  每发送完一个分组就停止发送 ，等待对方的确认，在收到确认后再发送下一个分组。出现差错时需进行超时重传，这时就要附加一个超时计时器，超出一定时间判定数据丢失进行重传；出现确认丢失时，重传数据，B收到数据后丢弃并重传确认信号；出现确认迟到时，重传数据，A收到第二个确认信号时将其丢弃。<br>  <strong>缺点</strong>是较长的等待时间导致低的数据传输速度。在低速传输时，对连接频道的利用率比较好，但是在高速传输时，频道的利用率会显著下降。</li>
 <li>连续ARQ(Automatic Repeat-reQuest)<ul>
 <li>回退N步(Go Back N, GBN)<br>  也常被称为<strong>滑动窗口协议</strong>接收点丢弃从第一个没有收到的数据包开始的所有数据包, 发送点收到NACK后，从NACK中指明的数据包开始重新发送。<br>  注: Nack中的N应该是指exceptedseqnum</li>
 <li>选择重传(Selective Repeat, SR)<br>  发送点连续发送数据包但对每个数据包都设有个一个计时器。当在一定时间内没有收到某个数据包的ACK时，发送点只重新发送那个没有ACK的数据包。</li>
-<li><h4 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h4></li>
+<li><h3 id="RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置"><a href="#RTT（Round-Trip-Time）的估计方法和超时时长（Timeout）的设置" class="headerlink" title="RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置"></a>RTT（Round Trip Time）的估计方法和超时时长（Timeout）的设置</h3></li>
 </ul>
 </li>
 <li>RTT估计方法:<br>  $$EstimatedRTT = (1-\alpha)\cdot EstimatedRTT + \alpha \cdot SampleRTT$$<br>  其中$\alpha$的推荐值是$\alpha = \frac{1}{8}$</li>
-<li>超时时长设置<br>  首先定义RTT的变化:<br>  $$DevRTT = (1-\beta)\cdot DevRTT+\beta \cdot |SampleRTT - EstimatedRTT| $$<br>  其中$\beta$的推荐值是$\beta = \frac{1}{4}$<br>  其次是确定重传超时间隔:<br>  $$TimeoutInterval = EstimatedRTT + 4\cdot DevRTT$$<br>  <strong>当出现超时后, TimeoutInterval的值将加倍</strong><h4 id="熟练掌握-TCP-RENO-拥塞控制的过程能够判断在不同事件（超时、收到三次重复-ACK-包）发生时-TCP-如何做拥塞窗口调整"><a href="#熟练掌握-TCP-RENO-拥塞控制的过程能够判断在不同事件（超时、收到三次重复-ACK-包）发生时-TCP-如何做拥塞窗口调整" class="headerlink" title="熟练掌握 TCP RENO 拥塞控制的过程能够判断在不同事件（超时、收到三次重复 ACK 包）发生时 TCP 如何做拥塞窗口调整"></a>熟练掌握 TCP RENO 拥塞控制的过程能够判断在不同事件（超时、收到三次重复 ACK 包）发生时 TCP 如何做拥塞窗口调整</h4></li>
+<li>超时时长设置<br>  首先定义RTT的变化:<br>  $$DevRTT = (1-\beta)\cdot DevRTT+\beta \cdot |SampleRTT - EstimatedRTT| $$<br>  其中$\beta$的推荐值是$\beta = \frac{1}{4}$<br>  其次是确定重传超时间隔:<br>  $$TimeoutInterval = EstimatedRTT + 4\cdot DevRTT$$<br>  <strong>当出现超时后, TimeoutInterval的值将加倍</strong><h3 id="熟练掌握-TCP-RENO-拥塞控制的过程能够判断在不同事件（超时、收到三次重复-ACK-包）发生时-TCP-如何做拥塞窗口调整"><a href="#熟练掌握-TCP-RENO-拥塞控制的过程能够判断在不同事件（超时、收到三次重复-ACK-包）发生时-TCP-如何做拥塞窗口调整" class="headerlink" title="熟练掌握 TCP RENO 拥塞控制的过程能够判断在不同事件（超时、收到三次重复 ACK 包）发生时 TCP 如何做拥塞窗口调整"></a>熟练掌握 TCP RENO 拥塞控制的过程能够判断在不同事件（超时、收到三次重复 ACK 包）发生时 TCP 如何做拥塞窗口调整</h3></li>
 </ul>
 <figure class="image-box">
                 <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/reno_tahoe.jpg" alt title class>
                 <p></p>
             </figure>
 <p>[1, 4] : 慢启动<br>[4, 8] : 拥塞避免<br>在 t=9 时刻, 发生了乱序(产生了三个重复的ACK包), 因为Reno在t=9时刻, ssthresh = ssthresh/2 + 3<br><strong>如果发生超时丢包, 即使是Reno算法, 拥塞窗口被置为1, ssthresh=ssthresh/2</strong></p>
-<h4 id="能够理解-TCP-连接建立和拆除的工作流程及原因"><a href="#能够理解-TCP-连接建立和拆除的工作流程及原因" class="headerlink" title="能够理解 TCP 连接建立和拆除的工作流程及原因"></a>能够理解 TCP 连接建立和拆除的工作流程及原因</h4><figure class="image-box">
+<h3 id="能够理解-TCP-连接建立和拆除的工作流程及原因"><a href="#能够理解-TCP-连接建立和拆除的工作流程及原因" class="headerlink" title="能够理解 TCP 连接建立和拆除的工作流程及原因"></a>能够理解 TCP 连接建立和拆除的工作流程及原因</h3><figure class="image-box">
                 <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/connect.png" alt title class>
                 <p></p>
             </figure>
@@ -676,10 +677,10 @@
                 <p></p>
             </figure>
 
-<h3 id="第四章-网络层-数据平面"><a href="#第四章-网络层-数据平面" class="headerlink" title="第四章 网络层-数据平面"></a>第四章 网络层-数据平面</h3><h4 id="掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4-1）"><a href="#掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4-1）" class="headerlink" title="掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4.1）"></a>掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4.1）</h4><p>略</p>
-<h4 id="理解-IPv4-地址-CIDR-表示方式、子网、子网掩码概念。"><a href="#理解-IPv4-地址-CIDR-表示方式、子网、子网掩码概念。" class="headerlink" title="理解 IPv4 地址 CIDR 表示方式、子网、子网掩码概念。"></a>理解 IPv4 地址 CIDR 表示方式、子网、子网掩码概念。</h4><p>子网: 互联若干个主机接口与1个路由器接口的网络形成一个子网(子网也称为IP网络或直接称为网络)<br>子网掩码: 假如IP编址为这个子网分配一个地址223.1.1.0/24, 其中的/24记法, 有时被称为子网掩码, 指示32比特中最左侧24比特定义了子网地址.</p>
-<h4 id="能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块"><a href="#能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块" class="headerlink" title="能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块"></a>能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块</h4><p>略</p>
-<h4 id="理解网络地址转换-NAT-的动机和工作机制"><a href="#理解网络地址转换-NAT-的动机和工作机制" class="headerlink" title="理解网络地址转换 NAT 的动机和工作机制"></a>理解网络地址转换 NAT 的动机和工作机制</h4><ul>
+<h2 id="第四章-网络层-数据平面"><a href="#第四章-网络层-数据平面" class="headerlink" title="第四章 网络层-数据平面"></a>第四章 网络层-数据平面</h2><h3 id="掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4-1）"><a href="#掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4-1）" class="headerlink" title="掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4.1）"></a>掌握网络层协议在协议栈中的位置、提供的服务及主要功能。（4.1）</h3><p>略</p>
+<h3 id="理解-IPv4-地址-CIDR-表示方式、子网、子网掩码概念。"><a href="#理解-IPv4-地址-CIDR-表示方式、子网、子网掩码概念。" class="headerlink" title="理解 IPv4 地址 CIDR 表示方式、子网、子网掩码概念。"></a>理解 IPv4 地址 CIDR 表示方式、子网、子网掩码概念。</h3><p>子网: 互联若干个主机接口与1个路由器接口的网络形成一个子网(子网也称为IP网络或直接称为网络)<br>子网掩码: 假如IP编址为这个子网分配一个地址223.1.1.0/24, 其中的/24记法, 有时被称为子网掩码, 指示32比特中最左侧24比特定义了子网地址.</p>
+<h3 id="能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块"><a href="#能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块" class="headerlink" title="能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块"></a>能够根据用户对IP地址数量的需求进行网络规划、分配IP地址块</h3><p>略</p>
+<h3 id="理解网络地址转换-NAT-的动机和工作机制"><a href="#理解网络地址转换-NAT-的动机和工作机制" class="headerlink" title="理解网络地址转换 NAT 的动机和工作机制"></a>理解网络地址转换 NAT 的动机和工作机制</h3><ul>
 <li>动机<ul>
 <li>只能从ISP申请一个IP地址</li>
 <li>IPv4地址耗尽</li>
@@ -695,10 +696,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="第五章-网络层-控制平面"><a href="#第五章-网络层-控制平面" class="headerlink" title="第五章 网络层-控制平面"></a>第五章 网络层-控制平面</h3><h4 id="路由算法和路由表"><a href="#路由算法和路由表" class="headerlink" title="路由算法和路由表"></a>路由算法和路由表</h4><p>OSPF -&gt; Link State -&gt; Dijkstra<br>RIP -&gt; Distance vector -&gt; Bellman-Ford</p>
-<h3 id="第六章-数据链路层"><a href="#第六章-数据链路层" class="headerlink" title="第六章 数据链路层"></a>第六章 数据链路层</h3><h4 id="理解链路层的功能"><a href="#理解链路层的功能" class="headerlink" title="理解链路层的功能"></a>理解链路层的功能</h4><p>链路层负责物理相邻节点之间的数据传输</p>
-<h4 id="理解多址接入协议（MAC）的功能"><a href="#理解多址接入协议（MAC）的功能" class="headerlink" title="理解多址接入协议（MAC）的功能"></a>理解多址接入协议（MAC）的功能</h4><p>针对共享传输介质来协调节点对信道的使用</p>
-<h4 id="了解MAC协议按工作方式进行分类"><a href="#了解MAC协议按工作方式进行分类" class="headerlink" title="了解MAC协议按工作方式进行分类"></a>了解MAC协议按工作方式进行分类</h4><ul>
+<h2 id="第五章-网络层-控制平面"><a href="#第五章-网络层-控制平面" class="headerlink" title="第五章 网络层-控制平面"></a>第五章 网络层-控制平面</h2><h3 id="路由算法和路由表"><a href="#路由算法和路由表" class="headerlink" title="路由算法和路由表"></a>路由算法和路由表</h3><p>OSPF -&gt; Link State -&gt; Dijkstra<br>RIP -&gt; Distance vector -&gt; Bellman-Ford</p>
+<h2 id="第六章-数据链路层"><a href="#第六章-数据链路层" class="headerlink" title="第六章 数据链路层"></a>第六章 数据链路层</h2><h3 id="理解链路层的功能"><a href="#理解链路层的功能" class="headerlink" title="理解链路层的功能"></a>理解链路层的功能</h3><p>链路层负责物理相邻节点之间的数据传输</p>
+<h3 id="理解多址接入协议（MAC）的功能"><a href="#理解多址接入协议（MAC）的功能" class="headerlink" title="理解多址接入协议（MAC）的功能"></a>理解多址接入协议（MAC）的功能</h3><p>针对共享传输介质来协调节点对信道的使用</p>
+<h3 id="了解MAC协议按工作方式进行分类"><a href="#了解MAC协议按工作方式进行分类" class="headerlink" title="了解MAC协议按工作方式进行分类"></a>了解MAC协议按工作方式进行分类</h3><ul>
 <li><p>信道划分（channel partitioning）协议<br>  在所有共享信道节点之间划分广播信道带宽的技术.</p>
 <ul>
 <li>时分多路复用(TDM)<br>  TDM将时间划分为时间帧(time frame), 并进一步划分每个时间帧为N个时隙(slot), 然后把每个时隙分配给N个节点中的一隔. 无论何时某个及节点在有分组要发送的时候, 它在循环的TDM帧中指派给它的时隙内传送分组比特.</li>
@@ -732,8 +733,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="掌握-ARP-的工作机制，理解教材图-6-19-Two-subnets-interconnected-by-a-router-的例子，要能独自分析数据包的传输过程。"><a href="#掌握-ARP-的工作机制，理解教材图-6-19-Two-subnets-interconnected-by-a-router-的例子，要能独自分析数据包的传输过程。" class="headerlink" title="掌握 ARP 的工作机制，理解教材图 6.19 Two subnets interconnected by a router 的例子，要能独自分析数据包的传输过程。"></a>掌握 ARP 的工作机制，理解教材图 6.19 Two subnets interconnected by a router 的例子，要能独自分析数据包的传输过程。</h4><p>略</p>
-<h4 id="交换机自学习"><a href="#交换机自学习" class="headerlink" title="交换机自学习"></a>交换机自学习</h4><ul>
+<h3 id="掌握-ARP-的工作机制，理解教材图-6-19-Two-subnets-interconnected-by-a-router-的例子，要能独自分析数据包的传输过程。"><a href="#掌握-ARP-的工作机制，理解教材图-6-19-Two-subnets-interconnected-by-a-router-的例子，要能独自分析数据包的传输过程。" class="headerlink" title="掌握 ARP 的工作机制，理解教材图 6.19 Two subnets interconnected by a router 的例子，要能独自分析数据包的传输过程。"></a>掌握 ARP 的工作机制，理解教材图 6.19 Two subnets interconnected by a router 的例子，要能独自分析数据包的传输过程。</h3><p>略</p>
+<h3 id="交换机自学习"><a href="#交换机自学习" class="headerlink" title="交换机自学习"></a>交换机自学习</h3><ul>
 <li>交换机表初始为空</li>
 <li>对于在每个接口接收到的每个入帧, 交换机在表中存储: <ol>
 <li>在该帧<strong>源地址</strong>字段中的<strong>MAC地址</strong></li>
@@ -743,7 +744,7 @@
 </li>
 <li>如果在一段时间(老化期 aging time)后, 交换机没有接收到以该地址作为源地址的帧, 就在表中删除这个地址.</li>
 </ul>
-<h4 id="深刻理解教材-6-7-节"><a href="#深刻理解教材-6-7-节" class="headerlink" title="深刻理解教材 6.7 节"></a>深刻理解教材 6.7 节</h4><p>Web 页面请求的历程(简略过程总结): (以<a href="http://www.google.com为例" target="_blank" rel="noopener">www.google.com为例</a>)</p>
+<h3 id="深刻理解教材-6-7-节"><a href="#深刻理解教材-6-7-节" class="headerlink" title="深刻理解教材 6.7 节"></a>深刻理解教材 6.7 节</h3><p>Web 页面请求的历程(简略过程总结): (以<a href="http://www.google.com为例" target="_blank" rel="noopener">www.google.com为例</a>)</p>
 <ul>
 <li>准备: DHCP, UDP, IP和以太网</li>
 </ul>
@@ -784,7 +785,7 @@
 <li>google服务器收到GET请求报文, 生成含有Web页面内容的响应报文, 发送至主机</li>
 <li>主机收到响应报文, 从中抽取Web网页的html, 浏览器显示了Web页面.</li>
 </ol>
-<h3 id="第七章-无线和移动网络"><a href="#第七章-无线和移动网络" class="headerlink" title="第七章 无线和移动网络"></a>第七章 无线和移动网络</h3><h4 id="能够掌握-CSMA-CA-协议的基本工作原理。（7-3-1，7-3-2）"><a href="#能够掌握-CSMA-CA-协议的基本工作原理。（7-3-1，7-3-2）" class="headerlink" title="能够掌握 CSMA/CA 协议的基本工作原理。（7.3.1，7.3.2）"></a>能够掌握 CSMA/CA 协议的基本工作原理。（7.3.1，7.3.2）</h4><p>CSMA/CA, CSMA with collision avoidance, 带碰撞<strong>避免</strong>的CSMA.</p>
+<h2 id="第七章-无线和移动网络"><a href="#第七章-无线和移动网络" class="headerlink" title="第七章 无线和移动网络"></a>第七章 无线和移动网络</h2><h3 id="能够掌握-CSMA-CA-协议的基本工作原理。（7-3-1，7-3-2）"><a href="#能够掌握-CSMA-CA-协议的基本工作原理。（7-3-1，7-3-2）" class="headerlink" title="能够掌握 CSMA/CA 协议的基本工作原理。（7.3.1，7.3.2）"></a>能够掌握 CSMA/CA 协议的基本工作原理。（7.3.1，7.3.2）</h3><p>CSMA/CA, CSMA with collision avoidance, 带碰撞<strong>避免</strong>的CSMA.</p>
 <ul>
 <li>链路层确认:<br>  目的站点收到一个通过CRC校验的帧后, 它等待一个短帧间间隔的一小段时间, 然后发挥一个确认帧. 如果发送站点在给定的时间内未收到确认帧, 它假定出现了错误并重传该帧, 使用CSMA/CA协议访问该信道. 如果在若干固定次重传后仍未收到确认, 发送站点将放弃发送并丢弃该帧.</li>
 <li>CSMA/CA:<br>  假设一个站点有一个帧要发送.<ol>
@@ -795,8 +796,8 @@
 </ol>
 </li>
 </ul>
-<h4 id="能够深入理解隐藏终端（hidden-terminal）问题和其解决方法。（7-3-2）"><a href="#能够深入理解隐藏终端（hidden-terminal）问题和其解决方法。（7-3-2）" class="headerlink" title="能够深入理解隐藏终端（hidden terminal）问题和其解决方法。（7.3.2）"></a>能够深入理解隐藏终端（hidden terminal）问题和其解决方法。（7.3.2）</h4><p>解决方法: RTS(Request to Send, RTS)和CTS(Clear to Send, CTS)<br>当发送方要发送一个DATA时, 首先向AP(access point)发送一个RTS帧, 指示传输DATA帧和确认(ACK)帧需要的总时间. 当AP收到RTS帧后, 它广播一个CTS帧作为响应. 该CTS帧有两个目的: 给发送方明确的发送许可, 也指示其它站点在预约期内不要发送.</p>
-<h3 id="第八章-网络安全"><a href="#第八章-网络安全" class="headerlink" title="第八章 网络安全"></a>第八章 网络安全</h3><h4 id="了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质"><a href="#了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质" class="headerlink" title="了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质"></a>了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质</h4><ul>
+<h3 id="能够深入理解隐藏终端（hidden-terminal）问题和其解决方法。（7-3-2）"><a href="#能够深入理解隐藏终端（hidden-terminal）问题和其解决方法。（7-3-2）" class="headerlink" title="能够深入理解隐藏终端（hidden terminal）问题和其解决方法。（7.3.2）"></a>能够深入理解隐藏终端（hidden terminal）问题和其解决方法。（7.3.2）</h3><p>解决方法: RTS(Request to Send, RTS)和CTS(Clear to Send, CTS)<br>当发送方要发送一个DATA时, 首先向AP(access point)发送一个RTS帧, 指示传输DATA帧和确认(ACK)帧需要的总时间. 当AP收到RTS帧后, 它广播一个CTS帧作为响应. 该CTS帧有两个目的: 给发送方明确的发送许可, 也指示其它站点在预约期内不要发送.</p>
+<h2 id="第八章-网络安全"><a href="#第八章-网络安全" class="headerlink" title="第八章 网络安全"></a>第八章 网络安全</h2><h3 id="了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质"><a href="#了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质" class="headerlink" title="了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质"></a>了解网络安全和数据加密的基本概念，对称密钥和公开密钥的基本原理和性质</h3><ul>
 <li><p>安全通信具有的特征</p>
 <ul>
 <li>机密性: 仅有发送方和希望的接收方能够理解传输报文的内容. – 数据加密和解密的密码学技术.</li>
@@ -834,7 +835,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="第九章-多媒体网络"><a href="#第九章-多媒体网络" class="headerlink" title="第九章 多媒体网络"></a>第九章 多媒体网络</h3><h4 id="延迟抖动"><a href="#延迟抖动" class="headerlink" title="延迟抖动"></a>延迟抖动</h4><ul>
+<h2 id="第九章-多媒体网络"><a href="#第九章-多媒体网络" class="headerlink" title="第九章 多媒体网络"></a>第九章 多媒体网络</h2><h3 id="延迟抖动"><a href="#延迟抖动" class="headerlink" title="延迟抖动"></a>延迟抖动</h3><ul>
 <li><p>产生原因:<br>  分组在网络路由器中经历的变化的排队时延使得在源中产生分组到它在接收方收到的这段时间, 对于不同的分组可能会有波动.</p>
 </li>
 <li><p>解决方法: </p>
@@ -844,7 +845,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="分组丢包"><a href="#分组丢包" class="headerlink" title="分组丢包"></a>分组丢包</h4><p>两种解决技术: 向前纠错(Forward Error Correction, FEC)和交织(interleaving)</p>
+<h3 id="分组丢包"><a href="#分组丢包" class="headerlink" title="分组丢包"></a>分组丢包</h3><p>两种解决技术: 向前纠错(Forward Error Correction, FEC)和交织(interleaving)</p>
 <ul>
 <li><p>向前纠错:</p>
 <ol>
@@ -870,19 +871,20 @@
       <title><![CDATA[深度学习入门]]></title>
       <url>/2019/10/30/MNIST/</url>
       <content type="html"><![CDATA[<a id="more"></a>
-<h1 id="深度学习入门"><a href="#深度学习入门" class="headerlink" title="深度学习入门"></a>深度学习入门</h1><h2 id="MNIST-机器学习入门"><a href="#MNIST-机器学习入门" class="headerlink" title="MNIST 机器学习入门"></a>MNIST 机器学习入门</h2><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片:</p>
+
+<h1 id="MNIST-机器学习入门"><a href="#MNIST-机器学习入门" class="headerlink" title="MNIST 机器学习入门"></a>MNIST 机器学习入门</h1><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片:</p>
 <figure class="image-box">
                 <img src="http://www.tensorfly.cn/tfdoc/images/MNIST.png" alt title class>
                 <p></p>
             </figure>
 
 <p>在此教程中，我们将训练一个机器学习模型用于预测图片里面的数字.</p>
-<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>数据集的下载和安装本来可以用 tensorflow 社区提供的一份python代码来完成. 可惜链接是指向google 的网盘的, 我手上暂时也没可用的梯子, 只好百度了一份 <code>input_data.py</code>, 然而这份代码年代已经十分久远, 已经不适合现在版本的numpy了, 所以我又只能下载安装一份旧的numpy <code>pip install numpy==1.16.0</code>. But 又因为在国内连接<code>pypi</code>也十分的慢, socket会报 <code>time out</code> 错误, 我又只能换了下<code>douban</code>的镜像<code>pip install redis -i https://pypi.douban.com/simple</code>. 这下才算解决了数据集的问题(苦笑).</p>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>数据集的下载和安装本来可以用 tensorflow 社区提供的一份python代码来完成. 可惜链接是指向google 的网盘的, 我手上暂时也没可用的梯子, 只好百度了一份 <code>input_data.py</code>, 然而这份代码年代已经十分久远, 已经不适合现在版本的numpy了, 所以我又只能下载安装一份旧的numpy <code>pip install numpy==1.16.0</code>. But 又因为在国内连接<code>pypi</code>也十分的慢, socket会报 <code>time out</code> 错误, 我又只能换了下<code>douban</code>的镜像<code>pip install redis -i https://pypi.douban.com/simple</code>. 这下才算解决了数据集的问题(苦笑).</p>
 <p>在使用中, 需要把<code>input_data.py</code>先<code>import</code>进 python 的主程序中, 如果数据集没有被提前下载, 那么在运行时会调用<code>input_data</code>中的函数下载数据集. 建议先提前下载好数据集放置在固定的目录下, 可以避免运行时下载速度太慢的问题.</p>
 <p>实际使用中的数据集会被分为两部分, 60000行的训练数据集(mnist.train)和10000行的测试数据集(mnist.test). 有了这个单独用来测试而不会用于训练的数据集会使模型更容易推广到其他数据集上(泛化).</p>
 <p>而每一组数据单元包含一个手写图片和一个对应的标签的数据. 所有图片的数据可以由一个形状为<code>[60000, 784]</code>的张量来表示, 第一个维度当做图片的索引. 所有标签的数据用张量<code>[60000,10]</code>来表示. 且此处的10维向量是独热的, 代表 0 - 9 十种可能.</p>
-<h3 id="softmax回归"><a href="#softmax回归" class="headerlink" title="softmax回归"></a>softmax回归</h3><p>目标: 求得每个像素对于特定数字类的权值, 即得到一张给定图片属于某个特定数字类的证据(evidence), 证据值越大, 证明越有可能是这个数字类. </p>
+<h2 id="softmax回归"><a href="#softmax回归" class="headerlink" title="softmax回归"></a>softmax回归</h2><p>目标: 求得每个像素对于特定数字类的权值, 即得到一张给定图片属于某个特定数字类的证据(evidence), 证据值越大, 证明越有可能是这个数字类. </p>
 <p>对于给定的输入图片 x 它代表的是数字 i 的证据可以表示为:<br>$$<br>evidence_i = \sum_j W_{i,j} + b_i<br>$$<br>其中$W_i$ 代表权重, $b_i$代表数字 i 类的偏置量, j 代表给定图片 x 的像素索引用于像素求和. 然后用softmax函数可以把这些证据转换成概率 y:<br>$$y = softmax(evidence)$$</p>
 <p>可以看成是一个激励(activation)函数, 把我们定义的线性函数的输出转换成我们想要的格式, 也就是关于10个数字类的概率分布.</p>
 <p>$$<br>\begin{aligned}<br>softmax(x) &amp;= normalize(exp(x)) \<br>softmax(x)_i &amp;= \cfrac{exp(x_i)}{\Sigma_jexp(x_j)}<br>\end{aligned}<br>$$</p>
@@ -912,40 +914,40 @@
                 <p></p>
             </figure>
 <p>目前为止这个模型的思想似乎很清晰了, 但是 <code>softmax 回归</code> 在这里究竟是什么作用还是有些不明朗, 不过我大致猜测其实 softmax 与模型参数 W 和 b 的确定并没有太大的关系, 它在这里主要的作用是将计算结果映射到 [0,1] 的区间上, 使结果作为概率值是有意义的. 在神经网络上, softmax 也是作用在最后一层. 综上, softmax 的作用是对模型输出的一层 “约束”.</p>
-<h3 id="模型设定"><a href="#模型设定" class="headerlink" title="模型设定"></a>模型设定</h3><p>我所理解的模型设定这部分就是使用 tensorflow 的语言描述出数学模型的公式的过程. 这里所需要描述的公式如上图所示.</p>
+<h2 id="模型设定"><a href="#模型设定" class="headerlink" title="模型设定"></a>模型设定</h2><p>我所理解的模型设定这部分就是使用 tensorflow 的语言描述出数学模型的公式的过程. 这里所需要描述的公式如上图所示.</p>
 <p>根据公式, 我们在代码中需要实现的有 tensorflow变量 x 和 y分别用来存储输入的数据和模型输出的数据, 并且还有 权重矩阵W 和 偏置量b.<br>还需要在程序中设定好使用的模型为 <code>softmax 回归</code>.</p>
-<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><p>交叉熵(cross-entropy)成本函数.<br>$$<br>H_{y’}(y) = -\sum_i y^{‘}_ilog(y_i)<br>$$<br>其中 y 是预测的概率分布, y’ 是实际的分布(输入的 one-hot vector, 这里输入为独热的向量也是为了和模型的输出的形式相同.).</p>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><p>交叉熵(cross-entropy)成本函数.<br>$$<br>H_{y’}(y) = -\sum_i y^{‘}_ilog(y_i)<br>$$<br>其中 y 是预测的概率分布, y’ 是实际的分布(输入的 one-hot vector, 这里输入为独热的向量也是为了和模型的输出的形式相同.).</p>
 <p>交叉熵代表了模型计算结果中的损失(loss), 也就是说交叉熵越大, 那么计算结果的误差也就越大.</p>
 <p>代码中要求TensorFlow用梯度下降算法以 0.01 的学习速率最小化交叉熵. 使用随机梯度的下降训练的意义在于, 在每一步训练时不使用所有的数据, 而是选取其中的子集来节省计算的开销. 在每一步的计算中, tensorflow 会自动使用反向传播算法(backpropagation algorithm)来不断降低 loss 的值. 我在网上找到了反向传播算法的介绍, 其原理大致为 : 当输入的数据集相同时, 损失函数的值 C 可以看做是关于 权重矩阵W 和 偏置量b 的二元函数. 也就是 $C = f(W,b)$, 当 C 的值最小时, 周围的函数是平滑的(也有不是的情况), 也就相当于偏导数为 0.<br>$$<br>\begin{aligned}<br>&amp;\cfrac{\partial C}{\partial W} = 0 \<br>&amp;\cfrac{\partial C}{\partial b} = 0<br>\end{aligned}<br>$$<br>经过多轮迭代使参数 W 和 b 达到接近这样的状态时, 梯度下降的一步就完成了. 但是具体每步的步长是多少要根据学习速率和步长来计算.</p>
-<h3 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h3><p>模型评估的方法比较简单, 就是用 minst.test 中的数据, 将图片的数据输入到训练好的模型中, 然后调用 tf 中的函数与标签中的结果进行比对算出正确率. 这里的 test 数据应该与 train 中的数据不能有重合.</p>
-<h3 id="完整代码和我的注释"><a href="#完整代码和我的注释" class="headerlink" title="完整代码和我的注释"></a>完整代码和我的注释</h3><p>input_data.py 可以在百度上搜到, 就不贴在这里了.</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>模型评估的方法比较简单, 就是用 minst.test 中的数据, 将图片的数据输入到训练好的模型中, 然后调用 tf 中的函数与标签中的结果进行比对算出正确率. 这里的 test 数据应该与 train 中的数据不能有重合.</p>
+<h2 id="完整代码和我的注释"><a href="#完整代码和我的注释" class="headerlink" title="完整代码和我的注释"></a>完整代码和我的注释</h2><p>input_data.py 可以在百度上搜到, 就不贴在这里了.</p>
 <p>MNIST.py</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 input_data.py 中的代码导入需要的数据集</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">###  模型构建  ####</span></span><br><span class="line">x = tf.placeholder(<span class="string">"float"</span>, [<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>])) <span class="comment"># W 权重矩阵</span></span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))     <span class="comment"># b 偏置量</span></span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W)+b) <span class="comment"># y 输出值, 同时指出了模型为 softmax</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 训练模型以及评估 ####</span></span><br><span class="line">y_ = tf.placeholder(<span class="string">"float"</span>,[<span class="literal">None</span>,<span class="number">10</span>])         <span class="comment"># y_</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_*tf.log(y))   <span class="comment"># 交叉熵, 符合上面的交叉熵公式 </span></span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cross_entropy) <span class="comment"># 使用随机梯度下降算法最小化交叉熵</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess = tf.Session()  <span class="comment"># sess 为 session, tf 中一切 Variable 的操作都需要用session 来控制</span></span><br><span class="line">sess.run(init)       <span class="comment"># 初始化后所有的 Variable 才能使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">  <span class="comment"># 随机抓取 100 组数据作为一次训练的数据集. 再迭代训练 1000 次, 这样会利用上100_000组数据</span></span><br><span class="line">  batch_xs, batch_ys = mnist.train.next_batch(<span class="number">100</span>) </span><br><span class="line">  sess.run(train_step, feed_dict=&#123;x: batch_xs, y_: batch_ys&#125;)</span><br><span class="line"></span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>), tf.argmax(y_,<span class="number">1</span>)) <span class="comment"># 返回一组boolean值代表正确的预测</span></span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">"float"</span>)) <span class="comment"># 将boolean值转为百分率</span></span><br><span class="line">print(sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels&#125;)) <span class="comment"># 输出正确率</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这个 MNIST 的项目是 tensorflow中文社区 介绍的深度学习领域中的 “Hellowrold”, 用来练手应该是非常合适的, 这也是我第一次使用tensorflow. 被它的强大所震撼.(上面的代码样例实际运行时间不会超过 3 秒钟). 而且这个项目代表了机器学习中一个十分经典的问题 – 多分类问题. </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个 MNIST 的项目是 tensorflow中文社区 介绍的深度学习领域中的 “Hellowrold”, 用来练手应该是非常合适的, 这也是我第一次使用tensorflow. 被它的强大所震撼.(上面的代码样例实际运行时间不会超过 3 秒钟). 而且这个项目代表了机器学习中一个十分经典的问题 – 多分类问题. </p>
 <p>当读懂了教程后, 会发现整个项目的构建思路其实是无比清晰的, 从问题的数据集的数学表示, 到设计数学模型描述实际问题中数据的关系, 再到将数学模型用代码实现已经选择训练模型的策略和评估方法, 在思路上十分顺畅. 这种设计思路我觉得对将来我自己的项目十分有借鉴意义. 只可惜我的数学底子在浩瀚的数学公式面前显得实在是微不足道, 无法深入的探究数学公式的原理. 在这里立个flag, 寒假在学习深度学习和tensorflow时也要尽最大努力补充数学和概率论的知识, 只有这样才能从更底层的角度深入的理解深度学习.</p>
-<h2 id="MINST-改进"><a href="#MINST-改进" class="headerlink" title="MINST 改进"></a>MINST 改进</h2><p>上面的MINST例子有91%的正确率, 下面将使用卷积神经网络来改善效果.</p>
-<h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><p>卷积网络(也叫做卷积神经网络), 是指那些至少在网络的一层中使用卷积运算来代替一般的矩阵乘法运算的神经网络. 卷积是一种特殊的线性运算. 卷积网络是一种专门用来处理具有类似网络结构的数据的神经网络, 例如时间序列数据和二维的像素网络. </p>
+<h1 id="MINST-改进"><a href="#MINST-改进" class="headerlink" title="MINST 改进"></a>MINST 改进</h1><p>上面的MINST例子有91%的正确率, 下面将使用卷积神经网络来改善效果.</p>
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>卷积网络(也叫做卷积神经网络), 是指那些至少在网络的一层中使用卷积运算来代替一般的矩阵乘法运算的神经网络. 卷积是一种特殊的线性运算. 卷积网络是一种专门用来处理具有类似网络结构的数据的神经网络, 例如时间序列数据和二维的像素网络. </p>
 <p>假设 x(t) 是某传感器传来的测量结果.<br>采用一个有效的概率密度函数(也算是一种加权函数)$W(a)$, a 表示距离某个特定自变量的距离大小, 对自变量的定义域的任意值均采用这种加权平均的操作, 就有<br>$$s(t) = \int x(a)w(t-a)da$$<br>这里 a 是当前时刻t之前的某个时刻. x 是输入(input), 第二个参数 w 叫做核函数. 输出有时被称作特征映射. 这种运算就叫做卷积. 用星号表示:<br>$$s(t) = (x * w)(t)$$<br>对于离散数据的二维卷积运算, 上述积分可以简化为<br>$$S(i,j)=(I * K)(i,j)=\sum_m \sum_nI(m,n)K(i-m,j-n)$$<br>因为卷积是可交换(翻转)的, 所以等价于<br>$$S(i,j)=(K * I)(i,j)=\sum_m \sum_nI(i-m,j-n)K(m,n)$$<br>许多神经网络库会实现一个相关的函数, 称为互相关函数, 和卷积运算一样但是没有对核翻转.<br>$$S(i,j)=(I*K)(i,j)=\sum_m\sum_nI(i+m,j+n)K(m,n)$$<br>下面是个 2 维卷积的例子.</p>
 <figure class="image-box">
                 <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/dachuang/juanji.png" alt title class>
                 <p></p>
             </figure>
 
-<h3 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h3><p><a href="https://zhuanlan.zhihu.com/p/35769417" target="_blank" rel="noopener">如何理解CNN中的池化？</a>.<br>我的通俗的理解: 池化用来提取一个张量中的最具有特征的值, 可能是最大值, 也可能是最小值或者平均值. 池化的意义在于可以在保持数据较少损失的同时减少数据规模, 降低运算成本.</p>
-<h3 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h3><p>下面要构建整个项目的网络结构. 总的来说分为 5 层, 分别是 第一层卷积运算, 第二层卷积运算, 第三层为全连接层, 第四层为 Dropout 层,最后一层为 softmax 输出层. 因为包含了卷积运算, 所以这个神经网络也是卷积神经网络. 这四层网络都有各自的作用.</p>
-<h4 id="第一层卷积层"><a href="#第一层卷积层" class="headerlink" title="第一层卷积层."></a>第一层卷积层.</h4><p>第一层卷积=层直接对图片的原始数据进行处理, 作用是要对图片特征进行初步的提取. 在这层卷积中, 设定 filter(核) 的大小为 $5\times5$, 并每次提取出一个长度为 32 的向量.</p>
+<h2 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h2><p><a href="https://zhuanlan.zhihu.com/p/35769417" target="_blank" rel="noopener">如何理解CNN中的池化？</a>.<br>我的通俗的理解: 池化用来提取一个张量中的最具有特征的值, 可能是最大值, 也可能是最小值或者平均值. 池化的意义在于可以在保持数据较少损失的同时减少数据规模, 降低运算成本.</p>
+<h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><p>下面要构建整个项目的网络结构. 总的来说分为 5 层, 分别是 第一层卷积运算, 第二层卷积运算, 第三层为全连接层, 第四层为 Dropout 层,最后一层为 softmax 输出层. 因为包含了卷积运算, 所以这个神经网络也是卷积神经网络. 这四层网络都有各自的作用.</p>
+<h3 id="第一层卷积层"><a href="#第一层卷积层" class="headerlink" title="第一层卷积层."></a>第一层卷积层.</h3><p>第一层卷积=层直接对图片的原始数据进行处理, 作用是要对图片特征进行初步的提取. 在这层卷积中, 设定 filter(核) 的大小为 $5\times5$, 并每次提取出一个长度为 32 的向量.</p>
 <p>为了符合tensorflow中卷积运算函数的格式要求, 将图片的张量形状设定为$x = [-1,28,28,1]$, 这里的 -1 代表未设定(因为图片数量不固定), 第二三个维度代表图片的长和宽, 第四个维度代表了颜色通道数, 因为数据集是灰度图, 所以只有一个维度, 如果是rgb图像那么就有三个维度. 可以把这个输入的 x 张量想象为 一摞叠起来的照片(具有厚度). 同时将 filter1 的张量形状设定为$[5,5,1,32]$, 这里第三个维度的 1 与图书数据的通道数对应. 我将其理解为长度为 1 的输入向量, 计算结果为长度为 32 的输出向量. 那么偏置量显然也要设定为长度为 32 的向量.</p>
 <p>根据卷积运算的定义, 可以确定这里的 $result_1 = (x*filter1) + b$ 的结果是个形状为 $[28,28,32]$ 的张量.</p>
 <p>但是这层卷积中还包括了池化. 这个项目中使用的是 <code>max_pool</code>, 直观的理解应该就是提取最明显的特征作为下一层的输入数据. 这里定义池化的模板大小为$2\times2$, 步长为 1, 边距为 0, 并且下面几层的池化均为这个设定. 这样每次池化会将相邻且不重叠的 $2\times2$ 个元素作为一个 padding, 提取出其中最”大”的数据保留, 其余数据删掉. 这里何为最大我不清楚, 有可能是向量的模长, 也可能是别的, 但是一定是最能反映图像特征的. 总之经过这样一层处理, 我们的数据先是被”挖掘”出更多的特征(卷积后的结果让数据长度由1变为32), 然后又经过”提炼”让数据量大幅变小(池化让图片每4个像素缩为一个, 最后成了$14\times14$的大小.)</p>
 <p>$$[28,28,1] \underrightarrow{ 第一层卷积层 }[14,14,32]$$</p>
 <p>没有图不好理解, 有空在网上找几个图补上.</p>
-<h4 id="第二层卷积层"><a href="#第二层卷积层" class="headerlink" title="第二层卷积层"></a>第二层卷积层</h4><p>为了构建一个更深的网络, 将图片中的数据进一步提炼, 舍掉无用的数据, 这里再加入一层卷积层. 这一次要将32位的向量扩充到64位, 也就是计算出64个特征.</p>
+<h3 id="第二层卷积层"><a href="#第二层卷积层" class="headerlink" title="第二层卷积层"></a>第二层卷积层</h3><p>为了构建一个更深的网络, 将图片中的数据进一步提炼, 舍掉无用的数据, 这里再加入一层卷积层. 这一次要将32位的向量扩充到64位, 也就是计算出64个特征.</p>
 <p>同样还是先卷积运算, 定义 filter2 的张量形式为 $[5,5,32,64]$, 显然偏置量就为一个64位的向量. </p>
 <p>$result_2 = (result_1*filter2)$. </p>
 <p>类似第一层, 还要在加上池化. 模板大小也为$2\times2$, 这样输出的图片就是$7\times7$了.</p>
 <p>$$[14,14,32] \underrightarrow{ 第一层卷积层 }[7,7,64]$$</p>
-<h4 id="第三层全连接层-密集连接层"><a href="#第三层全连接层-密集连接层" class="headerlink" title="第三层全连接层(密集连接层)"></a>第三层全连接层(密集连接层)</h4><p>全连接层的优点是每个输出的神经元都会受到输入数据的作用, 可以把输入数据的所有特征进行综合, 但是明显需要计算量也很大, 需要的参数也非常多. 所以之前两层也可以看做是为这层做准备, 一是要提前提取特征, 二是减少数据规模.  </p>
+<h3 id="第三层全连接层-密集连接层"><a href="#第三层全连接层-密集连接层" class="headerlink" title="第三层全连接层(密集连接层)"></a>第三层全连接层(密集连接层)</h3><p>全连接层的优点是每个输出的神经元都会受到输入数据的作用, 可以把输入数据的所有特征进行综合, 但是明显需要计算量也很大, 需要的参数也非常多. 所以之前两层也可以看做是为这层做准备, 一是要提前提取特征, 二是减少数据规模.  </p>
 <p>经过前两层的处理, 数据规模已经足够小了, 且计算出了 64 个特征值. 全连接的输出应该为一个向量. 这里设定向量的长度为 1024, 所以权重张量设定为$[7,7,64,1024]$ 也就是说需要 1024 个结点(神经元)来计算. 那么可以算出实际全连接时需要的参数有$7\times7\times64\times1024$个, 已经是个很大的数字了, 如果之前数据规模没降下来, 那数字又会大的惊人.</p>
 <p>同理偏置量也是1024位的向量.</p>
 <figure class="image-box">
@@ -956,7 +958,7 @@
 
 <p>$$result_3 = matmul(result_2, W) + b $$</p>
 <p>$$[7,7,64] \underrightarrow{ 第三层全连接层 }[1024]$$</p>
-<h4 id="第四层-Dropout-层"><a href="#第四层-Dropout-层" class="headerlink" title="第四层 Dropout 层"></a>第四层 Dropout 层</h4><p>这一层的目的是为了防止过拟合.</p>
+<h3 id="第四层-Dropout-层"><a href="#第四层-Dropout-层" class="headerlink" title="第四层 Dropout 层"></a>第四层 Dropout 层</h3><p>这一层的目的是为了防止过拟合.</p>
 <p><a href="https://zhuanlan.zhihu.com/p/38200980" target="_blank" rel="noopener">深度学习中Dropout原理解析</a></p>
 <p>Dropout说的简单一点就是：我们在前向传播的时候，让某个神经元的激活值以一定的概率p停止工作，这样可以使模型泛化性更强，因为它不会太依赖某些局部的特征，如图所示。</p>
 <figure class="image-box">
@@ -965,8 +967,8 @@
             </figure>
 
 <p>$$[1024] \underrightarrow{ 第四层Dropout层 }[1024]$$</p>
-<h4 id="第五层输出层"><a href="#第五层输出层" class="headerlink" title="第五层输出层"></a>第五层输出层</h4><p>这一层和之前的基础教程没啥区别, 主要的作用还是通过softmax使神经网络的输出规范化为有意义的概率值. 也就是限定了网络输出的值域为[0,1], 同理输出为10位的向量, 代表了这个图像被分类到十个数字的概率.<br>$$[1024] \underrightarrow{ 第五层输出层 }[10]$$</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> tensorflow.examples.tutorials.mnist.input_data <span class="keyword">as</span> input_data</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">y_hat = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># 第一层卷积</span></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"><span class="comment"># 第二层卷积</span></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"><span class="comment"># 全连接层</span></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [<span class="number">-1</span>, <span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)</span><br><span class="line"><span class="comment"># Dropout</span></span><br><span class="line">keep_prob = tf.placeholder(<span class="string">'float'</span>)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line"><span class="comment"># 输出层</span></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line"><span class="comment"># softmax</span></span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"><span class="comment"># 训练评估模型</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_hat*tf.log(y_conv))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv, <span class="number">1</span>), tf.argmax(y_hat, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">'float'</span>))</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">50</span>)</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.eval(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">        print(<span class="string">"step %d, training accuracy %g"</span> % (i, train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">0.5</span>&#125;)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">"test accuracy %g"</span> % accuracy.eval(feed_dict=&#123;</span><br><span class="line">    x: mnist.test.images, y_hat: mnist.test.labels, keep_prob: <span class="number">1.0</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<h3 id="第五层输出层"><a href="#第五层输出层" class="headerlink" title="第五层输出层"></a>第五层输出层</h3><p>这一层和之前的基础教程没啥区别, 主要的作用还是通过softmax使神经网络的输出规范化为有意义的概率值. 也就是限定了网络输出的值域为[0,1], 同理输出为10位的向量, 代表了这个图像被分类到十个数字的概率.<br>$$[1024] \underrightarrow{ 第五层输出层 }[10]$$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> tensorflow.examples.tutorials.mnist.input_data <span class="keyword">as</span> input_data</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">y_hat = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># 第一层卷积</span></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"><span class="comment"># 第二层卷积</span></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"><span class="comment"># 全连接层</span></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [<span class="number">-1</span>, <span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)</span><br><span class="line"><span class="comment"># Dropout</span></span><br><span class="line">keep_prob = tf.placeholder(<span class="string">'float'</span>)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line"><span class="comment"># 输出层</span></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line"><span class="comment"># softmax</span></span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"><span class="comment"># 训练评估模型</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_hat*tf.log(y_conv))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv, <span class="number">1</span>), tf.argmax(y_hat, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">'float'</span>))</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">50</span>)</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.eval(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">        print(<span class="string">"step %d, training accuracy %g"</span> % (i, train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">0.5</span>&#125;)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">"test accuracy %g"</span> % accuracy.eval(feed_dict=&#123;</span><br><span class="line">    x: mnist.test.images, y_hat: mnist.test.labels, keep_prob: <span class="number">1.0</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       
@@ -1449,9 +1451,9 @@
         
         <tags>
             
-            <tag> misc </tag>
-            
             <tag> python </tag>
+            
+            <tag> misc </tag>
             
         </tags>
         
