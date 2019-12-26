@@ -9,7 +9,7 @@
 <a id="more"></a>
 
 
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><h2 id="func-args-kw"><a href="#func-args-kw" class="headerlink" title="func(*args, **kw):"></a><code>func(*args, **kw)</code>:</h2><p>可以接收任何数量的或者有关键字的参数的函数的一般形式.<br>这个可能不算是”高阶函数”, 但是我先把它放在这里吧</p>
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><h2 id="func-args-kw"><a href="#func-args-kw" class="headerlink" title="func(*args, **kw)"></a><code>func(*args, **kw)</code></h2><p>可以接收任何数量的或者有关键字的参数的函数的一般形式.<br>这个可能不算是”高阶函数”, 但是我先把它放在这里吧</p>
 <h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h2><p>filter这个单词的意思是过滤器, 顾名思义, filter()可以起到过滤器的作用.</p>
 <blockquote>
 <p>filter(function, sequence)<br>Parameters:<br>function: function that tests if each element of a<br>sequence true or not.<br>sequence: sequence which needs to be filtered, it can<br>be sets, lists, tuples, or containers of any iterators.<br>Returns:<br>returns an iterator that is already filtered.</p>
@@ -3395,9 +3395,9 @@
         
         <tags>
             
-            <tag> web </tag>
-            
             <tag> 主机扫描 </tag>
+            
+            <tag> web </tag>
             
         </tags>
         
