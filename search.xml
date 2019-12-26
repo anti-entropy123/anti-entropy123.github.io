@@ -382,26 +382,13 @@
 <td>re.M / re.MULTILINE</td>
 <td>多行匹配标记</td>
 </tr>
-<tr>
-<td># 爬虫</td>
-<td></td>
-</tr>
-<tr>
-<td>## Basic</td>
-<td></td>
-</tr>
-<tr>
-<td>基本爬虫工作流程:</td>
-<td></td>
-</tr>
-<tr>
-<td><figure class="image-box">
+</tbody></table>
+<h1 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h1><h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><p>基本爬虫工作流程:</p>
+<figure class="image-box">
                 <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/crawler-workflow.jpg" alt title class>
                 <p></p>
-            </figure></td>
-<td></td>
-</tr>
-</tbody></table>
+            </figure>
+
 <p>常用标准库和第三方库:</p>
 <ul>
 <li>下载数据 - urllib / requests / aiohttp。</li>
