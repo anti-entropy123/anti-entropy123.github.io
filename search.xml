@@ -382,8 +382,209 @@
 <td>re.M / re.MULTILINE</td>
 <td>多行匹配标记</td>
 </tr>
+<tr>
+<td># 爬虫</td>
+<td></td>
+</tr>
+<tr>
+<td>## Basic</td>
+<td></td>
+</tr>
+<tr>
+<td>基本爬虫工作流程:</td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="image-box">
+                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/crawler-workflow.jpg" alt title class>
+                <p></p>
+            </figure></td>
+<td></td>
+</tr>
 </tbody></table>
-]]></content>
+<p>常用标准库和第三方库:</p>
+<ul>
+<li>下载数据 - urllib / requests / aiohttp。</li>
+<li>解析数据 - re / lxml / beautifulsoup4 / pyquery。</li>
+<li>缓存和持久化 - pymysql / sqlalchemy / peewee/ redis / pymongo。</li>
+<li>生成数字签名 - hashlib。</li>
+<li>序列化和压缩 - pickle / json / zlib。</li>
+<li>调度器 - 多进程（multiprocessing） / 多线程（threading）。</li>
+</ul>
+<p>当访问https链接时会因为验证SSL证书而产生错误. 解决方法有下面两种:</p>
+<ul>
+<li><p>使用未经验证的上下文</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">request = urllib.request.Request(url=<span class="string">'...'</span>, headers=&#123;...&#125;) </span><br><span class="line">context = ssl._create_unverified_context()</span><br><span class="line">web_page = urllib.request.urlopen(request, context=context)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置全局性取消证书验证</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="request-库"><a href="#request-库" class="headerlink" title="request 库"></a>request 库</h2><ol>
+<li>使用GET请求和POST请求<ul>
+<li>简单请求页面方式:</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'https://api.github.com/events'</span>)</span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">r = requests.delete(<span class="string">'http://httpbin.org/delete'</span>)</span><br><span class="line">r = requests.head(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">r = requests.options(<span class="string">'http://httpbin.org/get'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>得到一个名为 r 的 Response 对象.</p>
+<ol start="2">
+<li><p>参数和请求头</p>
+<ul>
+<li>带有参数的请求:<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">r = requests.get(<span class="string">"http://httpbin.org/get"</span>, params=payload)</span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">r = requests.put(<span class="string">'http://httpbin.org/put'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line"></span><br><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</span><br><span class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</span><br><span class="line">print(r.url)</span><br><span class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>+ 发送 Cookie
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">'http://httpbin.org/cookies'</span></span><br><span class="line">cookies = dict(cookies_are=<span class="string">'working'</span>)</span><br><span class="line"></span><br><span class="line">r = requests.get(url, cookies=cookies)</span><br></pre></td></tr></table></figure>
+
++ 编写请求头
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">'https://api.github.com/some/endpoint'</span></span><br><span class="line">headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'my-app/0.0.1'</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(url, headers=headers)</span><br></pre></td></tr></table></figure></code></pre><ol start="2">
+<li><p>从 Response 对象中获取信息</p>
+<ul>
+<li><p>获取页面</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r.text       <span class="comment"># 自动编码</span></span><br><span class="line">r.encoding = <span class="string">'utf-8'</span></span><br><span class="line">r.content    <span class="comment"># 二进制数据</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取响应状态码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">r.status_code</span><br><span class="line"><span class="comment"># 200</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取响应头</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.headers</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取二进制文件(如图片)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"></span><br><span class="line">i = Image.open(BytesIO(r.content))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取 JSON</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    r = requests.get(<span class="string">'https://api.github.com/events'</span>)</span><br><span class="line">    r.json()</span><br><span class="line">    <span class="comment"># [&#123;u'repository': &#123;u'open_issues': 0, u'url': 'https://github.com/...</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    </span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">'error'</span>)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>+ 获取 Cookie
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r.cookies[<span class="string">'example_cookie_name'</span>]</span><br><span class="line"><span class="comment"># 'example_cookie_value'</span></span><br></pre></td></tr></table></figure>
+
++ 获取套接字中的 TCP 报文段
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(filename, <span class="string">'wb'</span>) <span class="keyword">as</span> fd:</span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size):</span><br><span class="line">    fd.write(chunk)</span><br></pre></td></tr></table></figure></code></pre><h2 id="XPath-解析"><a href="#XPath-解析" class="headerlink" title="XPath 解析"></a>XPath 解析</h2><ul>
+<li><p>访问节点</p>
+<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bookstore</td>
+<td>选取 bookstore 元素的所有子节点。</td>
+</tr>
+<tr>
+<td>/bookstore</td>
+<td>选取根元素 bookstore。注释：假如路径起始于正斜杠( / )，则此路径始终代表到某元素的绝对路径！</td>
+</tr>
+<tr>
+<td>bookstore/book</td>
+<td>选取属于 bookstore 的子元素的所有 book 元素。</td>
+</tr>
+<tr>
+<td>//book</td>
+<td>选取所有 book 子元素，而不管它们在文档中的位置。</td>
+</tr>
+<tr>
+<td>bookstore//book</td>
+<td>选择属于 bookstore 元素的后代的所有 book 元素，而不管它们位于 bookstore 之下的什么位置。</td>
+</tr>
+<tr>
+<td>//@lang</td>
+<td>选取名为 lang 的所有属性。</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>使用谓词 <code>[ ]</code>: </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/bookstore/book[1]</td>
+<td>选取属于 bookstore 子元素的第一个 book 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()]</td>
+<td>选取属于 bookstore 子元素的最后一个 book 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()-1]</td>
+<td>选取属于 bookstore 子元素的倒数第二个 book 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book[position() &lt; 3]</td>
+<td>选取最前面的两个属于 bookstore 元素的子元素的 book 元素。</td>
+</tr>
+<tr>
+<td>//title[@lang]</td>
+<td>选取所有拥有名为 lang 的属性的 title 元素。</td>
+</tr>
+<tr>
+<td>//title[@lang=’eng’]</td>
+<td>选取所有 title 元素，且这些元素拥有值为 eng 的 lang 属性。</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]</td>
+<td>选取 bookstore 元素的所有 book 元素，且其中的 price 元素的值须大于 35.00。</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]/title</td>
+<td>选取 bookstore 元素中的 book 元素的所有 title 元素，且其中的 price 元素的值须大于 35.00。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>选取多个节点:<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/bookstore/*</td>
+<td>选取 bookstore 元素的所有子元素。</td>
+</tr>
+<tr>
+<td>//*</td>
+<td>选取文档中的所有元素。</td>
+</tr>
+<tr>
+<td>//title[@*]</td>
+<td>选取所有带有属性的 title 元素。</td>
+</tr>
+<tr>
+<td>//book/title | //book/price</td>
+<td>选取 book 元素的所有 title 和 price 元素。</td>
+</tr>
+<tr>
+<td>//title | //price</td>
+<td>选取文档中的所有 title 和 price 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book/title | //price</td>
+<td>选取属于 bookstore 元素的 book 元素的所有 title 元素，以及文档中所有的 price 元素。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="实例-获取知乎发现上的问题链接"><a href="#实例-获取知乎发现上的问题链接" class="headerlink" title="实例: 获取知乎发现上的问题链接"></a>实例: 获取知乎发现上的问题链接</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urljoin</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'Baiduspider'</span>&#125;</span><br><span class="line">    proxies = &#123;</span><br><span class="line">        <span class="string">'http'</span>: <span class="string">'http://122.114.31.177:808'</span></span><br><span class="line">    &#125;</span><br><span class="line">    base_url = <span class="string">'https://www.zhihu.com/'</span></span><br><span class="line">    seed_url = urljoin(base_url, <span class="string">'explore'</span>) <span class="comment"># https://www.zhihu.com/explore</span></span><br><span class="line">    resp = requests.get(seed_url,</span><br><span class="line">                        headers=headers,</span><br><span class="line">                        proxies=proxies <span class="comment"># 代理</span></span><br><span class="line">            ) </span><br><span class="line">    soup = BeautifulSoup(resp.text, <span class="string">'lxml'</span>)  </span><br><span class="line">    href_regex = re.compile(<span class="string">r'^/question'</span>) <span class="comment"># 正则匹配 /question</span></span><br><span class="line">    link_set = set()</span><br><span class="line">    <span class="keyword">for</span> a_tag <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>, &#123;<span class="string">'href'</span>: href_regex&#125;):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'href'</span> <span class="keyword">in</span> a_tag.attrs:</span><br><span class="line">            href = a_tag.attrs[<span class="string">'href'</span>]</span><br><span class="line">            full_url = urljoin(base_url, href)</span><br><span class="line">            link_set.add(full_url)</span><br><span class="line">    print(<span class="string">'Total %d question pages found.'</span> % len(link_set))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>]]></content>
       
         
         <tags>
@@ -1451,9 +1652,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> misc </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
