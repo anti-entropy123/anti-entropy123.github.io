@@ -1056,11 +1056,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[深度学习入门]]></title>
+      <title><![CDATA[机器学习入门]]></title>
       <url>/2019/10/30/MNIST/</url>
       <content type="html"><![CDATA[<a id="more"></a>
 
-<h1 id="MNIST-机器学习入门"><a href="#MNIST-机器学习入门" class="headerlink" title="MNIST 机器学习入门"></a>MNIST 机器学习入门</h1><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
+<h1 id="MNIST神经网络"><a href="#MNIST神经网络" class="headerlink" title="MNIST神经网络"></a>MNIST神经网络</h1><p>主要参考 : <a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_beginners.html" target="_blank" rel="noopener">tensorflow 中文社区</a></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片:</p>
 <figure class="image-box">
                 <img src="http://www.tensorfly.cn/tfdoc/images/MNIST.png" alt title class>
@@ -1114,7 +1114,7 @@
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个 MNIST 的项目是 tensorflow中文社区 介绍的深度学习领域中的 “Hellowrold”, 用来练手应该是非常合适的, 这也是我第一次使用tensorflow. 被它的强大所震撼.(上面的代码样例实际运行时间不会超过 3 秒钟). 而且这个项目代表了机器学习中一个十分经典的问题 – 多分类问题. </p>
 <p>当读懂了教程后, 会发现整个项目的构建思路其实是无比清晰的, 从问题的数据集的数学表示, 到设计数学模型描述实际问题中数据的关系, 再到将数学模型用代码实现已经选择训练模型的策略和评估方法, 在思路上十分顺畅. 这种设计思路我觉得对将来我自己的项目十分有借鉴意义. 只可惜我的数学底子在浩瀚的数学公式面前显得实在是微不足道, 无法深入的探究数学公式的原理. 在这里立个flag, 寒假在学习深度学习和tensorflow时也要尽最大努力补充数学和概率论的知识, 只有这样才能从更底层的角度深入的理解深度学习.</p>
-<h1 id="MINST-改进"><a href="#MINST-改进" class="headerlink" title="MINST 改进"></a>MINST 改进</h1><p>上面的MINST例子有91%的正确率, 下面将使用卷积神经网络来改善效果.</p>
+<h1 id="MINST卷积神经网络"><a href="#MINST卷积神经网络" class="headerlink" title="MINST卷积神经网络"></a>MINST卷积神经网络</h1><p>上面的MINST例子有91%的正确率, 下面将使用卷积神经网络来改善效果.</p>
 <h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>卷积网络(也叫做卷积神经网络), 是指那些至少在网络的一层中使用卷积运算来代替一般的矩阵乘法运算的神经网络. 卷积是一种特殊的线性运算. 卷积网络是一种专门用来处理具有类似网络结构的数据的神经网络, 例如时间序列数据和二维的像素网络. </p>
 <p>假设 x(t) 是某传感器传来的测量结果.<br>采用一个有效的概率密度函数(也算是一种加权函数)$W(a)$, a 表示距离某个特定自变量的距离大小, 对自变量的定义域的任意值均采用这种加权平均的操作, 就有<br>$$s(t) = \int x(a)w(t-a)da$$<br>这里 a 是当前时刻t之前的某个时刻. x 是输入(input), 第二个参数 w 叫做核函数. 输出有时被称作特征映射. 这种运算就叫做卷积. 用星号表示:<br>$$s(t) = (x * w)(t)$$<br>对于离散数据的二维卷积运算, 上述积分可以简化为<br>$$S(i,j)=(I * K)(i,j)=\sum_m \sum_nI(m,n)K(i-m,j-n)$$<br>因为卷积是可交换(翻转)的, 所以等价于<br>$$S(i,j)=(K * I)(i,j)=\sum_m \sum_nI(i-m,j-n)K(m,n)$$<br>许多神经网络库会实现一个相关的函数, 称为互相关函数, 和卷积运算一样但是没有对核翻转.<br>$$S(i,j)=(I*K)(i,j)=\sum_m\sum_nI(i+m,j+n)K(m,n)$$<br>下面是个 2 维卷积的例子.</p>
 <figure class="image-box">
@@ -1158,6 +1158,110 @@
 <h3 id="第五层输出层"><a href="#第五层输出层" class="headerlink" title="第五层输出层"></a>第五层输出层</h3><p>这一层和之前的基础教程没啥区别, 主要的作用还是通过softmax使神经网络的输出规范化为有意义的概率值. 也就是限定了网络输出的值域为[0,1], 同理输出为10位的向量, 代表了这个图像被分类到十个数字的概率.<br>$$[1024] \underrightarrow{ 第五层输出层 }[10]$$</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> tensorflow.examples.tutorials.mnist.input_data <span class="keyword">as</span> input_data</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">y_hat = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># 第一层卷积</span></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"><span class="comment"># 第二层卷积</span></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"><span class="comment"># 全连接层</span></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [<span class="number">-1</span>, <span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)</span><br><span class="line"><span class="comment"># Dropout</span></span><br><span class="line">keep_prob = tf.placeholder(<span class="string">'float'</span>)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line"><span class="comment"># 输出层</span></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line"><span class="comment"># softmax</span></span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"><span class="comment"># 训练评估模型</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_hat*tf.log(y_conv))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv, <span class="number">1</span>), tf.argmax(y_hat, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">'float'</span>))</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">50</span>)</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.eval(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">        print(<span class="string">"step %d, training accuracy %g"</span> % (i, train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">0.5</span>&#125;)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">"test accuracy %g"</span> % accuracy.eval(feed_dict=&#123;</span><br><span class="line">    x: mnist.test.images, y_hat: mnist.test.labels, keep_prob: <span class="number">1.0</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 
+<h1 id="tensorflow-常用-API"><a href="#tensorflow-常用-API" class="headerlink" title="tensorflow 常用 API"></a>tensorflow 常用 API</h1><h2 id="tf-version-1-x-2-x"><a href="#tf-version-1-x-2-x" class="headerlink" title="tf.* [version 1.x 2.x]"></a>tf.* [version 1.x 2.x]</h2><p>那些 tf 中的变量或method.</p>
+<h3 id="method-trainable-variables-version-1-x"><a href="#method-trainable-variables-version-1-x" class="headerlink" title="method: trainable_variables[version 1.x]"></a>method: trainable_variables[version 1.x]</h3><p>Returns all variables created with trainable=True.<br>使用方法: <code>tvars = tf.trainable_variables()</code><br>tvars 中将会包含此程序中建立的所有可训练的参数.</p>
+<h3 id="method-ones-like-version-1-x-2-x"><a href="#method-ones-like-version-1-x-2-x" class="headerlink" title="method: ones_like [version 1.x 2.x]"></a>method: ones_like [version 1.x 2.x]</h3><ul>
+<li>函数原型: <code>tf.ones_like(tensor, dtype=None, name=None, optimize=True)</code></li>
+<li>参数:<ul>
+<li>tensor: A Tensor.</li>
+<li>dtype: A type for the returned Tensor. Must be float32, float64, int8, uint8, int16, uint16, int32, int64, complex64, complex128 or bool.</li>
+<li>name: A name for the operation (optional).</li>
+<li>optimize: if true, attempt to statically determine the shape of ‘tensor’ and encode it as a constant.</li>
+</ul>
+</li>
+<li>举例:<br>  <code>tensor = tf.constant([[1, 2, 3], [4, 5, 6]])</code><br>  <code>tf.ones_like(tensor)  # [[1, 1, 1], [1, 1, 1]]</code></li>
+</ul>
+<h3 id="method-zero-like-version-1-x-2-x"><a href="#method-zero-like-version-1-x-2-x" class="headerlink" title="method: zero_like [version 1.x 2.x]"></a>method: zero_like [version 1.x 2.x]</h3><p>类似 <code>tf.ones_like</code>, 具体略.</p>
+<h3 id="method-reduce-mean-version-1-x"><a href="#method-reduce-mean-version-1-x" class="headerlink" title="method: reduce_mean [version 1.x]:"></a>method: reduce_mean [version 1.x]:</h3><p>tf.reduce_mean 函数用于计算张量tensor沿着指定的数轴（tensor的某一维度）上的的平均值，主要用作降维或者计算tensor（图像）的平均值。</p>
+<ul>
+<li>函数原型: <code>reduce_mean(input_tensor, axis=None, keep_dims=False, name=None, reduction_indices=None)</code></li>
+<li>函数参数: <ul>
+<li>input_tensor： 输入的待降维的tensor;</li>
+<li>axis： 指定的轴，如果不指定，则计算所有元素的均值</li>
+<li>keep_dims：是否降维度，设置为True，输出的结果保持输入tensor的形状，设置为False，输出结果会降低维度;</li>
+<li>name： 操作的名称</li>
+<li>reduction_indices：在以前版本中用来指定轴，已弃用;</li>
+</ul>
+</li>
+</ul>
+<h3 id="method-get-variable-version-1-x"><a href="#method-get-variable-version-1-x" class="headerlink" title="method: get_variable [version 1.x]"></a>method: get_variable [version 1.x]</h3><p>Gets an existing variable with these parameters or create a new one.<br>获取或新建一个拥有这些参数的变量. 被调用时, 此方法会以当前变量作用域名作为前缀, 并执行<code>reuse</code>检查.</p>
+<ul>
+<li><p>函数原型: <code>tf.get_variable(name,shape=None,dtype=None,initializer=None, regularizer=None, trainable=None, collections=None, caching_device=None, partitioner=None, validate_shape=True, use_resource=None, custom_getter=None, constraint=None, synchronization=tf.VariableSynchronization.AUTO, aggregation=tf.VariableAggregation.NONE)</code></p>
+</li>
+<li><p>使用样例:</p>
+  <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"foo"</span>, reuse=tf.AUTO_REUSE):</span><br><span class="line">    v = tf.get_variable(<span class="string">"v"</span>, [<span class="number">1</span>])</span><br><span class="line"><span class="keyword">return</span> v</span><br><span class="line"></span><br><span class="line">v1 = foo()  <span class="comment"># Creates v.</span></span><br><span class="line">v2 = foo()  <span class="comment"># Gets the same, existing v.</span></span><br><span class="line"><span class="keyword">assert</span> v1 == v2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="tf-nn-version-1-x-2-x"><a href="#tf-nn-version-1-x-2-x" class="headerlink" title="tf.nn [version 1.x 2.x]"></a>tf.nn [version 1.x 2.x]</h2><p>Wrappers for primitive Neural Net (NN) Operations.<br>用于提供底层神经网络操作的支持. </p>
+<h3 id="method-conv2d-version-1-x"><a href="#method-conv2d-version-1-x" class="headerlink" title="method: conv2d [version 1.x]"></a>method: conv2d [version 1.x]</h3><p>卷积运算.</p>
+<ul>
+<li>函数原型:<br>  <code>tf.nn.conv2d(input, filter=None, strides=None, padding=None, use_cudnn_on_gpu=True, data_format=&#39;NHWC&#39;, dilations=[1, 1, 1, 1], name=None, filters=None)</code></li>
+</ul>
+<h3 id="method-avg-pool-version-1-x-version-2-x"><a href="#method-avg-pool-version-1-x-version-2-x" class="headerlink" title="method: avg_pool [version 1.x, version 2.x]"></a>method: avg_pool [version 1.x, version 2.x]</h3><p>对输入信号执行平均池化操作.</p>
+<ul>
+<li>函数原型:<br>  <code>tf.nn.avg_pool(value, ksize, strides, padding, data_format=&#39;NHWC&#39;, name=None, input=None)</code></li>
+<li>参数:<ul>
+<li>value: A 4-D Tensor of shape [batch, height, width, channels] and type float32, float64, qint8, quint8, or qint32.</li>
+<li>ksize: An int or list of ints that has length 1, 2 or 4. The size of the window for each dimension of the input tensor.</li>
+<li>strides: An int or list of ints that has length 1, 2 or 4. The stride of + the sliding window for each dimension of the input tensor.</li>
+<li>padding: A string, either ‘VALID’ or ‘SAME’. The padding algorithm. See + the “returns” section of tf.nn.convolution for details.</li>
+<li>data_format: A string. ‘NHWC’ and ‘NCHW’ are supported.</li>
+<li>name: Optional name for the operation.</li>
+<li>input: Alias for value.</li>
+</ul>
+</li>
+<li>使用例子:<br>  <code>d1 = tf.nn.avg_pool(d1, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding=&#39;SAME&#39;)</code></li>
+</ul>
+<h3 id="relu-version-1-x"><a href="#relu-version-1-x" class="headerlink" title="relu [version 1.x]"></a>relu [version 1.x]</h3><p>relu, 全名为 rectified linear unit, 线性整流单元. 是一种常用的激励函数. 函数基本相当于: <code>lambda x: max(0, x)</code>.  </p>
+<ul>
+<li>函数原型: <code>tf.nn.relu(features, name=None)</code></li>
+</ul>
+<h3 id="sigmoid-cross-entropy-with-logits-version-1-x-2-x"><a href="#sigmoid-cross-entropy-with-logits-version-1-x-2-x" class="headerlink" title="sigmoid_cross_entropy_with_logits[version 1.x 2.x]"></a>sigmoid_cross_entropy_with_logits[version 1.x 2.x]</h3><p>Computes sigmoid cross entropy given logits<br>基于给定的参数计算 <code>sigmoid</code> 交叉熵.</p>
+<ul>
+<li>函数原型: <code>tf.nn.sigmoid_cross_entropy_with_logits(_sentinel=None, labels=None, logits=None, name=None)</code></li>
+<li>函数参数: <ul>
+<li>_sentinel: Used to prevent positional parameters. Internal, do not use. (用于避免传递位置参数, 不可使用)</li>
+<li>labels: A Tensor of the same type and shape as logits.</li>
+<li>logits: A Tensor of type float32 or float64. </li>
+<li>name: A name for the operation (optional).</li>
+</ul>
+</li>
+<li>例子: <ul>
+<li><code>tf.nn.sigmoid_cross_entropy_with_logits(logits = Dx, labels = tf.ones_like(Dx))</code></li>
+<li><code>tf.nn.sigmoid_cross_entropy_with_logits(logits = Dg, labels = tf.zeros_like(Dg))</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="tf-train-version-1-x"><a href="#tf-train-version-1-x" class="headerlink" title="tf.train [version 1.x]"></a>tf.train [version 1.x]</h2><h3 id="class-AdamOptimizer-version-1-x"><a href="#class-AdamOptimizer-version-1-x" class="headerlink" title="class: AdamOptimizer [version 1.x]"></a>class: AdamOptimizer [version 1.x]</h3><p>Optimizer that implements the Adam algorithm.<br>Adam优化器, 能按照 Adam 算法更新参数.</p>
+<ul>
+<li><p>数据域:</p>
+<ul>
+<li>loss: A Tensor containing the value to minimize.</li>
+<li>global_step: Optional Variable to increment by one after the variables have been updated.</li>
+<li>var_list: Optional list or tuple of Variable objects to update to minimize loss. Defaults to the list of variables collected in the graph under the key GraphKeys.TRAINABLE_VARIABLES.</li>
+<li>gate_gradients: How to gate the computation of gradients. Can be GATE_NONE, GATE_OP, or GATE_GRAPH.</li>
+<li>aggregation_method: Specifies the method used to combine gradient terms. Valid values are defined in the class AggregationMethod.</li>
+<li>colocate_gradients_with_ops: If True, try colocating gradients with the corresponding op.</li>
+<li>name: Optional name for the returned operation.</li>
+<li>grad_loss: Optional. A Tensor holding the gradient computed for loss.</li>
+</ul>
+</li>
+<li><p>method:</p>
+<ul>
+<li><code>__init__</code>:<br>  <code>__init__(learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-08, use_locking=False, name=&#39;Adam&#39;)</code></li>
+<li><code>minimize</code>:<br>  <code>minimize(loss, global_step=None, var_list=None gate_gradients=GATE_OP, aggregation_method=None, colocate_gradients_with_ops=False, name=None, grad_loss=None)</code></li>
+</ul>
+</li>
+<li><p>使用举例:<br>  <code>d_trainer_fake = tf.train.AdamOptimizer(0.0003).minimize(d_loss_fake, var_list=d_vars)</code><br>  <code>d_trainer_real = tf.train.AdamOptimizer(0.0003).minimize(d_loss_real, var_list=d_vars)</code></p>
+</li>
+</ul>
+<h2 id="tf-summary"><a href="#tf-summary" class="headerlink" title="tf.summary []"></a>tf.summary []</h2><h3 id="scalar"><a href="#scalar" class="headerlink" title="scalar"></a>scalar</h3><h1 id="GAN入门"><a href="#GAN入门" class="headerlink" title="GAN入门"></a>GAN入门</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>一个 GAN 中包含两个模型: 生成模型 (Generator Model) 和一个判别模型(Discriminative Model)组成.<br>判别模型会接收两个输入, 分别为真实数据和假数据. 判别模型需要判断输入数据究竟是否为真. 生成模型通过反卷积神经网络将随机输入值转化为图像.<br>在训练过程中, 判别器学习从一堆生成器生成的假数字图像中, 找出真正的数字图像, 同时生成器通过判别器的反馈学习如何生成具有欺骗性的图片, 放着被判别器识别出来.<br>上述过程可以用公式描述:<br>$$<br>\underset{G}{min} \underset{D}{max}V(D,G) = E_{x\sim p_{data}(x)}[logD(x)] + E_{z\sim p_z(z)}[log(1-D(G(z)))]<br>$$</p>
+<ul>
+<li>其中 x 代表真实数据. 那么D(x)就是判别模型对真实数据的判别(认为真则为1, 否则为0). </li>
+<li>z 代表外部输入的一个随机的噪声. 那么G(z)就是生成模型输出的伪造数据.</li>
+<li>训练过程中, G总是试图让表达式右侧最小化, D总是试图让表达式右侧最大化, 由此两个网络产生对抗. </li>
+</ul>
 ]]></content>
       
         
@@ -1166,6 +1270,8 @@
             <tag> tensorflow </tag>
             
             <tag> 深度学习 </tag>
+            
+            <tag> GAN </tag>
             
         </tags>
         
@@ -3395,9 +3501,9 @@
         
         <tags>
             
-            <tag> 主机扫描 </tag>
-            
             <tag> web </tag>
+            
+            <tag> 主机扫描 </tag>
             
         </tags>
         
