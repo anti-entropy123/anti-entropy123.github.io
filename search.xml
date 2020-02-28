@@ -3,6 +3,207 @@
   
     
     <entry>
+      <title><![CDATA[software engineering 笔记]]></title>
+      <url>/2020/02/27/software-engineering/</url>
+      <content type="html"><![CDATA[<p>这东西不总结没法学 QAQ</p>
+<a id="more"></a> 
+
+<h1 id="第零章-绪论"><a href="#第零章-绪论" class="headerlink" title="第零章 绪论"></a>第零章 绪论</h1><ul>
+<li>软件工程的目的: TQCS<ul>
+<li>T: Time 高效</li>
+<li>Q: Quality 高质量</li>
+<li>C: Cost 低成本</li>
+<li>S: Service 用户满意</li>
+</ul>
+</li>
+</ul>
+<h1 id="第一章-软件与软件工程"><a href="#第一章-软件与软件工程" class="headerlink" title="第一章 软件与软件工程"></a>第一章 软件与软件工程</h1><h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><h3 id="什么是软件"><a href="#什么是软件" class="headerlink" title="什么是软件"></a>什么是软件</h3><ul>
+<li>计算机系统中的软件: 软件是能够完成预定功能和性能，并对相应数据进行加工的程序和描述程序及其操作的文档。</li>
+<li>程序员眼中的软件:<ul>
+<li>软件 = 程序 + 数据 + 文档</li>
+<li>程序 = 算法 + 数据结构<h3 id="软件危机的表现"><a href="#软件危机的表现" class="headerlink" title="软件危机的表现:"></a>软件危机的表现:</h3></li>
+</ul>
+</li>
+<li>开发阶段:<ul>
+<li>软件开发效率低</li>
+<li>软件质量得不到保证</li>
+<li>软件开发成本过高</li>
+</ul>
+</li>
+<li>维护阶段:<ul>
+<li>维护困难, 用户满意度不高</li>
+</ul>
+</li>
+</ul>
+<h2 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h2><h3 id="软件工程三要素"><a href="#软件工程三要素" class="headerlink" title="软件工程三要素"></a>软件工程三要素</h3><p>软件工程采用层次化(分解)的方法, 每个层次都包括<strong>过程,方法,工具</strong>三要素.</p>
+<ul>
+<li>过程:<br>  贯穿软件开发的各个环节</li>
+<li>过程和方法:<br>  管理者在软件工程过程中通过适当的方法对软件开发的<strong>质量、进度、成本</strong>进行评估、管理和控制</li>
+<li>方法及工具: 技术人员采用相应的方法和<strong>工具</strong>生成软件工程产品（<strong>模型、文档、数据、报告、表格等</strong>）<h3 id="软件工程的方法"><a href="#软件工程的方法" class="headerlink" title="软件工程的方法"></a>软件工程的方法</h3>传统方法, 面向对象方法, 面向服务的方法.</li>
+<li>传统软件工程:<ul>
+<li>以<strong>结构化</strong>程序设计为基础</li>
+<li>结构化分析 -&gt;（SA）结构化设计（总体设计、详细设计）-&gt;面向过程的编码测试</li>
+</ul>
+</li>
+<li>面向对象软件工程<ul>
+<li>以<strong>面向对象</strong>程序设计为基础</li>
+<li>软件分析与对象抽取-&gt;对象详细设计-&gt;面向对象的编码-&gt;测试</li>
+</ul>
+</li>
+<li>面向服务软件工程<ul>
+<li><strong>请求响应</strong>或<strong>事件驱动接口</strong>方式为基础</li>
+<li>分析服务需求-&gt;接口设计和封装-&gt;服务方法或组件设计开发</li>
+</ul>
+</li>
+</ul>
+<p><strong>粒度越来越大, 效率越来越高, 开发的软件规模越来越大.</strong></p>
+<h3 id="软件工程的目标和原则"><a href="#软件工程的目标和原则" class="headerlink" title="软件工程的目标和原则"></a>软件工程的目标和原则</h3><ul>
+<li>目标: TQCS</li>
+<li>原则: 抽象, 模块化, 信息隐藏, 局部化, 一致性, 完全性, 可验证性.</li>
+</ul>
+<h2 id="软件生存周期"><a href="#软件生存周期" class="headerlink" title="软件生存周期"></a>软件生存周期</h2><h3 id="三个时期-七个阶段"><a href="#三个时期-七个阶段" class="headerlink" title="三个时期, 七个阶段"></a>三个时期, 七个阶段</h3><ul>
+<li>软件定义:<ul>
+<li><strong>问题定义</strong>: 确定系统的总体目标</li>
+<li><strong>可行性分析</strong>: 研究经济, 技术, 操作等的可行性</li>
+<li><strong>需求分析</strong>: 收集需求, 寻求建模</li>
+</ul>
+</li>
+<li>软件开发: <ul>
+<li><strong>系统设计</strong>: 软件结构设计</li>
+<li><strong>编码</strong>: 产生源程序清单</li>
+<li><strong>测试</strong>: 产生软件测试计划和软件测试报告</li>
+</ul>
+</li>
+<li>软件运行:<ul>
+<li><strong>维护</strong>: 修改, 完善, 扩展软件</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件定义-可行性研究"><a href="#软件定义-可行性研究" class="headerlink" title="软件定义: 可行性研究"></a>软件定义: 可行性研究</h3><ul>
+<li>任务:<br>了解用户要求和现实环境，从技术、经济、市场等方面研究并论证开发该软件系统的可行性</li>
+<li>最主要内容:<ul>
+<li>技术可行性:<br>  当前的软件开发方法和工具能否支持需求的实现；</li>
+<li>操作可行性:<br>  用户能否在特定的环境下使用这个软件</li>
+<li>经济可行性:<br>  开发和使用, 维护这个软件的成本能否被用户所接受</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件定义-需求分析"><a href="#软件定义-需求分析" class="headerlink" title="软件定义: 需求分析"></a>软件定义: 需求分析</h3><ul>
+<li>任务:<br>  确定用户对软件系统的需求</li>
+<li>主要内容:<ul>
+<li>功能需求:<br>  软件必须要完成的功能</li>
+<li>性能需求:<br>  软件的安全性, 可靠性, 可维护性, 精度, 错误处理, 适应性, 用户培训</li>
+<li>运行环境约束:<br>  待开发的软件产品必须满足的环境要求</li>
+</ul>
+</li>
+<li>需求分析过程:<ul>
+<li>方法: <ul>
+<li>面向数据流的分析方法</li>
+<li>面向数据的分析方法</li>
+<li>面向对象的分析方法</li>
+<li>抽象, 问题分解, 快速原型, 多视点</li>
+</ul>
+</li>
+<li>工具:<ul>
+<li>表示工具: 数据流图, 数据字典, UML图等</li>
+<li>软件工具: Rational Rose, WitClass, VisualModel等</li>
+</ul>
+</li>
+<li>阶段性产品: <ul>
+<li>软件需求规格说明书 <strong>SRS</strong>– 给设计人员</li>
+<li>用户手册概要 – 给用户</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件开发-概要设计"><a href="#软件开发-概要设计" class="headerlink" title="软件开发: 概要设计"></a>软件开发: 概要设计</h3><ul>
+<li>任务:<br>  根据SRS建立目标软件系统的总体结构, 设计全局数据库和数据结构, 固定设计约束, 指定组装测试计划等等</li>
+<li>方法:<ul>
+<li>自顶向下, 逐步求精, 抽象, 模块化, 局部化, 信息隐藏</li>
+<li>坚持功能模块内部紧耦合, 功能模块之间松耦合的原则</li>
+<li>坚持与 SRS 的一致性</li>
+</ul>
+</li>
+<li>工具: <ul>
+<li>面向数据流</li>
+<li>面向数据</li>
+<li>面向对象</li>
+</ul>
+</li>
+<li>阶段性产品:<ul>
+<li>概要设计规格说明书</li>
+<li>数据库或数据结构设计说明书</li>
+<li>集成测试计划</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件开发-详细设计"><a href="#软件开发-详细设计" class="headerlink" title="软件开发: 详细设计"></a>软件开发: 详细设计</h3><ul>
+<li>任务:<br>  细化概要设计所生成的各个模块, 并详细描述程序模块的内部细节(算法，数据结构等)，形成可编程的程序模块，制订单元测试计划</li>
+<li>阶段性产品:<ul>
+<li>详细设计规格说明书</li>
+<li>单元测试计划</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件开发-实现"><a href="#软件开发-实现" class="headerlink" title="软件开发: 实现"></a>软件开发: 实现</h3><ul>
+<li>任务:<br>  根据详细设计规格说明书编写源程序，并对程序进行调试、单元测试、系统集成，验证程序与详细设计文档的 一致性</li>
+<li>方法:<ul>
+<li>以详细设计规格说明书为依据, 基于某种程序设计语言进行编码</li>
+<li>结构化程序设计</li>
+<li>面向对象程序设计</li>
+</ul>
+</li>
+<li>阶段产品:<br>  源程序代码</li>
+</ul>
+<h3 id="软件开发-组装测试"><a href="#软件开发-组装测试" class="headerlink" title="软件开发: 组装测试"></a>软件开发: 组装测试</h3><ul>
+<li>任务:<br>  组装测试应满足概要设计的要求</li>
+<li>途径:<ul>
+<li>测试模块连接的正确性</li>
+<li>测试系统或子系统的I/O</li>
+<li>测试系统的功能和性能</li>
+</ul>
+</li>
+<li>产品:<ul>
+<li>满足概要设计要求的程序</li>
+<li>组装测试报告</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件开发-确认测试"><a href="#软件开发-确认测试" class="headerlink" title="软件开发: 确认测试"></a>软件开发: 确认测试</h3><ul>
+<li>任务:<br>  根据软件需求规格说明书，测试软件系统是否满足用户的需求</li>
+<li>方法:<br>  用户参与, 依据 SRS 进行确认测试</li>
+<li>工具:<br>  专用测试工具</li>
+<li>阶段性产品<br>  可供用户使用的软件产品(文档, 源程序)</li>
+</ul>
+<h3 id="软件运行-维护"><a href="#软件运行-维护" class="headerlink" title="软件运行: 维护"></a>软件运行: 维护</h3><ul>
+<li>目的:<br>  使软件不断进化以满足客户的需求变化</li>
+<li>工作内容: <ul>
+<li>正确性维护</li>
+<li>扩充性维护</li>
+<li>适应性维护</li>
+</ul>
+</li>
+<li>阶段性产品<ul>
+<li>软件产品的新版本</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件开发过程与测试的关系"><a href="#软件开发过程与测试的关系" class="headerlink" title="软件开发过程与测试的关系"></a>软件开发过程与测试的关系</h3><p>V图:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可行性研究 &lt;-------------------------&gt;  运行</span><br><span class="line">       \                              /</span><br><span class="line">     需求分析 &lt;-------------------&gt; 确认测试</span><br><span class="line">          \                         /</span><br><span class="line">        概要设计 &lt;--------------&gt; 组装测试</span><br><span class="line">             \                    /</span><br><span class="line">            详细设计 &lt;-------&gt; 单元测试</span><br><span class="line">                  \            / </span><br><span class="line">                     编码与调试</span><br></pre></td></tr></table></figure>
+
+<h1 id="第二章-软件与软件工程"><a href="#第二章-软件与软件工程" class="headerlink" title="第二章 软件与软件工程"></a>第二章 软件与软件工程</h1>]]></content>
+      
+        
+        <tags>
+            
+            <tag> 软件工程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[python拯救计划]]></title>
       <url>/2019/12/18/python-saving/</url>
       <content type="html"><![CDATA[<p>我决心要提高python编程能力. 在此积累一些牛逼的python使用方法.</p>
