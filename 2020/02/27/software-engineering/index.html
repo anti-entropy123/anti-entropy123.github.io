@@ -500,14 +500,219 @@
 <h3 id="软件开发过程与测试的关系"><a href="#软件开发过程与测试的关系" class="headerlink" title="软件开发过程与测试的关系"></a>软件开发过程与测试的关系</h3><p>V图:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可行性研究 &lt;-------------------------&gt;  运行</span><br><span class="line">       \                              /</span><br><span class="line">     需求分析 &lt;-------------------&gt; 确认测试</span><br><span class="line">          \                         /</span><br><span class="line">        概要设计 &lt;--------------&gt; 组装测试</span><br><span class="line">             \                    /</span><br><span class="line">            详细设计 &lt;-------&gt; 单元测试</span><br><span class="line">                  \            / </span><br><span class="line">                     编码与调试</span><br></pre></td></tr></table></figure>
 
-<h1 id="第二章-软件与软件工程"><a href="#第二章-软件与软件工程" class="headerlink" title="第二章 软件与软件工程"></a>第二章 软件与软件工程</h1>
+<h1 id="第二章-软件与软件工程"><a href="#第二章-软件与软件工程" class="headerlink" title="第二章 软件与软件工程"></a>第二章 软件与软件工程</h1><h2 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h2><ul>
+<li>软件过程模型是软件开发全过程, 软件开发活动以及它们之间关系的<strong>结构框架</strong></li>
+<li>软件项目的管理提供<strong>里程碑</strong>和<strong>进度表</strong></li>
+<li>为软件开发提供<strong>原则</strong>和<strong>方法</strong></li>
+</ul>
+<p>五类软件开发过程模型:</p>
+<ol>
+<li><strong>瀑布模型</strong>: 以软件需求完全确定为前提</li>
+<li><strong>原型模型, 螺旋模型, 增量模型, 并发开发模型</strong>: 在软件开发初期只能提供基本需求所采用的渐进式开发模型</li>
+<li><strong>变换模型</strong>: 以形式化开发方法为基础</li>
+<li><strong>基于构件的开发过程</strong></li>
+<li><strong>敏捷开发过程</strong></li>
+<li><strong>统一开发过程 RUP</strong></li>
+</ol>
+<h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><ul>
+<li>软件开发过程与软件生命周期是一致的</li>
+<li>相邻二阶段之间存在因果关系</li>
+<li>需对阶段性产品进行评审</li>
+</ul>
+<figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<ul>
+<li>优点: <ul>
+<li>使软件开发过程可以在分析、设计、编码、测试和维护的框架下进行</li>
+<li>系统性、可控性，克服了软件开发的随意性</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>项目<strong>开始阶段很难精确</strong>的提出产品需求, 修改需求十分普遍 </li>
+<li>项目<strong>开发晚期</strong>才能得到程序的运行版本, 这时修改软件需求和开发中的错误代价很大</li>
+<li>经常发生开发小组人员<strong>堵塞状态</strong>, 特别是项目的开始和结束.</li>
+</ul>
+</li>
+</ul>
+<h2 id="快速原型模型"><a href="#快速原型模型" class="headerlink" title="快速原型模型"></a>快速原型模型</h2><p><strong>强调快速</strong>, 采用<strong>基于构件</strong>的软件开发方法, 进量缩短软件开发周期, 不易采用过多的新技术.</p>
+<figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%BF%AB%E9%80%9F%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%BF%AB%E9%80%9F%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<ul>
+<li>优点: <ul>
+<li>帮助用户和开发人员理解需求</li>
+<li>产生的正式需求文档, 是<strong>软件开发的基础</strong></li>
+<li>如果开发的原型是可运行的, 它的若干高质量的程序片段和开发工具可用于工作程序的开发.</li>
+<li>原型的开发和评审是系统分析员和用户/客户共同参与的迭代过程, 每个迭代循环都是<strong>线性过程</strong>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="快速应用开发模型-RAD-的开发过程"><a href="#快速应用开发模型-RAD-的开发过程" class="headerlink" title="快速应用开发模型(RAD)的开发过程"></a>快速应用开发模型(RAD)的开发过程</h2><figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%BF%AB%E9%80%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%BF%AB%E9%80%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<ul>
+<li>缺点:<ul>
+<li>需要足够的<strong>人力资源</strong>以建立足够的原型组</li>
+<li>RAD模型要求<strong>开发者和客户</strong>在一段时间内<strong>共同完成</strong>原型系统的开发, 任何一方没有实现承诺都会导致原型开发的失败.</li>
+<li>如果系统难以模块化, RAD模型所需构件就有问题; 难以实现高性能</li>
+<li>不适合采用很多新技术</li>
+</ul>
+</li>
+</ul>
+<h2 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h2><p>螺旋模型 == 瀑布模型(<strong>系统化</strong>) + 原型(<strong>迭代</strong>)<br>适用于计算机软件整个生命周期</p>
+<figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<ul>
+<li>优点:<ul>
+<li>符合人们认识现实世界和软件开发的客观规律</li>
+<li>支持整个生命周期</li>
+<li>保持瀑布模型的的系统系, 阶段性</li>
+<li>利用原型评估降低开发风险</li>
+<li>开发者和用户共同参于, 尽早发现软件中的错误</li>
+<li>不断推出和完善软件版本, 有助于需求变化, 获取用户需求, 加强对需求的理解</li>
+</ul>
+</li>
+</ul>
+<h2 id="增量模型"><a href="#增量模型" class="headerlink" title="增量模型"></a>增量模型</h2><figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<ul>
+<li>特点:<ul>
+<li>适合小而可用的软件</li>
+<li>在前面增量的基础上开发后面的增量</li>
+<li>每个增量的开发可用瀑布或快速原型模型</li>
+<li>迭代的思路</li>
+</ul>
+</li>
+</ul>
+<h2 id="并发开发模型"><a href="#并发开发模型" class="headerlink" title="并发开发模型"></a>并发开发模型</h2><figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%B9%B6%E5%8F%91%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%B9%B6%E5%8F%91%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<p>所有活动并发存在, 但处于不同的状态.</p>
+<h2 id="形式化开发"><a href="#形式化开发" class="headerlink" title="形式化开发"></a>形式化开发</h2><p>类似瀑布模型的软件开发方法, 用形式化数学转换将系统描述换成一个可执行程序.</p>
+<p>需求定义(Requirements definition) -&gt; 形式化描述(Formal specification) -&gt; 形式变换(Formal transformation) -&gt; 集成和系统测试(Integration and system testing)</p>
+<ul>
+<li>与瀑布模型的本质区别<ul>
+<li>软件需求被描述成一个用<strong>数学符号表达</strong>的详细的形式化描述</li>
+<li>设计, 实现和单元测试有转换过程替代. 在转换的过程中, 每个步骤增加细节, 直到形式化描述被转换成一个可执行程序</li>
+</ul>
+</li>
+</ul>
+<h2 id="构建集成模型"><a href="#构建集成模型" class="headerlink" title="构建集成模型"></a>构建集成模型</h2><figure class="image-box">
+                <a rel=software engineering 笔记 href="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E6%9E%84%E4%BB%B6%E9%9B%86%E6%88%90%E6%A8%A1%E5%9E%8B.png" title="" data-fancybox="images"><img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E6%9E%84%E4%BB%B6%E9%9B%86%E6%88%90%E6%A8%A1%E5%9E%8B.png" alt title class></a>
+                <p></p>
+            </figure>
+
+<ul>
+<li>特点:<ul>
+<li>融合了螺旋模型的特征</li>
+<li>基于构件库</li>
+<li>支持软件开发的迭代方法</li>
+<li>软件重用</li>
+<li>可缩短约70％的开发周期, 降低84％的项目成本</li>
+<li>代表: 统一软件开发过程(RUP)</li>
+</ul>
+</li>
+</ul>
+<h2 id="第四代技术"><a href="#第四代技术" class="headerlink" title="第四代技术"></a>第四代技术</h2><ul>
+<li>四代语言: 基于大型数据库管理系统开发的程序设计语言，称为四代语言4GL</li>
+<li>四代技术: 以四代语言4GL为核心的软件开发技术称为四代技术4GT</li>
+</ul>
+<h2 id="软件能力成熟度模型-CMM"><a href="#软件能力成熟度模型-CMM" class="headerlink" title="软件能力成熟度模型 CMM"></a>软件能力成熟度模型 CMM</h2><p>CMM的能力成熟度共分五级，L1初始级、L2可重复级、L3己定义级、L4己管理级、L5优化级</p>
+<table>
+<thead>
+<tr>
+<th align="left">成熟度等级</th>
+<th align="left">关键过程域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">L2可重复级</td>
+<td align="left">需求管理 软件项目计划 项目跟踪和监督 分包合同管理 软件质量保证 软件配置管理</td>
+</tr>
+<tr>
+<td align="left">L3已管理级</td>
+<td align="left">组织的过程焦点 组织的过程定义 培训大纲 集成化软件管理 软件产品工程 组间协调 同行评审</td>
+</tr>
+<tr>
+<td align="left">L4已管理级</td>
+<td align="left">定量的过程管理 软件质量管理</td>
+</tr>
+<tr>
+<td align="left">L5优化级</td>
+<td align="left">缺陷的预防 技术更新管理 过程变更管理</td>
+</tr>
+</tbody></table>
+<h2 id="阶段式模型"><a href="#阶段式模型" class="headerlink" title="阶段式模型"></a>阶段式模型</h2><table>
+<thead>
+<tr>
+<th align="left">成熟度等级</th>
+<th align="left">24个过程域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">L2可重复级</td>
+<td align="left">需求管理 项目计划 配置管理 项目监督和控制 供应商合同管理 度量和分析 过程和产品质量保证</td>
+</tr>
+<tr>
+<td align="left">L3己定义级</td>
+<td align="left">需求开发 技术解决方案 产品集成、验证、确认 组织级过程焦点 组织级过程定义 组织级培训 集成化项目管理 风险管理 集成化的团队 决策分析和解决方案 组织级集成环境</td>
+</tr>
+<tr>
+<td align="left">L4己管理级</td>
+<td align="left">组织级过程性能 项目定量管理</td>
+</tr>
+<tr>
+<td align="left">L5 优化级</td>
+<td align="left">组织级改革和实施 因果分析和解决方案</td>
+</tr>
+</tbody></table>
+<h2 id="连续式模型"><a href="#连续式模型" class="headerlink" title="连续式模型"></a>连续式模型</h2><table>
+<thead>
+<tr>
+<th align="left">连续式分组</th>
+<th align="left">24个过程域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">过程管理</td>
+<td align="left">组织级过程焦点 组织级过程定义 组织级培训 组织级过程性能 组织级改革和实施</td>
+</tr>
+<tr>
+<td align="left">项目管理</td>
+<td align="left">项目计划 项目监督和控制 供应商合同管理 集成化项目管理 风险管理 集成化的团队 项目定量管理</td>
+</tr>
+<tr>
+<td align="left">工程</td>
+<td align="left">需求管理 需求开发 技术解决方案 产品集成 验证 确认</td>
+</tr>
+<tr>
+<td align="left">支持</td>
+<td align="left">配置管理 度量和分析 过程和产品质量保证 决策分析和解决方案 组织级集成环境 因果分析和解决方案</td>
+</tr>
+</tbody></table>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-28T11:06:07.514Z" itemprop="dateUpdated">2020-02-28 19:06:07</time>
+    Last updated: <time datetime="2020-02-28T13:54:40.854Z" itemprop="dateUpdated">2020-02-28 21:54:40</time>
 </span><br>
 
 
@@ -615,7 +820,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第零章-绪论"><span class="post-toc-number">1.</span> <span class="post-toc-text">第零章 绪论</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第一章-软件与软件工程"><span class="post-toc-number">2.</span> <span class="post-toc-text">第一章 软件与软件工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是软件"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">什么是软件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件危机的表现"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">软件危机的表现:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件工程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">软件工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件工程三要素"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">软件工程三要素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件工程的方法"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">软件工程的方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件工程的目标和原则"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">软件工程的目标和原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件生存周期"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">软件生存周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三个时期-七个阶段"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">三个时期, 七个阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件定义-可行性研究"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">软件定义: 可行性研究</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件定义-需求分析"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">软件定义: 需求分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-概要设计"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">软件开发: 概要设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-详细设计"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">软件开发: 详细设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-实现"><span class="post-toc-number">2.3.6.</span> <span class="post-toc-text">软件开发: 实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-组装测试"><span class="post-toc-number">2.3.7.</span> <span class="post-toc-text">软件开发: 组装测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-确认测试"><span class="post-toc-number">2.3.8.</span> <span class="post-toc-text">软件开发: 确认测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件运行-维护"><span class="post-toc-number">2.3.9.</span> <span class="post-toc-text">软件运行: 维护</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发过程与测试的关系"><span class="post-toc-number">2.3.10.</span> <span class="post-toc-text">软件开发过程与测试的关系</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第二章-软件与软件工程"><span class="post-toc-number">3.</span> <span class="post-toc-text">第二章 软件与软件工程</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第零章-绪论"><span class="post-toc-number">1.</span> <span class="post-toc-text">第零章 绪论</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第一章-软件与软件工程"><span class="post-toc-number">2.</span> <span class="post-toc-text">第一章 软件与软件工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是软件"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">什么是软件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件危机的表现"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">软件危机的表现:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件工程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">软件工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件工程三要素"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">软件工程三要素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件工程的方法"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">软件工程的方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件工程的目标和原则"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">软件工程的目标和原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件生存周期"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">软件生存周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三个时期-七个阶段"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">三个时期, 七个阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件定义-可行性研究"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">软件定义: 可行性研究</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件定义-需求分析"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">软件定义: 需求分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-概要设计"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">软件开发: 概要设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-详细设计"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">软件开发: 详细设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-实现"><span class="post-toc-number">2.3.6.</span> <span class="post-toc-text">软件开发: 实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-组装测试"><span class="post-toc-number">2.3.7.</span> <span class="post-toc-text">软件开发: 组装测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发-确认测试"><span class="post-toc-number">2.3.8.</span> <span class="post-toc-text">软件开发: 确认测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件运行-维护"><span class="post-toc-number">2.3.9.</span> <span class="post-toc-text">软件运行: 维护</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件开发过程与测试的关系"><span class="post-toc-number">2.3.10.</span> <span class="post-toc-text">软件开发过程与测试的关系</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第二章-软件与软件工程"><span class="post-toc-number">3.</span> <span class="post-toc-text">第二章 软件与软件工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件过程模型"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">软件过程模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#瀑布模型"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">瀑布模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速原型模型"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">快速原型模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速应用开发模型-RAD-的开发过程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">快速应用开发模型(RAD)的开发过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#螺旋模型"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">螺旋模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增量模型"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">增量模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#并发开发模型"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">并发开发模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#形式化开发"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">形式化开发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构建集成模型"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">构建集成模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四代技术"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">第四代技术</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件能力成熟度模型-CMM"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">软件能力成熟度模型 CMM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阶段式模型"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">阶段式模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#连续式模型"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">连续式模型</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
