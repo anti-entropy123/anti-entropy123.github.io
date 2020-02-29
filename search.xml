@@ -192,7 +192,7 @@
 <h3 id="软件开发过程与测试的关系"><a href="#软件开发过程与测试的关系" class="headerlink" title="软件开发过程与测试的关系"></a>软件开发过程与测试的关系</h3><p>V图:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可行性研究 &lt;-------------------------&gt;  运行</span><br><span class="line">       \                              /</span><br><span class="line">     需求分析 &lt;-------------------&gt; 确认测试</span><br><span class="line">          \                         /</span><br><span class="line">        概要设计 &lt;--------------&gt; 组装测试</span><br><span class="line">             \                    /</span><br><span class="line">            详细设计 &lt;-------&gt; 单元测试</span><br><span class="line">                  \            / </span><br><span class="line">                     编码与调试</span><br></pre></td></tr></table></figure>
 
-<h1 id="第二章-软件与软件工程"><a href="#第二章-软件与软件工程" class="headerlink" title="第二章 软件与软件工程"></a>第二章 软件与软件工程</h1><h2 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h2><ul>
+<h1 id="第二章-软件过程"><a href="#第二章-软件过程" class="headerlink" title="第二章 软件过程"></a>第二章 软件过程</h1><h2 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h2><ul>
 <li>软件过程模型是软件开发全过程, 软件开发活动以及它们之间关系的<strong>结构框架</strong></li>
 <li>软件项目的管理提供<strong>里程碑</strong>和<strong>进度表</strong></li>
 <li>为软件开发提供<strong>原则</strong>和<strong>方法</strong></li>
@@ -447,9 +447,14 @@
 <h5 id="数据对象-属性和关系"><a href="#数据对象-属性和关系" class="headerlink" title="数据对象, 属性和关系"></a>数据对象, 属性和关系</h5><ul>
 <li>数据对象: 封装如事件、行为、角色、组织、地点、结构等外部实体的数据部分.</li>
 <li>数据属性: 用<strong>标识符、符号串和值</strong>标识，描述数据对象的性质.</li>
-<li>数据关系: <strong>数据对象</strong>按照某种<strong>关系</strong>相互<strong>连接</strong><h5 id="实体-关系图-E-R图"><a href="#实体-关系图-E-R图" class="headerlink" title="实体-关系图(E/R图)"></a>实体-关系图(E/R图)</h5>略<h5 id="实体-关系图"><a href="#实体-关系图" class="headerlink" title="实体-关系图"></a>实体-关系图</h5><h4 id="功能建模"><a href="#功能建模" class="headerlink" title="功能建模"></a>功能建模</h4><h5 id="数据流图与数据字典"><a href="#数据流图与数据字典" class="headerlink" title="数据流图与数据字典"></a>数据流图与数据字典</h5></li>
+<li>数据关系: <strong>数据对象</strong>按照某种<strong>关系</strong>相互<strong>连接</strong></li>
+</ul>
+<h5 id="实体-关系图-E-R图"><a href="#实体-关系图-E-R图" class="headerlink" title="实体-关系图(E/R图)"></a>实体-关系图(E/R图)</h5><p>略</p>
+<h4 id="功能建模"><a href="#功能建模" class="headerlink" title="功能建模"></a>功能建模</h4><h5 id="数据流图与数据字典"><a href="#数据流图与数据字典" class="headerlink" title="数据流图与数据字典"></a>数据流图与数据字典</h5><ul>
 <li>数据流图: 描述数据流, 加工, 数据源以及外部实体.</li>
-<li>数据字典: 由数据条目组成, 描述, 组织和管理数据流图的数据流、加工、数据源及外部实体.<h5 id="数据流图的实时系统扩充"><a href="#数据流图的实时系统扩充" class="headerlink" title="数据流图的实时系统扩充"></a>数据流图的实时系统扩充</h5></li>
+<li>数据字典: 由数据条目组成, 描述, 组织和管理数据流图的数据流、加工、数据源及外部实体.</li>
+</ul>
+<h5 id="数据流图的实时系统扩充"><a href="#数据流图的实时系统扩充" class="headerlink" title="数据流图的实时系统扩充"></a>数据流图的实时系统扩充</h5><ul>
 <li>实时系统: 系统与现实世界实体交互具有时间特性.</li>
 </ul>
 <p>传统数据流方法不能胜任实时系统的需求分析任务。为开发实时嵌入式系统，必须对传统方法进行扩充</p>
