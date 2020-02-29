@@ -415,8 +415,35 @@
 <a id="more"></a>
 
 
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><h2 id="func-args-kw"><a href="#func-args-kw" class="headerlink" title="func(*args, **kw)"></a><code>func(*args, **kw)</code></h2><p>可以接收任何数量的或者有关键字的参数的函数的一般形式.<br>这个可能不算是”高阶函数”, 但是我先把它放在这里吧</p>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h2><p>filter这个单词的意思是过滤器, 顾名思义, filter()可以起到过滤器的作用.</p>
+<h1 id="高阶特性"><a href="#高阶特性" class="headerlink" title="高阶特性"></a>高阶特性</h1><p>在实际编程中, 如果能大量运用高阶特性和函数, 就能大大缩短代码的行数, 写出非常 pythonic 的代码.</p>
+<h2 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h2><p>类似C++ 和 Java 中的 </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a ? b:c</span><br></pre></td></tr></table></figure>
+
+<p>python 也支持类似的三目运算符.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b <span class="keyword">if</span> a <span class="keyword">else</span> c</span><br></pre></td></tr></table></figure>
+
+<p>有一说一, 我认为这种python的这种语法更符合思考时的逻辑.</p>
+<p>得益于这种三目运算符, 我们可以把一行代码写的很长很长, 大满足.<br>例如:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> (self.p &lt;= root.val <span class="keyword">and</span> self.q &gt;= root.val): root = root.left <span class="keyword">if</span> self.q &lt; root.val <span class="keyword">else</span> root.right</span><br></pre></td></tr></table></figure>
+
+<h2 id="星号-的使用"><a href="#星号-的使用" class="headerlink" title="星号 * 的使用"></a>星号 * 的使用</h2><p>将可迭代对象拆分.</p>
+<p>举例: </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(*(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"hello"</span>)</span><br><span class="line">hello</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(*<span class="string">"hello"</span>)</span><br><span class="line">h e l l o</span><br></pre></td></tr></table></figure>
+
+<h2 id="双星号-的使用"><a href="#双星号-的使用" class="headerlink" title="双星号 ** 的使用"></a>双星号 ** 的使用</h2><p>上述星号 * 的用法有时会很方便, 但是 * 无法应对字典变量的拆解.<br>例如:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'a'</span>:<span class="string">'apple'</span>, <span class="string">'b'</span>:<span class="string">'banana'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(*d)</span><br><span class="line">a b</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>只能拆分字典的key值, 无法获取 value.<br>这种情况下应该使用 ** .<br>例如<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(**d)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">'a'</span> <span class="keyword">is</span> an invalid keyword argument <span class="keyword">for</span> print()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>竟然报错了, 原来 ** 的用法和我想象的并不一样.<br>它实际上会将字典转为 <code>key = value</code> 的形式, 所以 key 一定要符合 python 的变量命名规则.</p>
+<p>正确的用法应该是这样的:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(a, b=<span class="number">2</span>, c = <span class="number">3</span>)</span>:</span> </span><br><span class="line"><span class="meta">... </span>print(a, b, c)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">-2</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test(**d)</span><br><span class="line"><span class="number">1</span> <span class="number">-2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="func-args-kw"><a href="#func-args-kw" class="headerlink" title="func(*args, **kw)"></a><code>func(*args, **kw)</code></h2><p>可以接收任何数量的或者有关键字的参数的函数的一般形式.</p>
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h2><p>filter这个单词的意思是过滤器, 顾名思义, filter()可以起到过滤器的作用.</p>
 <blockquote>
 <p>filter(function, sequence)<br>Parameters:<br>function: function that tests if each element of a<br>sequence true or not.<br>sequence: sequence which needs to be filtered, it can<br>be sets, lists, tuples, or containers of any iterators.<br>Returns:<br>returns an iterator that is already filtered.</p>
 </blockquote>
@@ -459,6 +486,10 @@
 </blockquote>
 <p>举例:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L2 = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="number">18</span>, <span class="string">'apple'</span>, <span class="literal">None</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[(x,y) <span class="keyword">for</span> x,y <span class="keyword">in</span> list(enumerate(L2))]</span><br><span class="line">[(<span class="number">0</span>, <span class="string">'hello'</span>), (<span class="number">1</span>, <span class="string">'world'</span>), (<span class="number">2</span>, <span class="number">18</span>), (<span class="number">3</span>, <span class="string">'apple'</span>), (<span class="number">4</span>, <span class="literal">None</span>)]</span><br></pre></td></tr></table></figure>
+
+<h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><p>可以让两个可迭代变量成对出现, 长度由较短的那个变量决定.</p>
+<p>举例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(zip(a,b))</span><br><span class="line">&lt;zip object at <span class="number">0x000002701A44C688</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(zip(a,b)))</span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br></pre></td></tr></table></figure>
 
 <h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><p>个人理解: lambda表达式 是一种匿名的函数.</p>
 <p>Syntax:</p>
@@ -815,29 +846,28 @@
 </li>
 </ul>
 <h2 id="request-库"><a href="#request-库" class="headerlink" title="request 库"></a>request 库</h2><ol>
-<li>使用GET请求和POST请求<ul>
-<li>简单请求页面方式:</li>
-</ul>
-</li>
-</ol>
+<li><p>使用GET请求和POST请求</p>
+<ul>
+<li><p>简单请求页面方式:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'https://api.github.com/events'</span>)</span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">r = requests.delete(<span class="string">'http://httpbin.org/delete'</span>)</span><br><span class="line">r = requests.head(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">r = requests.options(<span class="string">'http://httpbin.org/get'</span>)</span><br></pre></td></tr></table></figure>
 
 <p>得到一个名为 r 的 Response 对象.</p>
-<ol start="2">
-<li><p>参数和请求头</p>
-<ul>
-<li>带有参数的请求:<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">r = requests.get(<span class="string">"http://httpbin.org/get"</span>, params=payload)</span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">r = requests.put(<span class="string">'http://httpbin.org/put'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line"></span><br><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</span><br><span class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</span><br><span class="line">print(r.url)</span><br><span class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
 </ul>
 </li>
-</ol>
-<pre><code>+ 发送 Cookie
+<li><p>参数和请求头</p>
+<ul>
+<li><p>带有参数的请求:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">r = requests.get(<span class="string">"http://httpbin.org/get"</span>, params=payload)</span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">r = requests.put(<span class="string">'http://httpbin.org/put'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line"></span><br><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: [<span class="string">'value2'</span>, <span class="string">'value3'</span>]&#125;</span><br><span class="line">r = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload)</span><br><span class="line">print(r.url)</span><br><span class="line"><span class="comment"># http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送 Cookie</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">'http://httpbin.org/cookies'</span></span><br><span class="line">cookies = dict(cookies_are=<span class="string">'working'</span>)</span><br><span class="line"></span><br><span class="line">r = requests.get(url, cookies=cookies)</span><br></pre></td></tr></table></figure>
-
-+ 编写请求头
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">'https://api.github.com/some/endpoint'</span></span><br><span class="line">headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'my-app/0.0.1'</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(url, headers=headers)</span><br></pre></td></tr></table></figure></code></pre><ol start="2">
+</li>
+<li><p>编写请求头</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">'https://api.github.com/some/endpoint'</span></span><br><span class="line">headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'my-app/0.0.1'</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(url, headers=headers)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 <li><p>从 Response 对象中获取信息</p>
 <ul>
 <li><p>获取页面</p>
@@ -854,17 +884,18 @@
 </li>
 <li><p>获取 JSON</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    r = requests.get(<span class="string">'https://api.github.com/events'</span>)</span><br><span class="line">    r.json()</span><br><span class="line">    <span class="comment"># [&#123;u'repository': &#123;u'open_issues': 0, u'url': 'https://github.com/...</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    </span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">'error'</span>)</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p>获取 Cookie</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r.cookies[<span class="string">'example_cookie_name'</span>]</span><br><span class="line"><span class="comment"># 'example_cookie_value'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取套接字中的 TCP 报文段</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(filename, <span class="string">'wb'</span>) <span class="keyword">as</span> fd:</span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size):</span><br><span class="line">    fd.write(chunk)</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 </li>
 </ol>
-<pre><code>+ 获取 Cookie
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r.cookies[<span class="string">'example_cookie_name'</span>]</span><br><span class="line"><span class="comment"># 'example_cookie_value'</span></span><br></pre></td></tr></table></figure>
-
-+ 获取套接字中的 TCP 报文段
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(filename, <span class="string">'wb'</span>) <span class="keyword">as</span> fd:</span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size):</span><br><span class="line">    fd.write(chunk)</span><br></pre></td></tr></table></figure></code></pre><h2 id="XPath-解析"><a href="#XPath-解析" class="headerlink" title="XPath 解析"></a>XPath 解析</h2><ul>
+<h2 id="XPath-解析"><a href="#XPath-解析" class="headerlink" title="XPath 解析"></a>XPath 解析</h2><ul>
 <li><p>访问节点</p>
 <table>
 <thead>
@@ -899,9 +930,7 @@
 </tr>
 </tbody></table>
 </li>
-<li><p>使用谓词 <code>[ ]</code>: </p>
-</li>
-</ul>
+<li><p>使用谓词 <code>[ ]</code>:</p>
 <table>
 <thead>
 <tr>
@@ -942,8 +971,9 @@
 <td>选取 bookstore 元素中的 book 元素的所有 title 元素，且其中的 price 元素的值须大于 35.00。</td>
 </tr>
 </tbody></table>
-<ul>
-<li>选取多个节点:<table>
+</li>
+<li><p>选取多个节点:</p>
+<table>
 <thead>
 <tr>
 <th>路径表达式</th>
