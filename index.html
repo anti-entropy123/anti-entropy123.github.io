@@ -178,15 +178,18 @@
                     c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
                   }
                   var l = "",
-                  o = ["孤独是常态,", "寂寞是病态",
-                      "孤独使我自由,","寂寞让我作呕",
-                      "为守护所有美好而战,","向一切虚伪的美好宣战",
-                      "don't be sorry,","be better",
-                      "伤痕是我的勋章",
-                      "但置我于低谷者,","必将助我以崛起",
-                      "但置我于死地者,","必将赐我以后生",
-                      "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
-                      "天生我材必有用,","千金散尽还复来"
+                  o = [
+                        "孤独是常态,", "寂寞是病态",
+                        "孤独使我自由,", "寂寞让我作呕",
+                        "为守护所有美好而战,", "向一切虚伪的美好宣战",
+                        "Don't be sorry,", "Be better",
+                        "伤痕,", "是我的勋章",
+                        "但置我于低谷者,", "必将助我以崛起",
+                        "但置我于死地者,", "必将赐我以后生",
+                        "行于黑暗,", "侍奉光明", 
+                        "万物皆虚,", "万事皆允",
+                        "天生我材必有用,", "千金散尽还复来",
+                        "解甲归田,", "只为月光"
                       ].map(function (r) {
                   return r + ""
                   }),
@@ -289,90 +292,6 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
-                <article id="post-software-engineering"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/02/27/software-engineering/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <!-- <img src="true" alt="图片路径不正确"> -->
-    <script language=javascript>
-
-    console.log("hello");
-
-    theNumberOfImg = 64;
-
-    id=Math.round(Math.random()*(theNumberOfImg-1))+1;
-    while(imageArr.indexOf(id)>-1){
-        id=Math.round(Math.random()*(theNumberOfImg-1))+1;
-    }
-    imageArr.push(id);
-    document.write("<img src=https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/thumb/"+String(id)+".jpg>")
-    </script>
-    
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/02/27/software-engineering/">software engineering 笔记</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-02-27 13:34:09" datetime="2020-02-27T05:34:09.000Z"  itemprop="datePublished">2020-02-27</time>
-
-        
-
-
-        
-
-        
-    <span class="leancloud-comment">
-        <i class="icon icon-comment-o"></i>
-        <a href="/2020/02/27/software-engineering/#comment">
-            <span class="valine-comment-count" data-xid="/2020/02/27/software-engineering/"></span>
-        </a>
-    </span>
-
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        <p>这东西不总结没法学 QAQ</p>
-    
-    <a href="/2020/02/27/software-engineering/" class="post-more waves-effect waves-button">
-        全文
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
                 <article id="post-python-saving"
   class="article-card article-type-post" itemprop="blogPost">
   
@@ -450,6 +369,90 @@
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-software-engineering"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/02/27/software-engineering/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <!-- <img src="true" alt="图片路径不正确"> -->
+    <script language=javascript>
+
+    console.log("hello");
+
+    theNumberOfImg = 64;
+
+    id=Math.round(Math.random()*(theNumberOfImg-1))+1;
+    while(imageArr.indexOf(id)>-1){
+        id=Math.round(Math.random()*(theNumberOfImg-1))+1;
+    }
+    imageArr.push(id);
+    document.write("<img src=https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/thumb/"+String(id)+".jpg>")
+    </script>
+    
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/02/27/software-engineering/">software engineering 笔记</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-02-27 13:34:09" datetime="2020-02-27T05:34:09.000Z"  itemprop="datePublished">2020-02-27</time>
+
+        
+
+
+        
+
+        
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2020/02/27/software-engineering/#comment">
+            <span class="valine-comment-count" data-xid="/2020/02/27/software-engineering/"></span>
+        </a>
+    </span>
+
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        <p>这东西不总结没法学 QAQ</p>
+    
+    <a href="/2020/02/27/software-engineering/" class="post-more waves-effect waves-button">
+        全文
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
 
 </div>
 

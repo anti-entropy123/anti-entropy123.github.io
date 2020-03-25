@@ -178,15 +178,18 @@
                     c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
                   }
                   var l = "",
-                  o = ["孤独是常态,", "寂寞是病态",
-                      "孤独使我自由,","寂寞让我作呕",
-                      "为守护所有美好而战,","向一切虚伪的美好宣战",
-                      "don't be sorry,","be better",
-                      "伤痕是我的勋章",
-                      "但置我于低谷者,","必将助我以崛起",
-                      "但置我于死地者,","必将赐我以后生",
-                      "行于黑暗, 侍奉光明","万物皆虚, 万事皆允",
-                      "天生我材必有用,","千金散尽还复来"
+                  o = [
+                        "孤独是常态,", "寂寞是病态",
+                        "孤独使我自由,", "寂寞让我作呕",
+                        "为守护所有美好而战,", "向一切虚伪的美好宣战",
+                        "Don't be sorry,", "Be better",
+                        "伤痕,", "是我的勋章",
+                        "但置我于低谷者,", "必将助我以崛起",
+                        "但置我于死地者,", "必将赐我以后生",
+                        "行于黑暗,", "侍奉光明", 
+                        "万物皆虚,", "万事皆允",
+                        "天生我材必有用,", "千金散尽还复来",
+                        "解甲归田,", "只为月光"
                       ].map(function (r) {
                   return r + ""
                   }),
@@ -779,7 +782,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-12-22T05:26:19.491Z" itemprop="dateUpdated">2019-12-22 13:26:19</time>
+    最后更新时间：<time datetime="2019-12-22T05:26:19.491Z" itemprop="dateUpdated">2019-12-22 13:26:19</time>
 </span><br>
 
 
