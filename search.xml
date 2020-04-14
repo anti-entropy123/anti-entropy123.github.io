@@ -3,488 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[software engineering 笔记]]></title>
-      <url>/2020/02/27/software-engineering/</url>
-      <content type="html"><![CDATA[<p>这东西不总结没法学 QAQ</p>
-<a id="more"></a> 
-
-<h1 id="第零章-绪论"><a href="#第零章-绪论" class="headerlink" title="第零章 绪论"></a>第零章 绪论</h1><ul>
-<li>软件工程的目的: TQCS<ul>
-<li>T: Time 高效</li>
-<li>Q: Quality 高质量</li>
-<li>C: Cost 低成本</li>
-<li>S: Service 用户满意</li>
-</ul>
-</li>
-</ul>
-<h1 id="第一章-软件与软件工程"><a href="#第一章-软件与软件工程" class="headerlink" title="第一章 软件与软件工程"></a>第一章 软件与软件工程</h1><h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><h3 id="什么是软件"><a href="#什么是软件" class="headerlink" title="什么是软件"></a>什么是软件</h3><ul>
-<li>计算机系统中的软件: 软件是能够完成预定功能和性能，并对相应数据进行加工的程序和描述程序及其操作的文档。</li>
-<li>程序员眼中的软件:<ul>
-<li>软件 = 程序 + 数据 + 文档</li>
-<li>程序 = 算法 + 数据结构<h3 id="软件危机的表现"><a href="#软件危机的表现" class="headerlink" title="软件危机的表现:"></a>软件危机的表现:</h3></li>
-</ul>
-</li>
-<li>开发阶段:<ul>
-<li>软件开发效率低</li>
-<li>软件质量得不到保证</li>
-<li>软件开发成本过高</li>
-</ul>
-</li>
-<li>维护阶段:<ul>
-<li>维护困难, 用户满意度不高</li>
-</ul>
-</li>
-</ul>
-<h2 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h2><h3 id="软件工程三要素"><a href="#软件工程三要素" class="headerlink" title="软件工程三要素"></a>软件工程三要素</h3><p>软件工程采用层次化(分解)的方法, 每个层次都包括<strong>过程,方法,工具</strong>三要素.</p>
-<ul>
-<li>过程:<br>  贯穿软件开发的各个环节</li>
-<li>过程和方法:<br>  管理者在软件工程过程中通过适当的方法对软件开发的<strong>质量、进度、成本</strong>进行评估、管理和控制</li>
-<li>方法及工具: 技术人员采用相应的方法和<strong>工具</strong>生成软件工程产品（<strong>模型、文档、数据、报告、表格等</strong>）</li>
-</ul>
-<h3 id="软件工程的方法"><a href="#软件工程的方法" class="headerlink" title="软件工程的方法"></a>软件工程的方法</h3><p>传统方法, 面向对象方法, 面向服务的方法.</p>
-<ul>
-<li>传统软件工程:<ul>
-<li>以<strong>结构化</strong>程序设计为基础</li>
-<li>结构化分析 -&gt;（SA）结构化设计（总体设计、详细设计）-&gt;面向过程的编码测试</li>
-</ul>
-</li>
-<li>面向对象软件工程<ul>
-<li>以<strong>面向对象</strong>程序设计为基础</li>
-<li>软件分析与对象抽取-&gt;对象详细设计-&gt;面向对象的编码-&gt;测试</li>
-</ul>
-</li>
-<li>面向服务软件工程<ul>
-<li><strong>请求响应</strong>或<strong>事件驱动接口</strong>方式为基础</li>
-<li>分析服务需求-&gt;接口设计和封装-&gt;服务方法或组件设计开发</li>
-</ul>
-</li>
-</ul>
-<p><strong>粒度越来越大, 效率越来越高, 开发的软件规模越来越大.</strong></p>
-<h3 id="软件工程的目标和原则"><a href="#软件工程的目标和原则" class="headerlink" title="软件工程的目标和原则"></a>软件工程的目标和原则</h3><ul>
-<li>目标: TQCS</li>
-<li>原则: 抽象, 模块化, 信息隐藏, 局部化, 一致性, 完全性, 可验证性.</li>
-</ul>
-<h2 id="软件生存周期"><a href="#软件生存周期" class="headerlink" title="软件生存周期"></a>软件生存周期</h2><h3 id="三个时期-七个阶段"><a href="#三个时期-七个阶段" class="headerlink" title="三个时期, 七个阶段"></a>三个时期, 七个阶段</h3><ul>
-<li>软件定义:<ul>
-<li><strong>问题定义</strong>: 确定系统的总体目标</li>
-<li><strong>可行性分析</strong>: 研究经济, 技术, 操作等的可行性</li>
-<li><strong>需求分析</strong>: 收集需求, 寻求建模</li>
-</ul>
-</li>
-<li>软件开发: <ul>
-<li><strong>系统设计</strong>: 软件结构设计</li>
-<li><strong>编码</strong>: 产生源程序清单</li>
-<li><strong>测试</strong>: 产生软件测试计划和软件测试报告</li>
-</ul>
-</li>
-<li>软件运行:<ul>
-<li><strong>维护</strong>: 修改, 完善, 扩展软件</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件定义-可行性研究"><a href="#软件定义-可行性研究" class="headerlink" title="软件定义: 可行性研究"></a>软件定义: 可行性研究</h3><ul>
-<li>任务:<br>了解用户要求和现实环境，从技术、经济、市场等方面研究并论证开发该软件系统的可行性</li>
-<li>最主要内容:<ul>
-<li>技术可行性:<br>  当前的软件开发方法和工具能否支持需求的实现；</li>
-<li>操作可行性:<br>  用户能否在特定的环境下使用这个软件</li>
-<li>经济可行性:<br>  开发和使用, 维护这个软件的成本能否被用户所接受</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件定义-需求分析"><a href="#软件定义-需求分析" class="headerlink" title="软件定义: 需求分析"></a>软件定义: 需求分析</h3><ul>
-<li>任务:<br>  确定用户对软件系统的需求</li>
-<li>主要内容:<ul>
-<li>功能需求:<br>  软件必须要完成的功能</li>
-<li>性能需求:<br>  软件的安全性, 可靠性, 可维护性, 精度, 错误处理, 适应性, 用户培训</li>
-<li>运行环境约束:<br>  待开发的软件产品必须满足的环境要求</li>
-</ul>
-</li>
-<li>需求分析过程:<ul>
-<li>方法: <ul>
-<li>面向数据流的分析方法</li>
-<li>面向数据的分析方法</li>
-<li>面向对象的分析方法</li>
-<li>抽象, 问题分解, 快速原型, 多视点</li>
-</ul>
-</li>
-<li>工具:<ul>
-<li>表示工具: 数据流图, 数据字典, UML图等</li>
-<li>软件工具: Rational Rose, WitClass, VisualModel等</li>
-</ul>
-</li>
-<li>阶段性产品: <ul>
-<li>软件需求规格说明书 <strong>SRS</strong>– 给设计人员</li>
-<li>用户手册概要 – 给用户</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件开发-概要设计"><a href="#软件开发-概要设计" class="headerlink" title="软件开发: 概要设计"></a>软件开发: 概要设计</h3><ul>
-<li>任务:<br>  根据SRS建立目标软件系统的总体结构, 设计全局数据库和数据结构, 固定设计约束, 指定组装测试计划等等</li>
-<li>方法:<ul>
-<li>自顶向下, 逐步求精, 抽象, 模块化, 局部化, 信息隐藏</li>
-<li>坚持功能模块内部紧耦合, 功能模块之间松耦合的原则</li>
-<li>坚持与 SRS 的一致性</li>
-</ul>
-</li>
-<li>工具: <ul>
-<li>面向数据流</li>
-<li>面向数据</li>
-<li>面向对象</li>
-</ul>
-</li>
-<li>阶段性产品:<ul>
-<li>概要设计规格说明书</li>
-<li>数据库或数据结构设计说明书</li>
-<li>集成测试计划</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件开发-详细设计"><a href="#软件开发-详细设计" class="headerlink" title="软件开发: 详细设计"></a>软件开发: 详细设计</h3><ul>
-<li>任务:<br>  细化概要设计所生成的各个模块, 并详细描述程序模块的内部细节(算法，数据结构等)，形成可编程的程序模块，制订单元测试计划</li>
-<li>阶段性产品:<ul>
-<li>详细设计规格说明书</li>
-<li>单元测试计划</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件开发-实现"><a href="#软件开发-实现" class="headerlink" title="软件开发: 实现"></a>软件开发: 实现</h3><ul>
-<li>任务:<br>  根据详细设计规格说明书编写源程序，并对程序进行调试、单元测试、系统集成，验证程序与详细设计文档的 一致性</li>
-<li>方法:<ul>
-<li>以详细设计规格说明书为依据, 基于某种程序设计语言进行编码</li>
-<li>结构化程序设计</li>
-<li>面向对象程序设计</li>
-</ul>
-</li>
-<li>阶段产品:<br>  源程序代码</li>
-</ul>
-<h3 id="软件开发-组装测试"><a href="#软件开发-组装测试" class="headerlink" title="软件开发: 组装测试"></a>软件开发: 组装测试</h3><ul>
-<li>任务:<br>  组装测试应满足概要设计的要求</li>
-<li>途径:<ul>
-<li>测试模块连接的正确性</li>
-<li>测试系统或子系统的I/O</li>
-<li>测试系统的功能和性能</li>
-</ul>
-</li>
-<li>产品:<ul>
-<li>满足概要设计要求的程序</li>
-<li>组装测试报告</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件开发-确认测试"><a href="#软件开发-确认测试" class="headerlink" title="软件开发: 确认测试"></a>软件开发: 确认测试</h3><ul>
-<li>任务:<br>  根据软件需求规格说明书，测试软件系统是否满足用户的需求</li>
-<li>方法:<br>  用户参与, 依据 SRS 进行确认测试</li>
-<li>工具:<br>  专用测试工具</li>
-<li>阶段性产品<br>  可供用户使用的软件产品(文档, 源程序)</li>
-</ul>
-<h3 id="软件运行-维护"><a href="#软件运行-维护" class="headerlink" title="软件运行: 维护"></a>软件运行: 维护</h3><ul>
-<li>目的:<br>  使软件不断进化以满足客户的需求变化</li>
-<li>工作内容: <ul>
-<li>正确性维护</li>
-<li>扩充性维护</li>
-<li>适应性维护</li>
-</ul>
-</li>
-<li>阶段性产品<ul>
-<li>软件产品的新版本</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件开发过程与测试的关系"><a href="#软件开发过程与测试的关系" class="headerlink" title="软件开发过程与测试的关系"></a>软件开发过程与测试的关系</h3><p>V图:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可行性研究 &lt;-------------------------&gt;  运行</span><br><span class="line">       \                              /</span><br><span class="line">     需求分析 &lt;-------------------&gt; 确认测试</span><br><span class="line">          \                         /</span><br><span class="line">        概要设计 &lt;--------------&gt; 组装测试</span><br><span class="line">             \                    /</span><br><span class="line">            详细设计 &lt;-------&gt; 单元测试</span><br><span class="line">                  \            / </span><br><span class="line">                     编码与调试</span><br></pre></td></tr></table></figure>
-
-<h1 id="第二章-软件过程"><a href="#第二章-软件过程" class="headerlink" title="第二章 软件过程"></a>第二章 软件过程</h1><h2 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h2><ul>
-<li>软件过程模型是软件开发全过程, 软件开发活动以及它们之间关系的<strong>结构框架</strong></li>
-<li>软件项目的管理提供<strong>里程碑</strong>和<strong>进度表</strong></li>
-<li>为软件开发提供<strong>原则</strong>和<strong>方法</strong></li>
-</ul>
-<p>五类软件开发过程模型:</p>
-<ol>
-<li><strong>瀑布模型</strong>: 以软件需求完全确定为前提</li>
-<li><strong>原型模型, 螺旋模型, 增量模型, 并发开发模型</strong>: 在软件开发初期只能提供基本需求所采用的渐进式开发模型</li>
-<li><strong>变换模型</strong>: 以形式化开发方法为基础</li>
-<li><strong>基于构件的开发过程</strong></li>
-<li><strong>敏捷开发过程</strong></li>
-<li><strong>统一开发过程 RUP</strong></li>
-</ol>
-<h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><ul>
-<li>软件开发过程与软件生命周期是一致的</li>
-<li>相邻二阶段之间存在因果关系</li>
-<li>需对阶段性产品进行评审</li>
-</ul>
-<figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>优点: <ul>
-<li>使软件开发过程可以在分析、设计、编码、测试和维护的框架下进行</li>
-<li>系统性、可控性，克服了软件开发的随意性</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>项目<strong>开始阶段很难精确</strong>的提出产品需求, 修改需求十分普遍 </li>
-<li>项目<strong>开发晚期</strong>才能得到程序的运行版本, 这时修改软件需求和开发中的错误代价很大</li>
-<li>经常发生开发小组人员<strong>堵塞状态</strong>, 特别是项目的开始和结束.</li>
-</ul>
-</li>
-</ul>
-<h2 id="快速原型模型"><a href="#快速原型模型" class="headerlink" title="快速原型模型"></a>快速原型模型</h2><p><strong>强调快速</strong>, 采用<strong>基于构件</strong>的软件开发方法, 进量缩短软件开发周期, 不易采用过多的新技术.</p>
-<figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%BF%AB%E9%80%9F%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>优点: <ul>
-<li>帮助用户和开发人员理解需求</li>
-<li>产生的正式需求文档, 是<strong>软件开发的基础</strong></li>
-<li>如果开发的原型是可运行的, 它的若干高质量的程序片段和开发工具可用于工作程序的开发.</li>
-<li>原型的开发和评审是系统分析员和用户/客户共同参与的迭代过程, 每个迭代循环都是<strong>线性过程</strong>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="快速应用开发模型-RAD-的开发过程"><a href="#快速应用开发模型-RAD-的开发过程" class="headerlink" title="快速应用开发模型(RAD)的开发过程"></a>快速应用开发模型(RAD)的开发过程</h2><figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%BF%AB%E9%80%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>缺点:<ul>
-<li>需要足够的<strong>人力资源</strong>以建立足够的原型组</li>
-<li>RAD模型要求<strong>开发者和客户</strong>在一段时间内<strong>共同完成</strong>原型系统的开发, 任何一方没有实现承诺都会导致原型开发的失败.</li>
-<li>如果系统难以模块化, RAD模型所需构件就有问题; 难以实现高性能</li>
-<li>不适合采用很多新技术</li>
-</ul>
-</li>
-</ul>
-<h2 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h2><p>螺旋模型 == 瀑布模型(<strong>系统化</strong>) + 原型(<strong>迭代</strong>)<br>适用于计算机软件整个生命周期</p>
-<figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>优点:<ul>
-<li>符合人们认识现实世界和软件开发的客观规律</li>
-<li>支持整个生命周期</li>
-<li>保持瀑布模型的的系统系, 阶段性</li>
-<li>利用原型评估降低开发风险</li>
-<li>开发者和用户共同参于, 尽早发现软件中的错误</li>
-<li>不断推出和完善软件版本, 有助于需求变化, 获取用户需求, 加强对需求的理解</li>
-</ul>
-</li>
-</ul>
-<h2 id="增量模型"><a href="#增量模型" class="headerlink" title="增量模型"></a>增量模型</h2><figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>特点:<ul>
-<li>适合小而可用的软件</li>
-<li>在前面增量的基础上开发后面的增量</li>
-<li>每个增量的开发可用瀑布或快速原型模型</li>
-<li>迭代的思路</li>
-</ul>
-</li>
-</ul>
-<h2 id="并发开发模型"><a href="#并发开发模型" class="headerlink" title="并发开发模型"></a>并发开发模型</h2><figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E5%B9%B6%E5%8F%91%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<p>所有活动并发存在, 但处于不同的状态.</p>
-<h2 id="形式化开发"><a href="#形式化开发" class="headerlink" title="形式化开发"></a>形式化开发</h2><p>类似瀑布模型的软件开发方法, 用形式化数学转换将系统描述换成一个可执行程序.</p>
-<p>需求定义(Requirements definition) -&gt; 形式化描述(Formal specification) -&gt; 形式变换(Formal transformation) -&gt; 集成和系统测试(Integration and system testing)</p>
-<ul>
-<li>与瀑布模型的本质区别<ul>
-<li>软件需求被描述成一个用<strong>数学符号表达</strong>的详细的形式化描述</li>
-<li>设计, 实现和单元测试有转换过程替代. 在转换的过程中, 每个步骤增加细节, 直到形式化描述被转换成一个可执行程序</li>
-</ul>
-</li>
-</ul>
-<h2 id="构建集成模型"><a href="#构建集成模型" class="headerlink" title="构建集成模型"></a>构建集成模型</h2><figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E6%9E%84%E4%BB%B6%E9%9B%86%E6%88%90%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>特点:<ul>
-<li>融合了螺旋模型的特征</li>
-<li>基于构件库</li>
-<li>支持软件开发的迭代方法</li>
-<li>软件重用</li>
-<li>可缩短约70％的开发周期, 降低84％的项目成本</li>
-<li>代表: 统一软件开发过程(RUP)</li>
-</ul>
-</li>
-</ul>
-<h2 id="第四代技术"><a href="#第四代技术" class="headerlink" title="第四代技术"></a>第四代技术</h2><ul>
-<li>四代语言: 基于大型数据库管理系统开发的程序设计语言，称为四代语言4GL</li>
-<li>四代技术: 以四代语言4GL为核心的软件开发技术称为四代技术4GT</li>
-</ul>
-<h2 id="软件能力成熟度模型-CMM"><a href="#软件能力成熟度模型-CMM" class="headerlink" title="软件能力成熟度模型 CMM"></a>软件能力成熟度模型 CMM</h2><p>CMM的能力成熟度共分五级，L1初始级、L2可重复级、L3己定义级、L4己管理级、L5优化级</p>
-<table>
-<thead>
-<tr>
-<th align="left">成熟度等级</th>
-<th align="left">关键过程域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">L2可重复级</td>
-<td align="left">需求管理 软件项目计划 项目跟踪和监督 分包合同管理 软件质量保证 软件配置管理</td>
-</tr>
-<tr>
-<td align="left">L3已管理级</td>
-<td align="left">组织的过程焦点 组织的过程定义 培训大纲 集成化软件管理 软件产品工程 组间协调 同行评审</td>
-</tr>
-<tr>
-<td align="left">L4已管理级</td>
-<td align="left">定量的过程管理 软件质量管理</td>
-</tr>
-<tr>
-<td align="left">L5优化级</td>
-<td align="left">缺陷的预防 技术更新管理 过程变更管理</td>
-</tr>
-</tbody></table>
-<h2 id="阶段式模型"><a href="#阶段式模型" class="headerlink" title="阶段式模型"></a>阶段式模型</h2><table>
-<thead>
-<tr>
-<th align="left">成熟度等级</th>
-<th align="left">24个过程域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">L2可重复级</td>
-<td align="left">需求管理 项目计划 配置管理 项目监督和控制 供应商合同管理 度量和分析 过程和产品质量保证</td>
-</tr>
-<tr>
-<td align="left">L3己定义级</td>
-<td align="left">需求开发 技术解决方案 产品集成、验证、确认 组织级过程焦点 组织级过程定义 组织级培训 集成化项目管理 风险管理 集成化的团队 决策分析和解决方案 组织级集成环境</td>
-</tr>
-<tr>
-<td align="left">L4己管理级</td>
-<td align="left">组织级过程性能 项目定量管理</td>
-</tr>
-<tr>
-<td align="left">L5 优化级</td>
-<td align="left">组织级改革和实施 因果分析和解决方案</td>
-</tr>
-</tbody></table>
-<h2 id="连续式模型"><a href="#连续式模型" class="headerlink" title="连续式模型"></a>连续式模型</h2><table>
-<thead>
-<tr>
-<th align="left">连续式分组</th>
-<th align="left">24个过程域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">过程管理</td>
-<td align="left">组织级过程焦点 组织级过程定义 组织级培训 组织级过程性能 组织级改革和实施</td>
-</tr>
-<tr>
-<td align="left">项目管理</td>
-<td align="left">项目计划 项目监督和控制 供应商合同管理 集成化项目管理 风险管理 集成化的团队 项目定量管理</td>
-</tr>
-<tr>
-<td align="left">工程</td>
-<td align="left">需求管理 需求开发 技术解决方案 产品集成 验证 确认</td>
-</tr>
-<tr>
-<td align="left">支持</td>
-<td align="left">配置管理 度量和分析 过程和产品质量保证 决策分析和解决方案 组织级集成环境 因果分析和解决方案</td>
-</tr>
-</tbody></table>
-<h1 id="第四章-需求分析过程"><a href="#第四章-需求分析过程" class="headerlink" title="第四章 需求分析过程"></a>第四章 需求分析过程</h1><h2 id="需求分析基础"><a href="#需求分析基础" class="headerlink" title="需求分析基础"></a>需求分析基础</h2><ul>
-<li>任务: 形成<strong>需求规格说明(是软件设计, 实现, 测试, 维护的基础)</strong>, 描述系统信息, 功能和行为.</li>
-<li>技术和方法: 初步需求获取技术, 需求建模技术, 快速原型技术, 问题抽象, 问题分解与多视点分析.</li>
-</ul>
-<h3 id="用户需求-系统需求和软件设计描述"><a href="#用户需求-系统需求和软件设计描述" class="headerlink" title="用户需求, 系统需求和软件设计描述:"></a>用户需求, 系统需求和软件设计描述:</h3><ul>
-<li>用户需求: 用<strong>自然语言和图标描述</strong>, 说明系统必须提供哪些服务, 系统运行要受哪些约束.</li>
-<li>系统需求: <strong>详细说明</strong>系统将要提供的服务以及系统受到的约束, <strong>精确的描述</strong>软件的功能, 系统买房和软件开发者鉴定合同的重要内容.</li>
-<li>软件设计描述: 在系统需求的基础上, 加入<strong>更详细</strong>的内容, 构成软件设计活动的概要描述, 是软件设计和实现的基础.</li>
-</ul>
-<h3 id="需求分析三阶段"><a href="#需求分析三阶段" class="headerlink" title="需求分析三阶段"></a>需求分析三阶段</h3><ul>
-<li>问题分析</li>
-<li>需求描述</li>
-<li>需求评审</li>
-</ul>
-<h3 id="初步需求获取技术"><a href="#初步需求获取技术" class="headerlink" title="初步需求获取技术"></a>初步需求获取技术</h3><ol>
-<li>访谈与会议.</li>
-<li>考察用户软件或其子系统业务流程.</li>
-<li>联合小组</li>
-</ol>
-<h3 id="需求建模"><a href="#需求建模" class="headerlink" title="需求建模"></a>需求建模</h3><p>建立软件模型是分析活动的关键.</p>
-<h3 id="分析问题的方法"><a href="#分析问题的方法" class="headerlink" title="分析问题的方法"></a>分析问题的方法</h3><ul>
-<li>抽象: <strong>关注一般问题</strong>的解决途径, 以此指导特殊问题.</li>
-<li>分解: <strong>自顶向下</strong>, 子问题内部紧耦合, 子问题之间松耦合.</li>
-<li>视点分解法: <strong>各个角度</strong>理解分析问题, 再综合</li>
-<li>需求分析视点: 系统, 用户, 信息, 功能, 行为等</li>
-</ul>
-<h2 id="需求分析建模"><a href="#需求分析建模" class="headerlink" title="需求分析建模"></a>需求分析建模</h2><h3 id="需求分析方法"><a href="#需求分析方法" class="headerlink" title="需求分析方法"></a>需求分析方法</h3><h4 id="结构化分析方法"><a href="#结构化分析方法" class="headerlink" title="结构化分析方法"></a>结构化分析方法</h4><figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-
-<ul>
-<li>核心: 数据字典<br>  描述软件工程项目的所有数据对象</li>
-<li>中间层: <ul>
-<li>实体-关系图: 描述数据对象之间的关系</li>
-<li>数据流图(<strong>功能建模</strong>的基础): 系统或子系统对数据实施的变换, 变换的功能, 提供信息分析的信息</li>
-<li>状态-变迁图(<strong>行为建模</strong>的基础): 系统的状态以及状态变迁的方式</li>
-</ul>
-</li>
-<li>最外层:<ul>
-<li>数据对象: 表示<strong>实体-关系图(E/R图)</strong>中每个数据对象的属性</li>
-<li>加工规格说明 (PSPEC): 描述数据流图的每个功能</li>
-<li>控制规格说明 (CSPEC): 描述软件控制的附加信息</li>
-</ul>
-</li>
-</ul>
-<h4 id="面向对象的分析方法"><a href="#面向对象的分析方法" class="headerlink" title="面向对象的分析方法"></a>面向对象的分析方法</h4><h3 id="需求分析模型"><a href="#需求分析模型" class="headerlink" title="需求分析模型"></a>需求分析模型</h3><h4 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h4><p><strong>实体-关系图(E/R图)</strong>是数据模型的基础, 它描述数据对象, 属性, 及其关系.</p>
-<h5 id="数据对象-属性和关系"><a href="#数据对象-属性和关系" class="headerlink" title="数据对象, 属性和关系"></a>数据对象, 属性和关系</h5><ul>
-<li>数据对象: 封装如事件、行为、角色、组织、地点、结构等外部实体的数据部分.</li>
-<li>数据属性: 用<strong>标识符、符号串和值</strong>标识，描述数据对象的性质.</li>
-<li>数据关系: <strong>数据对象</strong>按照某种<strong>关系</strong>相互<strong>连接</strong></li>
-</ul>
-<h5 id="实体-关系图-E-R图"><a href="#实体-关系图-E-R图" class="headerlink" title="实体-关系图(E/R图)"></a>实体-关系图(E/R图)</h5><p>略</p>
-<h4 id="功能建模"><a href="#功能建模" class="headerlink" title="功能建模"></a>功能建模</h4><h5 id="数据流图与数据字典"><a href="#数据流图与数据字典" class="headerlink" title="数据流图与数据字典"></a>数据流图与数据字典</h5><ul>
-<li>数据流图: 描述数据流, 加工, 数据源以及外部实体.</li>
-<li>数据字典: 由数据条目组成, 描述, 组织和管理数据流图的数据流、加工、数据源及外部实体.</li>
-</ul>
-<h5 id="数据流图的实时系统扩充"><a href="#数据流图的实时系统扩充" class="headerlink" title="数据流图的实时系统扩充"></a>数据流图的实时系统扩充</h5><ul>
-<li>实时系统: 系统与现实世界实体交互具有时间特性.</li>
-</ul>
-<p>传统数据流方法不能胜任实时系统的需求分析任务。为开发实时嵌入式系统，必须对传统方法进行扩充</p>
-<ul>
-<li>系统扩充:<ul>
-<li>Ward ＆ Mellor: 引入实时图形记号.</li>
-<li>Hatley ＆ Pirbhai: 引进状态加工图描述系统的外部行为.</li>
-</ul>
-</li>
-</ul>
-<figure class="image-box">
-                <img src="https://hexo-blog-1258787237.cos.ap-beijing.myqcloud.com/hexo-img/software%20engineer/Hatley%20%EF%BC%86%20Pirbhai%E7%9A%84%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B.png" alt title class>
-                <p></p>
-            </figure>
-<h4 id="行为建模"><a href="#行为建模" class="headerlink" title="行为建模"></a>行为建模</h4><p>状态-变迁图通过描述状态以及导致系统改变状态的事件来表示系统的行为, 每个状态代表系统的一种行为模式.</p>
-<h1 id="第五章-软件设计过程"><a href="#第五章-软件设计过程" class="headerlink" title="第五章 软件设计过程"></a>第五章 软件设计过程</h1><h2 id="软件设计基础"><a href="#软件设计基础" class="headerlink" title="软件设计基础"></a>软件设计基础</h2>]]></content>
-      
-        
-        <tags>
-            
-            <tag> 软件工程 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[python拯救计划]]></title>
       <url>/2019/12/18/python-saving/</url>
       <content type="html"><![CDATA[<p>我决心要提高python编程能力. 在此积累一些牛逼的python使用方法.</p>
@@ -1085,9 +603,9 @@
 </ul>
 <h2 id="实例-获取知乎发现上的问题链接"><a href="#实例-获取知乎发现上的问题链接" class="headerlink" title="实例: 获取知乎发现上的问题链接"></a>实例: 获取知乎发现上的问题链接</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urljoin</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'Baiduspider'</span>&#125;</span><br><span class="line">    proxies = &#123;</span><br><span class="line">        <span class="string">'http'</span>: <span class="string">'http://122.114.31.177:808'</span></span><br><span class="line">    &#125;</span><br><span class="line">    base_url = <span class="string">'https://www.zhihu.com/'</span></span><br><span class="line">    seed_url = urljoin(base_url, <span class="string">'explore'</span>) <span class="comment"># https://www.zhihu.com/explore</span></span><br><span class="line">    resp = requests.get(seed_url,</span><br><span class="line">                        headers=headers,</span><br><span class="line">                        proxies=proxies <span class="comment"># 代理</span></span><br><span class="line">            ) </span><br><span class="line">    soup = BeautifulSoup(resp.text, <span class="string">'lxml'</span>)  </span><br><span class="line">    href_regex = re.compile(<span class="string">r'^/question'</span>) <span class="comment"># 正则匹配 /question</span></span><br><span class="line">    link_set = set()</span><br><span class="line">    <span class="keyword">for</span> a_tag <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>, &#123;<span class="string">'href'</span>: href_regex&#125;):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'href'</span> <span class="keyword">in</span> a_tag.attrs:</span><br><span class="line">            href = a_tag.attrs[<span class="string">'href'</span>]</span><br><span class="line">            full_url = urljoin(base_url, href)</span><br><span class="line">            link_set.add(full_url)</span><br><span class="line">    print(<span class="string">'Total %d question pages found.'</span> % len(link_set))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
-<h2 id="scrapy库"><a href="#scrapy库" class="headerlink" title="scrapy库"></a>scrapy库</h2><h3 id="实例-爬取我的博客的所有文章信息"><a href="#实例-爬取我的博客的所有文章信息" class="headerlink" title="实例: 爬取我的博客的所有文章信息"></a>实例: 爬取我的博客的所有文章信息</h3><ul>
-<li><p>spiders/test.py</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> tutorial.items <span class="keyword">import</span> TutorialItem</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'test'</span>  <span class="comment"># 爬虫名字</span></span><br><span class="line">    allowed_domains = [<span class="string">'tjuyjn.top'</span>]  <span class="comment"># 允许爬取的域名</span></span><br><span class="line">    start_urls = [<span class="string">'http://tjuyjn.top/'</span>]  <span class="comment"># 开始url</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># print(response.text)  # 源码正常获取</span></span><br><span class="line">        quotes = response.css(<span class="string">".post-list-item.fade"</span>)</span><br><span class="line">        <span class="comment"># with open('html.html', 'w', encoding='utf8') as f:</span></span><br><span class="line">        <span class="comment">#     f.write(response.text,)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> quote <span class="keyword">in</span> quotes:</span><br><span class="line">            item = TutorialItem()</span><br><span class="line">            item[<span class="string">'title'</span>] = quote.css(<span class="string">".post-title-link::text"</span>).extract_first()</span><br><span class="line">            item[<span class="string">'tags'</span>] = quote.css(<span class="string">'.article-tag-list-link::text'</span>).extract()</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">        </span><br><span class="line">        next = response.css(<span class="string">".extend.next::attr(href)"</span>).extract_first()</span><br><span class="line">        url = response.urljoin(next)</span><br><span class="line">        print(url)</span><br><span class="line">        <span class="keyword">yield</span> scrapy.Request(url=url, callback=self.parse)</span><br></pre></td></tr></table></figure>
+<h2 id="scrapy框架"><a href="#scrapy框架" class="headerlink" title="scrapy框架"></a>scrapy框架</h2><h3 id="实例-爬取我的博客的所有文章信息"><a href="#实例-爬取我的博客的所有文章信息" class="headerlink" title="实例: 爬取我的博客的所有文章信息"></a>实例: 爬取我的博客的所有文章信息</h3><ul>
+<li><p>test.py</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> tutorial.items <span class="keyword">import</span> TutorialItem</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'test'</span>  <span class="comment"># 爬虫名字</span></span><br><span class="line">    allowed_domains = [<span class="string">'tjuyjn.top'</span>]  <span class="comment"># 允许爬取的域名</span></span><br><span class="line">    start_urls = [<span class="string">'http://tjuyjn.top/'</span>]  <span class="comment"># 开始url</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># print(response.text)  # 源码正常获取</span></span><br><span class="line">        quotes = response.css(<span class="string">".post-list-item.fade"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> quote <span class="keyword">in</span> quotes:</span><br><span class="line">            item = TutorialItem()</span><br><span class="line">            item[<span class="string">'title'</span>] = quote.css(<span class="string">".post-title-link::text"</span>).extract_first()</span><br><span class="line">            item[<span class="string">'tags'</span>] = quote.css(<span class="string">'.article-tag-list-link::text'</span>).extract()</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">        </span><br><span class="line">        next = response.css(<span class="string">".extend.next::attr(href)"</span>).extract_first()</span><br><span class="line">        url = response.urljoin(next)</span><br><span class="line">        print(url)</span><br><span class="line">        <span class="keyword">yield</span> scrapy.Request(url=url, callback=self.parse)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>items.py</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义爬取的数据结构</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TutorialItem</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    title = scrapy.Field()</span><br><span class="line">    tags = scrapy.Field()</span><br></pre></td></tr></table></figure>
@@ -1096,12 +614,83 @@
 </ul>
 <p>其它文件未改动.</p>
 <p>运行结果:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;tags&apos;: [&apos;软件工程&apos;], &apos;title&apos;: &apos;software engineering 笔记&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;python&apos;], &apos;title&apos;: &apos;python拯救计划&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;GAN&apos;, &apos;tensorflow&apos;, &apos;深度学习&apos;], &apos;title&apos;: &apos;机器学习入门&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;计算机网络&apos;], &apos;title&apos;: &apos;计网 summary&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;java&apos;], &apos;title&apos;: &apos;Java 常用方法总结&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;linux&apos;], &apos;title&apos;: &apos;linux 常用命令&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;misc&apos;, &apos;python&apos;], &apos;title&apos;: &apos;拼接图像&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;CTF&apos;, &apos;随笔&apos;], &apos;title&apos;: &apos;CTF-writeup&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;web&apos;, &apos;文件上传漏洞&apos;, &apos;文件包含漏洞&apos;], &apos;title&apos;: &apos;CheckIn&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;arp欺骗&apos;, &apos;web&apos;, &apos;中间人攻击&apos;], &apos;title&apos;: &apos;arp欺骗 初见&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;linux提权&apos;, &apos;metasploit&apos;, &apos;web&apos;], &apos;title&apos;: &apos;Node靶机练习&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;python&apos;, &apos;word&apos;], &apos;title&apos;: &apos;python自动化处理word文档&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;mysql基本语法&apos;, &apos;sql注入&apos;, &apos;web&apos;], &apos;title&apos;: &apos;sqli-lab闯关记录&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;web&apos;, &apos;主机扫描&apos;], &apos;title&apos;: &apos;Nmap 学习笔记&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;linux&apos;, &apos;misc&apos;], &apos;title&apos;: &apos;一个有意思的小工具——aview&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;python&apos;], &apos;title&apos;: &apos;用python给女神刷赞会发生什么？&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;php&apos;, &apos;一句话木马&apos;, &apos;图片马&apos;, &apos;文件上传漏洞&apos;], &apos;title&apos;: &apos;上传漏洞&apos;&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;tags&apos;: [&apos;软件工程&apos;], &apos;title&apos;: &apos;software engineering 笔记&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;python&apos;], &apos;title&apos;: &apos;python拯救计划&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;GAN&apos;, &apos;tensorflow&apos;, &apos;深度学习&apos;], &apos;title&apos;: &apos;机器学习入门&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;计算机网络&apos;], &apos;title&apos;: &apos;计网 summary&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;java&apos;], &apos;title&apos;: &apos;Java 常用方法总结&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;linux&apos;], &apos;title&apos;: &apos;linux 常用命令&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;misc&apos;, &apos;python&apos;], &apos;title&apos;: &apos;拼接图像&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;CTF&apos;, &apos;随笔&apos;], &apos;title&apos;: &apos;CTF-writeup&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;web&apos;, &apos;文件上传漏洞&apos;, &apos;文件包含漏洞&apos;], &apos;title&apos;: &apos;CheckIn&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;arp欺骗&apos;, &apos;web&apos;, &apos;中间人攻击&apos;], &apos;title&apos;: &apos;arp欺骗 初见&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;linux提权&apos;, &apos;metasploit&apos;, &apos;web&apos;], &apos;title&apos;: &apos;Node靶机练习&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;python&apos;, &apos;word&apos;], &apos;title&apos;: &apos;python自动化处理word文档&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;mysql基本语法&apos;, &apos;sql注入&apos;, &apos;web&apos;], &apos;title&apos;: &apos;sqli-lab闯关记录&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;web&apos;, &apos;主机扫描&apos;], &apos;title&apos;: &apos;Nmap 学习笔记&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;linux&apos;, &apos;misc&apos;], &apos;title&apos;: &apos;一个有意思的小工具——aview&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;python&apos;], &apos;title&apos;: &apos;用python给女神刷赞会发生什么？&apos;&#125;</span><br><span class="line">&#123;&apos;tags&apos;: [&apos;php&apos;, &apos;一句话木马&apos;, &apos;图片马&apos;, &apos;文件上传漏洞&apos;], &apos;title&apos;: &apos;上传漏洞&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其它的可以看我github中练习的小项目. <a href="https://github.com/anti-entropy123/Python-Web-Crawler" target="_blank" rel="noopener">Python-Web-Crawler</a>.</p>
+<h1 id="Web框架"><a href="#Web框架" class="headerlink" title="Web框架"></a>Web框架</h1><h2 id="flask框架"><a href="#flask框架" class="headerlink" title="flask框架"></a>flask框架</h2><p>在知乎上找了个学习路线, 我会抽时间总结下面这些问题的解决方案.</p>
+<h3 id="定义-url-route"><a href="#定义-url-route" class="headerlink" title="定义 url route"></a>定义 url route</h3><h4 id="使用route-装饰器"><a href="#使用route-装饰器" class="headerlink" title="使用route()装饰器"></a>使用route()装饰器</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/'):</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Index Page'</span></span><br><span class="line"><span class="meta">@app.route('/hello):</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>可以在一个函数上附加多个URL route规则.</strong><br>route()</p>
+<h4 id="添加变量"><a href="#添加变量" class="headerlink" title="添加变量"></a>添加变量</h4><p>使用<code>&lt;converter:variable_name&gt;</code>语法来为规则添加变量.</p>
+<p>使用例子:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/user/&lt;int:username&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_user_profile</span><span class="params">(username)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f'User <span class="subst">&#123;username&#125;</span>'</span></span><br></pre></td></tr></table></figure>
+
+<p>几种基本的转换器:<br>|转换器|含义|<br>|:—:|:—:|<br>| |接收不含’/‘的字符串|<br>|int|接收整数|<br>|float|接收浮点数|<br>|path|和默认的类似, 但是接收’/‘|</p>
+<h3 id="组织-request-handler-函数"><a href="#组织-request-handler-函数" class="headerlink" title="组织 request handler 函数"></a>组织 request handler 函数</h3><h4 id="写一个最简单的request-handler-函数"><a href="#写一个最简单的request-handler-函数" class="headerlink" title="写一个最简单的request handler 函数"></a>写一个最简单的request handler 函数</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="从get-post请求中取出参数"><a href="#从get-post请求中取出参数" class="headerlink" title="从get/post请求中取出参数"></a>从get/post请求中取出参数</h4><p>默认情况下, route装饰器只会响应GET请求(和HEAD请求). 如果要处理POST, 需要给route提供methods参数:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/login', methods=['GET','POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        do_the_login()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        show_the_login_form()</span><br></pre></td></tr></table></figure>
+
+<p>那么, 如果要接收数据, 需要使用请求对象 request</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"><span class="meta">@app.route('/login', methods=['GET','POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    error = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        <span class="keyword">if</span> valid_login(request.form[<span class="string">'username'</span>], request.form[<span class="string">'password'</span>]):</span><br><span class="line">            <span class="keyword">return</span> log_the_user_in(request.form[<span class="string">'username'</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            error = <span class="string">'Invalid username/password'</span></span><br></pre></td></tr></table></figure>
+
+<p>当form中的键值不存在时, 程序会抛出<code>KeyError</code>异常, 用户会看到HTTP 400 Bad Request. 所以最好捕获此异常, 或者使用<code>request.args.get(&#39;args_name&#39;, &#39;&#39;)</code> 方法.</p>
+<h4 id="定义全局url拦截函数"><a href="#定义全局url拦截函数" class="headerlink" title="定义全局url拦截函数"></a>定义全局url拦截函数</h4><p>// TODO</p>
+<h4 id="获取-修改-存储cookie-session数据"><a href="#获取-修改-存储cookie-session数据" class="headerlink" title="获取/修改/存储cookie,session数据"></a>获取/修改/存储cookie,session数据</h4><p>可以通过cookies属性来访问cookies.<br>通过相应对象的set_cookie方法来设置cookies.<br>例如:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 读取cookies</span></span><br><span class="line">    username = request.cookies.get(<span class="string">'username'</span>) <span class="comment"># 这种方法不会引起KeyError异常.</span></span><br><span class="line"><span class="meta">@app.route('/login')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    resp = make_response(render_template())</span><br><span class="line">    <span class="comment"># 设置cookies</span></span><br><span class="line">    resp.set_cookie(<span class="string">'username'</span>, <span class="string">'the username'</span>)</span><br><span class="line">    <span class="keyword">return</span> resp</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中演示了如何设置和读取cookies, 但是如果想使用会话, 不能直接使用cookies.</p>
+<p>会话: session对象允许在不同请求间存储特定用户的信息. 这是在cookies的基础上实现的.<br>首先需要设置一个密钥.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, session, redirect, url_for, escape, request</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/'):</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'username'</span> <span class="keyword">in</span> session:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'Logged in as <span class="subst">&#123;escape(session[<span class="string">"username"</span>])&#125;</span>'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'You are not logged in'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/login', methods=['GET','POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        session[<span class="string">'username'</span>]=request.form[<span class="string">'username'</span>]</span><br><span class="line">        <span class="keyword">return</span>  redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'''</span></span><br><span class="line"><span class="string">        &lt;form action="" method="post"&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;&lt;input type=text name=username&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;&lt;input type=submit value=Login&gt;</span></span><br><span class="line"><span class="string">        &lt;/form&gt;</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"><span class="meta">@app.route('/logout')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span><span class="params">()</span>:</span></span><br><span class="line">    session.pop(<span class="string">'username'</span>, <span class="literal">None</span>)</span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line"></span><br><span class="line">app.secret_key = os.urandom(<span class="number">24</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改-输出-http-header-数据"><a href="#修改-输出-http-header-数据" class="headerlink" title="修改/输出 http header 数据"></a>修改/输出 http header 数据</h4><p>在route函数中, 通常可以默认返回一个response对象. 例如 <code>return make_response(&#39;index.html&#39;)</code>. 这样client接收到的状态码和headers就是默认的.<br>可以通过return一个元组来设置. 例如</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> make_response(<span class="string">'style.css'</span>), <span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/css'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个三元组分别对应响应体, 状态码和响应头.<br>或者修改response对象的属性:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resp = make_response(<span class="string">'style.css'</span>)</span><br><span class="line">resp.headers[<span class="string">'Content-Type'</span>] = <span class="string">'text/css'</span></span><br><span class="line"><span class="keyword">return</span> resp</span><br></pre></td></tr></table></figure>
+
+<h3 id="部署app"><a href="#部署app" class="headerlink" title="部署app"></a>部署app</h3><h4 id="程序服务器部署"><a href="#程序服务器部署" class="headerlink" title="程序服务器部署"></a>程序服务器部署</h4><p>至少目前来看, 找到”main”模块, 启动即可.</p>
+<h4 id="配置开发环境"><a href="#配置开发环境" class="headerlink" title="配置开发环境"></a>配置开发环境</h4><p>// TODO</p>
+<h4 id="配置静态文件访问"><a href="#配置静态文件访问" class="headerlink" title="配置静态文件访问"></a>配置静态文件访问</h4><p>静态文件通常是css和JavaScript文件. 如果要通过Flask访问这种静态文件, 可以在模块旁边或者包中创建一个名为<code>static</code>的文件夹, url为<code>/static</code>即可访问.<br>如果要引用静态文件, 最好用<code>url_for</code>方法.<br>例如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url_for(<span class="string">'static'</span>, filename=<span class="string">'style.css'</span>)  <span class="comment"># static/style.css</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>一个简洁的方案是创建独立的 .ini 或 .py 文件</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, session, g, redirect, url_for, abort, render_template, flash</span><br><span class="line"></span><br><span class="line">DATABASE = <span class="string">'/tmp/flaskr.db'</span></span><br><span class="line">DEBUG = <span class="literal">True</span></span><br><span class="line">SECRET_KEY = <span class="string">'development key'</span></span><br><span class="line">USERNAME = <span class="string">'admin'</span></span><br><span class="line">PASSWORD = <span class="string">'default'</span></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_object(__name__)</span><br></pre></td></tr></table></figure>
+
+<p><code>from_object()</code>会遍历给定的对象, 如果它是一个字符串, 则会导入它, 否则搜寻里面定义的全部大写的变量. </p>
+<h3 id="访问数据库"><a href="#访问数据库" class="headerlink" title="访问数据库"></a>访问数据库</h3><h4 id="定义-组织-初始化-数据表"><a href="#定义-组织-初始化-数据表" class="headerlink" title="定义/组织/初始化 数据表"></a>定义/组织/初始化 数据表</h4><p>初始化数据库, 事先将建表的sql语句存储在文件<code>schema.sql</code>中, 然后设置函数进行初始化.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> closing</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect_db</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> sqlite3.connect(app.config[<span class="string">'DATABASE'</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_db</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> closing(connect_db()) <span class="keyword">as</span> db:</span><br><span class="line">        <span class="keyword">with</span> app.open_resource(<span class="string">'schema.sql'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            db.cursor().executescript(f.read())</span><br><span class="line">            db.commit()</span><br></pre></td></tr></table></figure>
+
+<p>这里的closing方法也比较陌生, 顺带提一下, with 语句打开和关闭某些资源的原理是自动调用对象的<code>__enter__</code>和<code>__exit__</code>方法, 但是有些类并没有这个方法, 所以这里的closing就是给这种类加上<code>__enter__</code>和<code>__exit__</code>, 让它们也能享受到with语句的便利.</p>
+<h4 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h4><p>如果要在每个请求前都连接数据库, 最好使用<code>before_request</code>, <code>after_request</code>和<code>teardown_request</code>三个修饰器. 它们的作用是:</p>
+<ul>
+<li>before_request: 装饰的函数会在请求前调用, 它没有参数. 但当异常抛出时, 不一定被执行.</li>
+<li>after_request: 装饰的函数会在请求结束后调用, 需要传入响应.</li>
+<li>teardown_request: 装饰的函数将会在响应构造后执行(无论响应构造过程中是否会抛出异常), 不允许修改请求, 返回的值会被忽略. 如果有异常抛出, 则会被作为参数传入, 否则传入None</li>
+</ul>
+<p>样例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.before_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before_request</span><span class="params">()</span>:</span></span><br><span class="line">    g.db = connect_db()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.teardown_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">teardown_request</span><span class="params">(exception)</span>:</span></span><br><span class="line">    g.db.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="对接orm系统和现有的表结构"><a href="#对接orm系统和现有的表结构" class="headerlink" title="对接orm系统和现有的表结构"></a>对接orm系统和现有的表结构</h4><h4 id="掌握最基本的add"><a href="#掌握最基本的add" class="headerlink" title="掌握最基本的add"></a>掌握最基本的add</h4><h4 id="掌握最基本的delete"><a href="#掌握最基本的delete" class="headerlink" title="掌握最基本的delete"></a>掌握最基本的delete</h4><h4 id="按字段查询"><a href="#按字段查询" class="headerlink" title="按字段查询"></a>按字段查询</h4><h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><h4 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h4><h4 id="order-by"><a href="#order-by" class="headerlink" title="order by"></a>order by</h4><h4 id="直接使用sql访问数据库"><a href="#直接使用sql访问数据库" class="headerlink" title="直接使用sql访问数据库"></a>直接使用sql访问数据库</h4><h3 id="使用模板系统"><a href="#使用模板系统" class="headerlink" title="使用模板系统"></a>使用模板系统</h3><h4 id="组织-访问-模板文件的目录结构"><a href="#组织-访问-模板文件的目录结构" class="headerlink" title="组织/访问 模板文件的目录结构"></a>组织/访问 模板文件的目录结构</h4><p>如果要使用模板, 首先要建立<code>/templates</code>目录, 然后向其中加入模板文件, 实例: <code>layout.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Flaskr<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">stylesheet</span> <span class="attr">type</span>=<span class="string">text/css</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for('static', filename='style.css')&#125;&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">page</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Flaskr<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">metanav</span>&gt;</span></span><br><span class="line">        &#123;% if not session.logged_in %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for('login')&#125;&#125;"</span>&gt;</span>log in<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for('logout')&#125;&#125;"</span>&gt;</span>log out<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% for message in get_flashed_messages() %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">flash</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>有了这个<br>可以使用<code>render_template</code>方法来渲染模板, 只需要将模板名和作为关键字的参数传入模板的变量. </p>
+<p>在模板中可以访问到 request, session, g 等对象, 以及<code>get_flashed_messages()</code>函数. 它可以实现消息的闪现, 在这里暂时不展开.</p>
+<p>上述的实例模板中还有if-else-endif, for等控制语句, 都比较简单, 与python的语法很接近.</p>
+<h4 id="在模板中嵌入代码模板"><a href="#在模板中嵌入代码模板" class="headerlink" title="在模板中嵌入代码模板"></a>在模板中嵌入代码模板</h4><h4 id="继承结构"><a href="#继承结构" class="headerlink" title="继承结构"></a>继承结构</h4><h4 id="模板之间include"><a href="#模板之间include" class="headerlink" title="模板之间include"></a>模板之间include</h4><h4 id="自定义模板函数"><a href="#自定义模板函数" class="headerlink" title="自定义模板函数"></a>自定义模板函数</h4><h3 id="通过http-get-post-获取远程数据"><a href="#通过http-get-post-获取远程数据" class="headerlink" title="通过http get/post 获取远程数据"></a>通过http get/post 获取远程数据</h3><h4 id="parse-json"><a href="#parse-json" class="headerlink" title="parse json"></a>parse json</h4><h4 id="parse-xml"><a href="#parse-xml" class="headerlink" title="parse xml"></a>parse xml</h4><h4 id="输出为-json"><a href="#输出为-json" class="headerlink" title="输出为 json"></a>输出为 json</h4><h4 id="处理状态码-404和50x"><a href="#处理状态码-404和50x" class="headerlink" title="处理状态码:404和50x"></a>处理状态码:404和50x</h4><h4 id="处理文件上传"><a href="#处理文件上传" class="headerlink" title="处理文件上传"></a>处理文件上传</h4><h3 id="可选的学习项目"><a href="#可选的学习项目" class="headerlink" title="可选的学习项目"></a>可选的学习项目</h3><h4 id="发送email"><a href="#发送email" class="headerlink" title="发送email"></a>发送email</h4><h4 id="log"><a href="#log" class="headerlink" title="log"></a>log</h4><h4 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h4>]]></content>
       
         
         <tags>
             
             <tag> python </tag>
+            
+            <tag> scrapy </tag>
+            
+            <tag> flask </tag>
+            
+            <tag> 爬虫 </tag>
+            
+            <tag> 正则表达式 </tag>
             
         </tags>
         
@@ -1683,6 +1272,17 @@
 <h3 id="第五层输出层"><a href="#第五层输出层" class="headerlink" title="第五层输出层"></a>第五层输出层</h3><p>这一层和之前的基础教程没啥区别, 主要的作用还是通过softmax使神经网络的输出规范化为有意义的概率值. 也就是限定了网络输出的值域为[0,1], 同理输出为10位的向量, 代表了这个图像被分类到十个数字的概率.<br>$$[1024] \underrightarrow{ 第五层输出层 }[10]$$</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> tensorflow.examples.tutorials.mnist.input_data <span class="keyword">as</span> input_data</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">    initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"> </span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="literal">True</span>)</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">784</span>])</span><br><span class="line">y_hat = tf.placeholder(<span class="string">'float'</span>, shape=[<span class="literal">None</span>, <span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># 第一层卷积</span></span><br><span class="line">W_conv1 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"><span class="comment"># 第二层卷积</span></span><br><span class="line">W_conv2 = weight_variable([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br><span class="line"><span class="comment"># 全连接层</span></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>])</span><br><span class="line">b_fc1 = bias_variable([<span class="number">1024</span>])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [<span class="number">-1</span>, <span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)</span><br><span class="line"><span class="comment"># Dropout</span></span><br><span class="line">keep_prob = tf.placeholder(<span class="string">'float'</span>)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line"><span class="comment"># 输出层</span></span><br><span class="line">W_fc2 = weight_variable([<span class="number">1024</span>, <span class="number">10</span>])</span><br><span class="line">b_fc2 = bias_variable([<span class="number">10</span>])</span><br><span class="line"><span class="comment"># softmax</span></span><br><span class="line">y_conv = tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span><br><span class="line"><span class="comment"># 训练评估模型</span></span><br><span class="line">cross_entropy = -tf.reduce_sum(y_hat*tf.log(y_conv))</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv, <span class="number">1</span>), tf.argmax(y_hat, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">'float'</span>))</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2000</span>):</span><br><span class="line">    batch = mnist.train.next_batch(<span class="number">50</span>)</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        train_accuracy = accuracy.eval(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">        print(<span class="string">"step %d, training accuracy %g"</span> % (i, train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x: batch[<span class="number">0</span>], y_hat: batch[<span class="number">1</span>], keep_prob: <span class="number">0.5</span>&#125;)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">"test accuracy %g"</span> % accuracy.eval(feed_dict=&#123;</span><br><span class="line">    x: mnist.test.images, y_hat: mnist.test.labels, keep_prob: <span class="number">1.0</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 
+<h1 id="风格迁移"><a href="#风格迁移" class="headerlink" title="风格迁移"></a>风格迁移</h1><h2 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h2><blockquote>
+<p>VGGNet是牛津大学计算机视觉组（VisualGeometry Group）和GoogleDeepMind公司的研究员一起研发的的深度卷积神经网络</p>
+</blockquote>
+<p>主要作用: 经常被用来提取图像特征, 可用来在特定的图像分类任务上进行再训练(相当于提供了非常好的初始化权重).</p>
+<h2 id="Gram矩阵"><a href="#Gram矩阵" class="headerlink" title="Gram矩阵"></a>Gram矩阵</h2><blockquote>
+<p>Gram矩阵是关于一组向量的对称矩阵, 例如向量组<br>$$<br>\vec x_1, \vec x_2, \vec x_3,…, \vec x_n<br>$$<br>它的Gram矩阵为:<br>$$<br>\begin{bmatrix}<br>(\vec{x_1},\vec{x_1}) &amp;(\vec{x_1},\vec{x_2}) &amp;\cdots &amp;(\vec{x_1},\vec{x_n})\<br>(\vec{x_2}, \vec{x_1}) &amp;(\vec{x_2},\vec{x_2}) &amp;\cdots &amp;(\vec{x_2},\vec{x_n})\<br>\cdots &amp;\cdots &amp;\cdots &amp;\cdots\<br>(\vec{x_n},\vec{x_1}) &amp;(\vec{x_n},\vec{x_2}) &amp;\cdots &amp;(\vec{x_n},\vec{x_n})<br>\end{bmatrix}<br>$$<br>其中内积运算为欧几里得空间上的标准内积, 即$ (\vec{x_i}, \vec{x_j})=\vec{x_i}^{T}\vec{x_j} $</p>
+</blockquote>
+<p>作用:</p>
+<blockquote>
+<p>Gram矩阵可以在一定程度上反映原始图像的“风格”</p>
+</blockquote>
 <h1 id="tensorflow-常用-API"><a href="#tensorflow-常用-API" class="headerlink" title="tensorflow 常用 API"></a>tensorflow 常用 API</h1><h2 id="package-tf-version-1-x-2-x"><a href="#package-tf-version-1-x-2-x" class="headerlink" title="package: tf [version 1.x 2.x]"></a>package: tf [version 1.x 2.x]</h2><p>TensorFlow root package. 此包为 tensorflow 的根package.<br>下文记录那些 tf root package 中的变量或method.</p>
 <ul>
 <li>函数原型: <code>tf.placeholder(dtype, shape=None, name=None)</code></li>
